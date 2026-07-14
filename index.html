@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Toolkit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#FFFFFF; --ink:#0A0A0A; --grey:#8A8A86; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg); color:var(--ink); font-family:'Space Grotesk',sans-serif; -webkit-font-smoothing:antialiased;}
+
+  header{padding:20px; border-bottom:2px solid var(--ink); display:flex; align-items:baseline; gap:10px;}
+  header .mark{width:24px;height:24px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;}
+  header .name{font-size:18px; font-weight:700;}
+
+  main{max-width:900px; margin:0 auto; padding:60px 20px;}
+  h1{font-size:32px; margin:0 0 8px; font-weight:700;}
+  main > p.lede{color:var(--grey); font-size:14px; margin:0 0 40px; max-width:520px;}
+
+  .modules{display:grid; grid-template-columns:1fr; gap:1px; background:var(--ink); border:1px solid var(--ink);}
+  @media(min-width:640px){.modules{grid-template-columns:repeat(2,1fr);}}
+
+  a.module{background:#fff; color:var(--ink); text-decoration:none; padding:24px; display:flex; flex-direction:column; gap:6px; min-height:120px; justify-content:space-between; transition:background .15s, color .15s;}
+  a.module:hover{background:var(--ink); color:#fff;}
+  a.module.disabled{opacity:.4; pointer-events:none;}
+  .module .m-name{font-size:19px; font-weight:700; text-transform:uppercase; letter-spacing:.01em;}
+  .module .m-desc{font-size:12px; opacity:.75;}
+  .module .m-status{font-size:9.5px; letter-spacing:.08em; text-transform:uppercase;}
+
+  footer{max-width:900px; margin:0 auto; padding:0 20px 60px; color:var(--grey); font-size:11px;}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="mark">S</span>
+  <span class="name">Studio Toolkit</span>
+</header>
+
+<main>
+  <h1>Studio Toolkit</h1>
+  <p class="lede">A working set of tools for the studio — one login, one place, growing module by module alongside current projects.</p>
+
+  <div class="modules">
+    <a class="module" href="brandbook/">
+      <div>
+        <div class="m-name">BrandBook</div>
+        <div class="m-desc">Interior styling brand book — furniture &amp; material brands, browsable by brand, catalog type, and color.</div>
+      </div>
+      <div class="m-status">Live</div>
+    </a>
+    <a class="module disabled" href="sourcing-map/">
+      <div>
+        <div class="m-name">Sourcing Map</div>
+        <div class="m-desc">Showroom visits across Hangzhou, Shanghai, Foshan — pinned and linked back to BrandBook entries.</div>
+      </div>
+      <div class="m-status">Coming soon</div>
+    </a>
+    <a class="module disabled" href="client-portal/">
+      <div>
+        <div class="m-name">Client Portal</div>
+        <div class="m-desc">Share renders, collect comments, track pricing &amp; phasing with clients.</div>
+      </div>
+      <div class="m-status">Coming soon</div>
+    </a>
+  </div>
+</main>
+
+<footer>Internal studio tool.</footer>
+
+</body>
+</html>

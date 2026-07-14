@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrandBook — Interior Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFFFF; --ink:#0A0A0A; --grey:#8A8A86; --line:#000000; --gap:1px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg); color:var(--ink); font-family:'Space Grotesk',sans-serif; -webkit-font-smoothing:antialiased;}
+  .caps{text-transform:uppercase; letter-spacing:.04em;}
+
+  header.top{position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:2px solid var(--ink);}
+  .top-inner{max-width:1200px; margin:0 auto; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;}
+  .wordmark{display:flex; align-items:baseline; gap:8px; cursor:pointer;}
+  .wordmark .mark{width:24px;height:24px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none;}
+  .wordmark .name{font-size:20px; font-weight:700; letter-spacing:.02em;}
+  .wordmark .sub{font-size:10.5px; color:var(--grey); letter-spacing:.1em; text-transform:uppercase; display:none;}
+  @media(min-width:640px){.wordmark .sub{display:inline;}}
+
+  nav.tabs{display:flex; gap:0; border:1.5px solid var(--ink);}
+  nav.tabs button{border:none; background:#fff; padding:8px 14px; font-family:inherit; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; cursor:pointer; color:var(--ink); border-right:1.5px solid var(--ink);}
+  nav.tabs button:last-child{border-right:none;}
+  nav.tabs button.active{background:var(--ink); color:#fff;}
+
+  .search-wrap{display:none;}
+  @media(min-width:860px){.search-wrap{display:block;}}
+  .search-wrap input{border:1.5px solid var(--ink); background:#fff; padding:7px 10px; font-family:inherit; font-size:11.5px; width:170px; color:var(--ink);}
+
+  main{max-width:1200px; margin:0 auto; padding:22px 20px 90px;}
+
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; margin:6px 0 18px; flex-wrap:wrap; gap:8px;}
+  .section-head h1{font-size:26px; margin:0; font-weight:700; letter-spacing:.01em;}
+  .section-head p{margin:3px 0 0; color:var(--grey); font-size:12.5px;}
+  .count-pill{font-size:10.5px; border:1.5px solid var(--ink); padding:3px 9px; text-transform:uppercase; letter-spacing:.05em;}
+
+  .chips{display:flex; gap:0; flex-wrap:wrap; margin-bottom:20px; border-top:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
+  .chip{border:none; border-right:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); background:#fff; color:var(--ink); font-family:inherit; font-size:11px; padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.04em;}
+  .chip.active{background:var(--ink); color:#fff;}
+  .chip .dot{width:9px;height:9px;border-radius:50%;display:inline-block; border:1px solid rgba(0,0,0,.25);}
+
+  /* edge-to-edge square grid: black background peeking through as hairlines */
+  .grid{display:grid; gap:var(--gap); background:var(--ink); border:var(--gap) solid var(--ink);}
+  .brand-grid{grid-template-columns:repeat(2,1fr);}
+  @media(min-width:700px){.brand-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(min-width:1020px){.brand-grid{grid-template-columns:repeat(4,1fr);}}
+  .item-grid{grid-template-columns:repeat(2,1fr);}
+  @media(min-width:640px){.item-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(min-width:960px){.item-grid{grid-template-columns:repeat(4,1fr);}}
+
+  .tile{position:relative; aspect-ratio:1/1; overflow:hidden; background:#fff; cursor:pointer;}
+  .tile img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;}
+  .tile:hover img{transform:scale(1.045);}
+  .tile .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.86) 100%); pointer-events:none;}
+  .tile .tag{position:absolute; top:8px; left:8px; font-size:9px; letter-spacing:.08em; text-transform:uppercase; background:#fff; color:var(--ink); padding:3px 6px;}
+  .tile .bottom{position:absolute; left:10px; right:10px; bottom:10px; color:#fff;}
+  .tile .b-name{font-size:16px; font-weight:700; line-height:1.05; text-transform:uppercase; letter-spacing:.01em;}
+  .tile .b-meta{font-size:9.5px; opacity:.8; margin-top:3px; letter-spacing:.03em; text-transform:uppercase;}
+  .tile .i-cat{font-size:9px; letter-spacing:.08em; text-transform:uppercase; opacity:.85;}
+  .tile .i-name{font-size:13px; font-weight:700; margin-top:2px; text-transform:uppercase; line-height:1.15;}
+  .tile .swatches{display:flex; gap:4px; margin-top:6px;}
+  .tile .swatches .dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.5);}
+
+  /* same-brand hover flash: strobe invert on all tiles sharing data-brand */
+  .tile.flash{animation:flashPulse .5s steps(2) infinite;}
+  @keyframes flashPulse{0%,100%{filter:invert(0);}50%{filter:invert(1);}}
+
+  .back{display:inline-flex; align-items:center; gap:6px; background:none; border:none; font-family:inherit; color:var(--ink); font-size:11.5px; cursor:pointer; padding:0; margin-bottom:16px; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
+  .brand-detail-head{display:flex; gap:0; align-items:stretch; margin-bottom:20px; border:1.5px solid var(--ink); flex-wrap:wrap;}
+  .bdh-img{width:120px; height:120px; object-fit:cover; flex:none; border-right:1.5px solid var(--ink);}
+  .bdh-text{padding:14px 18px; flex:1; min-width:220px;}
+  .bdh-text .origin{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
+  .bdh-text h1{font-size:23px; margin:0 0 6px; font-weight:700; text-transform:uppercase;}
+  .bdh-text p{font-size:12.5px; color:#333; max-width:520px; margin:0 0 10px; line-height:1.5;}
+  .site-link{font-size:12px; color:var(--ink); border-bottom:1.5px solid var(--ink); text-decoration:none; padding-bottom:1px; font-weight:600; text-transform:uppercase; letter-spacing:.03em;}
+  .verify{font-size:9.5px; color:var(--grey); margin-left:8px; text-transform:none; letter-spacing:0;}
+
+  .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
+  .modal-bg.open{display:flex;}
+  @media(min-width:720px){.modal-bg{align-items:center;}}
+  .modal{background:#fff; width:100%; max-width:620px; max-height:92vh; overflow-y:auto; border:2px solid var(--ink); border-bottom:none;}
+  @media(min-width:720px){.modal{border-bottom:2px solid var(--ink);}}
+  .modal .mimg{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1.5px solid var(--ink);}
+  .modal .mbody{padding:20px 22px 26px; position:relative;}
+  .modal-close{position:absolute; top:-42px; right:0; background:#fff; border:1.5px solid var(--ink); width:34px; height:34px; cursor:pointer; font-size:17px; line-height:1;}
+  .modal .cat{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--grey);}
+  .modal h2{font-size:22px; font-weight:700; margin:6px 0 2px; text-transform:uppercase;}
+  .modal .brand-line{font-size:12.5px; color:var(--grey); margin-bottom:14px; text-transform:uppercase; letter-spacing:.03em;}
+  .modal .row{display:flex; gap:24px; flex-wrap:wrap; margin:14px 0; font-size:11.5px; border-top:1px solid #ddd; padding-top:14px;}
+  .modal .row div{color:var(--grey); text-transform:uppercase; letter-spacing:.03em;}
+  .modal .row strong{display:flex; gap:6px; align-items:center; color:var(--ink); font-weight:600; font-size:13px; margin-top:4px;}
+  .modal .actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
+  .btn{font-family:inherit; font-size:11.5px; padding:11px 16px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
+  .btn.primary{background:var(--ink); color:#fff; border:1.5px solid var(--ink);}
+  .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+
+  .empty{grid-column:1/-1; background:#fff; padding:60px 10px; text-align:center; color:var(--grey); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em;}
+  .footnote{margin-top:30px; font-size:11px; color:var(--grey); border-top:1px solid #ddd; padding-top:14px; line-height:1.6;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="wordmark" onclick="goHome()">
+      <span class="mark">B</span>
+      <span class="name">BrandBook</span>
+      <span class="sub">non-chinese brand book</span>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="brands">Brands</button>
+      <button class="tab-btn" data-tab="catalog">Catalog</button>
+      <button class="tab-btn" data-tab="color">Color</button>
+    </nav>
+    <div class="search-wrap"><input id="searchInput" placeholder="Search brand or item…" oninput="renderCurrent()"></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this) closeModal()">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<script>
+const PALETTE = {
+  Black:"#141412", White:"#F5F3EE", Charcoal:"#33322F", Grey:"#9A968C", Silver:"#BFBBB2",
+  Brass:"#AD8A3E", Walnut:"#6B4A32", Oak:"#B08252", Terracotta:"#B4674A", Sand:"#D8C9A8",
+  Forest:"#3F5443", Navy:"#2B3A4A", Bordeaux:"#7A2E2E", Pink:"#C98FA0", Yellow:"#CBA23A", Marble:"#E3E0D8"
+};
+const CATALOGS = ["Sofa","Lounge Chair","Bed","Dining Table","Side Table","Lighting","Storage","Rug","Mirror","Decor","Tableware","Cart"];
+
+// Brand + item data pulled from the uploaded MJ inventory sheet (real names/materials/SKUs).
+// "verify" flags brands whose exact official domain needs a final check.
+const BRANDS = [
+ {id:"anglepoise",name:"Anglepoise",origin:"UK",site:"https://www.anglepoise.com",items:[
+   ["75 Floor Lamp","Lighting",["Grey"]],["75 Mini Lamp","Lighting",["Navy"]]]},
+ {id:"anonimacastelli",name:"Anonima Castelli",origin:"Italy",site:"https://www.anonimacastelli.com",verify:1,items:[
+   ["Alky Armchair","Lounge Chair",["Silver","Marble"]],["DSC106 Chair","Lounge Chair",["Yellow","Navy"]]]},
+ {id:"arflex",name:"Arflex",origin:"Italy",site:"https://www.arflex.it",items:[
+   ["Botolo Armchair","Lounge Chair",["Sand","Black"]],["Strips Sofa","Sofa",["Terracotta","Charcoal"]]]},
+ {id:"artemide",name:"Artemide",origin:"Italy",site:"https://www.artemide.com",items:[
+   ["Falkland Floor Lamp","Lighting",["White"]],["Stellar Nebula Floor Lamp","Lighting",["Charcoal"]],
+   ["Parchment Pendant 36cm","Lighting",["Sand"]],["Micro Table Lamp","Lighting",["Silver"]]]},
+ {id:"andtradition",name:"&Tradition",origin:"Denmark",site:"https://www.andtradition.com",items:[
+   ["Flowerpot Pendant · VP1","Lighting",["Pink"]],["Bat Table Lamp · HM9","Lighting",["Black"]],
+   ["Loafer Side Table · LN8","Side Table",["White","Oak"]]]},
+ {id:"audo",name:"Audo Copenhagen",origin:"Denmark",site:"https://www.audocph.com",items:[
+   ["Androgyne Side Table","Side Table",["Marble","Sand"]],["Eave Modular Sofa 86","Sofa",["Sand"]],
+   ["The Tired Man Lounge Chair","Lounge Chair",["Oak"]],["Torso Table Lamp","Lighting",["Bordeaux","Sand"]],
+   ["Knitting Lounge Chair","Lounge Chair",["Charcoal"]]]},
+ {id:"cappellini",name:"Cappellini",origin:"Italy",site:"https://www.cappellini.com",items:[
+   ["Lowpad Chair","Lounge Chair",["Charcoal"]],["LX8 Table","Dining Table",["Yellow"]],
+   ["Org Side Table","Side Table",["White"]],["Pure Italy Rug","Rug",["White"]]]},
+ {id:"carlhansen",name:"Carl Hansen & Søn",origin:"Denmark",site:"https://www.carlhansen.com",items:[
+   ["CH24 Wishbone Chair","Lounge Chair",["Oak","Walnut"]],["CH07 Shell Chair","Lounge Chair",["Oak"]],
+   ["PK1 Chair","Lounge Chair",["Silver"]],["RF1903L Sofa","Sofa",["Sand"]]]},
+ {id:"cassina",name:"Cassina",origin:"Italy",site:"https://www.cassina.com",items:[
+   ["Soriana Sofa","Sofa",["Black"]],["LC Series Sofa · LC003EC","Sofa",["Black"]]]},
+ {id:"catellanismith",name:"Catellani & Smith",origin:"Italy",site:"https://www.catellanismith.com",items:[
+   ["Lederam Manta Pendant","Lighting",["White","Black"]],["Uau Table Lamp","Lighting",["Silver"]],
+   ["Wawa Table Lamp","Lighting",["Silver"]]]},
+ {id:"cctapis",name:"cc-tapis",origin:"Italy",site:"https://www.cctapis.com",items:[
+   ["Telegram Rug","Rug",["Sand"]],["Slinkie Rug","Rug",["Navy"]],
+   ["Ceremony Rug","Rug",["Terracotta"]],["Chroma Spill Rug","Rug",["Marble"]]]},
+ {id:"classicon",name:"ClassiCon",origin:"Germany",site:"https://www.classicon.com",items:[
+   ["Adjustable Table E1027","Side Table",["Black"]],["Bibendum Chair","Lounge Chair",["Black"]],
+   ["Bell Coffee Table","Side Table",["Brass","Navy"]],["Non Conformis Chair","Lounge Chair",["Charcoal"]]]},
+ {id:"dcw",name:"DCW Éditions",origin:"France",site:"https://www.dcw-editions.fr",items:[
+   ["Mantis Wall Lamp · BS2","Lighting",["Black"]],["Mantis Table Lamp · BS3","Lighting",["Black"]]]},
+ {id:"desede",name:"De Sede",origin:"Switzerland",site:"https://www.desede.ch",items:[
+   ["DS-266 Yoga Lounge Chair","Lounge Chair",["Walnut","Sand"]],["DS-600 Modular Sofa","Sofa",["Black"]],
+   ["DS-164 Slide Sofa","Sofa",["Black"]]]},
+ {id:"desalto",name:"Desalto",origin:"Italy",site:"https://www.desalto.it",items:[
+   ["Clay Dining Table","Dining Table",["Charcoal","White"]],["Roller Chaise Longue","Sofa",["Navy"]],
+   ["Italia Stool","Lounge Chair",["Silver"]],["HEB Side Table","Side Table",["Sand","Forest"]]]},
+ {id:"disderot",name:"Disderot",origin:"France",site:"https://www.disderot.com",items:[
+   ["Model 2093 Floor Lamp","Lighting",["Black"]]]},
+ {id:"edra",name:"Edra",origin:"Italy",site:"https://www.edra.com",items:[
+   ["Standard Sofa","Sofa",["White"]],["Getsuen Armchair","Lounge Chair",["Bordeaux"]],
+   ["Ella Chair","Lounge Chair",["Charcoal"]],["Brasilia Table","Side Table",["White","Sand"]]]},
+ {id:"fiam",name:"Fiam Italia",origin:"Italy",site:"https://www.fiamitalia.it",items:[
+   ["Callas Chair","Lounge Chair",["Black"]],["Phantom Mirror","Mirror",["White"]],
+   ["Christine Mirror","Mirror",["Silver"]]]},
+ {id:"flos",name:"Flos",origin:"Italy",site:"https://www.flos.com",items:[
+   ["Arco Floor Lamp","Lighting",["Marble","Silver"]],["Taccia Table Lamp","Lighting",["Black","White"]],
+   ["Parentesi Pendant","Lighting",["Bordeaux","Black"]],["IC Table Lamp","Lighting",["Yellow","Silver"]],
+   ["2097 Pendant","Lighting",["Silver"]]]},
+ {id:"giobagnara",name:"Giobagnara",origin:"Italy",site:"https://www.giobagnara.com",items:[
+   ["Scala Coffee Table","Side Table",["Walnut"]],["Scala Side Table","Side Table",["Walnut"]],
+   ["Nodo Keychain","Decor",["Pink","Navy"]]]},
+ {id:"glasitalia",name:"Glas Italia",origin:"Italy",site:"https://www.glasitalia.com",items:[
+   ["Fountain Table","Dining Table",["White"]],["PRISM Mirror Table","Side Table",["Silver"]],
+   ["Sturm und Drang Mirror","Mirror",["Silver"]],["Liquefy Side Table","Side Table",["Silver"]]]},
+ {id:"gubi",name:"GUBI",origin:"Denmark",site:"https://www.gubi.com",items:[
+   ["Pacha Lounge Chair","Lounge Chair",["Yellow"]],["Beetle Dining Chair","Lounge Chair",["Walnut","Charcoal"]],
+   ["Adnet Coffee Table","Side Table",["Oak","Silver"]],["Semi Pendant","Lighting",["Charcoal"]],
+   ["Multi-Lite Pendant","Lighting",["Silver","Brass"]]]},
+ {id:"hermanmiller",name:"Herman Miller",origin:"USA",site:"https://www.hermanmiller.com",items:[
+   ["Aeron Chair","Lounge Chair",["Charcoal"]],["Eames Lounge Chair","Lounge Chair",["Walnut","Charcoal"]]]},
+ {id:"knoll",name:"Knoll",origin:"USA",site:"https://www.knoll.com",items:[
+   ["Barcelona Chair","Lounge Chair",["Sand","Silver"]],["Wassily Chair","Lounge Chair",["Black","Silver"]],
+   ["Womb Chair","Lounge Chair",["Yellow"]],["Tulip Chair","Lounge Chair",["White"]],
+   ["Saarinen Oval Table","Dining Table",["White","Marble"]]]},
+ {id:"louispoulsen",name:"Louis Poulsen",origin:"Denmark",site:"https://www.louispoulsen.com",items:[
+   ["PH5 Pendant","Lighting",["White"]],["PH3½ Floor Lamp","Lighting",["Brass","White"]],
+   ["Panthella 160 Table Lamp","Lighting",["White","Silver"]]]},
+ {id:"lumina",name:"Lumina",origin:"Italy",site:"https://www.luminaitalia.it",items:[
+   ["Daphine Floor Lamp","Lighting",["Charcoal"]],["Daphine Table Lamp","Lighting",["Silver"]]]},
+ {id:"maartenbaas",name:"Maarten Baas",origin:"Netherlands",site:"https://www.maartenbaas.com",items:[
+   ["Clay Armchair","Lounge Chair",["Charcoal"]],["Clay Lounge Sofa","Sofa",["Charcoal"]]]},
+ {id:"magis",name:"Magis",origin:"Italy",site:"https://www.magisdesign.com",items:[
+   ["Big Will Table","Dining Table",["Silver","White"]],["AC250 Cart","Cart",["Charcoal"]],
+   ["MT284 Chair","Lounge Chair",["Marble"]]]},
+ {id:"martinelliluce",name:"Martinelli Luce",origin:"Italy",site:"https://www.martinelliluce.it",items:[
+   ["Bolla Wall Lamp","Lighting",["White"]],["Model 620 Table Lamp","Lighting",["Forest"]]]},
+ {id:"mogg",name:"Mogg",origin:"Italy",site:"https://www.mogg.it",items:[
+   ["OLO Side Table","Side Table",["Charcoal","White"]],["Noon Rug","Rug",["White"]],
+   ["Vis à Vis Floor Lamp","Lighting",["Walnut"]],["7 Pillows Armchair","Lounge Chair",["Charcoal"]]]},
+ {id:"poltronova",name:"Poltronova",origin:"Italy",site:"https://www.poltronova.it",items:[
+   ["Ultrafragola Mirror","Mirror",["White","Pink"]]]},
+ {id:"rakastudio",name:"Raka Studio",origin:"Pakistan",site:"https://www.rakastudio.com",items:[
+   ["Fluentum Floor Lamp No.1","Lighting",["Walnut"]],["Vrksa Flush Mount Light No.1","Lighting",["Oak"]],
+   ["Vrksa Table Lamp No.3","Lighting",["Oak"]]]},
+ {id:"rrres",name:"rrres",origin:"Spain",site:"https://www.rrres.com",items:[
+   ["Land 01 Rug","Rug",["Terracotta"]],["Place 01 Rug","Rug",["Sand"]],["Grid 01 Rug","Rug",["Charcoal"]]]},
+ {id:"saba",name:"Saba Italia",origin:"Italy",site:"https://www.sabaitalia.it",items:[
+   ["Butter Low Table","Side Table",["Terracotta"]],["Pixel Box Bed","Bed",["Bordeaux"]],
+   ["Sitar Chair","Lounge Chair",["Walnut","Sand"]],["Karma Sofa","Sofa",["Sand"]]]},
+ {id:"santacole",name:"Santa & Cole",origin:"Spain",site:"https://www.santacole.com",items:[
+   ["TMM Floor Lamp","Lighting",["White","Oak"]],["Basica M1 Table Lamp","Lighting",["Silver","White"]],
+   ["Sylvestrina Table Lamp","Lighting",["Black"]],["Sistema Lamina Pendant","Lighting",["Silver"]]]},
+ {id:"serax",name:"Serax",origin:"Belgium",site:"https://www.serax.com",items:[
+   ["Ann Pendant Lamp","Lighting",["Black","White"]],["Ann Wall Lamp","Lighting",["Bordeaux","White"]]]},
+ {id:"spectrum",name:"Spectrum",origin:"Netherlands",site:"https://www.spectrum-design.nl",items:[
+   ["Paperback Wall System","Storage",["White"]]]},
+ {id:"stoffnagel",name:"Stoff Nagel",origin:"Denmark",site:"https://www.stoffnagel.com",verify:1,items:[
+   ["Nagel Object","Decor",["Silver"]],["Nagel Candle","Decor",["Silver"]]]},
+ {id:"thonet",name:"Thonet",origin:"Germany",site:"https://www.thonet.de",items:[
+   ["No.214 Chair","Lounge Chair",["Walnut","Oak"]],["S64 Cantilever Chair","Lounge Chair",["Silver","Oak"]],
+   ["S533 Rattan Chair","Lounge Chair",["Oak"]],["No.209 Chair","Lounge Chair",["Walnut"]]]},
+ {id:"verpan",name:"Verpan",origin:"Denmark",site:"https://www.verpan.com",items:[
+   ["Globe Pendant","Lighting",["White"]],["Lounge Deluxe Chair","Lounge Chair",["Charcoal"]],
+   ["Pantop Table Lamp","Lighting",["White"]]]},
+ {id:"vipp",name:"Vipp",origin:"Denmark",site:"https://www.vipp.com",items:[
+   ["Vipp 427 Side Table","Side Table",["Silver"]],["Vipp 452 Chair","Lounge Chair",["Charcoal","Sand"]],
+   ["Vipp 15 Pedal Bin","Storage",["Charcoal"]]]},
+ {id:"vitra",name:"Vitra",origin:"Switzerland",site:"https://www.vitra.com",items:[
+   ["Panton Chair","Lounge Chair",["Bordeaux","White","Charcoal"]],["Eames Elephant","Decor",["Forest","Bordeaux","Yellow"]],
+   ["EM Table","Dining Table",["White","Charcoal"]],["Uten.Silo","Storage",["White"]],
+   ["Wiggle Side Chair","Lounge Chair",["Sand"]]]},
+ {id:"yamagiwa",name:"Yamagiwa",origin:"Japan",site:"https://www.yamagiwa.co.jp",items:[
+   ["Taliesin 2 Floor Lamp","Lighting",["Walnut"]],["Taliesin 3 Table Lamp","Lighting",["Walnut"]],
+   ["K-Series Floor Lamp","Lighting",["White"]]]},
+ {id:"zieta",name:"Zieta",origin:"Poland",site:"https://www.zieta.pl",items:[
+   ["Chippensteel Chair","Lounge Chair",["Silver"]],["Plopp Stool","Lounge Chair",["Charcoal"]],
+   ["Tafla Mirror","Mirror",["Silver"]],["Rondel Mirror","Mirror",["Silver"]]]},
+ {id:"vo",name:"V_O",origin:"Belgium",site:"https://www.google.com/search?q=V_O+ALU+chair+Belgium+official+site",verify:1,items:[
+   ["ALU Chair","Lounge Chair",["Forest","White"]],["ALU Chair · Bordeaux","Lounge Chair",["Bordeaux","Forest"]]]},
+ {id:"bulo",name:"Bulo",origin:"Belgium",site:"https://www.bulo.com",items:[
+   ["SL58 Chair · 4 Legs","Lounge Chair",["Oak"]],["SL58 Chair · 5 Legs","Lounge Chair",["Oak"]]]},
+ {id:"fritzhansen",name:"Fritz Hansen",origin:"Denmark",site:"https://www.fritzhansen.com",research:1,items:[
+   ["Egg Chair","Lounge Chair",["Charcoal"],"https://www.fritzhansen.com/en/categories/by-series/egg/3316"]]},
+ {id:"bbitalia",name:"B&B Italia",origin:"Italy",site:"https://www.bebitalia.com",research:1,items:[
+   ["Tufty-Time Sofa","Sofa",["Grey"],"https://www.bebitalia.com/en-us/en-us-tufty-time-divani.html"]]},
+ {id:"gufram",name:"Gufram",origin:"Italy",site:"https://gufram.it",items:[
+   ["Cactus Coat Stand","Storage",["Forest"]],["Bocca Sofa","Sofa",["Bordeaux","Terracotta"]],
+   ["Pratone Lounger","Lounge Chair",["Forest"]]]},
+ {id:"singchan",name:"Sing Chan Design",origin:"Hong Kong",site:"https://www.singchandesign.com",verify:1,items:[
+   ["Fragment Wall Lamp","Lighting",["Charcoal"]],["The Wall Side Table","Side Table",["Charcoal"]],
+   ["Fragment Pendant","Lighting",["Silver"]],["Fragment Floor Lamp","Lighting",["Silver"]]]},
+ {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.it",verify:1,items:[
+   ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]}
+];
+
+// DIRECTORY: every other brand from the two logo-wall screenshots. Logo/name + best-effort
+// origin + official link only — no item-level data exists for these yet (no inventory source),
+// so rather than invent items, they show as a brand card linking straight to the official site.
+const DIRECTORY = [
+ ["USM","Switzerland","https://www.usm.com"],
+ ["Brand van Egmond","Netherlands","https://www.brandvanegmond.com"],
+ ["bd Barcelona Design","Spain","https://www.bdbarcelona.com"],
+ ["4Mariani","Italy","https://www.4mariani.com",1],
+ ["Agape","Italy","https://www.agapedesign.it"],
+ ["Kimu","Unconfirmed","https://www.google.com/search?q=Kimu+furniture+brand",1],
+ ["Bruunmunch","Denmark","https://www.bruunmunch.dk"],
+ ["Nemo Lighting","Italy","https://www.nemolighting.com"],
+ ["Imperfettolab","Italy","https://www.imperfettolab.com"],
+ ["Bordbar","Germany","https://www.bordbar.de"],
+ ["Rispal","France","https://www.edition-rispal.com"],
+ ["Petite Friture","France","https://www.petitefriture.com"],
+ ["a. by Arturo Álvarez","Spain","https://www.arturo-alvarez.com"],
+ ["Tecta","Germany","https://www.tecta.de"],
+ ["mdf italia","Italy","https://www.mdfitalia.com"],
+ ["ege","Denmark","https://www.ege.dk"],
+ ["Parachilna","South Korea","https://www.parachilna.com"],
+ ["Christofle","France","https://www.christofle.com"],
+ ["Transparent","Unconfirmed","https://www.google.com/search?q=Transparent+lighting+brand",1],
+ ["Georg Jensen","Denmark","https://www.georgjensen.com"],
+ ["Cire Trudon","France","https://www.trudon.com"],
+ ["Galerie MCDE","France","https://www.google.com/search?q=Galerie+MCDE+Pierre+Chareau",1],
+ ["Phantom Hands","India","https://www.phantomhands.in"],
+ ["Tecno","Italy","https://www.tecnospa.com"],
+ ["Luceplan","Italy","https://www.luceplan.com"],
+ ["Neolith","Spain","https://www.neolith.com"],
+ ["Alias","Italy","https://www.aliasdesign.it"],
+ ["Agrippa","Unconfirmed","https://www.google.com/search?q=Agrippa+furniture+brand",1],
+ ["La Boîte Concept","France","https://www.laboiteconcept.com"],
+ ["AP Collection","Unconfirmed","https://www.google.com/search?q=AP+Collection+furniture+brand",1],
+ ["LK Hjelle","Norway","https://www.lkhjelle.no"],
+ ["1920R","Italy","https://www.google.com/search?q=1920R+furniture+brand+Italy",1],
+ ["Maison Margiela","France","https://www.maisonmargiela.com"],
+ ["Jake Phipps","UK","https://www.jakephipps.com"],
+ ["Italamp","Italy","https://www.italamp.com"],
+ ["Mohebban","Unconfirmed","https://www.google.com/search?q=Mohebban+rug+brand",1],
+ ["Avarte","Finland","https://www.avarte.fi"],
+ ["Fasem","Italy","https://www.fasem.it"],
+ ["Quasar","Unconfirmed","https://www.google.com/search?q=Quasar+lighting+brand",1],
+ ["Baleri Italia","Italy","https://www.baleri-italia.com"],
+ ["Artifort","Netherlands","https://www.artifort.com"],
+ ["Poliform","Italy","https://www.poliform.it"],
+ ["Fendi Casa","Italy","https://www.fendi.com"],
+ ["Hästens","Sweden","https://www.hastens.com"],
+ ["Kelly Wearstler","USA","https://www.kellywearstler.com"],
+ ["Vi-Spring","UK","https://www.vispring.com"],
+ ["Bang & Olufsen","Denmark","https://www.bang-olufsen.com"],
+ ["Tacchini","Italy","https://www.tacchini.it"],
+ ["Ligne Roset","France","https://www.ligne-roset.com"],
+ ["Ciclotte","Italy","https://www.ciclotte.com"],
+ ["House of Finn Juhl","Denmark","https://www.finnjuhl.com"],
+ ["Cattelan Italia","Italy","https://www.cattelanitalia.com"],
+ ["Giorgetti","Italy","https://www.giorgettimeda.com"],
+ ["Kooij","Netherlands","https://www.kooij.info"],
+ ["Aarnio Originals","Finland","https://www.aarnio-originals.com"],
+ ["Hessentia","Italy","https://www.google.com/search?q=Hessentia+Cornelio+Cappellini",1],
+ ["Baccarat","France","https://www.baccarat.com"],
+ ["Moroso","Italy","https://www.moroso.it"],
+ ["Brionvega","Italy","https://www.brionvega.it"],
+ ["Living Divani","Italy","https://www.livingdivani.it"],
+ ["Turri","Italy","https://www.turri.it"],
+ ["Reflex Angelo","Italy","https://www.reflexangelo.com"],
+ ["Bocci","Canada","https://www.bocci.ca"],
+ ["Chapo Créations","France","https://www.chapo-creations.com"],
+ ["Gallotti&Radice","Italy","https://www.gallottiradice.it"],
+ ["Nilufar","Italy","https://www.nilufar.com"],
+ ["Gervasoni","Italy","https://www.gervasoni1882.com"],
+ ["Molteni&C","Italy","https://www.molteni.it"],
+ ["Minotti","Italy","https://www.minotti.com"],
+ ["Henge","Italy","https://www.hengespace.com"],
+ ["Vibieffe","Italy","https://www.vibieffe.it"],
+ ["La Chance","France","https://www.lachance.fr"],
+ ["Porro","Italy","https://www.porro.com"],
+ ["Casamania","Italy","https://www.casamania.it"],
+ ["MVSEVM","Unconfirmed","https://www.google.com/search?q=MVSEVM+furniture+brand",1],
+ ["Impatia","Portugal","https://www.impatia.com"],
+ ["LAGO","Italy","https://www.lago.it"],
+ ["Flexform","Italy","https://www.flexform.it"],
+ ["Zanotta","Italy","https://www.zanotta.it"],
+ ["Poltrona Frau","Italy","https://www.poltronafrau.com"],
+ ["Promemoria","Italy","https://www.promemoria.com"],
+ ["Baxter","Italy","https://www.baxter.it"],
+ ["Maxalto","Italy","https://www.maxalto.it"],
+ ["Ceccotti Collezioni","Italy","https://www.ceccotticollezioni.it"],
+ ["Bentley Home","UK","https://bentleyhome.bentleymotors.com"],
+ ["André Fu Living","Hong Kong","https://www.andrefuliving.com"],
+ ["Sicis","Italy","https://www.sicis.com"],
+ ["Saint-Louis","France","https://www.saint-louis.com"],
+ ["Duxiana","Sweden","https://www.duxiana.com"],
+ ["Memphis Milano","Italy","https://www.memphis-milano.com"],
+ ["moooi","Netherlands","https://www.moooi.com"],
+ ["Lorenzi Milano","Italy","https://www.lorenzimilano.com"],
+ ["Agresti","Italy","https://www.agrestifirenze.com"],
+ ["Rosenthal","Germany","https://www.rosenthal.de"],
+ ["Tom Dixon","UK","https://www.tomdixon.net"],
+ ["Foscarini","Italy","https://www.foscarini.com"],
+ ["FontanaArte","Italy","https://www.fontanaarte.com"],
+ ["Barovier&Toso","Italy","https://www.barovier.com"],
+ ["Penta","Italy","https://www.penta-light.it"],
+ ["Bomma","Czech Republic","https://www.bomma.cz"],
+ ["Stilnovo","Italy","https://www.stilnovo.com"],
+ ["Qeeboo","Italy","https://www.qeeboo.com"],
+ ["BAAS","Unconfirmed","https://www.google.com/search?q=BAAS+furniture+brand",1],
+ ["Established & Sons","UK","https://www.establishedandsons.com"],
+ ["Zaha Hadid Design","UK","https://www.zaha-hadid.com/design"],
+ ["Driade","Italy","https://www.driade.com"],
+ ["Slamp","Italy","https://www.slamp.com"],
+ ["Studio Helle Mardahl","Denmark","https://www.hellemardahl.com"],
+ ["L'Objet","USA","https://www.l-objet.com"],
+ ["ConcreteCat","Unconfirmed","https://www.google.com/search?q=ConcreteCat+mirror+brand",1],
+ ["DaDa","Unconfirmed","https://www.google.com/search?q=DaDa+furniture+brand",1],
+ ["KAR","Unconfirmed","https://www.google.com/search?q=KAR+furniture+brand",1],
+ ["Ninefact","Unconfirmed","https://www.google.com/search?q=Ninefact+furniture+brand",1]
+].map(d=>({id:d[0].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''),name:d[0],origin:d[1],site:d[2],verify:d[3]||0,items:[],directory:true}));
+
+BRANDS.push(...DIRECTORY);
+
+// flatten
+let ITEMS = [];
+BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
+  ITEMS.push({id:b.id+"-"+i, brand:b.id, name:it[0], cat:it[1], colors:it[2], link:it[3]||null,
+    img:b.id+"-"+i});
+});});
+
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null };
+function colorHex(name){ return PALETTE[name] || "#999"; }
+function brandOf(id){ return BRANDS.find(b=>b.id===id); }
+function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
+
+function setTab(tab){
+  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  renderCurrent();
+}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+function goHome(){ setTab('brands'); }
+function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function renderCurrent(){
+  const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
+  if(state.brand){ renderBrandDetail(state.brand,q); return; }
+  if(state.tab==='brands') renderBrandGrid(q);
+  else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
+}
+
+function wireHoverFlash(){
+  document.querySelectorAll('.tile[data-brand]').forEach(el=>{
+    el.addEventListener('mouseenter', ()=>{
+      const b=el.dataset.brand;
+      document.querySelectorAll(`.tile[data-brand="${b}"]`).forEach(x=>{ if(x!==el) x.classList.add('flash'); });
+    });
+    el.addEventListener('mouseleave', ()=>{
+      document.querySelectorAll('.tile.flash').forEach(x=>x.classList.remove('flash'));
+    });
+  });
+}
+
+function renderBrandGrid(q){
+  const list = BRANDS.filter(b=>b.name.toLowerCase().includes(q));
+  document.getElementById('main').innerHTML = `
+    <div class="section-head">
+      <div><h1>Brands</h1><p>Tap a brand to open its catalog. Hover any tile to see everything from that brand flash.</p></div>
+      <span class="count-pill">${list.length} brands</span>
+    </div>
+    <div class="grid brand-grid">
+      ${list.map(b=>{
+        const first = ITEMS.find(i=>i.brand===b.id);
+        const img = first ? imgUrl(first.img,450,600) : imgUrl(b.id,450,600);
+        return `
+        <div class="tile" data-brand="${b.id}" onclick="openBrand('${b.id}')">
+          <img src="${img}" alt="${b.name}">
+          <span class="tag">${b.origin}</span>
+          <div class="overlay"></div>
+          <div class="bottom">
+            <div class="b-name">${b.name}</div>
+            <div class="b-meta">${b.directory ? 'Directory · visit site' : ITEMS.filter(i=>i.brand===b.id).length+' pieces catalogued'}</div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+  wireHoverFlash();
+}
+
+function renderBrandDetail(brandId,q){
+  const b=brandOf(brandId);
+  let items = ITEMS.filter(i=>i.brand===brandId);
+  if(state.catFilter) items = items.filter(i=>i.cat===state.catFilter);
+  if(state.colorFilter) items = items.filter(i=>i.colors.includes(state.colorFilter));
+  if(q) items = items.filter(i=>i.name.toLowerCase().includes(q));
+  const cats=[...new Set(ITEMS.filter(i=>i.brand===brandId).map(i=>i.cat))];
+  const colors=[...new Set(ITEMS.filter(i=>i.brand===brandId).flatMap(i=>i.colors))];
+  document.getElementById('main').innerHTML = `
+    <button class="back" onclick="goHome()">← All brands</button>
+    <div class="brand-detail-head">
+      <img class="bdh-img" src="${imgUrl(b.id+'-logo',240,240)}" alt="${b.name}">
+      <div class="bdh-text">
+        <div class="origin">${b.origin}</div>
+        <h1>${b.name}</h1>
+        <a class="site-link" href="${b.site}" target="_blank" rel="noopener">${b.site.replace('https://www.','').replace('https://','')} ↗</a>
+        ${b.verify?'<span class="verify">official link needs a quick verify</span>':''}
+      </div>
+    </div>
+    <div class="chips">${cats.map(c=>`<button class="chip ${state.catFilter===c?'active':''}" onclick="toggleFilter('cat','${c}')">${c}</button>`).join('')}</div>
+    <div class="chips">${colors.map(c=>`<button class="chip ${state.colorFilter===c?'active':''}" onclick="toggleFilter('color','${c}')"><span class="dot" style="background:${colorHex(c)}"></span>${c}</button>`).join('')}</div>
+    <div class="grid item-grid">${items.map(itemTileHTML).join('') || (b.directory ? '<div class="empty">No catalogued items yet for '+b.name+' — use the site link above.</div>' : emptyHTML())}</div>
+  `;
+  wireHoverFlash();
+}
+
+function renderCrossFilter(mode,q){
+  const options = mode==='cat' ? CATALOGS : Object.keys(PALETTE);
+  const active = mode==='cat' ? state.catFilter : state.colorFilter;
+  let items = ITEMS;
+  if(state.catFilter) items = items.filter(i=>i.cat===state.catFilter);
+  if(state.colorFilter) items = items.filter(i=>i.colors.includes(state.colorFilter));
+  if(q) items = items.filter(i=> i.name.toLowerCase().includes(q) || brandOf(i.brand).name.toLowerCase().includes(q));
+  document.getElementById('main').innerHTML = `
+    <div class="section-head">
+      <div><h1>${mode==='cat'?'By Catalog':'By Color'}</h1><p>Browsing across all brands.</p></div>
+      <span class="count-pill">${items.length} pieces</span>
+    </div>
+    <div class="chips">${options.map(o=>`
+      <button class="chip ${active===o?'active':''}" onclick="toggleFilter('${mode}','${o}')">
+        ${mode==='color'?`<span class="dot" style="background:${colorHex(o)}"></span>`:''}${o}
+      </button>`).join('')}
+    </div>
+    <div class="grid item-grid">${items.map(itemTileHTML).join('') || emptyHTML()}</div>
+  `;
+  wireHoverFlash();
+}
+
+function toggleFilter(kind,val){
+  if(kind==='cat') state.catFilter = state.catFilter===val?null:val;
+  if(kind==='color') state.colorFilter = state.colorFilter===val?null:val;
+  renderCurrent();
+}
+
+function itemTileHTML(i){
+  const b=brandOf(i.brand);
+  return `
+    <div class="tile" data-brand="${i.brand}" onclick='openItem("${i.id}")'>
+      <img src="${imgUrl(i.img)}" alt="${i.name}">
+      <div class="overlay"></div>
+      <div class="bottom">
+        <div class="i-cat">${i.cat} · ${b.name}</div>
+        <div class="i-name">${i.name}</div>
+        <div class="swatches">${i.colors.map(c=>`<span class="dot" style="background:${colorHex(c)}"></span>`).join('')}</div>
+      </div>
+    </div>`;
+}
+function emptyHTML(){ return `<div class="empty">No pieces match these filters yet.</div>`; }
+
+function openItem(id){
+  const i = ITEMS.find(x=>x.id===id);
+  const b = brandOf(i.brand);
+  const outLink = i.link || b.site;
+  document.getElementById('modalContent').innerHTML = `
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <img class="mimg" src="${imgUrl(i.img,900,650)}" alt="${i.name}">
+    <div class="mbody">
+      <div class="cat">${i.cat}</div>
+      <h2>${i.name}</h2>
+      <div class="brand-line">${b.name} · ${b.origin}</div>
+      <div class="row">
+        <div>Colorways<strong>${i.colors.map(c=>`<span class="dot" style="width:14px;height:14px;border-radius:50%;background:${colorHex(c)};display:inline-block;"></span>`).join('')}</strong></div>
+        <div>Catalog<strong>${i.cat}</strong></div>
+        <div>Brand origin<strong>${b.origin}</strong></div>
+      </div>
+      <div style="font-size:11px;color:var(--grey);margin-top:10px;line-height:1.5;">
+        Photo: placeholder — product photography is copyrighted by ${b.name} and isn't reproduced here.
+        ${i.link ? "This item is verified against the brand's official product page." : ""} See the real photo at the link below.
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="${outLink}" target="_blank" rel="noopener">${i.link?'Official product page ↗':'Brand site ↗'}</a>
+        <a class="btn ghost" href="#" onclick="alert('Amap integration: will drop a pin at the showroom where this brand was seen in person.'); return false;">Find in store (Amap) 📍</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('modalBg').classList.add('open');
+}
+function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
+
+renderCurrent();
+</script>
+</body>
+</html>
