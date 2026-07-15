@@ -72,13 +72,27 @@
 
   .back{display:inline-flex; align-items:center; gap:6px; background:none; border:none; font-family:inherit; color:var(--ink); font-size:11.5px; cursor:pointer; padding:0; margin-bottom:16px; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
   .brand-detail-head{display:flex; gap:0; align-items:stretch; margin-bottom:20px; border:1.5px solid var(--ink); flex-wrap:wrap;}
-  .bdh-img{width:120px; height:120px; object-fit:cover; flex:none; border-right:1.5px solid var(--ink);}
+  .bdh-logo{width:120px; height:120px; flex:none; border-right:1.5px solid var(--ink); display:flex; align-items:center; justify-content:center; background:#fff;}
+  .bdh-logo img{max-width:78%; max-height:78%; object-fit:contain;}
+  .bdh-logo .mark-fallback{width:52px; height:52px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:21px; font-weight:700;}
   .bdh-text{padding:14px 18px; flex:1; min-width:220px;}
   .bdh-text .origin{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
   .bdh-text h1{font-size:23px; margin:0 0 6px; font-weight:700; text-transform:uppercase;}
   .bdh-text p{font-size:12.5px; color:#333; max-width:520px; margin:0 0 10px; line-height:1.5;}
   .site-link{font-size:12px; color:var(--ink); border-bottom:1.5px solid var(--ink); text-decoration:none; padding-bottom:1px; font-weight:600; text-transform:uppercase; letter-spacing:.03em;}
   .verify{font-size:9.5px; color:var(--grey); margin-left:8px; text-transform:none; letter-spacing:0;}
+  .social-links{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
+  .social-links a{font-size:10px; border:1.5px solid var(--ink); padding:5px 9px; text-decoration:none; color:var(--ink); text-transform:uppercase; letter-spacing:.04em; font-weight:600; display:inline-flex; align-items:center; gap:4px;}
+  .social-links a:hover{background:var(--ink); color:#fff;}
+  .bdh-side{padding:14px 18px; flex:1; min-width:240px; border-left:1.5px solid var(--ink);}
+  .bdh-side .bio{font-size:12px; color:#333; line-height:1.55; margin:0 0 12px;}
+  .stockist-label{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; display:block;}
+  .stockist-list{max-height:160px; overflow-y:auto; border-top:1px solid #ddd;}
+  .stockist-item{display:flex; align-items:baseline; justify-content:space-between; gap:10px; font-size:12px; padding:6px 0; border-bottom:1px solid #eee;}
+  .stockist-item .s-place{color:var(--ink);}
+  .stockist-item .s-city{color:var(--grey); font-size:10px; text-transform:uppercase; letter-spacing:.04em; margin-right:5px;}
+  .stockist-item a{color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); padding-bottom:1px; white-space:nowrap; font-weight:600;}
+  .stockist-empty{font-size:11.5px; color:var(--grey);}
 
   .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
   .modal-bg.open{display:flex;}
@@ -147,7 +161,30 @@ const BRANDS = [
  {id:"artemide",name:"Artemide",origin:"Italy",site:"https://www.artemide.com",items:[
    ["Falkland Floor Lamp","Lighting",["White"]],["Stellar Nebula Floor Lamp","Lighting",["Charcoal"]],
    ["Parchment Pendant 36cm","Lighting",["Sand"]],["Micro Table Lamp","Lighting",["Silver"]]]},
- {id:"andtradition",name:"&Tradition",origin:"Denmark",site:"https://www.andtradition.com",items:[
+ {id:"andtradition",name:"&Tradition",origin:"Denmark",site:"https://www.andtradition.com",
+   bio:"Danish design house founded in 2010, pairing archival reissues of overlooked 20th-century Scandinavian pieces with new work from contemporary designers.",
+   social:{
+     taobao:"https://tradition.world.tmall.com/shop/view_shop.htm?appUid=RAzN8HWKgskDnKDHkqn2AHJh6NB4NFoVFsf7w27Ne9WPvkuuiwL&spm=a21n57.1.hoverItem.2",
+     rednote:"https://www.xiaohongshu.com/user/profile/5f192584000000000101d1f4?xsec_token=ABTfK90C5i9M_ypKgyPSpfWQeRRVtMkGoEwFvbrh8aMnY=&xsec_source=pc_note"
+   },
+   stockistCN:[
+     {city:"Shanghai",name:"Studio 9",address:"上海市静安区余姚路55号"},
+     {city:"Shanghai",name:"casa casa",address:"上海市徐汇区岳阳路150号"},
+     {city:"Hangzhou",name:"Banbury Hangzhou",address:"杭州市上城区解放东路45号2楼"},
+     {city:"Ningbo",name:"ACME CASA",address:"宁波市鄞州区宁穿路315号第六空间B106"},
+     {city:"Changsha",name:"mole house",address:"长沙市雨花区劳动东路欧亚达家居广场1F B1-16"},
+     {city:"Tongxiang",name:"Muyi Home",address:"桐乡市王家门路161号老茧站"},
+     {city:"Wuhan",name:"Ougeya",address:"武汉市江岸区胜利街287号（延庆里1-1-2）"},
+     {city:"Chengdu",name:"SWE",address:"成都市双流区麓湖麓坊二期1-110"},
+     {city:"Taizhou",name:"Banbury Taizhou",address:"台州市东环大道2099号第六空间A1-03/05"},
+     {city:"Xiamen",name:"CHIAGU LIVING",address:"厦门市思明区观日路16号之三103"},
+     {city:"Qingdao",name:"DOOGRACE",address:"青岛市市南区香港中路136号"},
+     {city:"Xi'an",name:"YIM LIVING",address:"西安市高新四路居然之家至尊店西门 铺位号1-1-20"},
+     {city:"Dalian",name:"SUNDAY Space",address:"大连市沙河口区黄河街12号A"},
+     {city:"Nanjing",name:"BNJ Home",address:"南京市江东中路88号南京金陵国际家居F1"},
+     {city:"Wuxi",name:"HYGGE Qige",address:"无锡市华厦家居港家具馆一楼"}
+   ],
+   items:[
    ["Flowerpot Pendant · VP1","Lighting",["Pink"]],["Bat Table Lamp · HM9","Lighting",["Black"]],
    ["Loafer Side Table · LN8","Side Table",["White","Oak"]]]},
  {id:"audo",name:"Audo Copenhagen",origin:"Denmark",site:"https://www.audocph.com",items:[
@@ -411,6 +448,18 @@ function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
 
+// Brand ids with a real logo file at images/logos/{id}.png — falls back to a
+// typographic mark (first letter, same treatment as the header wordmark) until supplied.
+const LOGOS = new Set(["andtradition"]);
+function brandMarkHTML(b){
+  if(LOGOS.has(b.id)) return `<img src="images/logos/${b.id}.png" alt="${b.name} logo">`;
+  return `<span class="mark-fallback">${b.name.charAt(0)}</span>`;
+}
+
+function amapSearchUrl(name,address){
+  return `https://www.amap.com/search?query=${encodeURIComponent(name+' '+address)}`;
+}
+
 function setTab(tab){
   state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
@@ -477,12 +526,28 @@ function renderBrandDetail(brandId,q){
   document.getElementById('main').innerHTML = `
     <button class="back" onclick="goHome()">← All brands</button>
     <div class="brand-detail-head">
-      <img class="bdh-img" src="${imgUrl(b.id+'-logo',240,240)}" alt="${b.name}">
+      <div class="bdh-logo">${brandMarkHTML(b)}</div>
       <div class="bdh-text">
         <div class="origin">${b.origin}</div>
         <h1>${b.name}</h1>
         <a class="site-link" href="${b.site}" target="_blank" rel="noopener">${b.site.replace('https://www.','').replace('https://','')} ↗</a>
         ${b.verify?'<span class="verify">official link needs a quick verify</span>':''}
+        ${b.social?`<div class="social-links">
+          ${b.social.taobao?`<a href="${b.social.taobao}" target="_blank" rel="noopener">🛍 Taobao</a>`:''}
+          ${b.social.rednote?`<a href="${b.social.rednote}" target="_blank" rel="noopener">📕 Xiaohongshu</a>`:''}
+          ${b.social.wechat?`<a href="${b.social.wechat}" target="_blank" rel="noopener">💬 WeChat</a>`:''}
+        </div>`:''}
+      </div>
+      <div class="bdh-side">
+        ${b.bio?`<p class="bio">${b.bio}</p>`:''}
+        <span class="stockist-label">Stockist in China${b.stockistCN?` (${b.stockistCN.length})`:''}</span>
+        ${b.stockistCN
+          ? `<div class="stockist-list">${b.stockistCN.map(s=>`
+            <div class="stockist-item">
+              <span class="s-place"><span class="s-city">${s.city}</span>${s.name}</span>
+              <a href="${amapSearchUrl(s.name,s.address)}" target="_blank" rel="noopener">to visit 📍</a>
+            </div>`).join('')}</div>`
+          : `<div class="stockist-empty">Not yet documented</div>`}
       </div>
     </div>
     <div class="chips">${cats.map(c=>`<button class="chip ${state.catFilter===c?'active':''}" onclick="toggleFilter('cat','${c}')">${c}</button>`).join('')}</div>
