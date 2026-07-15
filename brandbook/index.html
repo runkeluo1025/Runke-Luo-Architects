@@ -156,9 +156,12 @@
 const PALETTE = {
   Black:"#141412", White:"#F5F3EE", Charcoal:"#33322F", Grey:"#9A968C", Silver:"#BFBBB2",
   Brass:"#AD8A3E", Walnut:"#6B4A32", Oak:"#B08252", Terracotta:"#B4674A", Sand:"#D8C9A8",
-  Forest:"#3F5443", Navy:"#2B3A4A", Bordeaux:"#7A2E2E", Pink:"#C98FA0", Yellow:"#CBA23A", Marble:"#E3E0D8"
+  Forest:"#3F5443", Navy:"#2B3A4A", Bordeaux:"#7A2E2E", Pink:"#C98FA0", Yellow:"#CBA23A", Marble:"#E3E0D8",
+  Cream:"#EDE6D6", Rust:"#9C4A2E", Olive:"#5C5A3A", Cognac:"#8A4B2E", Ivory:"#F2EFE6",
+  Taupe:"#8A7F73", Rose:"#D8A8A0", Slate:"#4A5560", Copper:"#B26A3E", Mint:"#A8C0B0",
+  Mustard:"#C99A3B", Burgundy:"#5E2430"
 };
-const CATALOGS = ["Sofa","Lounge Chair","Bed","Dining Table","Side Table","Lighting","Storage","Rug","Mirror","Decor","Tableware","Cart"];
+const CATALOGS = ["Sofa","Lounge Chair","Bed","Dining Table","Side Table","Lighting","Storage","Rug","Mirror","Decor","Tableware","Cart","Seat","Table","Outdoor"];
 
 // Brand + item data pulled from the uploaded MJ inventory sheet (real names/materials/SKUs).
 // "verify" flags brands whose exact official domain needs a final check.
@@ -194,6 +197,43 @@ const BRANDS = [
      {city:"Dalian",name:"SUNDAY Space",address:"大连市沙河口区黄河街12号A"},
      {city:"Nanjing",name:"BNJ Home",address:"南京市江东中路88号南京金陵国际家居F1"},
      {city:"Wuxi",name:"HYGGE Qige",address:"无锡市华厦家居港家具馆一楼"}
+   ],
+   collections:[
+     {name:"Flowerpot Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/flowerpot-vp1-anniversary-edition",colors:[]},
+     {name:"Topan Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/topan-vp13",colors:[]},
+     {name:"Journey (Shy) Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/journey-shy4",colors:[]},
+     {name:"Mist Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/mist-ap20",colors:[]},
+     {name:"Gio Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/gio-ln15",colors:[]},
+     {name:"Formakami Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/formakami-jh18",colors:[]},
+     {name:"P376 (Kastholm & Fabricius)",cat:["Lighting"],link:"https://www.andtradition.com/products/p376-kf2",colors:[]},
+     {name:"Tripod Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/tripod-hm9",colors:[]},
+     {name:"Herman Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/herman-shy3",colors:[]},
+     {name:"Montera Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/montera-jh42",colors:[]},
+     {name:"Como Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/como-sc53",colors:[]},
+     {name:"Raku Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/raku-sh8",colors:[]},
+     {name:"Setago Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/setago-jh27",colors:[]},
+     {name:"Copenhagen Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/copenhagen-sc13",colors:[]},
+     {name:"Colette Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/colette-atd6",colors:[]},
+     {name:"Rely Collection",cat:["Seat"],link:"https://www.andtradition.com/products/rely-hw55-hw57",colors:[]},
+     {name:"Little Petra Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/little-petra-vb1",colors:[]},
+     {name:"Betty Collection",cat:["Seat"],link:"https://www.andtradition.com/products/betty-tk12",colors:[]},
+     {name:"Fly Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/fly-sc12",colors:[]},
+     {name:"Pavilion Collection",cat:["Seat"],link:"https://www.andtradition.com/products/pavilion-av6",colors:[]},
+     {name:"Inland Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/inland-av41",colors:[]},
+     {name:"Ita Collection",cat:["Seat","Table"],link:"https://www.andtradition.com/products/ita-os1",colors:[]},
+     {name:"X Collection",cat:["Seat"],link:"https://www.andtradition.com/products/x-hm10",colors:[]},
+     {name:"Elefy Collection",cat:["Seat"],link:"https://www.andtradition.com/products/elefy-jh35",colors:[]},
+     {name:"Muno Collection",cat:["Seat"],link:"https://www.andtradition.com/products/muno-ln19",colors:[]},
+     {name:"Drawn Collection",cat:["Seat"],link:"https://www.andtradition.com/products/drawn-hm3",colors:[]},
+     {name:"Boomerang Collection",cat:["Seat"],link:"https://www.andtradition.com/products/boomerang-hm2",colors:[]},
+     {name:"Cloud Collection",cat:["Sofa"],link:"https://www.andtradition.com/products/cloud-ln3-2",colors:[]},
+     {name:"In Between Collection",cat:["Table"],link:"https://www.andtradition.com/products/in-between-mto",colors:[]},
+     {name:"Sett Collection",cat:["Table"],link:"https://www.andtradition.com/products/sett-ln13",colors:[]},
+     {name:"Drop Leaf Collection",cat:["Table"],link:"https://www.andtradition.com/products/drop-leaf-hm5",colors:[]},
+     {name:"Shuffle Collection",cat:["Table"],link:"https://www.andtradition.com/products/shuffle-mh1",colors:[]},
+     {name:"Archivo Collection",cat:["Storage"],link:"https://www.andtradition.com/products/archivo-jh45",colors:[]},
+     {name:"Alima Collection",cat:["Storage"],link:"https://www.andtradition.com/products/alima-nds3",colors:[]},
+     {name:"Thorvald Collection",cat:["Outdoor"],link:"https://www.andtradition.com/products/thorvald-sc111",colors:[]}
    ],
    items:[
    ["Flowerpot Pendant · VP1","Lighting",["Pink"]],["Bat Table Lamp · HM9","Lighting",["Black"]],
