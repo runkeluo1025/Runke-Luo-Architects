@@ -698,12 +698,65 @@ function renderBrandDetail(brandId,q){
           : `<div class="stockist-empty">Not yet documented</div>`}
       </div>
     </div>
+    ${b.collections ? collectionsSectionHTML(b,q) : `
     <div class="chips">${cats.map(c=>`<button class="chip ${state.catFilter===c?'active':''}" onclick="toggleFilter('cat','${c}')">${c}</button>`).join('')}</div>
     <div class="chips">${colors.map(c=>`<button class="chip ${state.colorFilter===c?'active':''}" onclick="toggleFilter('color','${c}')"><span class="dot" style="background:${colorHex(c)}"></span>${c}</button>`).join('')}</div>
     <div class="grid item-grid">${items.map(itemTileHTML).join('') || (b.directory ? '<div class="empty">No catalogued items yet for '+b.name+' — use the site link above.</div>' : emptyHTML())}</div>
+    `}
   `;
   wireHoverFlash();
   sizeBrandLogo();
+  startCycling();
+}
+
+function collectionsSectionHTML(b,q){
+  if(state.collection!==null) return modelGridHTML(b,state.collection);
+  const collCats=[...new Set(b.collections.flatMap(c=>c.cat))];
+  let list=b.collections.map((c,i)=>({...c,_idx:i}));
+  if(state.collCatFilter) list=list.filter(c=>c.cat.includes(state.collCatFilter));
+  if(q) list=list.filter(c=>c.name.toLowerCase().includes(q));
+  return `
+    <div class="chips">${collCats.map(c=>`<button class="chip ${state.collCatFilter===c?'active':''}" onclick="toggleCollCat('${c}')">${c}</button>`).join('')}</div>
+    <div class="grid item-grid">${list.map(collectionTileHTML).join('') || emptyHTML()}</div>
+  `;
+}
+
+function collectionTileHTML(c){
+  const imgs=c.models.map((m,i)=>imgUrl(`${c.name}-${i}`,500,500));
+  return `
+    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="openCollection(${c._idx})">
+      <img src="${imgs[0]}" alt="${c.name}">
+      <div class="overlay"></div>
+      <div class="bottom">
+        <div class="i-cat">${c.cat.join(' · ')}</div>
+        <div class="i-name">${c.name}</div>
+        <div class="swatches">${c.models.length>1?`<span style="color:#fff;font-size:9.5px;letter-spacing:.04em;">${c.models.length} MODELS</span>`:''}</div>
+      </div>
+    </div>`;
+}
+
+function modelGridHTML(b,collIdx){
+  const c=b.collections[collIdx];
+  return `
+    <button class="back" onclick="backToCollections()">← ${b.name} collections</button>
+    <div class="grid item-grid">${c.models.map(m=>modelTileHTML(b,c,m)).join('')}</div>
+  `;
+}
+
+function modelTileHTML(b,c,m){
+  const imgs=m.colors.length ? m.colors.map((col,i)=>imgUrl(`${m.name}-${col}`,500,500)) : [imgUrl(m.name,500,500)];
+  return `
+    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${m.link}','_blank')">
+      <img src="${imgs[0]}" alt="${m.name}">
+      <div class="overlay"></div>
+      <div class="bottom">
+        <div class="i-cat">${c.name}</div>
+        <div class="i-name">${m.name}</div>
+        <div class="swatches">${m.colors.length
+          ? m.colors.map(col=>`<span class="dot" style="background:${colorHex(col)}"></span>`).join('')
+          : `<span style="color:#fff;font-size:9px;letter-spacing:.04em;opacity:.75;">COLORS TBD</span>`}</div>
+      </div>
+    </div>`;
 }
 
 function sizeBrandLogo(){
