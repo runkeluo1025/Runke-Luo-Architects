@@ -199,41 +199,111 @@ const BRANDS = [
      {city:"Wuxi",name:"HYGGE Qige",address:"无锡市华厦家居港家具馆一楼"}
    ],
    collections:[
-     {name:"Flowerpot Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/flowerpot-vp1-anniversary-edition",colors:[]},
-     {name:"Topan Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/topan-vp13",colors:[]},
-     {name:"Journey (Shy) Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/journey-shy4",colors:[]},
-     {name:"Mist Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/mist-ap20",colors:[]},
-     {name:"Gio Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/gio-ln15",colors:[]},
-     {name:"Formakami Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/formakami-jh18",colors:[]},
-     {name:"P376 (Kastholm & Fabricius)",cat:["Lighting"],link:"https://www.andtradition.com/products/p376-kf2",colors:[]},
-     {name:"Tripod Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/tripod-hm9",colors:[]},
-     {name:"Herman Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/herman-shy3",colors:[]},
-     {name:"Montera Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/montera-jh42",colors:[]},
-     {name:"Como Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/como-sc53",colors:[]},
-     {name:"Raku Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/raku-sh8",colors:[]},
-     {name:"Setago Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/setago-jh27",colors:[]},
-     {name:"Copenhagen Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/copenhagen-sc13",colors:[]},
-     {name:"Colette Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/colette-atd6",colors:[]},
-     {name:"Rely Collection",cat:["Seat"],link:"https://www.andtradition.com/products/rely-hw55-hw57",colors:[]},
-     {name:"Little Petra Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/little-petra-vb1",colors:[]},
-     {name:"Betty Collection",cat:["Seat"],link:"https://www.andtradition.com/products/betty-tk12",colors:[]},
-     {name:"Fly Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/fly-sc12",colors:[]},
-     {name:"Pavilion Collection",cat:["Seat"],link:"https://www.andtradition.com/products/pavilion-av6",colors:[]},
-     {name:"Inland Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/inland-av41",colors:[]},
-     {name:"Ita Collection",cat:["Seat","Table"],link:"https://www.andtradition.com/products/ita-os1",colors:[]},
-     {name:"X Collection",cat:["Seat"],link:"https://www.andtradition.com/products/x-hm10",colors:[]},
-     {name:"Elefy Collection",cat:["Seat"],link:"https://www.andtradition.com/products/elefy-jh35",colors:[]},
-     {name:"Muno Collection",cat:["Seat"],link:"https://www.andtradition.com/products/muno-ln19",colors:[]},
-     {name:"Drawn Collection",cat:["Seat"],link:"https://www.andtradition.com/products/drawn-hm3",colors:[]},
-     {name:"Boomerang Collection",cat:["Seat"],link:"https://www.andtradition.com/products/boomerang-hm2",colors:[]},
-     {name:"Cloud Collection",cat:["Sofa"],link:"https://www.andtradition.com/products/cloud-ln3-2",colors:[]},
-     {name:"In Between Collection",cat:["Table"],link:"https://www.andtradition.com/products/in-between-mto",colors:[]},
-     {name:"Sett Collection",cat:["Table"],link:"https://www.andtradition.com/products/sett-ln13",colors:[]},
-     {name:"Drop Leaf Collection",cat:["Table"],link:"https://www.andtradition.com/products/drop-leaf-hm5",colors:[]},
-     {name:"Shuffle Collection",cat:["Table"],link:"https://www.andtradition.com/products/shuffle-mh1",colors:[]},
-     {name:"Archivo Collection",cat:["Storage"],link:"https://www.andtradition.com/products/archivo-jh45",colors:[]},
-     {name:"Alima Collection",cat:["Storage"],link:"https://www.andtradition.com/products/alima-nds3",colors:[]},
-     {name:"Thorvald Collection",cat:["Outdoor"],link:"https://www.andtradition.com/products/thorvald-sc111",colors:[]}
+     {name:"Flowerpot Collection",cat:["Lighting"],models:[
+       {name:"Flowerpot",link:"https://www.andtradition.com/products/flowerpot-vp1-anniversary-edition",colors:[]}
+     ]},
+     {name:"Topan Collection",cat:["Lighting"],models:[
+       {name:"Topan",link:"https://www.andtradition.com/products/topan-vp13",colors:[]}
+     ]},
+     {name:"Journey (Shy) Collection",cat:["Lighting"],models:[
+       {name:"Journey (Shy)",link:"https://www.andtradition.com/products/journey-shy4",colors:[]}
+     ]},
+     {name:"Mist Collection",cat:["Lighting"],models:[
+       {name:"Mist",link:"https://www.andtradition.com/products/mist-ap20",colors:[]}
+     ]},
+     {name:"Gio Collection",cat:["Lighting"],models:[
+       {name:"Gio",link:"https://www.andtradition.com/products/gio-ln15",colors:[]}
+     ]},
+     {name:"Formakami Collection",cat:["Lighting"],models:[
+       {name:"Formakami",link:"https://www.andtradition.com/products/formakami-jh18",colors:[]}
+     ]},
+     {name:"P376 (Kastholm & Fabricius)",cat:["Lighting"],models:[
+       {name:"P376 (Kastholm & Fabricius)",link:"https://www.andtradition.com/products/p376-kf2",colors:[]}
+     ]},
+     {name:"Tripod Collection",cat:["Lighting"],models:[
+       {name:"Tripod",link:"https://www.andtradition.com/products/tripod-hm9",colors:[]}
+     ]},
+     {name:"Herman Collection",cat:["Lighting"],models:[
+       {name:"Herman",link:"https://www.andtradition.com/products/herman-shy3",colors:[]}
+     ]},
+     {name:"Montera Collection",cat:["Lighting"],models:[
+       {name:"Montera",link:"https://www.andtradition.com/products/montera-jh42",colors:[]}
+     ]},
+     {name:"Como Collection",cat:["Lighting"],models:[
+       {name:"Como",link:"https://www.andtradition.com/products/como-sc53",colors:[]}
+     ]},
+     {name:"Raku Collection",cat:["Lighting"],models:[
+       {name:"Raku",link:"https://www.andtradition.com/products/raku-sh8",colors:[]}
+     ]},
+     {name:"Setago Collection",cat:["Lighting"],models:[
+       {name:"Setago",link:"https://www.andtradition.com/products/setago-jh27",colors:[]}
+     ]},
+     {name:"Copenhagen Collection",cat:["Lighting"],models:[
+       {name:"Copenhagen",link:"https://www.andtradition.com/products/copenhagen-sc13",colors:[]}
+     ]},
+     {name:"Colette Collection",cat:["Lighting"],models:[
+       {name:"Colette",link:"https://www.andtradition.com/products/colette-atd6",colors:[]}
+     ]},
+     {name:"Rely Collection",cat:["Seat"],models:[
+       {name:"Rely",link:"https://www.andtradition.com/products/rely-hw55-hw57",colors:[]}
+     ]},
+     {name:"Little Petra Collection",cat:["Seat","Sofa"],models:[
+       {name:"Little Petra",link:"https://www.andtradition.com/products/little-petra-vb1",colors:[]}
+     ]},
+     {name:"Betty Collection",cat:["Seat"],models:[
+       {name:"Betty",link:"https://www.andtradition.com/products/betty-tk12",colors:[]}
+     ]},
+     {name:"Fly Collection",cat:["Seat","Sofa"],models:[
+       {name:"Fly",link:"https://www.andtradition.com/products/fly-sc12",colors:[]}
+     ]},
+     {name:"Pavilion Collection",cat:["Seat"],models:[
+       {name:"Pavilion",link:"https://www.andtradition.com/products/pavilion-av6",colors:[]}
+     ]},
+     {name:"Inland Collection",cat:["Seat","Sofa"],models:[
+       {name:"Inland",link:"https://www.andtradition.com/products/inland-av41",colors:[]}
+     ]},
+     {name:"Ita Collection",cat:["Seat","Table"],models:[
+       {name:"Ita",link:"https://www.andtradition.com/products/ita-os1",colors:[]}
+     ]},
+     {name:"X Collection",cat:["Seat"],models:[
+       {name:"X",link:"https://www.andtradition.com/products/x-hm10",colors:[]}
+     ]},
+     {name:"Elefy Collection",cat:["Seat"],models:[
+       {name:"Elefy",link:"https://www.andtradition.com/products/elefy-jh35",colors:[]}
+     ]},
+     {name:"Muno Collection",cat:["Seat"],models:[
+       {name:"Muno",link:"https://www.andtradition.com/products/muno-ln19",colors:[]}
+     ]},
+     {name:"Drawn Collection",cat:["Seat"],models:[
+       {name:"Drawn",link:"https://www.andtradition.com/products/drawn-hm3",colors:[]}
+     ]},
+     {name:"Boomerang Collection",cat:["Seat"],models:[
+       {name:"Boomerang",link:"https://www.andtradition.com/products/boomerang-hm2",colors:[]}
+     ]},
+     {name:"Cloud Collection",cat:["Sofa"],models:[
+       {name:"Cloud",link:"https://www.andtradition.com/products/cloud-ln3-2",colors:[]}
+     ]},
+     {name:"In Between Collection",cat:["Table"],models:[
+       {name:"In Between",link:"https://www.andtradition.com/products/in-between-mto",colors:[]}
+     ]},
+     {name:"Sett Collection",cat:["Table"],models:[
+       {name:"Sett",link:"https://www.andtradition.com/products/sett-ln13",colors:[]}
+     ]},
+     {name:"Drop Leaf Collection",cat:["Table"],models:[
+       {name:"Drop Leaf",link:"https://www.andtradition.com/products/drop-leaf-hm5",colors:[]}
+     ]},
+     {name:"Shuffle Collection",cat:["Table"],models:[
+       {name:"Shuffle",link:"https://www.andtradition.com/products/shuffle-mh1",colors:[]}
+     ]},
+     {name:"Archivo Collection",cat:["Storage"],models:[
+       {name:"Archivo",link:"https://www.andtradition.com/products/archivo-jh45",colors:[]}
+     ]},
+     {name:"Alima Collection",cat:["Storage"],models:[
+       {name:"Alima",link:"https://www.andtradition.com/products/alima-nds3",colors:[]}
+     ]},
+     {name:"Thorvald Collection",cat:["Outdoor"],models:[
+       {name:"Thorvald",link:"https://www.andtradition.com/products/thorvald-sc111",colors:[]}
+     ]},
    ],
    items:[
    ["Flowerpot Pendant · VP1","Lighting",["Pink"]],["Bat Table Lamp · HM9","Lighting",["Black"]],
@@ -494,7 +564,7 @@ BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
     img:b.id+"-"+i});
 });});
 
-let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null };
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collection:null, collCatFilter:null };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
@@ -512,13 +582,16 @@ function amapSearchUrl(name,address){
 }
 
 function setTab(tab){
-  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null;
+  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collection=null; state.collCatFilter=null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
   renderCurrent();
 }
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 function goHome(){ setTab('brands'); }
-function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collection=null; state.collCatFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openCollection(idx){ state.collection=idx; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function backToCollections(){ state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function toggleCollCat(cat){ state.collCatFilter = state.collCatFilter===cat?null:cat; renderCurrent(); }
 
 function renderCurrent(){
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
@@ -526,6 +599,24 @@ function renderCurrent(){
   if(state.tab==='brands') renderBrandGrid(q);
   else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
 }
+
+// Cycling preview: every tick, advance each .cycle-tile to its next placeholder image,
+// simulating a slideshow through a collection's models (or a model's colorways).
+let cycleTimer=null;
+function startCycling(){
+  stopCycling();
+  cycleTimer=setInterval(()=>{
+    document.querySelectorAll('.cycle-tile').forEach(el=>{
+      const imgs=JSON.parse(el.dataset.images||"[]");
+      if(imgs.length<2) return;
+      const idx=(parseInt(el.dataset.idx||"0")+1)%imgs.length;
+      el.dataset.idx=idx;
+      const imgEl=el.querySelector('img');
+      if(imgEl) imgEl.src=imgs[idx];
+    });
+  },1800);
+}
+function stopCycling(){ if(cycleTimer){ clearInterval(cycleTimer); cycleTimer=null; } }
 
 function wireHoverFlash(){
   document.querySelectorAll('.tile[data-brand]').forEach(el=>{
