@@ -94,6 +94,9 @@
   @media(max-width:720px){
     .brand-detail-head{flex-direction:column;}
     .bdh-left{flex:none; width:100%;}
+    .bdh-top{flex-direction:column;}
+    .bdh-logo{align-self:center; width:130px; height:130px; margin:18px 0 0;}
+    .bdh-text{border-left:none; border-top:1.5px solid var(--ink); margin-top:18px;}
     .bdh-side{flex:none; border-left:none; border-top:1.5px solid var(--ink);}
   }
   .stockist-label{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; display:block;}
@@ -579,8 +582,12 @@ function sizeBrandLogo(){
   const logoEl = document.querySelector('.bdh-logo');
   if(!textEl || !logoEl) return;
   const apply = ()=>{
-    const isStacked = window.innerWidth <= 720;
-    const size = isStacked ? Math.min(textEl.offsetHeight, 140) : textEl.offsetHeight;
+    if(window.innerWidth <= 720){
+      logoEl.style.width = '';
+      logoEl.style.height = '';
+      return;
+    }
+    const size = textEl.offsetHeight;
     logoEl.style.width = size+'px';
     logoEl.style.height = size+'px';
   };
