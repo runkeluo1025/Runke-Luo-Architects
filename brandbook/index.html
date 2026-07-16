@@ -66,9 +66,12 @@
   .tile .i-name{font-size:13px; font-weight:700; margin-top:2px; text-transform:uppercase; line-height:1.15;}
   .tile .swatches{display:flex; gap:4px; margin-top:6px;}
   .tile .swatches .dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.5);}
-  .fav-btn{position:absolute; top:8px; right:8px; z-index:2; width:26px; height:26px; border:none; background:rgba(0,0,0,.35); color:#fff; font-size:15px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:50%;}
-  .fav-btn:hover{background:rgba(0,0,0,.6);}
-  .fav-btn.faved{background:#fff; color:var(--ink);}
+  .fav-btn{position:absolute; top:8px; right:8px; z-index:2; width:34px; height:34px; border:none; background:none; padding:0; display:flex; align-items:center; justify-content:center; cursor:pointer; filter:drop-shadow(0 1px 3px rgba(0,0,0,.7));}
+  .fav-btn svg{width:28px; height:24px; overflow:visible; transform:scaleX(1.15);}
+  .fav-btn svg path{fill:none; stroke:#fff; stroke-width:1.6; transition:fill .15s ease;}
+  .fav-btn:hover svg path{fill:#fff;}
+  .fav-btn.faved svg path{fill:#fff;}
+  .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1.5px solid var(--ink); padding:4px 9px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.01em; margin-top:5px;}
 
   /* same-brand hover flash: strobe invert on all tiles sharing data-brand */
   .tile.flash{animation:flashPulse .5s steps(2) infinite;}
@@ -602,9 +605,12 @@ function toggleFavorite(id,event){
   localStorage.setItem(FAV_KEY, JSON.stringify([...favs]));
   renderCurrent();
 }
+const HEART_PATH="M12,21.35l-1.45-1.32C5.4,15.36,2,12.27,2,8.5C2,5.42,4.42,3,7.5,3c1.74,0,3.41,0.81,4.5,2.09C13.09,3.81,14.76,3,16.5,3C19.58,3,22,5.42,22,8.5c0,3.77-3.4,6.86-8.55,11.54L12,21.35z";
 function favBtnHTML(id){
   const on=isFavorited(id);
-  return `<button class="fav-btn ${on?'faved':''}" onclick="toggleFavorite('${id}',event)" title="${on?'Remove from':'Save to'} favorites">${on?'♥':'♡'}</button>`;
+  return `<button class="fav-btn ${on?'faved':''}" onclick="toggleFavorite('${id}',event)" title="${on?'Remove from':'Save to'} favorites">
+    <svg viewBox="0 0 24 24"><path d="${HEART_PATH}"/></svg>
+  </button>`;
 }
 
 function setTab(tab){
@@ -810,7 +816,7 @@ function collectionTileHTML(c,b){
       <div class="overlay"></div>
       <div class="bottom">
         <div class="i-cat">${c.cat.join(' · ')}</div>
-        <div class="i-name">${c.name}</div>
+        <div class="coll-name-tag">${c.name}</div>
         <div class="swatches">${m.colors.length
           ? m.colors.map(col=>`<span class="dot" style="background:${colorHex(col)}"></span>`).join('')
           : `<span style="color:#fff;font-size:9px;letter-spacing:.04em;opacity:.75;">COLORS TBD</span>`}</div>
