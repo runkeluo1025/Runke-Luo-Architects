@@ -202,6 +202,8 @@ const BRANDS = [
  {id:"arflex",name:"Arflex",origin:"Italy",site:"https://www.arflex.it",items:[
     ["Marenco Sofa","Sofa",["Sand", "Charcoal", "Cream"],"https://www.arflex.it/us/en/marenco"],
     ["Strips Sofa","Sofa",["Terracotta", "Charcoal", "Blue"],"https://www.arflex.it/us/en/strips"],
+    ["Botolo Armchair","Lounge Chair",["Sand", "Black", "Yellow"],"https://www.arflex.it/us/en/botolo-low-version"],
+    ["Casablanca Sofa","Sofa",["Sand", "Brown"],"https://www.arflex.it/us/en/casablanca"],
     ["Claudine Sofa","Sofa",["Grey", "Cream"],"https://www.arflex.it/us/en/claudine-m"],
     ["Cradle Armchair","Lounge Chair",["Deep Slate", "Charcoal"],"https://www.arflex.it/us/en/deep-cradle"]
   ]},
@@ -997,11 +999,10 @@ function renderBrandGrid(q){
         const collImgs = (b.collections||[]).map(c=>c.models[0]?.colors[0]?.img).filter(Boolean);
         const hasReal = collImgs.length>0;
         if(hasReal){
-          const modelCount = b.collections.reduce((sum,c)=>sum+c.models.length,0);
           return `
           <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(collImgs)}' data-idx="0" data-brand="${b.id}" onclick="openBrand('${b.id}')">
             <div class="tile-top-labels">
-              <div class="i-cat">${b.origin} · ${b.collections.length} collection${b.collections.length===1?'':'s'} · ${modelCount} model${modelCount===1?'':'s'}</div>
+              <div class="i-cat">${b.origin}</div>
               <div class="coll-name-tag">${b.name}</div>
             </div>
             <img src="${collImgs[0]}" alt="${b.name}">
