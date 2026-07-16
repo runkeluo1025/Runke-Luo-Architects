@@ -66,6 +66,9 @@
   .tile .i-name{font-size:13px; font-weight:700; margin-top:2px; text-transform:uppercase; line-height:1.15;}
   .tile .swatches{display:flex; gap:4px; margin-top:6px;}
   .tile .swatches .dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.5);}
+  .fav-btn{position:absolute; top:8px; right:8px; z-index:2; width:26px; height:26px; border:none; background:rgba(0,0,0,.35); color:#fff; font-size:15px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:50%;}
+  .fav-btn:hover{background:rgba(0,0,0,.6);}
+  .fav-btn.faved{background:#fff; color:var(--ink);}
 
   /* same-brand hover flash: strobe invert on all tiles sharing data-brand */
   .tile.flash{animation:flashPulse .5s steps(2) infinite;}
@@ -142,6 +145,7 @@
       <button class="tab-btn active" data-tab="brands">Brands</button>
       <button class="tab-btn" data-tab="catalog">Catalog</button>
       <button class="tab-btn" data-tab="color">Color</button>
+      <button class="tab-btn" data-tab="favorites">Favorites</button>
     </nav>
     <div class="search-wrap"><input id="searchInput" placeholder="Search brand or item…" oninput="renderCurrent()"></div>
   </div>
@@ -582,6 +586,27 @@ function amapSearchUrl(name,address){
   return `https://www.amap.com/search?query=${encodeURIComponent(name+' '+address)}`;
 }
 
+// Favorites: stored locally in this browser only — no login, no backend. Each visitor
+// builds their own saved list, which persists across visits as long as it's the same
+// browser/device (clearing browser data or switching devices starts a fresh list).
+const FAV_KEY='bb_favorites';
+function getFavorites(){
+  try{ return new Set(JSON.parse(localStorage.getItem(FAV_KEY)||"[]")); }
+  catch(e){ return new Set(); }
+}
+function isFavorited(id){ return getFavorites().has(id); }
+function toggleFavorite(id,event){
+  event.stopPropagation();
+  const favs=getFavorites();
+  if(favs.has(id)) favs.delete(id); else favs.add(id);
+  localStorage.setItem(FAV_KEY, JSON.stringify([...favs]));
+  renderCurrent();
+}
+function favBtnHTML(id){
+  const on=isFavorited(id);
+  return `<button class="fav-btn ${on?'faved':''}" onclick="toggleFavorite('${id}',event)" title="${on?'Remove from':'Save to'} favorites">${on?'♥':'♡'}</button>`;
+}
+
 function setTab(tab){
   state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
@@ -596,7 +621,37 @@ function renderCurrent(){
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
   if(state.brand){ renderBrandDetail(state.brand,q); return; }
   if(state.tab==='brands') renderBrandGrid(q);
+  else if(state.tab==='favorites') renderFavorites(q);
   else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
+}
+
+function renderFavorites(q){
+  const favs=getFavorites();
+  let favItems=ITEMS.filter(i=>favs.has(i.id));
+  let favColls=[];
+  BRANDS.forEach(b=>{ (b.collections||[]).forEach(c=>{
+    const id=`${b.id}::${c.name}`;
+    if(favs.has(id)) favColls.push({b,c,id});
+  });});
+  if(q){
+    favItems=favItems.filter(i=>i.name.toLowerCase().includes(q));
+    favColls=favColls.filter(({c})=>c.name.toLowerCase().includes(q));
+  }
+  const total=favItems.length+favColls.length;
+  document.getElementById('main').innerHTML = `
+    <div class="section-head">
+      <div><h1>Favorites</h1><p>Saved on this device — tap the heart on any tile to add or remove.</p></div>
+      <span class="count-pill">${total} saved</span>
+    </div>
+    <div class="grid item-grid">
+      ${favItems.map(itemTileHTML).join('')}
+      ${favColls.map(({b,c})=>collectionTileHTML(c,b)).join('')}
+      ${total===0?'<div class="empty">Nothing saved yet — tap the heart on any collection or item to save it here.</div>':''}
+    </div>
+  `;
+  wireHoverFlash();
+  startCycling();
+  fillGridGap('.item-grid',640,960);
 }
 
 // Cycling preview: every tick, advance each .cycle-tile to its next placeholder image,
@@ -740,15 +795,17 @@ function collectionsSectionHTML(b,q){
   if(q) list=list.filter(c=>c.name.toLowerCase().includes(q));
   return `
     <div class="chips">${collCats.map(c=>`<button class="chip ${state.collCatFilter===c?'active':''}" onclick="toggleCollCat('${c}')">${c}</button>`).join('')}</div>
-    <div class="grid item-grid">${list.map(collectionTileHTML).join('') || emptyHTML()}</div>
+    <div class="grid item-grid">${list.map(c=>collectionTileHTML(c,b)).join('') || emptyHTML()}</div>
   `;
 }
 
-function collectionTileHTML(c){
+function collectionTileHTML(c,b){
   const m=c.models[0];
+  const favId=`${b.id}::${c.name}`;
   const imgs=c.models.map((mm,i)=>imgUrl(`${c.name}-${i}`,500,500));
   return `
     <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${m.link}','_blank')">
+      ${favBtnHTML(favId)}
       <img src="${imgs[0]}" alt="${c.name}">
       <div class="overlay"></div>
       <div class="bottom">
@@ -813,6 +870,7 @@ function itemTileHTML(i){
   const b=brandOf(i.brand);
   return `
     <div class="tile" data-brand="${i.brand}" onclick='openItem("${i.id}")'>
+      ${favBtnHTML(i.id)}
       <img src="${imgUrl(i.img)}" alt="${i.name}">
       <div class="overlay"></div>
       <div class="bottom">
