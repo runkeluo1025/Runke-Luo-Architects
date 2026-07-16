@@ -995,13 +995,23 @@ function renderBrandGrid(q){
     <div class="grid brand-grid">
       ${list.map(b=>{
         const collImgs = (b.collections||[]).map(c=>c.models[0]?.colors[0]?.img).filter(Boolean);
+        const hasReal = collImgs.length>0;
+        if(hasReal){
+          const modelCount = b.collections.reduce((sum,c)=>sum+c.models.length,0);
+          return `
+          <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(collImgs)}' data-idx="0" data-brand="${b.id}" onclick="openBrand('${b.id}')">
+            <div class="tile-top-labels">
+              <div class="i-cat">${b.origin} · ${b.collections.length} collection${b.collections.length===1?'':'s'} · ${modelCount} model${modelCount===1?'':'s'}</div>
+              <div class="coll-name-tag">${b.name}</div>
+            </div>
+            <img src="${collImgs[0]}" alt="${b.name}">
+          </div>`;
+        }
         const first = ITEMS.find(i=>i.brand===b.id);
         const fallbackImg = first ? imgUrl(first.img,450,600) : imgUrl(b.id,450,600);
-        const imgs = collImgs.length ? collImgs : [fallbackImg];
-        const cycleAttrs = collImgs.length ? `class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0"` : `class="tile"`;
         return `
-        <div ${cycleAttrs} data-brand="${b.id}" onclick="openBrand('${b.id}')">
-          <img src="${imgs[0]}" alt="${b.name}">
+        <div class="tile" data-brand="${b.id}" onclick="openBrand('${b.id}')">
+          <img src="${fallbackImg}" alt="${b.name}">
           <span class="tag">${b.origin}</span>
           <div class="overlay"></div>
           <div class="bottom">
