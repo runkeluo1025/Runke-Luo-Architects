@@ -46,6 +46,7 @@
 
   /* edge-to-edge square grid: black background peeking through as hairlines */
   .grid{display:grid; gap:var(--gap); background:var(--ink); border:var(--gap) solid var(--ink);}
+  .tile-filler{background:#fff;}
   .brand-grid{grid-template-columns:repeat(2,1fr);}
   @media(min-width:700px){.brand-grid{grid-template-columns:repeat(3,1fr);}}
   @media(min-width:1020px){.brand-grid{grid-template-columns:repeat(4,1fr);}}
@@ -564,7 +565,7 @@ BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
     img:b.id+"-"+i});
 });});
 
-let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collection:null, collCatFilter:null };
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
@@ -582,15 +583,13 @@ function amapSearchUrl(name,address){
 }
 
 function setTab(tab){
-  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collection=null; state.collCatFilter=null;
+  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
   renderCurrent();
 }
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 function goHome(){ setTab('brands'); }
-function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collection=null; state.collCatFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
-function openCollection(idx){ state.collection=idx; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
-function backToCollections(){ state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 function toggleCollCat(cat){ state.collCatFilter = state.collCatFilter===cat?null:cat; renderCurrent(); }
 
 function renderCurrent(){
@@ -617,6 +616,29 @@ function startCycling(){
   },1800);
 }
 function stopCycling(){ if(cycleTimer){ clearInterval(cycleTimer); cycleTimer=null; } }
+
+// Pads an incomplete last row with invisible white filler cells so the grid's
+// black background-as-hairline technique doesn't show through as a stray box.
+function fillGridGap(selector,bp1,bp2){
+  const grid=document.querySelector(selector);
+  if(!grid) return;
+  grid.querySelectorAll('.tile-filler').forEach(f=>f.remove());
+  const count=grid.querySelectorAll('.tile').length;
+  if(count===0) return;
+  const w=window.innerWidth;
+  const cols=w>=bp2?4:w>=bp1?3:2;
+  const remainder=count%cols;
+  const fillers=remainder===0?0:cols-remainder;
+  for(let i=0;i<fillers;i++){
+    const d=document.createElement('div');
+    d.className='tile-filler';
+    grid.appendChild(d);
+  }
+}
+window.addEventListener('resize', ()=>{
+  fillGridGap('.brand-grid',700,1020);
+  fillGridGap('.item-grid',640,960);
+});
 
 function wireHoverFlash(){
   document.querySelectorAll('.tile[data-brand]').forEach(el=>{
@@ -655,6 +677,7 @@ function renderBrandGrid(q){
     </div>
   `;
   wireHoverFlash();
+  fillGridGap('.brand-grid',700,1020);
 }
 
 function renderBrandDetail(brandId,q){
@@ -707,12 +730,12 @@ function renderBrandDetail(brandId,q){
   wireHoverFlash();
   sizeBrandLogo();
   startCycling();
+  fillGridGap('.item-grid',640,960);
 }
 
 function collectionsSectionHTML(b,q){
-  if(state.collection!==null) return modelGridHTML(b,state.collection);
   const collCats=[...new Set(b.collections.flatMap(c=>c.cat))];
-  let list=b.collections.map((c,i)=>({...c,_idx:i}));
+  let list=b.collections;
   if(state.collCatFilter) list=list.filter(c=>c.cat.includes(state.collCatFilter));
   if(q) list=list.filter(c=>c.name.toLowerCase().includes(q));
   return `
@@ -722,36 +745,15 @@ function collectionsSectionHTML(b,q){
 }
 
 function collectionTileHTML(c){
-  const imgs=c.models.map((m,i)=>imgUrl(`${c.name}-${i}`,500,500));
+  const m=c.models[0];
+  const imgs=c.models.map((mm,i)=>imgUrl(`${c.name}-${i}`,500,500));
   return `
-    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="openCollection(${c._idx})">
+    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${m.link}','_blank')">
       <img src="${imgs[0]}" alt="${c.name}">
       <div class="overlay"></div>
       <div class="bottom">
         <div class="i-cat">${c.cat.join(' · ')}</div>
         <div class="i-name">${c.name}</div>
-        <div class="swatches">${c.models.length>1?`<span style="color:#fff;font-size:9.5px;letter-spacing:.04em;">${c.models.length} MODELS</span>`:''}</div>
-      </div>
-    </div>`;
-}
-
-function modelGridHTML(b,collIdx){
-  const c=b.collections[collIdx];
-  return `
-    <button class="back" onclick="backToCollections()">← ${b.name} collections</button>
-    <div class="grid item-grid">${c.models.map(m=>modelTileHTML(b,c,m)).join('')}</div>
-  `;
-}
-
-function modelTileHTML(b,c,m){
-  const imgs=m.colors.length ? m.colors.map((col,i)=>imgUrl(`${m.name}-${col}`,500,500)) : [imgUrl(m.name,500,500)];
-  return `
-    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${m.link}','_blank')">
-      <img src="${imgs[0]}" alt="${m.name}">
-      <div class="overlay"></div>
-      <div class="bottom">
-        <div class="i-cat">${c.name}</div>
-        <div class="i-name">${m.name}</div>
         <div class="swatches">${m.colors.length
           ? m.colors.map(col=>`<span class="dot" style="background:${colorHex(col)}"></span>`).join('')
           : `<span style="color:#fff;font-size:9px;letter-spacing:.04em;opacity:.75;">COLORS TBD</span>`}</div>
@@ -798,6 +800,7 @@ function renderCrossFilter(mode,q){
     <div class="grid item-grid">${items.map(itemTileHTML).join('') || emptyHTML()}</div>
   `;
   wireHoverFlash();
+  fillGridGap('.item-grid',640,960);
 }
 
 function toggleFilter(kind,val){
