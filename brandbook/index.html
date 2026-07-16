@@ -54,7 +54,7 @@
   @media(min-width:640px){.item-grid{grid-template-columns:repeat(3,1fr);}}
   @media(min-width:960px){.item-grid{grid-template-columns:repeat(4,1fr);}}
 
-  .tile{position:relative; aspect-ratio:1/1; overflow:hidden; background:#fff; cursor:pointer;}
+  .tile{position:relative; aspect-ratio:1/1; overflow:hidden; background:#fff; cursor:pointer; touch-action:pan-y;}
   .tile img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .4s ease;}
   .tile:hover img{transform:scale(1.045);}
   .tile .overlay{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.86) 100%); pointer-events:none;}
@@ -64,14 +64,34 @@
   .tile .b-meta{font-size:9.5px; opacity:.8; margin-top:3px; letter-spacing:.03em; text-transform:uppercase;}
   .tile .i-cat{font-size:9px; letter-spacing:.08em; text-transform:uppercase; opacity:.85;}
   .tile .i-name{font-size:13px; font-weight:700; margin-top:2px; text-transform:uppercase; line-height:1.15;}
-  .tile .swatches{display:flex; gap:4px; margin-top:6px;}
-  .tile .swatches .dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.5);}
-  .fav-btn{position:absolute; top:8px; right:8px; z-index:2; width:34px; height:34px; border:none; background:none; padding:0; display:flex; align-items:center; justify-content:center; cursor:pointer; filter:drop-shadow(0 1px 3px rgba(0,0,0,.7));}
-  .fav-btn svg{width:28px; height:24px; overflow:visible; transform:scaleX(1.15);}
+  .tile .swatches{display:flex; gap:5px; margin-top:6px;}
+  .tile .swatches .dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.5); cursor:pointer;}
+  .fav-btn{position:absolute; top:8px; right:8px; z-index:2; width:22px; height:22px; border:none; background:none; padding:0; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .fav-btn svg{width:13px; height:13px; overflow:visible;}
   .fav-btn svg path{fill:none; stroke:#fff; stroke-width:1.6; transition:fill .15s ease;}
   .fav-btn:hover svg path{fill:#fff;}
   .fav-btn.faved svg path{fill:#fff;}
-  .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1.5px solid var(--ink); padding:4px 9px; font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.01em; margin-top:5px;}
+  .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1.5px solid var(--ink); padding:5px 9px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-top:5px;}
+
+  /* product photography tiles (collections/models): full photo visible (no crop), no dark
+     gradient, so text needs its own solid badge and controls need dark ink instead of white */
+  .tile.product-tile{background:#fff;}
+  .tile.product-tile img{object-fit:contain;}
+  .tile.product-tile .overlay{display:none;}
+  .tile.product-tile .i-cat{display:inline-block; background:#fff; color:var(--grey); border:1px solid var(--ink); padding:3px 7px; font-size:8.5px; opacity:1;}
+  .tile.product-tile .swatches .dot{border:1px solid rgba(0,0,0,.15); opacity:.4;}
+  .tile.product-tile .swatches .dot.active{opacity:1;}
+  .tile.product-tile .fav-btn svg path{stroke:var(--ink);}
+  .tile.product-tile .fav-btn.faved svg path{fill:var(--ink);}
+
+  /* manual carousel controls: line segments (one per model) on collection tiles —
+     fixed width each, don't stretch to fill the tile regardless of model count */
+  .tile-lines{position:absolute; top:8px; left:8px; right:36px; z-index:2; display:flex; gap:4px; flex-wrap:wrap;}
+  .tile-lines .seg{flex:none; width:12px; height:1px; background:rgba(0,0,0,.2); cursor:pointer;}
+  .tile.product-tile .tile-lines .seg{background:rgba(0,0,0,.2);}
+  .tile-lines .seg.active{background:var(--ink);}
+  .tile:not(.product-tile) .tile-lines .seg{background:rgba(255,255,255,.4);}
+  .tile:not(.product-tile) .tile-lines .seg.active{background:#fff;}
 
   /* same-brand hover flash: strobe invert on all tiles sharing data-brand */
   .tile.flash{animation:flashPulse .5s steps(2) infinite;}
@@ -207,110 +227,293 @@ const BRANDS = [
      {city:"Wuxi",name:"HYGGE Qige",address:"无锡市华厦家居港家具馆一楼"}
    ],
    collections:[
-     {name:"Flowerpot Collection",cat:["Lighting"],models:[
-       {name:"Flowerpot",link:"https://www.andtradition.com/products/flowerpot-vp1-anniversary-edition",colors:[]}
+     {name:"Colette Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/colette-atd6",models:[
+       {name:"Colette ATD6",colors:[{img:"images/andtradition/colette-collection/colette-atd6/0.jpg",pal:"White"},{img:"images/andtradition/colette-collection/colette-atd6/1.jpg",pal:"Black"}]}
      ]},
-     {name:"Topan Collection",cat:["Lighting"],models:[
-       {name:"Topan",link:"https://www.andtradition.com/products/topan-vp13",colors:[]}
+     {name:"Como Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/como-sc53",models:[
+       {name:"Como SC53",colors:[{img:"images/andtradition/como-collection/como-sc53/0.jpg",pal:"Brass"},{img:"images/andtradition/como-collection/como-sc53/1.jpg",pal:"Copper"},{img:"images/andtradition/como-collection/como-sc53/2.jpg",pal:"Silver"},{img:"images/andtradition/como-collection/como-sc53/3.jpg",pal:"Bordeaux"},{img:"images/andtradition/como-collection/como-sc53/4.jpg",pal:"Navy"},{img:"images/andtradition/como-collection/como-sc53/5.jpg",pal:"Black"}]}
      ]},
-     {name:"Journey (Shy) Collection",cat:["Lighting"],models:[
-       {name:"Journey (Shy)",link:"https://www.andtradition.com/products/journey-shy4",colors:[]}
+     {name:"Copenhagen Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/copenhagen-sc13",models:[
+       {name:"Copenhagen SC13",colors:[{img:"images/andtradition/copenhagen-collection/copenhagen-sc13/0.jpg",pal:"Brass"}]},
+       {name:"Copenhagen SC14",colors:[{img:"images/andtradition/copenhagen-collection/copenhagen-sc14/0.jpg",pal:"Brass"}]},
+       {name:"Copenhagen SC6",colors:[{img:"images/andtradition/copenhagen-collection/copenhagen-sc6/0.jpg",pal:"Black"},{img:"images/andtradition/copenhagen-collection/copenhagen-sc6/1.jpg",pal:null}]},
+       {name:"Copenhagen SC7",colors:[{img:"images/andtradition/copenhagen-collection/copenhagen-sc7/0.jpg",pal:null},{img:"images/andtradition/copenhagen-collection/copenhagen-sc7/1.jpg",pal:"Black"}]}
      ]},
-     {name:"Mist Collection",cat:["Lighting"],models:[
-       {name:"Mist",link:"https://www.andtradition.com/products/mist-ap20",colors:[]}
+     {name:"Flowerpot Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/flowerpot-vp1-anniversary-edition",models:[
+       {name:"Flowerpot Chandelier VP1",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-chandelier-vp1/0.jpg",pal:null},{img:"images/andtradition/flowerpot-collection/flowerpot-chandelier-vp1/1.jpg",pal:null}]},
+       {name:"Flowerpot Chandelier VP10",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-chandelier-vp10/0.jpg",pal:null},{img:"images/andtradition/flowerpot-collection/flowerpot-chandelier-vp10/1.jpg",pal:null}]},
+       {name:"Flowerpot VP1",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/0.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/1.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/2.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/3.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/4.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/5.jpg",pal:"Bordeaux"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/6.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp1/7.jpg",pal:"Forest"}]},
+       {name:"Flowerpot VP1 Anniversary Edition",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp1-anniversary-edition/0.jpg",pal:null}]},
+       {name:"Flowerpot VP10",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/0.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/1.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/2.jpg",pal:"Black"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/3.jpg",pal:"Brass"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/4.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/5.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/6.jpg",pal:"Rust"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp10/7.jpg",pal:"Mustard"}]},
+       {name:"Flowerpot VP12",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/0.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/1.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/2.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/3.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/4.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/5.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/6.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp12/7.jpg",pal:"Black"}]},
+       {name:"Flowerpot VP2",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/0.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/1.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/2.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/3.jpg",pal:"Black"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/4.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/5.jpg",pal:"Black"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/6.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp2/7.jpg",pal:"Burgundy"}]},
+       {name:"Flowerpot VP3",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/0.jpg",pal:"Forest"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/1.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/2.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/3.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/4.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/5.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/6.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp3/7.jpg",pal:"Rust"}]},
+       {name:"Flowerpot VP4",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/0.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/1.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/2.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/3.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/4.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/5.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/6.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp4/7.jpg",pal:"Black"}]},
+       {name:"Flowerpot VP7",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/0.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/1.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/2.jpg",pal:"Black"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/3.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/4.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/5.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/6.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp7/7.jpg",pal:"Rust"}]},
+       {name:"Flowerpot VP8",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/0.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/1.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/2.jpg",pal:"Grey"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/3.jpg",pal:"Silver"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/4.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/5.jpg",pal:"Black"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/6.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp8/7.jpg",pal:"Silver"}]},
+       {name:"Flowerpot VP9",colors:[{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/0.jpg",pal:"Mustard"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/1.jpg",pal:"Rust"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/2.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/3.jpg",pal:"Navy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/4.jpg",pal:"Burgundy"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/5.jpg",pal:"White"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/6.jpg",pal:"Forest"},{img:"images/andtradition/flowerpot-collection/flowerpot-vp9/7.jpg",pal:"Silver"}]}
      ]},
-     {name:"Gio Collection",cat:["Lighting"],models:[
-       {name:"Gio",link:"https://www.andtradition.com/products/gio-ln15",colors:[]}
+     {name:"Formakami Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/formakami-jh18",models:[
+       {name:"Formakami JH18",colors:[{img:"images/andtradition/formakami-collection/formakami-jh18/0.jpg",pal:"White"}]},
+       {name:"Formakami JH3",colors:[{img:"images/andtradition/formakami-collection/formakami-jh3/0.jpg",pal:"White"}]},
+       {name:"Formakami JH4",colors:[{img:"images/andtradition/formakami-collection/formakami-jh4/0.jpg",pal:"White"}]},
+       {name:"Formakami JH5",colors:[{img:"images/andtradition/formakami-collection/formakami-jh5/0.jpg",pal:"White"}]},
+       {name:"Formakami JH5 Limited Edition",colors:[{img:"images/andtradition/formakami-collection/formakami-jh5-limited-edition/0.jpg",pal:null}]}
      ]},
-     {name:"Formakami Collection",cat:["Lighting"],models:[
-       {name:"Formakami",link:"https://www.andtradition.com/products/formakami-jh18",colors:[]}
+     {name:"Gio Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/gio-ln15",models:[
+       {name:"Gio LN14",colors:[{img:"images/andtradition/gio-collection/gio-ln14/0.jpg",pal:"White"},{img:"images/andtradition/gio-collection/gio-ln14/1.jpg",pal:"White"}]},
+       {name:"Gio LN15",colors:[{img:"images/andtradition/gio-collection/gio-ln15/0.jpg",pal:"White"},{img:"images/andtradition/gio-collection/gio-ln15/1.jpg",pal:"White"}]},
+       {name:"Gio LN28",colors:[{img:"images/andtradition/gio-collection/gio-ln28/0.jpg",pal:"Silver"}]}
      ]},
-     {name:"P376 (Kastholm & Fabricius)",cat:["Lighting"],models:[
-       {name:"P376 (Kastholm & Fabricius)",link:"https://www.andtradition.com/products/p376-kf2",colors:[]}
+     {name:"Herman Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/herman-shy3",models:[
+       {name:"Herman SHY3",colors:[{img:"images/andtradition/herman-collection/herman-shy3/0.jpg",pal:"Cream"}]}
      ]},
-     {name:"Tripod Collection",cat:["Lighting"],models:[
-       {name:"Tripod",link:"https://www.andtradition.com/products/tripod-hm9",colors:[]}
+     {name:"Journey (Shy) Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/journey-shy4",models:[
+       {name:"Journey SHY1",colors:[{img:"images/andtradition/journey-shy-collection/journey-shy1/0.jpg",pal:"Black"},{img:"images/andtradition/journey-shy-collection/journey-shy1/1.jpg",pal:"Grey"},{img:"images/andtradition/journey-shy-collection/journey-shy1/2.jpg",pal:"Silver"}]},
+       {name:"Journey SHY2",colors:[{img:"images/andtradition/journey-shy-collection/journey-shy2/0.jpg",pal:"Silver"},{img:"images/andtradition/journey-shy-collection/journey-shy2/1.jpg",pal:"Grey"},{img:"images/andtradition/journey-shy-collection/journey-shy2/2.jpg",pal:"Black"}]},
+       {name:"Journey SHY4",colors:[{img:"images/andtradition/journey-shy-collection/journey-shy4/0.jpg",pal:"Silver"}]}
      ]},
-     {name:"Herman Collection",cat:["Lighting"],models:[
-       {name:"Herman",link:"https://www.andtradition.com/products/herman-shy3",colors:[]}
+     {name:"Mist Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/mist-ap20",models:[
+       {name:"Mist AP15",colors:[{img:"images/andtradition/mist-collection/mist-ap15/0.jpg",pal:"White"}]},
+       {name:"Mist AP16",colors:[{img:"images/andtradition/mist-collection/mist-ap16/0.jpg",pal:"White"}]},
+       {name:"Mist AP17",colors:[{img:"images/andtradition/mist-collection/mist-ap17/0.jpg",pal:null},{img:"images/andtradition/mist-collection/mist-ap17/1.jpg",pal:null}]},
+       {name:"Mist AP20",colors:[{img:"images/andtradition/mist-collection/mist-ap20/0.jpg",pal:"White"}]},
+       {name:"Mist AP21",colors:[{img:"images/andtradition/mist-collection/mist-ap21/0.jpg",pal:null},{img:"images/andtradition/mist-collection/mist-ap21/1.jpg",pal:null}]},
+       {name:"Mist AP22",colors:[{img:"images/andtradition/mist-collection/mist-ap22/0.jpg",pal:"White"}]}
      ]},
-     {name:"Montera Collection",cat:["Lighting"],models:[
-       {name:"Montera",link:"https://www.andtradition.com/products/montera-jh42",colors:[]}
+     {name:"Montera Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/montera-jh42",models:[
+       {name:"Montera JH42",colors:[{img:"images/andtradition/montera-collection/montera-jh42/0.jpg",pal:null},{img:"images/andtradition/montera-collection/montera-jh42/1.jpg",pal:null}]}
      ]},
-     {name:"Como Collection",cat:["Lighting"],models:[
-       {name:"Como",link:"https://www.andtradition.com/products/como-sc53",colors:[]}
+     {name:"P376 (Kastholm Fabricius)",cat:["Lighting"],link:"https://www.andtradition.com/products/p376-kf2",models:[
+       {name:"P376 KF1",colors:[{img:"images/andtradition/p376-kastholm-fabricius/p376-kf1/0.jpg",pal:"Silver"},{img:"images/andtradition/p376-kastholm-fabricius/p376-kf1/1.jpg",pal:"White"}]},
+       {name:"P376 KF2",colors:[{img:"images/andtradition/p376-kastholm-fabricius/p376-kf2/0.jpg",pal:"White"},{img:"images/andtradition/p376-kastholm-fabricius/p376-kf2/1.jpg",pal:"Silver"}]}
      ]},
-     {name:"Raku Collection",cat:["Lighting"],models:[
-       {name:"Raku",link:"https://www.andtradition.com/products/raku-sh8",colors:[]}
+     {name:"Raku Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/raku-sh8",models:[
+       {name:"Raku SH8",colors:[{img:"images/andtradition/raku-collection/raku-sh8/0.jpg",pal:"Brass"},{img:"images/andtradition/raku-collection/raku-sh8/1.jpg",pal:"Grey"}]}
      ]},
-     {name:"Setago Collection",cat:["Lighting"],models:[
-       {name:"Setago",link:"https://www.andtradition.com/products/setago-jh27",colors:[]}
+     {name:"Setago Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/setago-jh27",models:[
+       {name:"Setago JH27",colors:[{img:"images/andtradition/setago-collection/setago-jh27/0.jpg",pal:null},{img:"images/andtradition/setago-collection/setago-jh27/1.jpg",pal:null},{img:"images/andtradition/setago-collection/setago-jh27/2.jpg",pal:"Rust"}]}
      ]},
-     {name:"Copenhagen Collection",cat:["Lighting"],models:[
-       {name:"Copenhagen",link:"https://www.andtradition.com/products/copenhagen-sc13",colors:[]}
+     {name:"Topan Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/topan-vp13",models:[
+       {name:"Topan VP13",colors:[{img:"images/andtradition/topan-collection/topan-vp13/0.jpg",pal:"Bordeaux"},{img:"images/andtradition/topan-collection/topan-vp13/1.jpg",pal:"Grey"},{img:"images/andtradition/topan-collection/topan-vp13/2.jpg",pal:"Silver"}]},
+       {name:"Topan VP14",colors:[{img:"images/andtradition/topan-collection/topan-vp14/0.jpg",pal:"Bordeaux"},{img:"images/andtradition/topan-collection/topan-vp14/1.jpg",pal:"Silver"},{img:"images/andtradition/topan-collection/topan-vp14/2.jpg",pal:"Grey"}]},
+       {name:"Topan VP6",colors:[{img:"images/andtradition/topan-collection/topan-vp6/0.jpg",pal:"Black"},{img:"images/andtradition/topan-collection/topan-vp6/1.jpg",pal:"Grey"},{img:"images/andtradition/topan-collection/topan-vp6/2.jpg",pal:"Bordeaux"},{img:"images/andtradition/topan-collection/topan-vp6/3.jpg",pal:"Silver"}]}
      ]},
-     {name:"Colette Collection",cat:["Lighting"],models:[
-       {name:"Colette",link:"https://www.andtradition.com/products/colette-atd6",colors:[]}
+     {name:"Tripod Collection",cat:["Lighting"],link:"https://www.andtradition.com/products/tripod-hm9",models:[
+       {name:"Tripod HM12",colors:[{img:"images/andtradition/tripod-collection/tripod-hm12/0.jpg",pal:"White"},{img:"images/andtradition/tripod-collection/tripod-hm12/1.jpg",pal:"Black"}]},
+       {name:"Tripod HM8",colors:[{img:"images/andtradition/tripod-collection/tripod-hm8/0.jpg",pal:"White"},{img:"images/andtradition/tripod-collection/tripod-hm8/1.jpg",pal:"Black"}]},
+       {name:"Tripod HM9",colors:[{img:"images/andtradition/tripod-collection/tripod-hm9/0.jpg",pal:"Black"},{img:"images/andtradition/tripod-collection/tripod-hm9/1.jpg",pal:"White"}]}
      ]},
-     {name:"Rely Collection",cat:["Seat"],models:[
-       {name:"Rely",link:"https://www.andtradition.com/products/rely-hw55-hw57",colors:[]}
+     {name:"Thorvald Collection",cat:["Outdoor"],link:"https://www.andtradition.com/products/thorvald-sc111",models:[
+       {name:"Thorvald SC100",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc100/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc100/1.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc100/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC101",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc101/0.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc101/1.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc101/2.jpg",pal:"Black"}]},
+       {name:"Thorvald SC102",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc102/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc102/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc102/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC108",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc108/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc108/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc108/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC109",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc109/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc109/1.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc109/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC110",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc110/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc110/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc110/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC111",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc111/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc111/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc111/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC112",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc112/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc112/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc112/2.jpg",pal:"Copper"}]},
+       {name:"Thorvald SC113",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc113/0.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc113/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc113/2.jpg",pal:"Copper"}]},
+       {name:"Thorvald SC94",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc94/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc94/1.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc94/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC95",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc95/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc95/1.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc95/2.jpg",pal:"White"}]},
+       {name:"Thorvald SC96",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc96/0.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc96/1.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc96/2.jpg",pal:"Copper"}]},
+       {name:"Thorvald SC97",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc97/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc97/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc97/2.jpg",pal:"Black"}]},
+       {name:"Thorvald SC98",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc98/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc98/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc98/2.jpg",pal:"Black"}]},
+       {name:"Thorvald SC99",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc99/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc99/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc99/2.jpg",pal:"Copper"}]}
      ]},
-     {name:"Little Petra Collection",cat:["Seat","Sofa"],models:[
-       {name:"Little Petra",link:"https://www.andtradition.com/products/little-petra-vb1",colors:[]}
+     {name:"Betty Collection",cat:["Seat"],link:"https://www.andtradition.com/products/betty-tk12",models:[
+       {name:"Betty TK1",colors:[{img:"images/andtradition/betty-collection/betty-tk1/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk1/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk1/2.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk1/3.jpg",pal:"Oak"}]},
+       {name:"Betty TK10",colors:[{img:"images/andtradition/betty-collection/betty-tk10/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk10/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk10/2.jpg",pal:"Black"}]},
+       {name:"Betty TK11",colors:[{img:"images/andtradition/betty-collection/betty-tk11/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk11/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk11/2.jpg",pal:"Black"}]},
+       {name:"Betty TK12",colors:[{img:"images/andtradition/betty-collection/betty-tk12/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk12/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk12/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk12/3.jpg",pal:"Oak"}]},
+       {name:"Betty TK13",colors:[{img:"images/andtradition/betty-collection/betty-tk13/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk13/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk13/2.jpg",pal:"Oak"}]},
+       {name:"Betty TK14",colors:[{img:"images/andtradition/betty-collection/betty-tk14/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk14/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk14/2.jpg",pal:"Black"}]},
+       {name:"Betty TK15",colors:[{img:"images/andtradition/betty-collection/betty-tk15/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk15/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk15/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk15/3.jpg",pal:"Black"}]},
+       {name:"Betty TK16",colors:[{img:"images/andtradition/betty-collection/betty-tk16/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk16/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk16/2.jpg",pal:"Black"}]},
+       {name:"Betty TK17",colors:[{img:"images/andtradition/betty-collection/betty-tk17/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk17/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk17/2.jpg",pal:"Oak"}]},
+       {name:"Betty TK2",colors:[{img:"images/andtradition/betty-collection/betty-tk2/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk2/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk2/2.jpg",pal:"Oak"}]},
+       {name:"Betty TK3",colors:[{img:"images/andtradition/betty-collection/betty-tk3/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk3/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk3/2.jpg",pal:"Black"}]},
+       {name:"Betty TK4",colors:[{img:"images/andtradition/betty-collection/betty-tk4/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk4/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk4/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk4/3.jpg",pal:"Black"}]},
+       {name:"Betty TK5",colors:[{img:"images/andtradition/betty-collection/betty-tk5/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk5/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk5/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk5/3.jpg",pal:"Black"}]},
+       {name:"Betty TK7 TK8",colors:[{img:"images/andtradition/betty-collection/betty-tk7-tk8/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/3.jpg",pal:"Black"}]},
+       {name:"Betty TK9",colors:[{img:"images/andtradition/betty-collection/betty-tk9/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk9/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk9/2.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk9/3.jpg",pal:"Oak"}]}
      ]},
-     {name:"Betty Collection",cat:["Seat"],models:[
-       {name:"Betty",link:"https://www.andtradition.com/products/betty-tk12",colors:[]}
+     {name:"Boomerang Collection",cat:["Seat"],link:"https://www.andtradition.com/products/boomerang-hm2",models:[
+       {name:"Boomerang HM1",colors:[{img:"images/andtradition/boomerang-collection/boomerang-hm1/0.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/1.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/2.jpg",pal:"Walnut"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/3.jpg",pal:"Walnut"}]},
+       {name:"Boomerang HM2",colors:[{img:"images/andtradition/boomerang-collection/boomerang-hm2/0.jpg",pal:"Walnut"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/1.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/2.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/3.jpg",pal:"Walnut"}]}
      ]},
-     {name:"Fly Collection",cat:["Seat","Sofa"],models:[
-       {name:"Fly",link:"https://www.andtradition.com/products/fly-sc12",colors:[]}
+     {name:"Drawn Collection",cat:["Seat"],link:"https://www.andtradition.com/products/drawn-hm3",models:[
+       {name:"Drawn HM3",colors:[{img:"images/andtradition/drawn-collection/drawn-hm3/0.jpg",pal:"Walnut"},{img:"images/andtradition/drawn-collection/drawn-hm3/1.jpg",pal:"Oak"},{img:"images/andtradition/drawn-collection/drawn-hm3/2.jpg",pal:"Black"}]},
+       {name:"Drawn HM4",colors:[{img:"images/andtradition/drawn-collection/drawn-hm4/0.jpg",pal:"Black"},{img:"images/andtradition/drawn-collection/drawn-hm4/1.jpg",pal:"Walnut"},{img:"images/andtradition/drawn-collection/drawn-hm4/2.jpg",pal:"Oak"}]}
      ]},
-     {name:"Pavilion Collection",cat:["Seat"],models:[
-       {name:"Pavilion",link:"https://www.andtradition.com/products/pavilion-av6",colors:[]}
+     {name:"Elefy Collection",cat:["Seat"],link:"https://www.andtradition.com/products/elefy-jh35",models:[
+       {name:"Elefy JH28",colors:[{img:"images/andtradition/elefy-collection/elefy-jh28/0.jpg",pal:"Copper"},{img:"images/andtradition/elefy-collection/elefy-jh28/1.jpg",pal:"Sand"}]},
+       {name:"Elefy JH29",colors:[{img:"images/andtradition/elefy-collection/elefy-jh29/0.jpg",pal:null}]},
+       {name:"Elefy JH30",colors:[{img:"images/andtradition/elefy-collection/elefy-jh30/0.jpg",pal:"Navy"},{img:"images/andtradition/elefy-collection/elefy-jh30/1.jpg",pal:"Sand"},{img:"images/andtradition/elefy-collection/elefy-jh30/2.jpg",pal:"Copper"},{img:"images/andtradition/elefy-collection/elefy-jh30/3.jpg",pal:"White"},{img:"images/andtradition/elefy-collection/elefy-jh30/4.jpg",pal:"Black"}]},
+       {name:"Elefy JH31",colors:[{img:"images/andtradition/elefy-collection/elefy-jh31/0.jpg",pal:"Oak"}]},
+       {name:"Elefy JH32",colors:[{img:"images/andtradition/elefy-collection/elefy-jh32/0.jpg",pal:null}]},
+       {name:"Elefy JH33",colors:[{img:"images/andtradition/elefy-collection/elefy-jh33/0.jpg",pal:"Black"}]},
+       {name:"Elefy JH34",colors:[{img:"images/andtradition/elefy-collection/elefy-jh34/0.jpg",pal:"Black"},{img:"images/andtradition/elefy-collection/elefy-jh34/1.jpg",pal:"Silver"}]},
+       {name:"Elefy JH35",colors:[{img:"images/andtradition/elefy-collection/elefy-jh35/0.jpg",pal:"Black"}]},
+       {name:"Elefy JH36",colors:[{img:"images/andtradition/elefy-collection/elefy-jh36/0.jpg",pal:"Silver"},{img:"images/andtradition/elefy-collection/elefy-jh36/1.jpg",pal:"Black"}]},
+       {name:"Elefy JH37",colors:[{img:"images/andtradition/elefy-collection/elefy-jh37/0.jpg",pal:"Black"}]}
      ]},
-     {name:"Inland Collection",cat:["Seat","Sofa"],models:[
-       {name:"Inland",link:"https://www.andtradition.com/products/inland-av41",colors:[]}
+     {name:"Fly Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/fly-sc12",models:[
+       {name:"Fly SC1",colors:[{img:"images/andtradition/fly-collection/fly-sc1/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc1/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC10",colors:[{img:"images/andtradition/fly-collection/fly-sc10/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc10/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC11",colors:[{img:"images/andtradition/fly-collection/fly-sc11/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc11/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC12",colors:[{img:"images/andtradition/fly-collection/fly-sc12/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc12/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC2",colors:[{img:"images/andtradition/fly-collection/fly-sc2/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc2/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC3",colors:[{img:"images/andtradition/fly-collection/fly-sc3/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc3/1.jpg",pal:"White"},{img:"images/andtradition/fly-collection/fly-sc3/2.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc3/3.jpg",pal:"Oak"}]},
+       {name:"Fly SC4",colors:[{img:"images/andtradition/fly-collection/fly-sc4/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc4/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC5",colors:[{img:"images/andtradition/fly-collection/fly-sc5/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc5/1.jpg",pal:"Oak"}]},
+       {name:"Fly SC9",colors:[{img:"images/andtradition/fly-collection/fly-sc9/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc9/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"Ita Collection",cat:["Seat","Table"],models:[
-       {name:"Ita",link:"https://www.andtradition.com/products/ita-os1",colors:[]}
+     {name:"Inland Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/inland-av41",models:[
+       {name:"Inland AV21",colors:[{img:"images/andtradition/inland-collection/inland-av21/0.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av21/1.jpg",pal:"Black"},{img:"images/andtradition/inland-collection/inland-av21/2.jpg",pal:"Terracotta"}]},
+       {name:"Inland AV22",colors:[{img:"images/andtradition/inland-collection/inland-av22/0.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av22/1.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av22/2.jpg",pal:"Black"}]},
+       {name:"Inland AV23",colors:[{img:"images/andtradition/inland-collection/inland-av23/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/2.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/3.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av23/4.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av23/5.jpg",pal:"Black"},{img:"images/andtradition/inland-collection/inland-av23/6.jpg",pal:null}]},
+       {name:"Inland AV32",colors:[{img:"images/andtradition/inland-collection/inland-av32/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av32/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av32/2.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av32/3.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av32/4.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av32/5.jpg",pal:"Black"},{img:"images/andtradition/inland-collection/inland-av32/6.jpg",pal:null}]},
+       {name:"Inland AV41",colors:[{img:"images/andtradition/inland-collection/inland-av41/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av41/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av41/2.jpg",pal:null}]},
+       {name:"Inland AV42",colors:[{img:"images/andtradition/inland-collection/inland-av42/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av42/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av42/2.jpg",pal:null}]}
      ]},
-     {name:"X Collection",cat:["Seat"],models:[
-       {name:"X",link:"https://www.andtradition.com/products/x-hm10",colors:[]}
+     {name:"Ita Collection",cat:["Seat","Table"],link:"https://www.andtradition.com/products/ita-os1",models:[
+       {name:"Ita OS1",colors:[{img:"images/andtradition/ita-collection/ita-os1/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os1/1.jpg",pal:"Oak"}]},
+       {name:"Ita OS2",colors:[{img:"images/andtradition/ita-collection/ita-os2/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os2/1.jpg",pal:"Oak"}]},
+       {name:"Ita OS3",colors:[{img:"images/andtradition/ita-collection/ita-os3/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os3/1.jpg",pal:"Oak"}]},
+       {name:"Ita OS4",colors:[{img:"images/andtradition/ita-collection/ita-os4/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os4/1.jpg",pal:"Oak"}]},
+       {name:"Ita OS5",colors:[{img:"images/andtradition/ita-collection/ita-os5/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os5/1.jpg",pal:"Oak"}]},
+       {name:"Ita OS6",colors:[{img:"images/andtradition/ita-collection/ita-os6/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os6/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"Elefy Collection",cat:["Seat"],models:[
-       {name:"Elefy",link:"https://www.andtradition.com/products/elefy-jh35",colors:[]}
+     {name:"Little Petra Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/little-petra-vb1",models:[
+       {name:"Little Petra VB1",colors:[{img:"images/andtradition/little-petra-collection/little-petra-vb1/0.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb1/1.jpg",pal:"Oak"}]},
+       {name:"Little Petra VB2",colors:[{img:"images/andtradition/little-petra-collection/little-petra-vb2/0.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/1.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/2.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/3.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/4.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/5.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/6.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/7.jpg",pal:"Oak"}]}
      ]},
-     {name:"Muno Collection",cat:["Seat"],models:[
-       {name:"Muno",link:"https://www.andtradition.com/products/muno-ln19",colors:[]}
+     {name:"Muno Collection",cat:["Seat"],link:"https://www.andtradition.com/products/muno-ln19",models:[
+       {name:"Muno LN16",colors:[{img:"images/andtradition/muno-collection/muno-ln16/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln16/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln16/2.jpg",pal:null}]},
+       {name:"Muno LN17",colors:[{img:"images/andtradition/muno-collection/muno-ln17/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln17/1.jpg",pal:"Terracotta"},{img:"images/andtradition/muno-collection/muno-ln17/2.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln17/3.jpg",pal:"Black"}]},
+       {name:"Muno LN18",colors:[{img:"images/andtradition/muno-collection/muno-ln18/0.jpg",pal:"Black"},{img:"images/andtradition/muno-collection/muno-ln18/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln18/2.jpg",pal:"Terracotta"},{img:"images/andtradition/muno-collection/muno-ln18/3.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln18/4.jpg",pal:null}]},
+       {name:"Muno LN19",colors:[{img:"images/andtradition/muno-collection/muno-ln19/0.jpg",pal:"Terracotta"}]},
+       {name:"Muno LN20",colors:[{img:"images/andtradition/muno-collection/muno-ln20/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/2.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/3.jpg",pal:"Black"},{img:"images/andtradition/muno-collection/muno-ln20/4.jpg",pal:"Terracotta"}]}
      ]},
-     {name:"Drawn Collection",cat:["Seat"],models:[
-       {name:"Drawn",link:"https://www.andtradition.com/products/drawn-hm3",colors:[]}
+     {name:"Pavilion Collection",cat:["Seat"],link:"https://www.andtradition.com/products/pavilion-av6",models:[
+       {name:"Pavilion AV1",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av1/0.jpg",pal:null},{img:"images/andtradition/pavilion-collection/pavilion-av1/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av1/2.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av1/3.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV10",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av10/0.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV11",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av11/0.jpg",pal:null}]},
+       {name:"Pavilion AV12",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av12/0.jpg",pal:null}]},
+       {name:"Pavilion AV13",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av13/0.jpg",pal:null}]},
+       {name:"Pavilion AV14",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av14/0.jpg",pal:null}]},
+       {name:"Pavilion AV15",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av15/0.jpg",pal:null}]},
+       {name:"Pavilion AV16",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av16/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av16/1.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av16/2.jpg",pal:"Black"}]},
+       {name:"Pavilion AV17",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av17/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av17/1.jpg",pal:"Oak"}]},
+       {name:"Pavilion AV18",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av18/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av18/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av18/2.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av18/3.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av18/4.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av18/5.jpg",pal:"Black"}]},
+       {name:"Pavilion AV19",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av19/0.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av19/1.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av19/2.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av19/3.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av19/4.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av19/5.jpg",pal:"Black"}]},
+       {name:"Pavilion AV2",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av2/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av2/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av2/2.jpg",pal:"Oak"}]},
+       {name:"Pavilion AV24",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av24/0.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av24/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av24/2.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av24/3.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av24/4.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av24/5.jpg",pal:"Black"}]},
+       {name:"Pavilion AV3",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av3/0.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av3/1.jpg",pal:null},{img:"images/andtradition/pavilion-collection/pavilion-av3/2.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av3/3.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV36",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av36/0.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av36/1.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av36/2.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV37",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av37/0.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av37/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av37/2.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV38",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av38/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av38/1.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av38/2.jpg",pal:"Black"}]},
+       {name:"Pavilion AV4",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av4/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av4/1.jpg",pal:null},{img:"images/andtradition/pavilion-collection/pavilion-av4/2.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av4/3.jpg",pal:"Black"}]},
+       {name:"Pavilion AV5",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av5/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av5/1.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av5/2.jpg",pal:"Black"}]},
+       {name:"Pavilion AV51",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av51/0.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av51/1.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av51/2.jpg",pal:"Black"}]},
+       {name:"Pavilion AV52",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av52/0.jpg",pal:null},{img:"images/andtradition/pavilion-collection/pavilion-av52/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av52/2.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av52/3.jpg",pal:"Oak"}]},
+       {name:"Pavilion AV53",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av53/0.jpg",pal:null}]},
+       {name:"Pavilion AV6",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av6/0.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av6/1.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV7",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av7/0.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av7/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av7/2.jpg",pal:"Walnut"}]},
+       {name:"Pavilion AV8",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av8/0.jpg",pal:"Black"}]},
+       {name:"Pavilion AV9",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av9/0.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av9/1.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av9/2.jpg",pal:"Black"}]}
      ]},
-     {name:"Boomerang Collection",cat:["Seat"],models:[
-       {name:"Boomerang",link:"https://www.andtradition.com/products/boomerang-hm2",colors:[]}
+     {name:"Rely Collection",cat:["Seat"],link:"https://www.andtradition.com/products/rely-hw55-hw57",models:[
+       {name:"Rely HW11-HW20",colors:[{img:"images/andtradition/rely-collection/rely-hw11-hw20/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/3.jpg",pal:null}]},
+       {name:"Rely HW118-HW122",colors:[{img:"images/andtradition/rely-collection/rely-hw118-hw122/0.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/2.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/5.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/6.jpg",pal:"Walnut"}]},
+       {name:"Rely HW123-HW127",colors:[{img:"images/andtradition/rely-collection/rely-hw123-hw127/0.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/5.jpg",pal:"Oak"}]},
+       {name:"Rely HW128-HW132",colors:[{img:"images/andtradition/rely-collection/rely-hw128-hw132/0.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw128-hw132/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw128-hw132/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw128-hw132/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw128-hw132/4.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw128-hw132/5.jpg",pal:"Walnut"}]},
+       {name:"Rely HW133-HW137",colors:[{img:"images/andtradition/rely-collection/rely-hw133-hw137/0.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw133-hw137/1.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw133-hw137/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw133-hw137/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw133-hw137/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw133-hw137/5.jpg",pal:"Walnut"}]},
+       {name:"Rely HW138",colors:[{img:"images/andtradition/rely-collection/rely-hw138/0.jpg",pal:"Navy"},{img:"images/andtradition/rely-collection/rely-hw138/1.jpg",pal:"Sand"},{img:"images/andtradition/rely-collection/rely-hw138/2.jpg",pal:"Bordeaux"}]},
+       {name:"Rely HW139",colors:[{img:"images/andtradition/rely-collection/rely-hw139/0.jpg",pal:"Terracotta"},{img:"images/andtradition/rely-collection/rely-hw139/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw139/2.jpg",pal:null}]},
+       {name:"Rely HW140",colors:[{img:"images/andtradition/rely-collection/rely-hw140/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw140/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw140/2.jpg",pal:"Bordeaux"},{img:"images/andtradition/rely-collection/rely-hw140/3.jpg",pal:null}]},
+       {name:"Rely HW21-HW24",colors:[{img:"images/andtradition/rely-collection/rely-hw21-hw24/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw21-hw24/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw21-hw24/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw21-hw24/3.jpg",pal:null}]},
+       {name:"Rely HW28-HW32",colors:[{img:"images/andtradition/rely-collection/rely-hw28-hw32/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw28-hw32/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw28-hw32/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw28-hw32/3.jpg",pal:null}]},
+       {name:"Rely HW33-HW34",colors:[{img:"images/andtradition/rely-collection/rely-hw33-hw34/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw33-hw34/1.jpg",pal:null}]},
+       {name:"Rely HW35-HW37",colors:[{img:"images/andtradition/rely-collection/rely-hw35-hw37/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw35-hw37/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw35-hw37/2.jpg",pal:null}]},
+       {name:"Rely HW38-HW44",colors:[{img:"images/andtradition/rely-collection/rely-hw38-hw44/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw38-hw44/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw38-hw44/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw38-hw44/3.jpg",pal:null}]},
+       {name:"Rely HW40-HW47",colors:[{img:"images/andtradition/rely-collection/rely-hw40-hw47/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw40-hw47/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw40-hw47/2.jpg",pal:null}]},
+       {name:"Rely HW48-HW49",colors:[{img:"images/andtradition/rely-collection/rely-hw48-hw49/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw48-hw49/1.jpg",pal:null}]},
+       {name:"Rely HW50-HW52",colors:[{img:"images/andtradition/rely-collection/rely-hw50-hw52/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw50-hw52/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw50-hw52/2.jpg",pal:null}]},
+       {name:"Rely HW53-HW54",colors:[{img:"images/andtradition/rely-collection/rely-hw53-hw54/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw53-hw54/1.jpg",pal:null}]},
+       {name:"Rely HW55-HW57",colors:[{img:"images/andtradition/rely-collection/rely-hw55-hw57/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw55-hw57/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw55-hw57/2.jpg",pal:null}]},
+       {name:"Rely HW6-HW10",colors:[{img:"images/andtradition/rely-collection/rely-hw6-hw10/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw6-hw10/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw6-hw10/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw6-hw10/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw6-hw10/4.jpg",pal:null}]},
+       {name:"Rely HW65-HW69",colors:[{img:"images/andtradition/rely-collection/rely-hw65-hw69/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw65-hw69/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw65-hw69/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw65-hw69/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw65-hw69/4.jpg",pal:null}]},
+       {name:"Rely HW71-HW75",colors:[{img:"images/andtradition/rely-collection/rely-hw71-hw75/0.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/1.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/3.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/5.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/6.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw71-hw75/7.jpg",pal:"Walnut"}]},
+       {name:"Rely HW76-HW80",colors:[{img:"images/andtradition/rely-collection/rely-hw76-hw80/0.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/5.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/6.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw76-hw80/7.jpg",pal:"Walnut"}]},
+       {name:"Rely HW81-HW90",colors:[{img:"images/andtradition/rely-collection/rely-hw81-hw90/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/4.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/5.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/6.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/7.jpg",pal:null}]},
+       {name:"Rely HW91-HW100",colors:[{img:"images/andtradition/rely-collection/rely-hw91-hw100/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/4.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/5.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/6.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/7.jpg",pal:null}]}
      ]},
-     {name:"Cloud Collection",cat:["Sofa"],models:[
-       {name:"Cloud",link:"https://www.andtradition.com/products/cloud-ln3-2",colors:[]}
+     {name:"X Collection",cat:["Seat"],link:"https://www.andtradition.com/products/x-hm10",models:[
+       {name:"X HM10",colors:[{img:"images/andtradition/x-collection/x-hm10/0.jpg",pal:"Oak"}]}
      ]},
-     {name:"In Between Collection",cat:["Table"],models:[
-       {name:"In Between",link:"https://www.andtradition.com/products/in-between-mto",colors:[]}
+     {name:"Cloud Collection",cat:["Sofa"],link:"https://www.andtradition.com/products/cloud-ln3-2",models:[
+       {name:"Cloud LN1",colors:[{img:"images/andtradition/cloud-collection/cloud-ln1/0.jpg",pal:"Silver"},{img:"images/andtradition/cloud-collection/cloud-ln1/1.jpg",pal:null},{img:"images/andtradition/cloud-collection/cloud-ln1/2.jpg",pal:"Black"}]},
+       {name:"Cloud LN2",colors:[{img:"images/andtradition/cloud-collection/cloud-ln2/0.jpg",pal:"Black"}]},
+       {name:"Cloud LN3.2",colors:[{img:"images/andtradition/cloud-collection/cloud-ln3-2/0.jpg",pal:"Black"}]},
+       {name:"Cloud LN5",colors:[{img:"images/andtradition/cloud-collection/cloud-ln5/0.jpg",pal:"Black"}]},
+       {name:"Cloud LN6",colors:[{img:"images/andtradition/cloud-collection/cloud-ln6/0.jpg",pal:"Black"}]},
+       {name:"Cloud LN7",colors:[{img:"images/andtradition/cloud-collection/cloud-ln7/0.jpg",pal:"Black"}]}
      ]},
-     {name:"Sett Collection",cat:["Table"],models:[
-       {name:"Sett",link:"https://www.andtradition.com/products/sett-ln13",colors:[]}
+     {name:"Alima Collection",cat:["Storage"],link:"https://www.andtradition.com/products/alima-nds3",models:[
+       {name:"Alima NDS1",colors:[{img:"images/andtradition/alima-collection/alima-nds1/0.jpg",pal:"Walnut"},{img:"images/andtradition/alima-collection/alima-nds1/1.jpg",pal:"Black"},{img:"images/andtradition/alima-collection/alima-nds1/2.jpg",pal:"Oak"},{img:"images/andtradition/alima-collection/alima-nds1/3.jpg",pal:"Black"}]},
+       {name:"Alima NDS2",colors:[{img:"images/andtradition/alima-collection/alima-nds2/0.jpg",pal:"Oak"},{img:"images/andtradition/alima-collection/alima-nds2/1.jpg",pal:"Walnut"}]},
+       {name:"Alima NDS3",colors:[{img:"images/andtradition/alima-collection/alima-nds3/0.jpg",pal:"Oak"},{img:"images/andtradition/alima-collection/alima-nds3/1.jpg",pal:"Walnut"}]},
+       {name:"Alima NDS4",colors:[{img:"images/andtradition/alima-collection/alima-nds4/0.jpg",pal:"Walnut"},{img:"images/andtradition/alima-collection/alima-nds4/1.jpg",pal:"Oak"}]},
+       {name:"Alima NDS5",colors:[{img:"images/andtradition/alima-collection/alima-nds5/0.jpg",pal:"Walnut"},{img:"images/andtradition/alima-collection/alima-nds5/1.jpg",pal:"Oak"}]},
+       {name:"Alima NDS6",colors:[{img:"images/andtradition/alima-collection/alima-nds6/0.jpg",pal:"Oak"},{img:"images/andtradition/alima-collection/alima-nds6/1.jpg",pal:"Walnut"}]}
      ]},
-     {name:"Drop Leaf Collection",cat:["Table"],models:[
-       {name:"Drop Leaf",link:"https://www.andtradition.com/products/drop-leaf-hm5",colors:[]}
+     {name:"Archivo Collection",cat:["Storage"],link:"https://www.andtradition.com/products/archivo-jh45",models:[
+       {name:"Archivo JH43",colors:[{img:"images/andtradition/archivo-collection/archivo-jh43/0.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh43/1.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh43/2.jpg",pal:"Navy"},{img:"images/andtradition/archivo-collection/archivo-jh43/3.jpg",pal:"Black"}]},
+       {name:"Archivo JH44",colors:[{img:"images/andtradition/archivo-collection/archivo-jh44/0.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh44/1.jpg",pal:"Navy"},{img:"images/andtradition/archivo-collection/archivo-jh44/2.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh44/3.jpg",pal:"Black"}]},
+       {name:"Archivo JH45",colors:[{img:"images/andtradition/archivo-collection/archivo-jh45/0.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh45/1.jpg",pal:"Black"},{img:"images/andtradition/archivo-collection/archivo-jh45/2.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh45/3.jpg",pal:"Navy"}]}
      ]},
-     {name:"Shuffle Collection",cat:["Table"],models:[
-       {name:"Shuffle",link:"https://www.andtradition.com/products/shuffle-mh1",colors:[]}
+     {name:"Drop Leaf Collection",cat:["Table"],link:"https://www.andtradition.com/products/drop-leaf-hm5",models:[
+       {name:"Drop Leaf HM5",colors:[{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm5/0.jpg",pal:"Oak"},{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm5/1.jpg",pal:"Walnut"}]},
+       {name:"Drop Leaf HM6",colors:[{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm6/0.jpg",pal:"Walnut"},{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm6/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"Archivo Collection",cat:["Storage"],models:[
-       {name:"Archivo",link:"https://www.andtradition.com/products/archivo-jh45",colors:[]}
+     {name:"In Between Collection",cat:["Table"],link:"https://www.andtradition.com/products/in-between-mto",models:[
+       {name:"In Between MTO",colors:[{img:"images/andtradition/in-between-collection/in-between-mto/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-mto/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-mto/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK1",colors:[{img:"images/andtradition/in-between-collection/in-between-sk1/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk1/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk1/2.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk1/3.jpg",pal:"Walnut"}]},
+       {name:"In Between SK10",colors:[{img:"images/andtradition/in-between-collection/in-between-sk10/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk10/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk10/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK11",colors:[{img:"images/andtradition/in-between-collection/in-between-sk11/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk11/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk11/2.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk11/3.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk11/4.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk11/5.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk11/6.jpg",pal:"Walnut"},{img:"images/andtradition/in-between-collection/in-between-sk11/7.jpg",pal:"Copper"}]},
+       {name:"In Between SK12",colors:[{img:"images/andtradition/in-between-collection/in-between-sk12/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk12/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk12/2.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk12/3.jpg",pal:"Walnut"},{img:"images/andtradition/in-between-collection/in-between-sk12/4.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk12/5.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk12/6.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk12/7.jpg",pal:"Oak"}]},
+       {name:"In Between SK13",colors:[{img:"images/andtradition/in-between-collection/in-between-sk13/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk13/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk13/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK14",colors:[{img:"images/andtradition/in-between-collection/in-between-sk14/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk14/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk14/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK15",colors:[{img:"images/andtradition/in-between-collection/in-between-sk15/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk15/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk15/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK16",colors:[{img:"images/andtradition/in-between-collection/in-between-sk16/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk16/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk16/2.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk16/3.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk16/4.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk16/5.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk16/6.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk16/7.jpg",pal:"Black"}]},
+       {name:"In Between SK17",colors:[{img:"images/andtradition/in-between-collection/in-between-sk17/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk17/1.jpg",pal:"Black"}]},
+       {name:"In Between SK2",colors:[{img:"images/andtradition/in-between-collection/in-between-sk2/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk2/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk2/2.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk2/3.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk2/4.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk2/5.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk2/6.jpg",pal:"Black"}]},
+       {name:"In Between SK20",colors:[{img:"images/andtradition/in-between-collection/in-between-sk20/0.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk20/1.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk20/2.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk20/3.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk20/4.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk20/5.jpg",pal:"Black"}]},
+       {name:"In Between SK21",colors:[{img:"images/andtradition/in-between-collection/in-between-sk21/0.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk21/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk21/2.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk21/3.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk21/4.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk21/5.jpg",pal:"Copper"},{img:"images/andtradition/in-between-collection/in-between-sk21/6.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk21/7.jpg",pal:"Black"}]},
+       {name:"In Between SK22",colors:[{img:"images/andtradition/in-between-collection/in-between-sk22/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk22/1.jpg",pal:"Black"}]},
+       {name:"In Between SK23",colors:[{img:"images/andtradition/in-between-collection/in-between-sk23/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk23/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk23/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK24",colors:[{img:"images/andtradition/in-between-collection/in-between-sk24/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk24/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk24/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK25",colors:[{img:"images/andtradition/in-between-collection/in-between-sk25/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk25/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk25/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK26",colors:[{img:"images/andtradition/in-between-collection/in-between-sk26/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk26/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk26/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK27",colors:[{img:"images/andtradition/in-between-collection/in-between-sk27/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk27/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk27/2.jpg",pal:"Black"}]},
+       {name:"In Between SK28",colors:[{img:"images/andtradition/in-between-collection/in-between-sk28/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk28/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk28/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK3",colors:[{img:"images/andtradition/in-between-collection/in-between-sk3/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk3/1.jpg",pal:"Walnut"},{img:"images/andtradition/in-between-collection/in-between-sk3/2.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk3/3.jpg",pal:"Black"}]},
+       {name:"In Between SK4",colors:[{img:"images/andtradition/in-between-collection/in-between-sk4/0.jpg",pal:"Walnut"},{img:"images/andtradition/in-between-collection/in-between-sk4/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk4/2.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk4/3.jpg",pal:"Oak"}]},
+       {name:"In Between SK5",colors:[{img:"images/andtradition/in-between-collection/in-between-sk5/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk5/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk5/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK6",colors:[{img:"images/andtradition/in-between-collection/in-between-sk6/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk6/1.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk6/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK7",colors:[{img:"images/andtradition/in-between-collection/in-between-sk7/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk7/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk7/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK8",colors:[{img:"images/andtradition/in-between-collection/in-between-sk8/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk8/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk8/2.jpg",pal:"Oak"}]},
+       {name:"In Between SK9",colors:[{img:"images/andtradition/in-between-collection/in-between-sk9/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk9/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk9/2.jpg",pal:"Black"}]}
      ]},
-     {name:"Alima Collection",cat:["Storage"],models:[
-       {name:"Alima",link:"https://www.andtradition.com/products/alima-nds3",colors:[]}
+     {name:"Sett Collection",cat:["Table"],link:"https://www.andtradition.com/products/sett-ln13",models:[
+       {name:"Sett LN11",colors:[{img:"images/andtradition/sett-collection/sett-ln11/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln11/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln11/2.jpg",pal:"Silver"}]},
+       {name:"Sett LN12",colors:[{img:"images/andtradition/sett-collection/sett-ln12/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln12/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln12/2.jpg",pal:"Silver"}]},
+       {name:"Sett LN13",colors:[{img:"images/andtradition/sett-collection/sett-ln13/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln13/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln13/2.jpg",pal:"Silver"}]}
      ]},
-     {name:"Thorvald Collection",cat:["Outdoor"],models:[
-       {name:"Thorvald",link:"https://www.andtradition.com/products/thorvald-sc111",colors:[]}
+     {name:"Shuffle Collection",cat:["Table"],link:"https://www.andtradition.com/products/shuffle-mh1",models:[
+       {name:"Shuffle MH1",colors:[{img:"images/andtradition/shuffle-collection/shuffle-mh1/0.jpg",pal:null},{img:"images/andtradition/shuffle-collection/shuffle-mh1/1.jpg",pal:null}]}
      ]},
    ],
    items:[
@@ -572,7 +775,7 @@ BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
     img:b.id+"-"+i});
 });});
 
-let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null };
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
@@ -614,14 +817,17 @@ function favBtnHTML(id){
 }
 
 function setTab(tab){
-  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null;
+  state.tab=tab; state.brand=null; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; state.collection=null;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
   renderCurrent();
 }
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 function goHome(){ setTab('brands'); }
-function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 function toggleCollCat(cat){ state.collCatFilter = state.collCatFilter===cat?null:cat; renderCurrent(); }
+function openCollection(idx){ state.collection=idx; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function openBrandCollection(brandId,idx){ state.brand=brandId; state.collection=idx; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
+function backToCollections(){ state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function renderCurrent(){
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
@@ -635,15 +841,19 @@ function renderFavorites(q){
   const favs=getFavorites();
   let favItems=ITEMS.filter(i=>favs.has(i.id));
   let favColls=[];
-  BRANDS.forEach(b=>{ (b.collections||[]).forEach(c=>{
-    const id=`${b.id}::${c.name}`;
-    if(favs.has(id)) favColls.push({b,c,id});
+  let favModels=[];
+  BRANDS.forEach(b=>{ (b.collections||[]).forEach((c,idx)=>{
+    if(favs.has(`${b.id}::${c.name}`)) favColls.push({b,c,idx});
+    c.models.forEach(m=>{
+      if(favs.has(`${b.id}::${c.name}::${m.name}`)) favModels.push({b,c,m});
+    });
   });});
   if(q){
     favItems=favItems.filter(i=>i.name.toLowerCase().includes(q));
     favColls=favColls.filter(({c})=>c.name.toLowerCase().includes(q));
+    favModels=favModels.filter(({m})=>m.name.toLowerCase().includes(q));
   }
-  const total=favItems.length+favColls.length;
+  const total=favItems.length+favColls.length+favModels.length;
   document.getElementById('main').innerHTML = `
     <div class="section-head">
       <div><h1>Favorites</h1><p>Saved on this device — tap the heart on any tile to add or remove.</p></div>
@@ -651,8 +861,9 @@ function renderFavorites(q){
     </div>
     <div class="grid item-grid">
       ${favItems.map(itemTileHTML).join('')}
-      ${favColls.map(({b,c})=>collectionTileHTML(c,b)).join('')}
-      ${total===0?'<div class="empty">Nothing saved yet — tap the heart on any collection or item to save it here.</div>':''}
+      ${favColls.map(({b,c,idx})=>collectionTileHTML(c,b,idx)).join('')}
+      ${favModels.map(({b,c,m})=>modelTileHTML(b,c,m)).join('')}
+      ${total===0?'<div class="empty">Nothing saved yet — tap the heart on any collection or model to save it here.</div>':''}
     </div>
   `;
   wireHoverFlash();
@@ -670,13 +881,61 @@ function startCycling(){
       const imgs=JSON.parse(el.dataset.images||"[]");
       if(imgs.length<2) return;
       const idx=(parseInt(el.dataset.idx||"0")+1)%imgs.length;
-      el.dataset.idx=idx;
-      const imgEl=el.querySelector('img');
-      if(imgEl) imgEl.src=imgs[idx];
+      setActiveImage(el,idx);
     });
   },1800);
 }
 function stopCycling(){ if(cycleTimer){ clearInterval(cycleTimer); cycleTimer=null; } }
+
+// Shared by auto-cycling, clicking a line/dot indicator, and swiping — keeps the tile's
+// image, data-idx, and indicator active-states all in sync regardless of what triggered it.
+function setActiveImage(tileEl,idx){
+  if(!tileEl) return;
+  const imgs=JSON.parse(tileEl.dataset.images||"[]");
+  if(imgs.length===0) return;
+  idx=((idx%imgs.length)+imgs.length)%imgs.length;
+  tileEl.dataset.idx=idx;
+  const imgEl=tileEl.querySelector('img');
+  if(imgEl) imgEl.src=imgs[idx];
+  tileEl.querySelectorAll(':scope > .tile-lines .seg').forEach((s,i)=>s.classList.toggle('active',i===idx));
+  tileEl.querySelectorAll(':scope > .bottom .swatches .dot[data-idx]').forEach(d=>{
+    d.classList.toggle('active', parseInt(d.dataset.idx)===idx);
+  });
+}
+
+function lineIndicatorsHTML(count){
+  if(count<2) return '';
+  let segs='';
+  for(let i=0;i<count;i++){
+    segs+=`<span class="seg ${i===0?'active':''}" onclick="event.stopPropagation(); setActiveImage(this.closest('.cycle-tile'), ${i});"></span>`;
+  }
+  return `<div class="tile-lines">${segs}</div>`;
+}
+
+// Swipe left/right on a tile (phone) advances/reverses its carousel, same as clicking
+// a line/dot indicator would on desktop. A tap that doesn't move stays a normal click.
+function wireSwipe(){
+  document.querySelectorAll('.cycle-tile').forEach(tile=>{
+    if(tile.dataset.swipeWired) return;
+    tile.dataset.swipeWired='1';
+    let startX=0,startY=0,dragging=false;
+    tile.addEventListener('touchstart', e=>{
+      startX=e.touches[0].clientX; startY=e.touches[0].clientY; dragging=false;
+    },{passive:true});
+    tile.addEventListener('touchmove', e=>{
+      const dx=e.touches[0].clientX-startX, dy=e.touches[0].clientY-startY;
+      if(Math.abs(dx)>10 && Math.abs(dx)>Math.abs(dy)) dragging=true;
+    },{passive:true});
+    tile.addEventListener('touchend', e=>{
+      if(!dragging) return;
+      const dx=e.changedTouches[0].clientX-startX;
+      if(Math.abs(dx)<30) return;
+      const idx=parseInt(tile.dataset.idx||"0");
+      setActiveImage(tile, dx<0?idx+1:idx-1);
+      e.preventDefault();
+    });
+  });
+}
 
 // Pads an incomplete last row with invisible white filler cells so the grid's
 // black background-as-hairline technique doesn't show through as a stray box.
@@ -702,6 +961,7 @@ window.addEventListener('resize', ()=>{
 });
 
 function wireHoverFlash(){
+  wireSwipe();
   document.querySelectorAll('.tile[data-brand]').forEach(el=>{
     el.addEventListener('mouseenter', ()=>{
       const b=el.dataset.brand;
@@ -795,8 +1055,9 @@ function renderBrandDetail(brandId,q){
 }
 
 function collectionsSectionHTML(b,q){
+  if(state.collection!==null) return modelGridHTML(b,state.collection);
   const collCats=[...new Set(b.collections.flatMap(c=>c.cat))];
-  let list=b.collections;
+  let list=b.collections.map((c,i)=>({...c,_idx:i}));
   if(state.collCatFilter) list=list.filter(c=>c.cat.includes(state.collCatFilter));
   if(q) list=list.filter(c=>c.name.toLowerCase().includes(q));
   return `
@@ -805,21 +1066,48 @@ function collectionsSectionHTML(b,q){
   `;
 }
 
-function collectionTileHTML(c,b){
-  const m=c.models[0];
+function collectionTileHTML(c,b,idxOverride){
   const favId=`${b.id}::${c.name}`;
-  const imgs=c.models.map((mm,i)=>imgUrl(`${c.name}-${i}`,500,500));
+  const idx=idxOverride!==undefined?idxOverride:c._idx;
+  const clickJs=idxOverride!==undefined?`openBrandCollection('${b.id}',${idx})`:`openCollection(${idx})`;
+  const imgs=c.models.map(m=>m.colors[0]?.img).filter(Boolean);
+  if(imgs.length===0) imgs.push(imgUrl(c.name,500,500));
   return `
-    <div class="tile cycle-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${m.link}','_blank')">
+    <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="${clickJs}">
+      ${lineIndicatorsHTML(imgs.length)}
       ${favBtnHTML(favId)}
       <img src="${imgs[0]}" alt="${c.name}">
       <div class="overlay"></div>
       <div class="bottom">
-        <div class="i-cat">${c.cat.join(' · ')}</div>
+        <div class="i-cat">${c.cat.join(' · ')} · ${c.models.length} model${c.models.length===1?'':'s'}</div>
         <div class="coll-name-tag">${c.name}</div>
-        <div class="swatches">${m.colors.length
-          ? m.colors.map(col=>`<span class="dot" style="background:${colorHex(col)}"></span>`).join('')
-          : `<span style="color:#fff;font-size:9px;letter-spacing:.04em;opacity:.75;">COLORS TBD</span>`}</div>
+      </div>
+    </div>`;
+}
+
+function modelGridHTML(b,collIdx){
+  const c=b.collections[collIdx];
+  return `
+    <button class="back" onclick="backToCollections()">← ${b.name} collections</button>
+    <div class="grid item-grid">${c.models.map(m=>modelTileHTML(b,c,m)).join('') || emptyHTML()}</div>
+  `;
+}
+
+function modelTileHTML(b,c,m){
+  const imgs=m.colors.map(col=>col.img);
+  if(imgs.length===0) imgs.push(imgUrl(m.name,500,500));
+  const favId=`${b.id}::${c.name}::${m.name}`;
+  return `
+    <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${c.link}','_blank')">
+      ${favBtnHTML(favId)}
+      <img src="${imgs[0]}" alt="${m.name}">
+      <div class="overlay"></div>
+      <div class="bottom">
+        <div class="i-cat">${c.name}</div>
+        <div class="coll-name-tag">${m.name}</div>
+        <div class="swatches">${m.colors.map((col,i)=>col.pal
+          ? `<span class="dot ${i===0?'active':''}" data-idx="${i}" style="background:${colorHex(col.pal)}" onclick="event.stopPropagation(); setActiveImage(this.closest('.cycle-tile'), ${i});"></span>`
+          : '').join('')}</div>
       </div>
     </div>`;
 }
