@@ -15,7 +15,7 @@
   body{background:var(--bg); color:var(--ink); font-family:'Space Grotesk',sans-serif; -webkit-font-smoothing:antialiased;}
   .caps{text-transform:uppercase; letter-spacing:.04em;}
 
-  header.top{position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:2px solid var(--ink);}
+  header.top{position:sticky; top:0; z-index:40; background:var(--bg); border-bottom:1px solid var(--ink);}
   .top-inner{max-width:1200px; margin:0 auto; padding:16px 20px; display:flex; align-items:center; justify-content:space-between; gap:16px;}
   .wordmark{display:flex; align-items:baseline; gap:8px; cursor:pointer;}
   .wordmark .mark{width:24px;height:24px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex:none;}
@@ -23,24 +23,24 @@
   .wordmark .sub{font-size:10.5px; color:var(--grey); letter-spacing:.1em; text-transform:uppercase; display:none;}
   @media(min-width:640px){.wordmark .sub{display:inline;}}
 
-  nav.tabs{display:flex; gap:0; border:1.5px solid var(--ink);}
-  nav.tabs button{border:none; background:#fff; padding:8px 14px; font-family:inherit; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; cursor:pointer; color:var(--ink); border-right:1.5px solid var(--ink);}
+  nav.tabs{display:flex; gap:0; border:1px solid var(--ink);}
+  nav.tabs button{border:none; background:#fff; padding:8px 14px; font-family:inherit; font-size:11.5px; letter-spacing:.05em; text-transform:uppercase; cursor:pointer; color:var(--ink); border-right:1px solid var(--ink);}
   nav.tabs button:last-child{border-right:none;}
   nav.tabs button.active{background:var(--ink); color:#fff;}
 
   .search-wrap{display:none;}
   @media(min-width:860px){.search-wrap{display:block;}}
-  .search-wrap input{border:1.5px solid var(--ink); background:#fff; padding:7px 10px; font-family:inherit; font-size:11.5px; width:170px; color:var(--ink);}
+  .search-wrap input{border:1px solid var(--ink); background:#fff; padding:7px 10px; font-family:inherit; font-size:11.5px; width:170px; color:var(--ink);}
 
   main{max-width:1200px; margin:0 auto; padding:22px 20px 90px;}
 
   .section-head{display:flex; align-items:baseline; justify-content:space-between; margin:6px 0 18px; flex-wrap:wrap; gap:8px;}
   .section-head h1{font-size:26px; margin:0; font-weight:700; letter-spacing:.01em;}
   .section-head p{margin:3px 0 0; color:var(--grey); font-size:12.5px;}
-  .count-pill{font-size:10.5px; border:1.5px solid var(--ink); padding:3px 9px; text-transform:uppercase; letter-spacing:.05em;}
+  .count-pill{font-size:10.5px; border:1px solid var(--ink); padding:3px 9px; text-transform:uppercase; letter-spacing:.05em;}
 
-  .chips{display:flex; gap:0; flex-wrap:wrap; margin-bottom:20px; border-top:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
-  .chip{border:none; border-right:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink); background:#fff; color:var(--ink); font-family:inherit; font-size:11px; padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.04em;}
+  .chips{display:flex; gap:0; flex-wrap:wrap; margin-bottom:20px; border-top:1px solid var(--ink); border-left:1px solid var(--ink);}
+  .chip{border:none; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); background:#fff; color:var(--ink); font-family:inherit; font-size:11px; padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.04em;}
   .chip.active{background:var(--ink); color:#fff;}
   .chip .dot{width:9px;height:9px;border-radius:50%;display:inline-block; border:1px solid rgba(0,0,0,.25);}
 
@@ -71,7 +71,7 @@
   .fav-btn svg path{fill:none; stroke:#fff; stroke-width:1.6; transition:fill .15s ease;}
   .fav-btn:hover svg path{fill:#fff;}
   .fav-btn.faved svg path{fill:#fff;}
-  .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1.5px solid var(--ink); padding:5px 9px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-top:5px;}
+  .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1px solid var(--ink); padding:5px 9px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-top:5px;}
 
   /* product photography tiles (collections/models): full photo visible (no crop), no dark
      gradient — labels sit top-left (out of the photo's way), indicators sit bottom-left,
@@ -101,46 +101,46 @@
   .back{display:inline-flex; align-items:center; gap:6px; background:none; border:none; font-family:inherit; color:var(--ink); font-size:11.5px; cursor:pointer; padding:0; margin-bottom:16px; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
   /* plain flexbox (not grid) so the tall Stockist column can't inflate the logo/text/bio row heights above it;
      stockist is a fixed 1/3 of the full row; logo is always square, sized via JS to match the text column's height */
-  .brand-detail-head{display:flex; align-items:stretch; margin-bottom:20px; border:1.5px solid var(--ink);}
+  .brand-detail-head{display:flex; align-items:stretch; margin-bottom:20px; border:1px solid var(--ink);}
   .bdh-left{display:flex; flex-direction:column; flex:0 0 66.667%; min-width:0;}
   .bdh-top{display:flex;}
   .bdh-logo{width:140px; height:140px; aspect-ratio:1/1; flex:none; display:flex; align-items:center; justify-content:center; background:#fff;}
   .bdh-logo img{max-width:78%; max-height:78%; object-fit:contain;}
   .bdh-logo .mark-fallback{width:36%; height:36%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:21px; font-weight:700;}
-  .bdh-text{flex:1; min-width:0; padding:14px 18px; border-left:1.5px solid var(--ink);}
+  .bdh-text{flex:1; min-width:0; padding:14px 18px; border-left:1px solid var(--ink);}
   .bdh-text .origin{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px;}
   .bdh-text h1{font-size:23px; margin:0 0 6px; font-weight:700; text-transform:uppercase;}
   .bdh-text p{font-size:12.5px; color:#333; max-width:520px; margin:0 0 10px; line-height:1.5;}
-  .site-link{font-size:12px; color:var(--ink); border-bottom:1.5px solid var(--ink); text-decoration:none; padding-bottom:1px; font-weight:600; text-transform:uppercase; letter-spacing:.03em;}
+  .site-link{font-size:12px; color:var(--ink); border-bottom:1px solid var(--ink); text-decoration:none; padding-bottom:1px; font-weight:600; text-transform:uppercase; letter-spacing:.03em;}
   .verify{font-size:9.5px; color:var(--grey); margin-left:8px; text-transform:none; letter-spacing:0;}
   .social-links{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;}
-  .social-links a{font-size:10px; border:1.5px solid var(--ink); padding:5px 9px; text-decoration:none; color:var(--ink); text-transform:uppercase; letter-spacing:.04em; font-weight:600; display:inline-flex; align-items:center; gap:4px;}
+  .social-links a{font-size:10px; border:1px solid var(--ink); padding:5px 9px; text-decoration:none; color:var(--ink); text-transform:uppercase; letter-spacing:.04em; font-weight:600; display:inline-flex; align-items:center; gap:4px;}
   .social-links a:hover{background:var(--ink); color:#fff;}
-  .bdh-bio{padding:14px 18px; border-top:1.5px solid var(--ink);}
+  .bdh-bio{padding:14px 18px; border-top:1px solid var(--ink);}
   .bdh-bio .bio{font-size:12px; color:#333; line-height:1.55; margin:0;}
-  .bdh-side{flex:0 0 33.333%; min-width:0; padding:14px 18px; border-left:1.5px solid var(--ink);}
+  .bdh-side{flex:0 0 33.333%; min-width:0; padding:14px 18px; border-left:1px solid var(--ink);}
   @media(max-width:720px){
     .brand-detail-head{flex-direction:column;}
     .bdh-left{flex:none; width:100%;}
     .bdh-logo{align-self:center; width:110px; height:110px; margin:0 14px;}
-    .bdh-side{flex:none; border-left:none; border-top:1.5px solid var(--ink);}
+    .bdh-side{flex:none; border-left:none; border-top:1px solid var(--ink);}
   }
   .stockist-label{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; display:block;}
   .stockist-list{max-height:280px; overflow-y:auto; border-top:1px solid #ddd;}
   .stockist-item{display:flex; align-items:baseline; justify-content:space-between; gap:10px; font-size:12px; padding:6px 0; border-bottom:1px solid #eee;}
   .stockist-item .s-place{color:var(--ink);}
   .stockist-item .s-city{color:var(--grey); font-size:10px; text-transform:uppercase; letter-spacing:.04em; margin-right:5px;}
-  .stockist-item a{color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--ink); padding-bottom:1px; white-space:nowrap; font-weight:600;}
+  .stockist-item a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:1px; white-space:nowrap; font-weight:600;}
   .stockist-empty{font-size:11.5px; color:var(--grey);}
 
   .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
   .modal-bg.open{display:flex;}
   @media(min-width:720px){.modal-bg{align-items:center;}}
-  .modal{background:#fff; width:100%; max-width:620px; max-height:92vh; overflow-y:auto; border:2px solid var(--ink); border-bottom:none;}
-  @media(min-width:720px){.modal{border-bottom:2px solid var(--ink);}}
-  .modal .mimg{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1.5px solid var(--ink);}
+  .modal{background:#fff; width:100%; max-width:620px; max-height:92vh; overflow-y:auto; border:1px solid var(--ink); border-bottom:none;}
+  @media(min-width:720px){.modal{border-bottom:1px solid var(--ink);}}
+  .modal .mimg{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1px solid var(--ink);}
   .modal .mbody{padding:20px 22px 26px; position:relative;}
-  .modal-close{position:absolute; top:-42px; right:0; background:#fff; border:1.5px solid var(--ink); width:34px; height:34px; cursor:pointer; font-size:17px; line-height:1;}
+  .modal-close{position:absolute; top:-42px; right:0; background:#fff; border:1px solid var(--ink); width:34px; height:34px; cursor:pointer; font-size:17px; line-height:1;}
   .modal .cat{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--grey);}
   .modal h2{font-size:22px; font-weight:700; margin:6px 0 2px; text-transform:uppercase;}
   .modal .brand-line{font-size:12.5px; color:var(--grey); margin-bottom:14px; text-transform:uppercase; letter-spacing:.03em;}
@@ -149,8 +149,8 @@
   .modal .row strong{display:flex; gap:6px; align-items:center; color:var(--ink); font-weight:600; font-size:13px; margin-top:4px;}
   .modal .actions{display:flex; gap:10px; margin-top:18px; flex-wrap:wrap;}
   .btn{font-family:inherit; font-size:11.5px; padding:11px 16px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.05em; font-weight:600;}
-  .btn.primary{background:var(--ink); color:#fff; border:1.5px solid var(--ink);}
-  .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink);}
+  .btn.primary{background:var(--ink); color:#fff; border:1px solid var(--ink);}
+  .btn.ghost{background:transparent; color:var(--ink); border:1px solid var(--ink);}
 
   .empty{grid-column:1/-1; background:#fff; padding:60px 10px; text-align:center; color:var(--grey); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em;}
   .footnote{margin-top:30px; font-size:11px; color:var(--grey); border-top:1px solid #ddd; padding-top:14px; line-height:1.6;}
@@ -163,7 +163,6 @@
     <div class="wordmark" onclick="goHome()">
       <span class="mark">B</span>
       <span class="name">BrandBook</span>
-      <span class="sub">non-chinese brand book</span>
     </div>
     <nav class="tabs">
       <button class="tab-btn active" data-tab="brands">Brands</button>
@@ -190,26 +189,125 @@ const PALETTE = {
   Taupe:"#8A7F73", Rose:"#D8A8A0", Slate:"#4A5560", Copper:"#B26A3E", Mint:"#A8C0B0",
   Mustard:"#C99A3B", Burgundy:"#5E2430"
 };
-const CATALOGS = ["Sofa","Lounge Chair","Bed","Dining Table","Side Table","Lighting","Storage","Rug","Mirror","Decor","Tableware","Cart","Seat","Table","Outdoor"];
+const CATALOGS = ["Sofa","Seating","Bed","Tables","Tables","Lighting","Storage","Rug","Mirror","Decor","Tableware","Cart","Seating","Tables","Outdoor"];
 
 // Brand + item data pulled from the uploaded MJ inventory sheet (real names/materials/SKUs).
 // "verify" flags brands whose exact official domain needs a final check.
 const BRANDS = [
  {id:"anglepoise",name:"Anglepoise",origin:"UK",site:"https://www.anglepoise.com",items:[
-   ["75 Floor Lamp","Lighting",["Grey"]],["75 Mini Lamp","Lighting",["Navy"]]]},
+      ["90 Mini Mini Desk Lamp", "Lighting", ["Avocado Green", "Carbon Black", "Jasmine White", "Kelp Green", "Steel Blue", "Sunburnt Orange", "Turquoise Blue"]],
+      ["Original 1227 Brass Desk Lamp", "Lighting", ["Elephant Grey", "Ink Blue", "Jet Black"]],
+      ["Original 1227 Brass Maxi Pendant", "Lighting", ["2", "Elephant Grey", "Maxi"]],
+      ["Original 1227 Brass Midi Pendant", "Lighting", ["Elephant Grey", "Ink Blue", "Jet Black"]],
+      ["Original 1227 Brass Pendant", "Lighting", ["Elephant Grey", "Ink Blue"]],
+      ["Original 1227 Brass Wall Light", "Lighting", ["Elephant Grey", "Ink Blue", "Jet Black"]],
+      ["Original 1227 Clamp Lamp", "Lighting", ["Bright Chrome", "Dove Grey", "Jet Black", "Linen White"]],
+      ["Original 1227 Desk Lamp", "Lighting", ["Bright Chrome", "Coral Red", "Dove Grey", "Jet Black", "Linen White", "National Trust Buttermilk Yellow", "National Trust Neptune Blue", "National Trust Sage Green"]],
+      ["Original 1227 Floor Lamp", "Lighting", ["Dove Grey", "Jet Black", "Linen White", "National Trust"]],
+      ["Original 1227 Giant Floor Lamp", "Lighting", ["Alpine White", "Citrus Yellow", "Crimson Red", "Giant Alpine White", "Giant Jet Black Matt", "Giant Jet Black Satin", "Giant Slate Grey", "Jet Black Matt", "Jet Black Satin", "Marine Blue", "Slate Grey"]],
+      ["Original 1227 Giant Pendant", "Lighting", ["Alpine White", "Citrus Yellow", "Crimson Red", "Giant Alpine White", "Giant Jet Black", "Giant Jet Black Satin", "Giant Slate Grey", "Jet Black", "Jet Black Satin", "Marine Blue", "Slate Grey"]],
+      ["Original 1227 Midi Brass Pendant", "Lighting", ["Ink Blue"]],
+      ["Original 1227 Midi Pendant", "Lighting", ["2", "Jet Black", "Linen White"]],
+      ["Original 1227 Midi Wide Brass Pendant", "Lighting", ["Elephant Grey", "Ink Blue", "Jet Black"]],
+      ["Original 1227 Mini Ceramic Table Lamp", "Lighting", ["Pure White"]],
+      ["Original 1227 Mini Ceramic Wall Light", "Lighting", ["Pure White"]],
+      ["Original 1227 Mini Clamp Lamp", "Lighting", ["Dove Grey", "Jet Black", "Linen White"]],
+      ["Original 1227 Mini Desk Lamp", "Lighting", ["Dove Grey", "Jet Black", "Linen White"]],
+      ["Original 1227 Mini Table Lamp", "Lighting", ["Canary Yellow", "Dove Grey", "Jet Black", "Linen White", "National Trust"]],
+      ["Original 1227 Mini Wall Light", "Lighting", ["Dove Grey", "Jet Black", "Linen White"]],
+      ["Original 1227 Pendant", "Lighting", ["Dove Grey", "Linen White"]],
+      ["Original 1227 Wall Light", "Lighting", ["Dove Grey", "Jet Black", "Linen White"]],
+      ["Type 75 Clamp Lamp", "Lighting", ["Alpine White", "Jet Black", "Silver Luster", "Slate Grey"]],
+      ["Type 75 Desk Lamp", "Lighting", ["Alpine White", "Jet Black", "Margaret Howell Saxon Blue", "Margaret Howell Seagrass", "Margaret Howell Sienna", "Margaret Howell Yellow Ochre", "Paul Smith Edition 1", "Paul Smith Edition 3", "Paul Smith Edition 4", "Paul Smith Edition 5", "Paul Smith Edition 6", "Silver Lustre", "Slate Grey"]],
+      ["Type 75 Floor Lamp", "Lighting", ["Alpine White", "Floor Standing Lamp Graphite Grey", "Jet Black", "Margaret Howell Saxon Blue", "Margaret Howell Sienna", "Margaret Howell Yellow Ochre", "Paul Smith Edition", "Paul Smith Edition 1", "Paul Smith Edition 3", "Paul Smith Edition 4", "Paul Smith Edition 5", "Paul Smith Edition 6", "Silver Lustre", "Slate Grey"]],
+      ["Type 75 Mini Clamp Lamp", "Lighting", ["Alpine White", "Jet Black", "Slate Grey"]],
+      ["Type 75 Mini Desk Lamp", "Lighting", ["Alpine White", "Fresh Green", "Jet Black", "Metallic Bronze", "Orange Zest", "Paul Smith Edition 1", "Paul Smith Edition 2", "Paul Smith Edition 3", "Paul Smith Edition 4", "Paul Smith Edition 5", "Paul Smith Edition 6", "Slate Grey"]],
+      ["Type 75 Mini Table Lamp", "Lighting", ["Black Umber", "Mole Grey", "Turmeric Gold"]],
+      ["Type 75 Mini Wall Light", "Lighting", ["Alpine White", "Black", "Margaret Howell Saxon Blue", "Margaret Howell Sienna", "Margaret Howell Yellow Ochre", "Slate Grey"]],
+      ["Type 75 Wall Light", "Lighting", ["Alpine White", "Jet Black"]],
+      ["Type 80 Pendant", "Lighting", ["Grey Mist", "Matte Black", "Matte Black Opal Glass", "Pistachio Green", "Rose Pink"]],
+      ["Type 80 Table Lamp", "Lighting", ["Grey Mist", "Matte Black", "Pistachio Green", "Rose Pink"]],
+      ["Type 80 Wall Light", "Lighting", ["Grey Mist", "Matte Black", "Matte Black Opal Glass", "Pistachio Green"]]
+]},
  {id:"anonimacastelli",name:"Anonima Castelli",origin:"Italy",site:"https://www.anonimacastelli.com",verify:1,items:[
-   ["Alky Armchair","Lounge Chair",["Silver","Marble"]],["DSC106 Chair","Lounge Chair",["Yellow","Navy"]]]},
- {id:"arflex",name:"Arflex",origin:"Italy",site:"https://www.arflex.it",items:[
-    ["Marenco Sofa","Sofa",["Sand", "Charcoal", "Cream"],"https://www.arflex.it/us/en/marenco"],
-    ["Strips Sofa","Sofa",["Terracotta", "Charcoal", "Blue"],"https://www.arflex.it/us/en/strips"],
-    ["Botolo Armchair","Lounge Chair",["Sand", "Black", "Yellow"],"https://www.arflex.it/us/en/botolo-low-version"],
-    ["Casablanca Sofa","Sofa",["Sand", "Brown"],"https://www.arflex.it/us/en/casablanca"],
-    ["Claudine Sofa","Sofa",["Grey", "Cream"],"https://www.arflex.it/us/en/claudine-m"],
-    ["Cradle Armchair","Lounge Chair",["Deep Slate", "Charcoal"],"https://www.arflex.it/us/en/deep-cradle"]
+    ["Plia Chair","Seating",["Chrome", "Clear", "Straw", "Smoke", "Rose"],"https://www.anonimacastelli.com/products/plia-in-paglia-di-vienna"],
+    ["DSC 106 Chair","Seating",["Faggio", "Black", "Red", "Green", "Oak"],"https://www.anonimacastelli.com/products/dsc-106s"],
+    ["Alky Armchair","Seating",["Grey", "Red", "Yellow", "Blue", "Green"],"https://www.anonimacastelli.com/products/alky-1"],
+    ["Auriga Desk","Tables",["Black", "Wood", "Chrome"],"https://www.anonimacastelli.com/products/tavolo-auriga"]
   ]},
+ {id:"arflex",name:"Arflex",origin:"Italy",site:"https://www.arflex.it",items:[
+     ["Marenco Sofa","Sofa",["Sand", "Charcoal", "Cream"],"https://www.arflex.it/us/en/marenco"],
+     ["Marenco Armchair","Seating",["Sand", "Charcoal", "Olive"],"https://www.arflex.it/us/en/marenco-armchair"],
+     ["Strips Sofa","Sofa",["Terracotta", "Charcoal", "Blue"],"https://www.arflex.it/us/en/strips"],
+     ["Strips Armchair","Seating",["Terracotta", "Charcoal", "Blue"],"https://www.arflex.it/us/en/strips-77"],
+     ["Botolo Armchair","Seating",["Sand", "Black", "Yellow"],"https://www.arflex.it/us/en/botolo-low-version"],
+     ["Casablanca Sofa","Sofa",["Sand", "Brown"],"https://www.arflex.it/us/en/casablanca"],
+     ["Claudine Sofa","Sofa",["Grey", "Cream"],"https://www.arflex.it/us/en/claudine-m"],
+     ["Cradle Armchair","Seating",["Deep Slate", "Charcoal"],"https://www.arflex.it/us/en/deep-cradle"],
+     ["Cradle Sofa","Sofa",["Deep Slate", "Charcoal", "Rust"],"https://www.arflex.it/us/en/cradle-sofa"],
+     ["Pecorelle Armchair","Seating",["Cream", "Grey", "Black"],"https://www.arflex.it/us/en/pecorelle-armchair"],
+     ["Pecorelle Sofa","Sofa",["Cream", "Grey", "Rose"],"https://www.arflex.it/us/en/pecorelle"],
+     ["Delfino Armchair","Seating",["Mustard", "Blue", "Charcoal"],"https://www.arflex.it/us/en/delfino"],
+     ["Fiorenza Armchair","Seating",["Red", "Green", "Grey"],"https://www.arflex.it/us/en/fiorenza"],
+     ["Elettra Armchair","Seating",["Grey", "Blue", "Cream"],"https://www.arflex.it/us/en/elettra-armchair"],
+     ["Hall Armchair","Seating",["Brown", "Charcoal", "Mustard"],"https://www.arflex.it/us/en/hall-armchair"],
+     ["Hall Sofa","Sofa",["Brown", "Charcoal", "Cream"],"https://www.arflex.it/us/en/hall"],
+     ["Boborelax Armchair","Seating",["Red", "Yellow", "Grey"],"https://www.arflex.it/us/en/boborelax"],
+     ["Bobo Armchair","Seating",["Red", "Yellow", "Blue"],"https://www.arflex.it/us/en/bobo-sofa"],
+     ["Hug Armchair","Seating",["Orange", "Grey", "Cream"],"https://www.arflex.it/us/en/hug-low-version"],
+     ["Hug Sofa","Sofa",["Orange", "Grey", "Cream"],"https://www.arflex.it/us/en/hug-love-seat"],
+     ["Arcolor Sofa","Sofa",["Green", "Charcoal", "Beige"],"https://www.arflex.it/us/en/arcolor"],
+     ["Ben Ben Sofa","Sofa",["Blue", "Grey", "Cream"],"https://www.arflex.it/us/en/ben-ben"],
+     ["Cousy Sofa","Sofa",["Grey", "Brown", "Blue"],"https://www.arflex.it/us/en/cousy"],
+     ["Naviglio Sofa","Sofa",["Sand", "Charcoal", "Green"],"https://www.arflex.it/us/en/naviglio"],
+     ["Tokio Sofa","Sofa",["Cream", "Charcoal", "Blue"],"https://www.arflex.it/us/en/tokio"],
+     ["9000 Sofa","Sofa",["Red", "Grey", "Mustard"],"https://www.arflex.it/us/en/9000"],
+     ["9000 Armchair","Seating",["Red", "Grey", "Mustard"],"https://www.arflex.it/us/en/9000-armchair"],
+     ["Brigitte Armchair","Seating",["Cream", "Charcoal", "Olive"],"https://www.arflex.it/us/en/brigitte"],
+     ["Yuzu Armchair","Seating",["Yellow", "Grey", "Green"],"https://www.arflex.it/us/en/yuzu"],
+     ["Jules Armchair","Seating",["Blue", "Grey", "Orange"],"https://www.arflex.it/us/en/jules"]
+   ]},
  {id:"artemide",name:"Artemide",origin:"Italy",site:"https://www.artemide.com",items:[
-   ["Falkland Floor Lamp","Lighting",["White"]],["Stellar Nebula Floor Lamp","Lighting",["Charcoal"]],
-   ["Parchment Pendant 36cm","Lighting",["Sand"]],["Micro Table Lamp","Lighting",["Silver"]]]},
+    ["Tolomeo Table Lamp","Lighting",["Silver", "Black", "White"],"https://www.artemide.com/en/products/design#tolomeo"],
+    ["Empatia Table Lamp","Lighting",["Glass", "White"],"https://www.artemide.com/en/products/design#1548099/empatia"],
+    ["Gople Table Lamp","Lighting",["Bronze", "Copper", "Blue", "White", "Silver"],"https://www.artemide.com/en/subfamily/4746401/gople-system"],
+    ["Alphabet of Light","Lighting",["White"],"https://www.artemide.com/en/subfamily/4746318/alphabet-of-light-system"],
+    ["Discovery Pendant","Lighting",["Silver", "Black", "Bronze"],"https://www.artemide.com/en/subfamily/4746461/discovery-dialogue"],
+    ["Castore Table Lamp","Lighting",["White"],"https://www.artemide.com/en/products/design#22810/castore"],
+    ["Eclisse Table Lamp","Lighting",["Orange", "White", "Red", "Yellow"],"https://www.artemide.com/en/subfamily/32542/eclisse"],
+    ["Teti Ceiling Lamp","Lighting",["Orange", "White", "Dark Grey", "Clear"],"https://www.artemide.com/en/subfamily/21098/teti"],
+    ["Nesso Table Lamp","Lighting",["Orange", "White"],"https://www.artemide.com/en/subfamily/32705/nesso"],
+    ["Nessino Table Lamp","Lighting",["Orange", "White", "Red", "Yellow"],"https://www.artemide.com/en/subfamily/23264/nessino"],
+    ["Ixa Table Lamp","Lighting",["Black", "Yellow", "Red", "White", "Blue"],"https://www.artemide.com/en/subfamily/4746414/ixa"],
+    ["Skydro Ceiling Lamp","Lighting",["Chrome"],"https://www.artemide.com/en/subfamily/60628/skydro"],
+    ["Cosmic Leaf Pendant","Lighting",["Chrome", "Clear"],"https://www.artemide.com/en/subfamily/63280/cosmic-leaf"],
+    ["Mercury Pendant","Lighting",["Chrome"],"https://www.artemide.com/en/products/design?page=2&size=32&loadPrevious=true&series=0&appOnly=false#39485/mercury"],
+    ["Falkland Pendant","Lighting",["White"],"https://www.artemide.com/en/products/design?page=1&size=32&loadPrevious=true&series=0&appOnly=false#4702902/falkland"],
+    ["In-Ei Issey Miyake Lamp","Lighting",["White"],"https://www.artemide.com/en/products/design?page=1&size=32&loadPrevious=true&series=0&appOnly=false#2109879/in-ei-issey-miyake"],
+    ["Alcinoo Lamp","Lighting",["Clear", "Grey"],"https://www.artemide.com/en/subfamily/4746482/alcinoo"],
+    ["Alambicco Lamp","Lighting",["Glass"],"https://www.artemide.com/en/subfamily/4746464/alambicco"],
+    ["Alfa Table Lamp","Lighting",["Glass", "Black", "Gold"],"https://www.artemide.com/en/subfamily/31923/alfa"],
+    ["Boltons Lamp","Lighting",["Glass", "Chrome"],"https://www.artemide.com/en/subfamily/4746466/boltons"],
+    ["Bonta Table Lamp","Lighting",["Red", "Amber", "Green", "Grey"],"https://www.artemide.com/en/subfamily/4746403/bonta"],
+    ["Chimera Floor Lamp","Lighting",["White"],"https://www.artemide.com/en/subfamily/31959/chimera"],
+    ["Criosfera Lamp","Lighting",["Clear"],"https://www.artemide.com/en/subfamily/4746462/criosfera"],
+    ["Iperbole Lamp","Lighting",["Clear", "Chrome"],"https://www.artemide.com/en/subfamily/4746507/iperbole"],
+    ["Laguna Table Lamp","Lighting",["Glass", "Bronze"],"https://www.artemide.com/en/subfamily/3498498/laguna-tavolo"],
+    ["Lesbo Table Lamp","Lighting",["Glass", "White"],"https://www.artemide.com/en/subfamily/32664/lesbo"],
+    ["Metacolor Lamp","Lighting",["Clear", "RGB"],"https://www.artemide.com/en/subfamily/32071/metacolor"],
+    ["Mezzachimera Lamp","Lighting",["White"],"https://www.artemide.com/en/subfamily/31994/mezzachimera"],
+    ["Miconos Lamp","Lighting",["Glass", "Chrome", "Gold"],"https://www.artemide.com/en/subfamily/19123/miconos"],
+    ["Onfale Table Lamp","Lighting",["Glass", "White"],"https://www.artemide.com/en/subfamily/21586/onfale"],
+    ["Silent Field Lamp","Lighting",["White", "Black", "Orange", "Grey"],"https://www.artemide.com/en/subfamily/3392064/silent-field-2-0"],
+    ["Sisifo Table Lamp","Lighting",["White", "Black"],"https://www.artemide.com/en/subfamily/2277128/sisifo"],
+    ["Stablight Pendant","Lighting",["Brown", "Green", "Amber", "Blue"],"https://www.artemide.com/en/subfamily/4048460/stablight"],
+    ["Stellar Nebula Pendant","Lighting",["Glass", "Iridescent"],"https://www.artemide.com/en/subfamily/4746418/stellar-nebula"],
+    ["Zephyr Pendant","Lighting",["Glass", "Silver"],"https://www.artemide.com/en/subfamily/4746437/zephyr"],
+    ["Patroclo Lamp","Lighting",["Glass", "Metal"],"https://www.artemide.com/en/subfamily/32768/patroclo"],
+    ["Tempio Lamp","Lighting",["Black", "Bronze"],"https://www.artemide.com/en/subfamily/4401627/tempio"],
+    ["Vea Table Lamp","Lighting",["White", "Black"],"https://www.artemide.com/en/products/design?page=4&size=32&loadPrevious=true&series=0&appOnly=false#4746353/vea"],
+    ["Mouette Pendant","Lighting",["White"],"https://www.artemide.com/en/subfamily/1583738/mouette"]
+  ]},
  {id:"andtradition",name:"&Tradition",origin:"Denmark",site:"https://www.andtradition.com",
    bio:"Danish design house founded in 2010, pairing archival reissues of overlooked 20th-century Scandinavian pieces with new work from contemporary designers.",
    social:{
@@ -328,7 +426,7 @@ const BRANDS = [
        {name:"Thorvald SC98",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc98/0.jpg",pal:"Copper"},{img:"images/andtradition/thorvald-collection/thorvald-sc98/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc98/2.jpg",pal:"Black"}]},
        {name:"Thorvald SC99",colors:[{img:"images/andtradition/thorvald-collection/thorvald-sc99/0.jpg",pal:"Black"},{img:"images/andtradition/thorvald-collection/thorvald-sc99/1.jpg",pal:"White"},{img:"images/andtradition/thorvald-collection/thorvald-sc99/2.jpg",pal:"Copper"}]}
      ]},
-     {name:"Betty Collection",cat:["Seat"],link:"https://www.andtradition.com/products/betty-tk12",models:[
+     {name:"Betty Collection",cat:["Seating"],link:"https://www.andtradition.com/products/betty-tk12",models:[
        {name:"Betty TK1",colors:[{img:"images/andtradition/betty-collection/betty-tk1/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk1/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk1/2.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk1/3.jpg",pal:"Oak"}]},
        {name:"Betty TK10",colors:[{img:"images/andtradition/betty-collection/betty-tk10/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk10/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk10/2.jpg",pal:"Black"}]},
        {name:"Betty TK11",colors:[{img:"images/andtradition/betty-collection/betty-tk11/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk11/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk11/2.jpg",pal:"Black"}]},
@@ -345,15 +443,15 @@ const BRANDS = [
        {name:"Betty TK7 TK8",colors:[{img:"images/andtradition/betty-collection/betty-tk7-tk8/0.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/1.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/2.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk7-tk8/3.jpg",pal:"Black"}]},
        {name:"Betty TK9",colors:[{img:"images/andtradition/betty-collection/betty-tk9/0.jpg",pal:"Oak"},{img:"images/andtradition/betty-collection/betty-tk9/1.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk9/2.jpg",pal:"Black"},{img:"images/andtradition/betty-collection/betty-tk9/3.jpg",pal:"Oak"}]}
      ]},
-     {name:"Boomerang Collection",cat:["Seat"],link:"https://www.andtradition.com/products/boomerang-hm2",models:[
+     {name:"Boomerang Collection",cat:["Seating"],link:"https://www.andtradition.com/products/boomerang-hm2",models:[
        {name:"Boomerang HM1",colors:[{img:"images/andtradition/boomerang-collection/boomerang-hm1/0.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/1.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/2.jpg",pal:"Walnut"},{img:"images/andtradition/boomerang-collection/boomerang-hm1/3.jpg",pal:"Walnut"}]},
        {name:"Boomerang HM2",colors:[{img:"images/andtradition/boomerang-collection/boomerang-hm2/0.jpg",pal:"Walnut"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/1.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/2.jpg",pal:"Oak"},{img:"images/andtradition/boomerang-collection/boomerang-hm2/3.jpg",pal:"Walnut"}]}
      ]},
-     {name:"Drawn Collection",cat:["Seat"],link:"https://www.andtradition.com/products/drawn-hm3",models:[
+     {name:"Drawn Collection",cat:["Seating"],link:"https://www.andtradition.com/products/drawn-hm3",models:[
        {name:"Drawn HM3",colors:[{img:"images/andtradition/drawn-collection/drawn-hm3/0.jpg",pal:"Walnut"},{img:"images/andtradition/drawn-collection/drawn-hm3/1.jpg",pal:"Oak"},{img:"images/andtradition/drawn-collection/drawn-hm3/2.jpg",pal:"Black"}]},
        {name:"Drawn HM4",colors:[{img:"images/andtradition/drawn-collection/drawn-hm4/0.jpg",pal:"Black"},{img:"images/andtradition/drawn-collection/drawn-hm4/1.jpg",pal:"Walnut"},{img:"images/andtradition/drawn-collection/drawn-hm4/2.jpg",pal:"Oak"}]}
      ]},
-     {name:"Elefy Collection",cat:["Seat"],link:"https://www.andtradition.com/products/elefy-jh35",models:[
+     {name:"Elefy Collection",cat:["Seating"],link:"https://www.andtradition.com/products/elefy-jh35",models:[
        {name:"Elefy JH28",colors:[{img:"images/andtradition/elefy-collection/elefy-jh28/0.jpg",pal:"Copper"},{img:"images/andtradition/elefy-collection/elefy-jh28/1.jpg",pal:"Sand"}]},
        {name:"Elefy JH29",colors:[{img:"images/andtradition/elefy-collection/elefy-jh29/0.jpg",pal:null}]},
        {name:"Elefy JH30",colors:[{img:"images/andtradition/elefy-collection/elefy-jh30/0.jpg",pal:"Navy"},{img:"images/andtradition/elefy-collection/elefy-jh30/1.jpg",pal:"Sand"},{img:"images/andtradition/elefy-collection/elefy-jh30/2.jpg",pal:"Copper"},{img:"images/andtradition/elefy-collection/elefy-jh30/3.jpg",pal:"White"},{img:"images/andtradition/elefy-collection/elefy-jh30/4.jpg",pal:"Black"}]},
@@ -365,7 +463,7 @@ const BRANDS = [
        {name:"Elefy JH36",colors:[{img:"images/andtradition/elefy-collection/elefy-jh36/0.jpg",pal:"Silver"},{img:"images/andtradition/elefy-collection/elefy-jh36/1.jpg",pal:"Black"}]},
        {name:"Elefy JH37",colors:[{img:"images/andtradition/elefy-collection/elefy-jh37/0.jpg",pal:"Black"}]}
      ]},
-     {name:"Fly Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/fly-sc12",models:[
+     {name:"Fly Collection",cat:["Seating","Sofa"],link:"https://www.andtradition.com/products/fly-sc12",models:[
        {name:"Fly SC1",colors:[{img:"images/andtradition/fly-collection/fly-sc1/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc1/1.jpg",pal:"Oak"}]},
        {name:"Fly SC10",colors:[{img:"images/andtradition/fly-collection/fly-sc10/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc10/1.jpg",pal:"Oak"}]},
        {name:"Fly SC11",colors:[{img:"images/andtradition/fly-collection/fly-sc11/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc11/1.jpg",pal:"Oak"}]},
@@ -376,7 +474,7 @@ const BRANDS = [
        {name:"Fly SC5",colors:[{img:"images/andtradition/fly-collection/fly-sc5/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc5/1.jpg",pal:"Oak"}]},
        {name:"Fly SC9",colors:[{img:"images/andtradition/fly-collection/fly-sc9/0.jpg",pal:"Oak"},{img:"images/andtradition/fly-collection/fly-sc9/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"Inland Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/inland-av41",models:[
+     {name:"Inland Collection",cat:["Seating","Sofa"],link:"https://www.andtradition.com/products/inland-av41",models:[
        {name:"Inland AV21",colors:[{img:"images/andtradition/inland-collection/inland-av21/0.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av21/1.jpg",pal:"Black"},{img:"images/andtradition/inland-collection/inland-av21/2.jpg",pal:"Terracotta"}]},
        {name:"Inland AV22",colors:[{img:"images/andtradition/inland-collection/inland-av22/0.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av22/1.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av22/2.jpg",pal:"Black"}]},
        {name:"Inland AV23",colors:[{img:"images/andtradition/inland-collection/inland-av23/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/2.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av23/3.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av23/4.jpg",pal:"Terracotta"},{img:"images/andtradition/inland-collection/inland-av23/5.jpg",pal:"Black"},{img:"images/andtradition/inland-collection/inland-av23/6.jpg",pal:null}]},
@@ -384,7 +482,7 @@ const BRANDS = [
        {name:"Inland AV41",colors:[{img:"images/andtradition/inland-collection/inland-av41/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av41/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av41/2.jpg",pal:null}]},
        {name:"Inland AV42",colors:[{img:"images/andtradition/inland-collection/inland-av42/0.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av42/1.jpg",pal:null},{img:"images/andtradition/inland-collection/inland-av42/2.jpg",pal:null}]}
      ]},
-     {name:"Ita Collection",cat:["Seat","Table"],link:"https://www.andtradition.com/products/ita-os1",models:[
+     {name:"Ita Collection",cat:["Seating","Tables"],link:"https://www.andtradition.com/products/ita-os1",models:[
        {name:"Ita OS1",colors:[{img:"images/andtradition/ita-collection/ita-os1/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os1/1.jpg",pal:"Oak"}]},
        {name:"Ita OS2",colors:[{img:"images/andtradition/ita-collection/ita-os2/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os2/1.jpg",pal:"Oak"}]},
        {name:"Ita OS3",colors:[{img:"images/andtradition/ita-collection/ita-os3/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os3/1.jpg",pal:"Oak"}]},
@@ -392,18 +490,18 @@ const BRANDS = [
        {name:"Ita OS5",colors:[{img:"images/andtradition/ita-collection/ita-os5/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os5/1.jpg",pal:"Oak"}]},
        {name:"Ita OS6",colors:[{img:"images/andtradition/ita-collection/ita-os6/0.jpg",pal:"Oak"},{img:"images/andtradition/ita-collection/ita-os6/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"Little Petra Collection",cat:["Seat","Sofa"],link:"https://www.andtradition.com/products/little-petra-vb1",models:[
+     {name:"Little Petra Collection",cat:["Seating","Sofa"],link:"https://www.andtradition.com/products/little-petra-vb1",models:[
        {name:"Little Petra VB1",colors:[{img:"images/andtradition/little-petra-collection/little-petra-vb1/0.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb1/1.jpg",pal:"Oak"}]},
        {name:"Little Petra VB2",colors:[{img:"images/andtradition/little-petra-collection/little-petra-vb2/0.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/1.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/2.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/3.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/4.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/5.jpg",pal:"Walnut"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/6.jpg",pal:"Oak"},{img:"images/andtradition/little-petra-collection/little-petra-vb2/7.jpg",pal:"Oak"}]}
      ]},
-     {name:"Muno Collection",cat:["Seat"],link:"https://www.andtradition.com/products/muno-ln19",models:[
+     {name:"Muno Collection",cat:["Seating"],link:"https://www.andtradition.com/products/muno-ln19",models:[
        {name:"Muno LN16",colors:[{img:"images/andtradition/muno-collection/muno-ln16/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln16/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln16/2.jpg",pal:null}]},
        {name:"Muno LN17",colors:[{img:"images/andtradition/muno-collection/muno-ln17/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln17/1.jpg",pal:"Terracotta"},{img:"images/andtradition/muno-collection/muno-ln17/2.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln17/3.jpg",pal:"Black"}]},
        {name:"Muno LN18",colors:[{img:"images/andtradition/muno-collection/muno-ln18/0.jpg",pal:"Black"},{img:"images/andtradition/muno-collection/muno-ln18/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln18/2.jpg",pal:"Terracotta"},{img:"images/andtradition/muno-collection/muno-ln18/3.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln18/4.jpg",pal:null}]},
        {name:"Muno LN19",colors:[{img:"images/andtradition/muno-collection/muno-ln19/0.jpg",pal:"Terracotta"}]},
        {name:"Muno LN20",colors:[{img:"images/andtradition/muno-collection/muno-ln20/0.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/1.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/2.jpg",pal:null},{img:"images/andtradition/muno-collection/muno-ln20/3.jpg",pal:"Black"},{img:"images/andtradition/muno-collection/muno-ln20/4.jpg",pal:"Terracotta"}]}
      ]},
-     {name:"Pavilion Collection",cat:["Seat"],link:"https://www.andtradition.com/products/pavilion-av6",models:[
+     {name:"Pavilion Collection",cat:["Seating"],link:"https://www.andtradition.com/products/pavilion-av6",models:[
        {name:"Pavilion AV1",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av1/0.jpg",pal:null},{img:"images/andtradition/pavilion-collection/pavilion-av1/1.jpg",pal:"Black"},{img:"images/andtradition/pavilion-collection/pavilion-av1/2.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av1/3.jpg",pal:"Walnut"}]},
        {name:"Pavilion AV10",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av10/0.jpg",pal:"Walnut"}]},
        {name:"Pavilion AV11",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av11/0.jpg",pal:null}]},
@@ -431,7 +529,7 @@ const BRANDS = [
        {name:"Pavilion AV8",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av8/0.jpg",pal:"Black"}]},
        {name:"Pavilion AV9",colors:[{img:"images/andtradition/pavilion-collection/pavilion-av9/0.jpg",pal:"Oak"},{img:"images/andtradition/pavilion-collection/pavilion-av9/1.jpg",pal:"Walnut"},{img:"images/andtradition/pavilion-collection/pavilion-av9/2.jpg",pal:"Black"}]}
      ]},
-     {name:"Rely Collection",cat:["Seat"],link:"https://www.andtradition.com/products/rely-hw55-hw57",models:[
+     {name:"Rely Collection",cat:["Seating"],link:"https://www.andtradition.com/products/rely-hw55-hw57",models:[
        {name:"Rely HW11-HW20",colors:[{img:"images/andtradition/rely-collection/rely-hw11-hw20/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw11-hw20/3.jpg",pal:null}]},
        {name:"Rely HW118-HW122",colors:[{img:"images/andtradition/rely-collection/rely-hw118-hw122/0.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/2.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/5.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw118-hw122/6.jpg",pal:"Walnut"}]},
        {name:"Rely HW123-HW127",colors:[{img:"images/andtradition/rely-collection/rely-hw123-hw127/0.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/1.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/2.jpg",pal:"Walnut"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/3.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/4.jpg",pal:"Oak"},{img:"images/andtradition/rely-collection/rely-hw123-hw127/5.jpg",pal:"Oak"}]},
@@ -457,7 +555,7 @@ const BRANDS = [
        {name:"Rely HW81-HW90",colors:[{img:"images/andtradition/rely-collection/rely-hw81-hw90/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/4.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/5.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/6.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw81-hw90/7.jpg",pal:null}]},
        {name:"Rely HW91-HW100",colors:[{img:"images/andtradition/rely-collection/rely-hw91-hw100/0.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/1.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/2.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/3.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/4.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/5.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/6.jpg",pal:null},{img:"images/andtradition/rely-collection/rely-hw91-hw100/7.jpg",pal:null}]}
      ]},
-     {name:"X Collection",cat:["Seat"],link:"https://www.andtradition.com/products/x-hm10",models:[
+     {name:"X Collection",cat:["Seating"],link:"https://www.andtradition.com/products/x-hm10",models:[
        {name:"X HM10",colors:[{img:"images/andtradition/x-collection/x-hm10/0.jpg",pal:"Oak"}]}
      ]},
      {name:"Cloud Collection",cat:["Sofa"],link:"https://www.andtradition.com/products/cloud-ln3-2",models:[
@@ -481,11 +579,11 @@ const BRANDS = [
        {name:"Archivo JH44",colors:[{img:"images/andtradition/archivo-collection/archivo-jh44/0.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh44/1.jpg",pal:"Navy"},{img:"images/andtradition/archivo-collection/archivo-jh44/2.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh44/3.jpg",pal:"Black"}]},
        {name:"Archivo JH45",colors:[{img:"images/andtradition/archivo-collection/archivo-jh45/0.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh45/1.jpg",pal:"Black"},{img:"images/andtradition/archivo-collection/archivo-jh45/2.jpg",pal:"Oak"},{img:"images/andtradition/archivo-collection/archivo-jh45/3.jpg",pal:"Navy"}]}
      ]},
-     {name:"Drop Leaf Collection",cat:["Table"],link:"https://www.andtradition.com/products/drop-leaf-hm5",models:[
+     {name:"Drop Leaf Collection",cat:["Tables"],link:"https://www.andtradition.com/products/drop-leaf-hm5",models:[
        {name:"Drop Leaf HM5",colors:[{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm5/0.jpg",pal:"Oak"},{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm5/1.jpg",pal:"Walnut"}]},
        {name:"Drop Leaf HM6",colors:[{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm6/0.jpg",pal:"Walnut"},{img:"images/andtradition/drop-leaf-collection/drop-leaf-hm6/1.jpg",pal:"Oak"}]}
      ]},
-     {name:"In Between Collection",cat:["Table"],link:"https://www.andtradition.com/products/in-between-mto",models:[
+     {name:"In Between Collection",cat:["Tables"],link:"https://www.andtradition.com/products/in-between-mto",models:[
        {name:"In Between MTO",colors:[{img:"images/andtradition/in-between-collection/in-between-mto/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-mto/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-mto/2.jpg",pal:"Oak"}]},
        {name:"In Between SK1",colors:[{img:"images/andtradition/in-between-collection/in-between-sk1/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk1/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk1/2.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk1/3.jpg",pal:"Walnut"}]},
        {name:"In Between SK10",colors:[{img:"images/andtradition/in-between-collection/in-between-sk10/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk10/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk10/2.jpg",pal:"Oak"}]},
@@ -514,100 +612,249 @@ const BRANDS = [
        {name:"In Between SK8",colors:[{img:"images/andtradition/in-between-collection/in-between-sk8/0.jpg",pal:"Black"},{img:"images/andtradition/in-between-collection/in-between-sk8/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk8/2.jpg",pal:"Oak"}]},
        {name:"In Between SK9",colors:[{img:"images/andtradition/in-between-collection/in-between-sk9/0.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk9/1.jpg",pal:"Oak"},{img:"images/andtradition/in-between-collection/in-between-sk9/2.jpg",pal:"Black"}]}
      ]},
-     {name:"Sett Collection",cat:["Table"],link:"https://www.andtradition.com/products/sett-ln13",models:[
+     {name:"Sett Collection",cat:["Tables"],link:"https://www.andtradition.com/products/sett-ln13",models:[
        {name:"Sett LN11",colors:[{img:"images/andtradition/sett-collection/sett-ln11/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln11/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln11/2.jpg",pal:"Silver"}]},
        {name:"Sett LN12",colors:[{img:"images/andtradition/sett-collection/sett-ln12/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln12/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln12/2.jpg",pal:"Silver"}]},
        {name:"Sett LN13",colors:[{img:"images/andtradition/sett-collection/sett-ln13/0.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln13/1.jpg",pal:"Silver"},{img:"images/andtradition/sett-collection/sett-ln13/2.jpg",pal:"Silver"}]}
      ]},
-     {name:"Shuffle Collection",cat:["Table"],link:"https://www.andtradition.com/products/shuffle-mh1",models:[
+     {name:"Shuffle Collection",cat:["Tables"],link:"https://www.andtradition.com/products/shuffle-mh1",models:[
        {name:"Shuffle MH1",colors:[{img:"images/andtradition/shuffle-collection/shuffle-mh1/0.jpg",pal:null},{img:"images/andtradition/shuffle-collection/shuffle-mh1/1.jpg",pal:null}]}
      ]},
    ],
    items:[
    ["Flowerpot Pendant · VP1","Lighting",["Pink"]],["Bat Table Lamp · HM9","Lighting",["Black"]],
-   ["Loafer Side Table · LN8","Side Table",["White","Oak"]]]},
+   ["Loafer Side Table · LN8","Tables",["White","Oak"]]]},
  {id:"audo",name:"Audo Copenhagen",origin:"Denmark",site:"https://www.audocph.com",items:[
-   ["Androgyne Side Table","Side Table",["Marble","Sand"]],["Eave Modular Sofa 86","Sofa",["Sand"]],
-   ["The Tired Man Lounge Chair","Lounge Chair",["Oak"]],["Torso Table Lamp","Lighting",["Bordeaux","Sand"]],
-   ["Knitting Lounge Chair","Lounge Chair",["Charcoal"]]]},
+   ["Androgyne Side Table","Tables",["Marble","Sand"]],["Eave Modular Sofa 86","Sofa",["Sand"]],
+   ["The Tired Man Lounge Chair","Seating",["Oak"]],["Torso Table Lamp","Lighting",["Bordeaux","Sand"]],
+   ["Knitting Lounge Chair","Seating",["Charcoal"]]]},
  {id:"cappellini",name:"Cappellini",origin:"Italy",site:"https://www.cappellini.com",items:[
-   ["Lowpad Chair","Lounge Chair",["Charcoal"]],["LX8 Table","Dining Table",["Yellow"]],
-   ["Org Side Table","Side Table",["White"]],["Pure Italy Rug","Rug",["White"]]]},
+    ["Oblong Plus Sofa","Sofa",["Sand", "Grey", "Anthracite", "Blue", "Red"],"https://www.cappellini.com/ww/en/products/oblong-plus.html"],
+    ["Elan 23 Sofa","Sofa",["Charcoal", "Red", "Grey", "Blue"],"https://www.cappellini.com/ww/en/products/elan-23.html"],
+    ["Elan Sofa","Sofa",["Charcoal", "Red", "Grey", "Green"],"https://www.cappellini.com/ww/en/products/elan.html"],
+    ["Gambetta Sofa","Sofa",["Black", "Brown", "Grey"],"https://www.cappellini.com/ww/en/products/gambetta.html"],
+    ["Hobo Contract Sofa","Sofa",["Grey", "Beige", "Yellow"],"https://www.cappellini.com/ww/en/products/hobo-contract.html"],
+    ["Hiroi Chair","Seating",["Wood", "Black", "Leather"],"https://www.cappellini.com/ww/en/products/hiroi.html"],
+    ["Fronzoni 64 Armchair","Seating",["Black", "White"],"https://www.cappellini.com/ww/en/products/fronzoni-64-armchair.html"],
+    ["Dalia Armchair","Seating",["Orange", "Blue", "Green", "Grey", "Pink"],"https://www.cappellini.com/ww/en/products/dalia.html"],
+    ["Kwado Chair","Seating",["Black", "White", "Red"],"https://www.cappellini.com/ww/en/products/kwado.html"],
+    ["Classica Chair","Seating",["Oak", "Walnut", "Black"],"https://www.cappellini.com/ww/en/products/classica.html"],
+    ["Selettiva Cantu Chair","Seating",["Oak", "Black"],"https://www.cappellini.com/ww/en/products/selettiva-cantu.html"],
+    ["Juli Soft Plus Chair","Seating",["Grey", "Red", "Blue", "Black"],"https://www.cappellini.com/ww/en/products/juli-soft-plus.html"],
+    ["Bac Chair","Seating",["Oak", "Black", "Red", "White", "Blue"],"https://www.cappellini.com/ww/en/products/bac-chair.html"],
+    ["Newood Chair","Seating",["Oak", "Black", "Wenge", "Grey"],"https://www.cappellini.com/ww/en/products/newood.html"],
+    ["Tate Color Chair","Seating",["Yellow", "Orange", "Red", "Blue", "Grey"],"https://www.cappellini.com/ww/en/products/tate-color.html"],
+    ["Dolmen Color Table","Tables",["Green", "Blue", "Yellow", "Orange", "Magenta"],"https://www.cappellini.com/ww/en/products/dolmen-color.html"],
+    ["Branch Table","Tables",["Oak", "White", "Black"],"https://www.cappellini.com/ww/en/products/branch-table.html"],
+    ["Openup Table","Tables",["White", "Black", "Chrome"],"https://www.cappellini.com/ww/en/products/openup.html"],
+    ["Riga Table","Tables",["Wood", "Black", "White"],"https://www.cappellini.com/ww/en/products/riga.html"],
+    ["Simplon Table","Tables",["Oak", "Black", "Anodized Aluminum"],"https://www.cappellini.com/ww/en/products/simplon-table.html"],
+    ["Lochness Table","Tables",["Oak", "Wenge", "Santos Rosewood"],"https://www.cappellini.com/ww/en/products/lochness-table.html"],
+    ["Bookshelf","Storage",["White", "Black", "Multicolor"],"https://www.cappellini.com/ww/en/products/bookshelf.html"],
+    ["Aliante Storage","Storage",["Oak", "Black", "White"],"https://www.cappellini.com/ww/en/products/aliante.html"],
+    ["Uni System Storage","Storage",["White", "Grey", "Oak"],"https://www.cappellini.com/ww/en/products/uni-system.html"],
+    ["ABC Bookshelf","Storage",["White", "Grey", "Wood"],"https://www.cappellini.com/ww/en/products/abc-bookshelf.html"],
+    ["Brest Cabinet","Storage",["Oak", "Black", "Blue", "Red"],"https://www.cappellini.com/ww/en/products/brest.html"],
+    ["Uni Notte Cabinet","Storage",["White", "Sand", "Charcoal"],"https://www.cappellini.com/ww/en/products/uni-notte.html"],
+    ["Retico Shelf","Storage",["Black", "White", "Grey"],"https://www.cappellini.com/ww/en/products/retico.html"],
+    ["Luxor Cabinet","Storage",["Blue", "Red", "Green", "White", "Black"],"https://www.cappellini.com/ww/en/products/luxor-cabinet.html"],
+    ["Uni Cabinet","Storage",["Oak", "White", "Grey", "Orange"],"https://www.cappellini.com/ww/en/products/uni.html"]
+  ]},
  {id:"carlhansen",name:"Carl Hansen & Søn",origin:"Denmark",site:"https://www.carlhansen.com",items:[
-   ["CH24 Wishbone Chair","Lounge Chair",["Oak","Walnut"]],["CH07 Shell Chair","Lounge Chair",["Oak"]],
-   ["PK1 Chair","Lounge Chair",["Silver"]],["RF1903L Sofa","Sofa",["Sand"]]]},
+    ["CH290 Lounge Chair","Seating",["Oak", "Walnut", "Black", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch290/ch290-oak-oil-hr-fscmix-70-standard-storr-1501/variant/11187"],
+    ["CH24 Wishbone Chair","Seating",["Oak", "Walnut", "Black", "Natural Papercord", "White", "Red", "Green", "Blue"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch24/ch24-oak-oil-fsc70-natural-cord/variant/9322"],
+    ["CH20 Elbow Chair","Seating",["Oak", "Walnut", "Black", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch20/ch20-oak-oil-hr-fscmix-70-thor-306/variant/10318"],
+    ["CH23 Dining Chair","Seating",["Oak", "Walnut", "Black", "Natural Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch23/ch23-oak-oil-fsc70-natural-cord/variant/8520"],
+    ["CH25 Lounge Chair","Seating",["Oak", "Walnut", "Black", "Natural Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch25/ch25-oak-oil-fsc70-natural-cord/variant/9018"],
+    ["CH88P Chair","Seating",["Oak", "Black", "Chrome", "Stainless Steel", "Leather", "Fabric"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch88p/ch88p-oak-soap-stainless-steel-hr-fsc70-hall-dal-130/variant/9141"],
+    ["CH56 Bar Stool","Seating",["Oak", "Walnut", "Black Leather"],"https://www.carlhansen.com/en/en/collection/chairs/bar-stools/ch56/barstol-o35-x-76-cm-oak-soap-hr-fsc70-loke-7050/variant/10586"],
+    ["CH37 Chair","Seating",["Oak", "Walnut", "Black", "Natural Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch37/ch37-oak-black-fscmix-70-black-cord/variant/10539"],
+    ["CH33T Chair","Seating",["Oak", "Walnut", "Oak/Walnut Mix"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch33t/ch33t-oak-oil-fsc/variant/9917"],
+    ["CH30P Chair","Seating",["Oak", "Walnut", "Leather", "Fabric"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch30p/ch30p-oak-oak-oil-hr-fscmix-70-sif-93/variant/10558"],
+    ["CH26 Chair","Seating",["Oak", "Walnut", "Oak/Walnut Mix", "Natural Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch26/ch26-oak-walnut-oak-oil-natural-cord/variant/6925"],
+    ["CH78 Mama Bear Chair","Seating",["Oak", "Walnut", "Grey", "Blue", "Red", "Yellow"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch78/ch78-mama-bear-walnut-oil-hall-dal-100-hr/variant/8297"],
+    ["CH28P Lounge Chair","Seating",["Oak", "Walnut", "Black Leather"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch28p/ch28-oak-oil-hr-thor-301/variant/6928"],
+    ["CH445 Wing Chair","Seating",["Charcoal", "Red", "Grey", "Blue", "Yellow", "Orange"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch445/ch445-wingchair-thor-301-stainless-hr-fsc70/variant/10188"],
+    ["BM1106 Huntsman Chair","Seating",["Walnut", "Oak", "Cognac Saddle Leather", "Black Saddle Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/bm1106/huntsman-chair-walnut-oil-saddle-leather-cognac-brass/variant/6625"],
+    ["CH45 Lounge Chair","Seating",["Oak", "Walnut", "Natural Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ch45/ch45-oak-oil-fsc70-natural-cord/variant/10373"],
+    ["CH621 Swivel Chair","Seating",["Oak", "Walnut", "Chrome", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ch621/ch621-swivel-chair-oak-oil-stainless-hr-fscmix-70-standard/variant/11184"],
+    ["VLA26P Vega Chair","Seating",["Oak", "Chrome", "Fabric", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/vla26p/vega-chair-upholstered-oak-lacquer--chrome-hr-fsc70-mood/variant/10501"],
+    ["PK1 Chair","Seating",["Stainless Steel", "Black Steel", "Natural Papercord", "Flag Halyard"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/pk1/pk1-stol-stainless-steel-natural-paper-cord-25-mm-hard-glid/variant/10796"],
+    ["MG501 Cuba Chair","Seating",["Oak", "Black", "Natural Papercord", "Black Papercord"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/mg501-papercord/cuba-chair-oak-oil-fsc-100-natural-paper-cord/variant/10409"],
+    ["OW58 T-Chair","Seating",["Walnut", "Oak", "Black Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/ow58-t-chair/ow58-walnut-oil-hr-sif-90/variant/9325"],
+    ["OW149 Colonial Chair","Seating",["Oak", "Walnut", "Black Leather", "Red Leather"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/ow149/ow149-colonial-chair-oak-oil-hr-terra-20367-jade/variant/11241"],
+    ["KK53130 Easy Chair","Seating",["Oak", "Walnut", "Black Leather"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/kk53130/kk53130-easy-chair-oak-oil-hr-fscmix-70-sif-98/variant/11222"],
+    ["KK37581 Chair","Seating",["Oak", "Walnut", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/kk37581/kk37581-oak-oil-with-pipes-sif-98-hr/variant/10665"],
+    ["KK96620 Chair","Seating",["Oak", "Walnut", "Leather"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/kk96620/kk96620-oak-oil--hr-fscmix-70-sif-90/variant/11218"],
+    ["FH38 Windsor Chair","Seating",["Oak", "Walnut"],"https://www.carlhansen.com/en/en/collection/chairs/dining-chairs/fh38/fh38-windsor-chair-oak-soap-fsc70/variant/9754"],
+    ["FH429 Signature Chair","Seating",["Walnut", "Oak", "Black Leather", "Grey Fabric"],"https://www.carlhansen.com/en/en/collection/chairs/lounge-chairs/fh429/fh429-signature-chair-walnut-oil-sif-95-hr/variant/10781"],
+    ["VLA75S Foyer Bench","Seating",["Oak", "Black Leather", "Brown Leather"],"https://www.carlhansen.com/en/en/collection/benches/vla75s/vla75s-foyer-bench-short-oak-oil-hr-fsc70-tiree-9667-seawe/variant/11182"],
+    ["CH337 Table","Tables",["Oak", "Walnut"],"https://www.carlhansen.com/en/en/collection/tables-desks/dining-tables/ch337/table-115x140-oak-soap-for-2-leaves-excl.-fsc70/variant/10168"],
+    ["CH327 Dining Table","Tables",["Oak", "Teak", "Walnut"],"https://www.carlhansen.com/en/en/collection/tables-desks/dining-tables/ch327---248x95/table-248x95-cm-oakteak-oil-fsc70/variant/10598"],
+    ["E021 Coffee Table","Tables",["Oak", "Walnut", "Black"],"https://www.carlhansen.com/en/en/collection/tables-desks/coffee-tables/e021-80/o80-cm-oak-oil-s9000-n-fscmix-70/variant/10821"],
+    ["BM1160 Hunting Table 95","Tables",["Oak", "Walnut", "Stainless Steel"],"https://www.carlhansen.com/en/en/collection/tables-desks/dining-tables/bm1160-210-x-95-cm/hunting-table-210-x-95-cm-oak-white-oil-stainless-fsc70/variant/11179"],
+    ["BM1160 Hunting Table 82","Tables",["Oak", "Walnut", "Brass"],"https://www.carlhansen.com/en/en/collection/tables-desks/dining-tables/bm1160/hunting-table-210-x-82-cm-walnut-oil-brass/variant/6629"],
+    ["CH008 Coffee Table","Tables",["Oak", "Walnut"],"https://www.carlhansen.com/en/en/collection/tables-desks/coffee-tables/ch008---o88/ch008-tabletop-o88-cm-oak-soap-fsc70-4b812d99/variant/9511"],
+    ["CH110 Desk","Tables",["Oak", "Walnut", "Stainless Steel"],"https://www.carlhansen.com/en/en/collection/tables-desks/desks/ch110/desk-190-x-95-oak-oil-stainless/variant/6738"],
+    ["CH339 Table","Tables",["Oak", "Walnut"],"https://www.carlhansen.com/en/en/collection/tables-desks/dining-tables/ch339/table-115-x-240-oak-oil-for-2-leaves-excl.-fsc70/variant/10181"],
+    ["The Pendant","Lighting",["Dark Green", "White", "Black"],"https://www.carlhansen.com/en/en/collection/lighting/pendant-lamps/hjw37/the-pendant-dark-green-gold-e27-without-lift/variant/10735"],
+    ["KK41180 Sofa","Sofa",["Walnut", "Oak", "Black Leather"],"https://www.carlhansen.com/en/en/collection/sofas-daybeds/kk41180/sofa-med-hoje-vanger---2-pers-walnut-oil-pipes-cmhr-foam-sif/variant/7439"],
+    ["E300 Sofa","Sofa",["Grey", "Charcoal"],"https://www.carlhansen.com/en/en/collection/sofas-daybeds/e300/e300-seat-upholstered-hr-hall-dal-130-fsc70/variant/9413"],
+    ["CH103 Sofa","Sofa",["Black Leather", "Brown Leather"],"https://www.carlhansen.com/en/en/collection/sofas-daybeds/ch103/ch103-lounge-seating-3-persons-carb2-thor-306-hr-fsc70/variant/8956"],
+    ["CH292 Sofa","Sofa",["Oak", "Black Leather"],"https://www.carlhansen.com/en/en/collection/sofas-daybeds/ch292/ch292-oak-oil-hr-fscmix-70-standard-vidar-0693/variant/11193"],
+    ["CH825 Cabinet","Storage",["Oak", "Walnut", "Stainless Steel"],"https://www.carlhansen.com/en/en/collection/bookcases-cabinets/ch825/ch825-oak-oil-stainless-steel-veneer/variant/7127"]
+  ]},
  {id:"cassina",name:"Cassina",origin:"Italy",site:"https://www.cassina.com",items:[
-   ["Soriana Sofa","Sofa",["Black"]],["LC Series Sofa · LC003EC","Sofa",["Black"]]]},
+    ["Moncloud Armchair","Seating",["Grey", "White", "Blue", "Beige", "Bordeaux"],"https://www.cassina.com/ww/en/products/moncloud-armchair.html"],
+    ["Tokyo Chaise Longue","Seating",["Bamboo", "Teak", "Black"],"https://www.cassina.com/ww/en/products/tokyo-chaise-longue.html"],
+    ["LC4 Chaise Longue","Seating",["Black Leather", "Chrome", "Pony Skin"],"https://www.cassina.com/ww/en/products/lc4-durable.html"],
+    ["LC2 Armchair","Seating",["Black", "Cream", "Bordeaux", "Blue", "Grey"],"https://www.cassina.com/ww/en/products/lc2-fauteuil-grand-confort-petit-modele-durable-60.html"],
+    ["LC1 Chair","Seating",["Black", "Brown", "Pony Skin"],"https://www.cassina.com/ww/en/products/lc1-fauteuil-dossier-basculant-60.html"],
+    ["Shadowmoon Sofa","Sofa",["Grey", "White", "Anthracite"],"https://www.cassina.com/ww/en/products/shadowmoon.html"],
+    ["8 Sofa","Sofa",["Beige", "Grey", "Blue"],"https://www.cassina.com/ww/en/products/8.html"],
+    ["Eloro Sofa","Sofa",["Brown", "Beige", "Grey"],"https://www.cassina.com/ww/en/products/eloro-sofa.html"],
+    ["Novetrenta Rope Armchair","Seating",["Green", "Rose", "Grey"],"https://www.cassina.com/ww/en/products/novetrenta-rope-armchair.html"],
+    ["Principal Stool","Seating",["Oak", "Walnut", "Black"],"https://www.cassina.com/ww/en/products/karakter-principal-stool.html"],
+    ["Scarpa 925 Chair","Seating",["Ash", "Walnut", "Black"],"https://www.cassina.com/ww/en/products/scarpa-925.html"],
+    ["Moby Table Lamp","Lighting",["White", "Clear"],"https://www.cassina.com/ww/en/products/karakter-moby-table-lamp.html"],
+    ["Plexi Suspension Lamp","Lighting",["Clear", "Opaline"],"https://www.cassina.com/ww/en/products/karakter-plexi-suspension-lamp.html"],
+    ["Rundet Chair","Seating",["Oak", "Black", "Green"],"https://www.cassina.com/ww/en/products/karakter-rundet-chair.html"],
+    ["Treflo Round Table","Tables",["Oak", "Walnut", "Ash"],"https://www.cassina.com/ww/en/products/treflo-round-table.html"],
+    ["Maralunga Sofa","Sofa",["Sand", "Charcoal", "Grey", "Red", "Green", "Tan"],"https://www.cassina.com/ww/en/products/maralunga.html"],
+    ["Fluid Joinery Light","Lighting",["Wood", "Clear"],"https://www.cassina.com/ww/en/products/fluid-joinery-light.html"],
+    ["Wax Stone Light Wall","Lighting",["Stone", "Brass"],"https://www.cassina.com/ww/en/products/wax-stone-light-wall.html"],
+    ["Principal Chair","Seating",["Oak", "Walnut", "Black"],"https://www.cassina.com/ww/en/products/karakter-principal-chair.html"],
+    ["Samambu Table Lamp","Lighting",["Black", "Chrome"],"https://www.cassina.com/ww/en/products/samambu-table-lamp.html"],
+    ["Miloe Sofa","Sofa",["Grey", "Beige", "Charcoal"],"https://www.cassina.com/ww/en/products/miloe.html"],
+    ["Ardys Low Table","Tables",["Oak", "Walnut", "Marble"],"https://www.cassina.com/ww/en/products/ardys-low-table.html"],
+    ["Principal Bar Counter Chair","Seating",["Oak", "Walnut", "Black"],"https://www.cassina.com/ww/en/products/karakter-principal-bar-counter-chair.html"],
+    ["Ardys Armchair","Seating",["Grey", "Rose", "Blue"],"https://www.cassina.com/ww/en/products/ardys-armchair.html"],
+    ["LC4 Chaise Longue Cuoio","Seating",["Cognac Leather", "Black Leather"],"https://www.cassina.com/ww/en/products/lc4-chaise-longue-reglage-continu-cuoio.html"],
+    ["CH66 Chair","Seating",["Oak", "Black", "Leather"],"https://www.cassina.com/ww/en/products/karakter-ch66-chair.html"],
+    ["Dudet Chair","Seating",["Green", "Rose", "Yellow", "Blue", "Beige"],"https://www.cassina.com/ww/en/products/dudet.html"],
+    ["LC10-P Table","Tables",["Glass", "Chrome", "Black"],"https://www.cassina.com/ww/en/products/lc10-p-low-table-grand-modele.html"],
+    ["Dudet Bold Sofa","Sofa",["Green", "Rose", "Yellow", "Beige"],"https://www.cassina.com/ww/en/products/dudet-bold-sofa.html"],
+    ["Bureau Boomerang Pro","Tables",["Oak", "Walnut", "Black Leather"],"https://www.cassina.com/ww/en/products/bureau-boomerang-pro.html"],
+    ["Black Red and Blue Chair","Seating",["Black", "Red", "Blue", "Yellow"],"https://www.cassina.com/ww/en/products/black-red-and-blue.html"],
+    ["Berlino Table","Tables",["Oak", "Walnut"],"https://www.cassina.com/ww/en/products/berlino-table.html"],
+    ["Back Wing Armchair","Seating",["Black Leather", "Brown Leather", "Red Leather"],"https://www.cassina.com/ww/en/products/back-wing-armchair.html"],
+    ["875 Armchair","Seating",["Blue Fabric", "Green Fabric", "Red Fabric"],"https://www.cassina.com/ww/en/products/875.html"],
+    ["LC7 Durable Chair","Seating",["Black Leather", "Chrome", "Red Leather"],"https://www.cassina.com/ww/en/products/lc7-durable.html"],
+    ["LC6 Table","Tables",["Glass", "Black Steel", "Blue Steel"],"https://www.cassina.com/ww/en/products/lc6.html"],
+    ["LC5 Sofa","Sofa",["Black Leather", "Grey Fabric"],"https://www.cassina.com/ww/en/products/lc5.html"],
+    ["Capitol Complex Office Chair","Seating",["Oak", "Walnut", "Black", "Natural Cane"],"https://www.cassina.com/ww/en/products/capitol-complex-office-chair.html"],
+    ["Cavalletto Shelf","Storage",["Oak", "Walnut", "Black"],"https://www.cassina.com/ww/en/products/cavalletto.html"],
+    ["Capitol Complex Sofa","Sofa",["Grey Fabric", "Black Leather", "Natural Cane"],"https://www.cassina.com/ww/en/products/capitol-complex-sofa.html"],
+    ["Capitol Complex Table","Tables",["Oak", "Walnut", "Glass"],"https://www.cassina.com/ww/en/products/capitol-complex-table.html"],
+    ["Cornaro Sofa","Sofa",["Rose Fabric", "Black Leather"],"https://www.cassina.com/ww/en/products/cornaro.html"],
+    ["Dine Out Sofa","Sofa",["Outdoor Fabric", "Teak"],"https://www.cassina.com/ww/en/products/dine-out-sofa.html"],
+    ["Eitie Triangle Light","Lighting",["Black", "Gold"],"https://www.cassina.com/ww/en/products/eitie-triangle-horizontal.html"],
+    ["Elling Buffet","Storage",["Red", "Blue", "Black", "Yellow"],"https://www.cassina.com/ww/en/products/elling-buffet.html"],
+    ["Lady Armchair","Seating",["Bordeaux", "Blue", "Green", "Yellow", "Grey"],"https://www.cassina.com/ww/en/products/lady.html"],
+    ["Infinito Bookshelf","Storage",["Black", "Oak", "Walnut"],"https://www.cassina.com/ww/en/products/infinito.html"],
+    ["Goteborg 1 Chair","Seating",["Cherry Wood", "Black Leather"],"https://www.cassina.com/ww/en/products/goteborg-1.html"],
+    ["Gaja Bar Stool","Seating",["Black Fabric", "Red Fabric", "Chrome"],"https://www.cassina.com/ww/en/products/gaja-bar.html"],
+    ["Kangaroo Chair","Seating",["Oak", "Walnut", "Black", "Natural Cane"],"https://www.cassina.com/ww/en/products/kangaroo.html"],
+    ["Prive Sofa","Sofa",["Black Leather", "White Leather"],"https://www.cassina.com/ww/en/products/prive-divano.html"],
+    ["Met Sofa","Sofa",["Grey Fabric", "Blue Fabric"],"https://www.cassina.com/ww/en/products/met-divano.html"],
+    ["Radio in Cristallo","Storage",["Clear Glass", "Chrome"],"https://www.cassina.com/ww/en/products/radio-in-cristallo.html"],
+    ["Red and Blue Chair","Seating",["Black", "Red", "Blue", "Yellow"],"https://www.cassina.com/ww/en/products/red-and-blue-online.html"],
+    ["AS1C Nemo Lamp","Lighting",["Chrome", "Opaline"],"https://www.cassina.com/ww/en/products/as1c-nemo.html"],
+    ["Aida Lamp","Lighting",["Black", "Opaline"],"https://www.cassina.com/ww/en/products/karakter-aida-lamp.html"],
+    ["Scarpa 925 Upholstered","Seating",["Oak", "Leather"],"https://www.cassina.com/ww/en/products/scarpa-925-upholstered.html"],
+    ["Sfera Table Lamp","Lighting",["Glass", "Chrome"],"https://www.cassina.com/ww/en/products/karakter-sfera-table-lamp.html"],
+    ["Sengu Bold Sofa","Sofa",["Beige", "Blue", "Grey"],"https://www.cassina.com/ww/en/products/sengu-bold.html"],
+    ["Sengu Table","Tables",["Oak", "Walnut", "Marble"],"https://www.cassina.com/ww/en/products/sengu-table.html"],
+    ["Sengu Coffee Table","Tables",["Oak", "Walnut", "Marble"],"https://www.cassina.com/ww/en/products/sengu-coffee-table.html"],
+    ["Refolo Sofa","Sofa",["Wood Bench", "Fabric Cushion"],"https://www.cassina.com/ww/en/products/refolo.html"]
+  ]},
  {id:"catellanismith",name:"Catellani & Smith",origin:"Italy",site:"https://www.catellanismith.com",items:[
-   ["Lederam Manta Pendant","Lighting",["White","Black"]],["Uau Table Lamp","Lighting",["Silver"]],
-   ["Wawa Table Lamp","Lighting",["Silver"]]]},
+    ["Wa Wa F Floor Lamp","Lighting",["Brass", "Silver", "Black"],"https://www.catellanismith.com/en/wa-wa-f/"],
+    ["More Pendant","Lighting",["Glass", "White", "Amber"],"https://www.catellanismith.com/en/more-0/"],
+    ["Macchina della Luce","Lighting",["Gold", "Silver", "Copper", "White"],"https://www.catellanismith.com/en/macchina-della-luce/"],
+    ["Luce d'Oro F Floor Lamp","Lighting",["Gold", "Silver", "Copper"],"https://www.catellanismith.com/en/luce-doro-f/"],
+    ["Lederam Manta S1","Lighting",["White", "Black", "Gold", "Copper"],"https://www.catellanismith.com/en/lederam-manta-s1/"],
+    ["Atman Table Lamp","Lighting",["Glass"],"https://www.catellanismith.com/en/atman/"]
+  ]},
  {id:"cctapis",name:"cc-tapis",origin:"Italy",site:"https://www.cctapis.com",items:[
-   ["Telegram Rug","Rug",["Sand"]],["Slinkie Rug","Rug",["Navy"]],
-   ["Ceremony Rug","Rug",["Terracotta"]],["Chroma Spill Rug","Rug",["Marble"]]]},
+    ["Mindscape Rug","Rug",["Terracotta", "Grey", "Rose", "Green"],"https://cc-tapis.com/collections/mindscape"],
+    ["Cut Out Monocromo Rug","Rug",["Blue", "Yellow", "Red", "Grey"],"https://cc-tapis.com/collections/cut-out-monocromo"],
+    ["Lines Rug","Rug",["Grey", "White", "Beige", "Anthracite"],"https://cc-tapis.com/collections/lines"],
+    ["Swarm Rug","Rug",["Sand", "Navy", "Mustard", "Forest"],"https://cc-tapis.com/collections/swarm"],
+    ["Segni Minimi Rug","Rug",["White", "Black", "Yellow", "Rose"],"https://cc-tapis.com/collections/segni-minimi"],
+    ["Verite & Graffiti Rug","Rug",["Multicolor", "Black/White"],"https://cc-tapis.com/collections/verite-and-graffiti"],
+    ["TCP Rug","Rug",["Yellow", "Blue", "Red"],"https://cc-tapis.com/collections/tcp"],
+    ["Guadalupe Rug","Rug",["Rose", "Sage", "Terracotta"],"https://cc-tapis.com/collections/guadalupe"],
+    ["Naif Rug","Rug",["Blue", "Green", "Yellow"],"https://cc-tapis.com/collections/naif"],
+    ["Swirl Rug","Rug",["Rose", "Mustard", "Blue", "Sage"],"https://cc-tapis.com/collections/swirl-collection"],
+    ["Omote Rug","Rug",["Grey", "Charcoal", "Haki"],"https://cc-tapis.com/collections/omote"],
+    ["Cryptid Rug","Rug",["Cream", "Black"],"https://cc-tapis.com/collections/cryptid"],
+    ["Monograph Rug","Rug",["Grey", "Beige", "Rust"],"https://cc-tapis.com/collections/monograph"],
+    ["Rilievo Rug","Rug",["White", "Beige", "Grey"],"https://cc-tapis.com/collections/rilievo"],
+    ["Crisscross Rug","Rug",["Grey", "Terracotta", "Blue"],"https://cc-tapis.com/collections/crisscross"],
+    ["Clay Scan Rug","Rug",["Earth", "Ochre", "Charcoal"],"https://cc-tapis.com/collections/clay-scan"],
+    ["Stroke Rug","Rug",["Green", "Mint", "Blue", "Rose"],"https://cc-tapis.com/collections/stroke"],
+    ["The Color of Copper Rug","Rug",["Copper", "Bronze", "Rust"],"https://cc-tapis.com/collections/the-color-of-copper"]
+  ]},
  {id:"classicon",name:"ClassiCon",origin:"Germany",site:"https://www.classicon.com",items:[
-   ["Adjustable Table E1027","Side Table",["Black"]],["Bibendum Chair","Lounge Chair",["Black"]],
-   ["Bell Coffee Table","Side Table",["Brass","Navy"]],["Non Conformis Chair","Lounge Chair",["Charcoal"]]]},
+   ["Adjustable Table E1027","Tables",["Black"]],["Bibendum Chair","Seating",["Black"]],
+   ["Bell Coffee Table","Tables",["Brass","Navy"]],["Non Conformis Chair","Seating",["Charcoal"]]]},
  {id:"dcw",name:"DCW Éditions",origin:"France",site:"https://www.dcw-editions.fr",items:[
    ["Mantis Wall Lamp · BS2","Lighting",["Black"]],["Mantis Table Lamp · BS3","Lighting",["Black"]]]},
  {id:"desede",name:"De Sede",origin:"Switzerland",site:"https://www.desede.ch",items:[
-   ["DS-266 Yoga Lounge Chair","Lounge Chair",["Walnut","Sand"]],["DS-600 Modular Sofa","Sofa",["Black"]],
+   ["DS-266 Yoga Lounge Chair","Seating",["Walnut","Sand"]],["DS-600 Modular Sofa","Sofa",["Black"]],
    ["DS-164 Slide Sofa","Sofa",["Black"]]]},
  {id:"desalto",name:"Desalto",origin:"Italy",site:"https://www.desalto.it",items:[
-   ["Clay Dining Table","Dining Table",["Charcoal","White"]],["Roller Chaise Longue","Sofa",["Navy"]],
-   ["Italia Stool","Lounge Chair",["Silver"]],["HEB Side Table","Side Table",["Sand","Forest"]]]},
+   ["Clay Dining Table","Tables",["Charcoal","White"]],["Roller Chaise Longue","Sofa",["Navy"]],
+   ["Italia Stool","Seating",["Silver"]],["HEB Side Table","Tables",["Sand","Forest"]]]},
  {id:"disderot",name:"Disderot",origin:"France",site:"https://www.disderot.com",items:[
    ["Model 2093 Floor Lamp","Lighting",["Black"]]]},
  {id:"edra",name:"Edra",origin:"Italy",site:"https://www.edra.com",items:[
-   ["Standard Sofa","Sofa",["White"]],["Getsuen Armchair","Lounge Chair",["Bordeaux"]],
-   ["Ella Chair","Lounge Chair",["Charcoal"]],["Brasilia Table","Side Table",["White","Sand"]]]},
+   ["Standard Sofa","Sofa",["White"]],["Getsuen Armchair","Seating",["Bordeaux"]],
+   ["Ella Chair","Seating",["Charcoal"]],["Brasilia Table","Tables",["White","Sand"]]]},
  {id:"fiam",name:"Fiam Italia",origin:"Italy",site:"https://www.fiamitalia.it",items:[
-   ["Callas Chair","Lounge Chair",["Black"]],["Phantom Mirror","Mirror",["White"]],
+   ["Callas Chair","Seating",["Black"]],["Phantom Mirror","Mirror",["White"]],
    ["Christine Mirror","Mirror",["Silver"]]]},
  {id:"flos",name:"Flos",origin:"Italy",site:"https://www.flos.com",items:[
    ["Arco Floor Lamp","Lighting",["Marble","Silver"]],["Taccia Table Lamp","Lighting",["Black","White"]],
    ["Parentesi Pendant","Lighting",["Bordeaux","Black"]],["IC Table Lamp","Lighting",["Yellow","Silver"]],
    ["2097 Pendant","Lighting",["Silver"]]]},
  {id:"giobagnara",name:"Giobagnara",origin:"Italy",site:"https://www.giobagnara.com",items:[
-   ["Scala Coffee Table","Side Table",["Walnut"]],["Scala Side Table","Side Table",["Walnut"]],
+   ["Scala Coffee Table","Tables",["Walnut"]],["Scala Side Table","Tables",["Walnut"]],
    ["Nodo Keychain","Decor",["Pink","Navy"]]]},
  {id:"glasitalia",name:"Glas Italia",origin:"Italy",site:"https://www.glasitalia.com",items:[
-   ["Fountain Table","Dining Table",["White"]],["PRISM Mirror Table","Side Table",["Silver"]],
-   ["Sturm und Drang Mirror","Mirror",["Silver"]],["Liquefy Side Table","Side Table",["Silver"]]]},
+   ["Fountain Table","Tables",["White"]],["PRISM Mirror Table","Tables",["Silver"]],
+   ["Sturm und Drang Mirror","Mirror",["Silver"]],["Liquefy Side Table","Tables",["Silver"]]]},
  {id:"gubi",name:"GUBI",origin:"Denmark",site:"https://www.gubi.com",items:[
-   ["Pacha Lounge Chair","Lounge Chair",["Yellow"]],["Beetle Dining Chair","Lounge Chair",["Walnut","Charcoal"]],
-   ["Adnet Coffee Table","Side Table",["Oak","Silver"]],["Semi Pendant","Lighting",["Charcoal"]],
+   ["Pacha Lounge Chair","Seating",["Yellow"]],["Beetle Dining Chair","Seating",["Walnut","Charcoal"]],
+   ["Adnet Coffee Table","Tables",["Oak","Silver"]],["Semi Pendant","Lighting",["Charcoal"]],
    ["Multi-Lite Pendant","Lighting",["Silver","Brass"]]]},
  {id:"hermanmiller",name:"Herman Miller",origin:"USA",site:"https://www.hermanmiller.com",items:[
-   ["Aeron Chair","Lounge Chair",["Charcoal"]],["Eames Lounge Chair","Lounge Chair",["Walnut","Charcoal"]]]},
+   ["Aeron Chair","Seating",["Charcoal"]],["Eames Lounge Chair","Seating",["Walnut","Charcoal"]]]},
  {id:"knoll",name:"Knoll",origin:"USA",site:"https://www.knoll.com",items:[
-   ["Barcelona Chair","Lounge Chair",["Sand","Silver"]],["Wassily Chair","Lounge Chair",["Black","Silver"]],
-   ["Womb Chair","Lounge Chair",["Yellow"]],["Tulip Chair","Lounge Chair",["White"]],
-   ["Saarinen Oval Table","Dining Table",["White","Marble"]]]},
+   ["Barcelona Chair","Seating",["Sand","Silver"]],["Wassily Chair","Seating",["Black","Silver"]],
+   ["Womb Chair","Seating",["Yellow"]],["Tulip Chair","Seating",["White"]],
+   ["Saarinen Oval Table","Tables",["White","Marble"]]]},
  {id:"louispoulsen",name:"Louis Poulsen",origin:"Denmark",site:"https://www.louispoulsen.com",items:[
    ["PH5 Pendant","Lighting",["White"]],["PH3½ Floor Lamp","Lighting",["Brass","White"]],
    ["Panthella 160 Table Lamp","Lighting",["White","Silver"]]]},
  {id:"lumina",name:"Lumina",origin:"Italy",site:"https://www.luminaitalia.it",items:[
    ["Daphine Floor Lamp","Lighting",["Charcoal"]],["Daphine Table Lamp","Lighting",["Silver"]]]},
- {id:"maartenbaas",name:"Maarten Baas",origin:"Netherlands",site:"https://www.maartenbaas.com",items:[
-   ["Clay Armchair","Lounge Chair",["Charcoal"]],["Clay Lounge Sofa","Sofa",["Charcoal"]]]},
  {id:"magis",name:"Magis",origin:"Italy",site:"https://www.magisdesign.com",items:[
-   ["Big Will Table","Dining Table",["Silver","White"]],["AC250 Cart","Cart",["Charcoal"]],
-   ["MT284 Chair","Lounge Chair",["Marble"]]]},
+   ["Big Will Table","Tables",["Silver","White"]],["AC250 Cart","Cart",["Charcoal"]],
+   ["MT284 Chair","Seating",["Marble"]]]},
  {id:"martinelliluce",name:"Martinelli Luce",origin:"Italy",site:"https://www.martinelliluce.it",items:[
    ["Bolla Wall Lamp","Lighting",["White"]],["Model 620 Table Lamp","Lighting",["Forest"]]]},
  {id:"mogg",name:"Mogg",origin:"Italy",site:"https://www.mogg.it",items:[
-   ["OLO Side Table","Side Table",["Charcoal","White"]],["Noon Rug","Rug",["White"]],
-   ["Vis à Vis Floor Lamp","Lighting",["Walnut"]],["7 Pillows Armchair","Lounge Chair",["Charcoal"]]]},
+   ["OLO Side Table","Tables",["Charcoal","White"]],["Noon Rug","Rug",["White"]],
+   ["Vis à Vis Floor Lamp","Lighting",["Walnut"]],["7 Pillows Armchair","Seating",["Charcoal"]]]},
  {id:"poltronova",name:"Poltronova",origin:"Italy",site:"https://www.poltronova.it",items:[
    ["Ultrafragola Mirror","Mirror",["White","Pink"]]]},
- {id:"rakastudio",name:"Raka Studio",origin:"Pakistan",site:"https://www.rakastudio.com",items:[
-   ["Fluentum Floor Lamp No.1","Lighting",["Walnut"]],["Vrksa Flush Mount Light No.1","Lighting",["Oak"]],
-   ["Vrksa Table Lamp No.3","Lighting",["Oak"]]]},
  {id:"rrres",name:"rrres",origin:"Spain",site:"https://www.rrres.com",items:[
    ["Land 01 Rug","Rug",["Terracotta"]],["Place 01 Rug","Rug",["Sand"]],["Grid 01 Rug","Rug",["Charcoal"]]]},
  {id:"saba",name:"Saba Italia",origin:"Italy",site:"https://www.sabaitalia.it",items:[
-   ["Butter Low Table","Side Table",["Terracotta"]],["Pixel Box Bed","Bed",["Bordeaux"]],
-   ["Sitar Chair","Lounge Chair",["Walnut","Sand"]],["Karma Sofa","Sofa",["Sand"]]]},
+   ["Butter Low Table","Tables",["Terracotta"]],["Pixel Box Bed","Bed",["Bordeaux"]],
+   ["Sitar Chair","Seating",["Walnut","Sand"]],["Karma Sofa","Sofa",["Sand"]]]},
  {id:"santacole",name:"Santa & Cole",origin:"Spain",site:"https://www.santacole.com",items:[
    ["TMM Floor Lamp","Lighting",["White","Oak"]],["Basica M1 Table Lamp","Lighting",["Silver","White"]],
    ["Sylvestrina Table Lamp","Lighting",["Black"]],["Sistema Lamina Pendant","Lighting",["Silver"]]]},
@@ -618,37 +865,37 @@ const BRANDS = [
  {id:"stoffnagel",name:"Stoff Nagel",origin:"Denmark",site:"https://www.stoffnagel.com",verify:1,items:[
    ["Nagel Object","Decor",["Silver"]],["Nagel Candle","Decor",["Silver"]]]},
  {id:"thonet",name:"Thonet",origin:"Germany",site:"https://www.thonet.de",items:[
-   ["No.214 Chair","Lounge Chair",["Walnut","Oak"]],["S64 Cantilever Chair","Lounge Chair",["Silver","Oak"]],
-   ["S533 Rattan Chair","Lounge Chair",["Oak"]],["No.209 Chair","Lounge Chair",["Walnut"]]]},
+   ["No.214 Chair","Seating",["Walnut","Oak"]],["S64 Cantilever Chair","Seating",["Silver","Oak"]],
+   ["S533 Rattan Chair","Seating",["Oak"]],["No.209 Chair","Seating",["Walnut"]]]},
  {id:"verpan",name:"Verpan",origin:"Denmark",site:"https://www.verpan.com",items:[
-   ["Globe Pendant","Lighting",["White"]],["Lounge Deluxe Chair","Lounge Chair",["Charcoal"]],
+   ["Globe Pendant","Lighting",["White"]],["Lounge Deluxe Chair","Seating",["Charcoal"]],
    ["Pantop Table Lamp","Lighting",["White"]]]},
  {id:"vipp",name:"Vipp",origin:"Denmark",site:"https://www.vipp.com",items:[
-   ["Vipp 427 Side Table","Side Table",["Silver"]],["Vipp 452 Chair","Lounge Chair",["Charcoal","Sand"]],
+   ["Vipp 427 Side Table","Tables",["Silver"]],["Vipp 452 Chair","Seating",["Charcoal","Sand"]],
    ["Vipp 15 Pedal Bin","Storage",["Charcoal"]]]},
  {id:"vitra",name:"Vitra",origin:"Switzerland",site:"https://www.vitra.com",items:[
-   ["Panton Chair","Lounge Chair",["Bordeaux","White","Charcoal"]],["Eames Elephant","Decor",["Forest","Bordeaux","Yellow"]],
-   ["EM Table","Dining Table",["White","Charcoal"]],["Uten.Silo","Storage",["White"]],
-   ["Wiggle Side Chair","Lounge Chair",["Sand"]]]},
+   ["Panton Chair","Seating",["Bordeaux","White","Charcoal"]],["Eames Elephant","Decor",["Forest","Bordeaux","Yellow"]],
+   ["EM Table","Tables",["White","Charcoal"]],["Uten.Silo","Storage",["White"]],
+   ["Wiggle Side Chair","Seating",["Sand"]]]},
  {id:"yamagiwa",name:"Yamagiwa",origin:"Japan",site:"https://www.yamagiwa.co.jp",items:[
    ["Taliesin 2 Floor Lamp","Lighting",["Walnut"]],["Taliesin 3 Table Lamp","Lighting",["Walnut"]],
    ["K-Series Floor Lamp","Lighting",["White"]]]},
  {id:"zieta",name:"Zieta",origin:"Poland",site:"https://www.zieta.pl",items:[
-   ["Chippensteel Chair","Lounge Chair",["Silver"]],["Plopp Stool","Lounge Chair",["Charcoal"]],
+   ["Chippensteel Chair","Seating",["Silver"]],["Plopp Stool","Seating",["Charcoal"]],
    ["Tafla Mirror","Mirror",["Silver"]],["Rondel Mirror","Mirror",["Silver"]]]},
  {id:"vo",name:"V_O",origin:"Belgium",site:"https://www.google.com/search?q=V_O+ALU+chair+Belgium+official+site",verify:1,items:[
-   ["ALU Chair","Lounge Chair",["Forest","White"]],["ALU Chair · Bordeaux","Lounge Chair",["Bordeaux","Forest"]]]},
+   ["ALU Chair","Seating",["Forest","White"]],["ALU Chair · Bordeaux","Seating",["Bordeaux","Forest"]]]},
  {id:"bulo",name:"Bulo",origin:"Belgium",site:"https://www.bulo.com",items:[
-   ["SL58 Chair · 4 Legs","Lounge Chair",["Oak"]],["SL58 Chair · 5 Legs","Lounge Chair",["Oak"]]]},
+   ["SL58 Chair · 4 Legs","Seating",["Oak"]],["SL58 Chair · 5 Legs","Seating",["Oak"]]]},
  {id:"fritzhansen",name:"Fritz Hansen",origin:"Denmark",site:"https://www.fritzhansen.com",research:1,items:[
-   ["Egg Chair","Lounge Chair",["Charcoal"],"https://www.fritzhansen.com/en/categories/by-series/egg/3316"]]},
+   ["Egg Chair","Seating",["Charcoal"],"https://www.fritzhansen.com/en/categories/by-series/egg/3316"]]},
  {id:"bbitalia",name:"B&B Italia",origin:"Italy",site:"https://www.bebitalia.com",research:1,items:[
    ["Tufty-Time Sofa","Sofa",["Grey"],"https://www.bebitalia.com/en-us/en-us-tufty-time-divani.html"]]},
  {id:"gufram",name:"Gufram",origin:"Italy",site:"https://gufram.it",items:[
    ["Cactus Coat Stand","Storage",["Forest"]],["Bocca Sofa","Sofa",["Bordeaux","Terracotta"]],
-   ["Pratone Lounger","Lounge Chair",["Forest"]]]},
- {id:"singchan",name:"Sing Chan Design",origin:"Hong Kong",site:"https://www.singchandesign.com",verify:1,items:[
-   ["Fragment Wall Lamp","Lighting",["Charcoal"]],["The Wall Side Table","Side Table",["Charcoal"]],
+   ["Pratone Lounger","Seating",["Forest"]]]},
+ {id:"singchan",name:"Sing Chan Design",origin:"China",site:"https://www.singchandesign.com",verify:1,items:[
+   ["Fragment Wall Lamp","Lighting",["Charcoal"]],["The Wall Side Table","Tables",["Charcoal"]],
    ["Fragment Pendant","Lighting",["Silver"]],["Fragment Floor Lamp","Lighting",["Silver"]]]},
  {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.it",verify:1,items:[
    ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]}
@@ -658,6 +905,7 @@ const BRANDS = [
 // origin + official link only — no item-level data exists for these yet (no inventory source),
 // so rather than invent items, they show as a brand card linking straight to the official site.
 const DIRECTORY = [
+ ["Mario Tsai Studio","China","https://www.google.com/search?q=Mario+Tsai+Studio+official+site",1],
  ["USM","Switzerland","https://www.usm.com"],
  ["Brand van Egmond","Netherlands","https://www.brandvanegmond.com"],
  ["bd Barcelona Design","Spain","https://www.bdbarcelona.com"],
@@ -769,7 +1017,7 @@ const DIRECTORY = [
  ["L'Objet","USA","https://www.l-objet.com"],
  ["ConcreteCat","Unconfirmed","https://www.google.com/search?q=ConcreteCat+mirror+brand",1],
  ["DaDa","Unconfirmed","https://www.google.com/search?q=DaDa+furniture+brand",1],
- ["KAR","Unconfirmed","https://www.google.com/search?q=KAR+furniture+brand",1],
+ ["KAR","China","https://www.google.com/search?q=KAR+furniture+brand",1],
  ["Ninefact","Unconfirmed","https://www.google.com/search?q=Ninefact+furniture+brand",1]
 ].map(d=>({id:d[0].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''),name:d[0],origin:d[1],site:d[2],verify:d[3]||0,items:[],directory:true}));
 
