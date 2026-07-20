@@ -73,6 +73,11 @@
   .fav-btn.faved svg path{fill:#fff;}
   .coll-name-tag{display:inline-block; background:#fff; color:var(--ink); border:1px solid var(--ink); padding:5px 9px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; margin-top:5px;}
 
+  /* every tile on the "Shared with you" page gets this badge, regardless of tile type —
+     makes it unmistakable these are someone else's picks, distinct from your own heart-saves */
+  .shared-grid .tile{position:relative;}
+  .shared-grid .tile::after{content:"Shared"; position:absolute; top:38px; right:8px; z-index:3; background:var(--ink); color:#fff; font-size:8px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; pointer-events:none;}
+
   /* product photography tiles (collections/models): full photo visible (no crop), no dark
      gradient — labels sit top-left (out of the photo's way), indicators sit bottom-left,
      same two spots for every product tile so collections and models read consistently */
@@ -1174,7 +1179,7 @@ function renderSharedList(q){
       <div><h1>Shared with you</h1><p>Someone shared these picks with you. Tap the heart on anything to save it to your own Favorites — it won't touch what you've already saved.</p></div>
       <span class="count-pill">${total} items</span>
     </div>
-    <div class="grid item-grid">
+    <div class="grid item-grid shared-grid">
       ${tilesHTML({items,colls,models})}
       ${total===0?'<div class="empty">This shared link did not match anything — it may be out of date.</div>':''}
     </div>
