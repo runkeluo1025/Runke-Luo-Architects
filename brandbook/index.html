@@ -1087,38 +1087,96 @@ function backToCollections(){ state.collection=null; renderCurrent(); window.scr
 function renderCurrent(){
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
   if(state.brand){ renderBrandDetail(state.brand,q); return; }
+  if(state.tab==='shared') { renderSharedList(q); return; }
   if(state.tab==='brands') renderBrandGrid(q);
   else if(state.tab==='favorites') renderFavorites(q);
   else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
 }
 
-function renderFavorites(q){
-  const favs=getFavorites();
-  let favItems=ITEMS.filter(i=>favs.has(i.id));
-  let favColls=[];
-  let favModels=[];
+// Looks up which items/collections/models match a set of favorite-style ids —
+// shared by "my own favorites" and "someone else's shared list" views.
+function collectByIds(idSet,q){
+  let items=ITEMS.filter(i=>idSet.has(i.id));
+  let colls=[];
+  let models=[];
   BRANDS.forEach(b=>{ (b.collections||[]).forEach((c,idx)=>{
-    if(favs.has(`${b.id}::${c.name}`)) favColls.push({b,c,idx});
+    if(idSet.has(`${b.id}::${c.name}`)) colls.push({b,c,idx});
     c.models.forEach(m=>{
-      if(favs.has(`${b.id}::${c.name}::${m.name}`)) favModels.push({b,c,m});
+      if(idSet.has(`${b.id}::${c.name}::${m.name}`)) models.push({b,c,m});
     });
   });});
   if(q){
-    favItems=favItems.filter(i=>i.name.toLowerCase().includes(q));
-    favColls=favColls.filter(({c})=>c.name.toLowerCase().includes(q));
-    favModels=favModels.filter(({m})=>m.name.toLowerCase().includes(q));
+    items=items.filter(i=>i.name.toLowerCase().includes(q));
+    colls=colls.filter(({c})=>c.name.toLowerCase().includes(q));
+    models=models.filter(({m})=>m.name.toLowerCase().includes(q));
   }
-  const total=favItems.length+favColls.length+favModels.length;
+  return {items,colls,models};
+}
+function tilesHTML({items,colls,models}){
+  return items.map(itemTileHTML).join('')
+    + colls.map(({b,c,idx})=>collectionTileHTML(c,b,idx)).join('')
+    + models.map(({b,c,m})=>modelTileHTML(b,c,m)).join('');
+}
+
+function renderFavorites(q){
+  const {items,colls,models}=collectByIds(getFavorites(),q);
+  const total=items.length+colls.length+models.length;
   document.getElementById('main').innerHTML = `
     <div class="section-head">
       <div><h1>Favorites</h1><p>Saved on this device — tap the heart on any tile to add or remove.</p></div>
       <span class="count-pill">${total} saved</span>
     </div>
+    ${total>0?`<button class="btn ghost" style="margin-bottom:16px;" onclick="shareMyFavorites()">Share this list 🔗</button>`:''}
     <div class="grid item-grid">
-      ${favItems.map(itemTileHTML).join('')}
-      ${favColls.map(({b,c,idx})=>collectionTileHTML(c,b,idx)).join('')}
-      ${favModels.map(({b,c,m})=>modelTileHTML(b,c,m)).join('')}
+      ${tilesHTML({items,colls,models})}
       ${total===0?'<div class="empty">Nothing saved yet — tap the heart on any collection or model to save it here.</div>':''}
+    </div>
+  `;
+  wireHoverFlash();
+  wireHoverCycle();
+  fillGridGap('.item-grid',640,960);
+}
+
+// Shared list: someone else's favorites, encoded in the URL (?shared=...), viewed
+// separately from this visitor's own list. Tapping a heart here still only affects
+// *this visitor's* own bb_favorites — opening a shared link never overwrites it.
+let SHARED_IDS=null;
+function encodeShareIds(ids){ return btoa(encodeURIComponent(JSON.stringify(ids))); }
+function decodeShareIds(raw){
+  try{ return JSON.parse(decodeURIComponent(atob(raw))); }
+  catch(e){ return null; }
+}
+function buildShareLink(){
+  const ids=[...getFavorites()];
+  const url=new URL(location.href);
+  url.search='?shared='+encodeShareIds(ids);
+  url.hash='';
+  return url.toString();
+}
+function shareMyFavorites(){
+  const link=buildShareLink();
+  if(navigator.clipboard?.writeText){
+    navigator.clipboard.writeText(link).then(
+      ()=>alert('Link copied! Send it to anyone — they can pick items from your list to save to their own, without touching what they already have saved.'),
+      ()=>prompt('Copy this link to share:',link)
+    );
+  } else {
+    prompt('Copy this link to share:',link);
+  }
+}
+function renderSharedList(q){
+  const idSet=new Set(SHARED_IDS||[]);
+  const {items,colls,models}=collectByIds(idSet,q);
+  const total=items.length+colls.length+models.length;
+  document.getElementById('main').innerHTML = `
+    <button class="back" onclick="goHome()">← Continue browsing</button>
+    <div class="section-head">
+      <div><h1>Shared with you</h1><p>Someone shared these picks with you. Tap the heart on anything to save it to your own Favorites — it won't touch what you've already saved.</p></div>
+      <span class="count-pill">${total} items</span>
+    </div>
+    <div class="grid item-grid">
+      ${tilesHTML({items,colls,models})}
+      ${total===0?'<div class="empty">This shared link did not match anything — it may be out of date.</div>':''}
     </div>
   `;
   wireHoverFlash();
@@ -1481,6 +1539,13 @@ function openItem(id){
 }
 function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
 
+// If this page was opened via a shared-favorites link, land on that view instead
+// of the normal homepage — the visitor's own saved favorites are untouched either way.
+const sharedParam=new URLSearchParams(location.search).get('shared');
+if(sharedParam){
+  const decoded=decodeShareIds(sharedParam);
+  if(decoded){ SHARED_IDS=decoded; state.tab='shared'; }
+}
 renderCurrent();
 </script>
 </body>
