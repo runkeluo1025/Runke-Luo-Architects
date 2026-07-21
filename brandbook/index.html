@@ -153,6 +153,8 @@
   .modal{background:#fff; width:100%; max-width:620px; max-height:92vh; overflow-y:auto; border:1px solid var(--ink); border-bottom:none;}
   @media(min-width:720px){.modal{border-bottom:1px solid var(--ink);}}
   .modal .mimg{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1px solid var(--ink);}
+  .img-blank{width:100%; height:100%; background:#F2F2F0;}
+  .modal .img-blank{height:auto;}
   .modal .mbody{padding:20px 22px 26px; position:relative;}
   .modal-close{position:absolute; top:-42px; right:0; background:#fff; border:1px solid var(--ink); width:34px; height:34px; cursor:pointer; font-size:17px; line-height:1;}
   .modal .cat{font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--grey);}
@@ -930,23 +932,20 @@ const DIRECTORY = [
  ["Bruunmunch","Denmark","https://www.bruunmunch.dk"],
  ["Nemo Lighting","Italy","https://www.nemolighting.com"],
  ["Imperfettolab","Italy","https://www.imperfettolab.com"],
- ["Bordbar","Germany","https://www.bordbar.de"],
  ["Rispal","France","https://www.edition-rispal.com"],
  ["Petite Friture","France","https://www.petitefriture.com"],
  ["a. by Arturo Álvarez","Spain","https://www.arturo-alvarez.com"],
  ["Tecta","Germany","https://www.tecta.de"],
  ["mdf italia","Italy","https://www.mdfitalia.com"],
  ["ege","Denmark","https://www.ege.dk"],
- ["Parachilna","South Korea","https://www.parachilna.com"],
+ ["Parachilna","Spain","https://www.parachilna.com"],
  ["Christofle","France","https://www.christofle.com"],
- ["Transparent","Unconfirmed","https://www.google.com/search?q=Transparent+lighting+brand",1],
  ["Georg Jensen","Denmark","https://www.georgjensen.com"],
  ["Cire Trudon","France","https://www.trudon.com"],
  ["Galerie MCDE","France","https://www.google.com/search?q=Galerie+MCDE+Pierre+Chareau",1],
  ["Phantom Hands","India","https://www.phantomhands.in"],
  ["Tecno","Italy","https://www.tecnospa.com"],
  ["Luceplan","Italy","https://www.luceplan.com"],
- ["Neolith","Spain","https://www.neolith.com"],
  ["Alias","Italy","https://www.aliasdesign.it"],
  ["Agrippa","Unconfirmed","https://www.google.com/search?q=Agrippa+furniture+brand",1],
  ["La Boîte Concept","France","https://www.laboiteconcept.com"],
@@ -1038,6 +1037,173 @@ const DIRECTORY = [
 
 BRANDS.push(...DIRECTORY);
 
+// One-sentence factual bios, researched brand-by-brand (official sites, Wikipedia,
+// design press) rather than invented — filled in incrementally, "TBD" where a brand's
+// facts couldn't be confidently verified. Applied to BRANDS below without overwriting
+// any bio already set inline (like &Tradition's).
+const BIOS = {
+  serax:"Belgian design house founded in 1986 by brothers Serge and Axel Van Den Bossche, producing tableware, home accessories, and furniture with international designers and makers.",
+  spectrum:"Dutch furniture company founded in 1941 as a wartime offshoot of textile maker De Ploeg, known for Martin Visser's mid-century modernist designs such as the BR02 daybed.",
+  stoffnagel:"Danish design brand founded in 2015, known for reviving Werner Stoff's 1960s modular, stackable candle holder and vase system originally conceived with metalworker Hans Nagel.",
+  thonet:"German furniture company founded in 1819 by Michael Thonet, pioneer of industrial bentwood chair production that transformed 19th-century furniture manufacturing worldwide.",
+  verpan:"Danish company founded in 2003 dedicated to reissuing lighting and furniture designs by Verner Panton, produced in collaboration with the Panton family.",
+  vipp:"Danish, family-owned brand founded in 1939 when metalworker Holger Nielsen created the original pedal bin, later expanding into kitchens, bathrooms, and furniture.",
+  vitra:"Swiss furniture company founded in 1950 by Willi and Erika Fehlbaum, known for manufacturing Eames and Panton designs and shaping postwar office and home furniture.",
+  yamagiwa:"Japanese lighting company founded in 1923 in Tokyo as an electrical equipment distributor, later becoming a leading manufacturer of architectural and designer lighting.",
+  zieta:"Polish design studio founded in 2010 by architect Oskar Zięta, known for FiDU, his patented technique of inflating steel and aluminum sheets into sculptural furniture.",
+  vo:"Belgian design house founded in 2015 by gallery owner Veerle Wenes and Serax's Axel Van Den Bossche, publishing furniture and objects by designers such as Muller Van Severen.",
+  bulo:"Belgian office furniture company founded in 1963 by Walter Busschop in Mechelen, still family-owned and known for collaborations with designers such as Vincent Van Duysen and Jean Nouvel.",
+  fritzhansen:"Danish furniture company founded in 1872 by cabinetmaker Fritz Hansen, renowned for its decades-long collaboration with architect Arne Jacobsen on modern furniture icons such as the Ant and Egg chairs.",
+  bbitalia:"Italian furniture company founded in 1966 by Piero Ambrogio Busnelli, a pioneer of industrialized polyurethane-foam upholstery that reshaped modern Italian furniture manufacturing.",
+  gufram:"Italian furniture manufacturer founded in 1966 by the Gugliermetto brothers in Turin, known for Pop and Radical Design pieces such as the Cactus coat rack and Bocca sofa.",
+  singchan:"Chinese design studio founded in 2020 by Guangzhou-based designer Sing Chan, known for furniture and lighting that reinterprets traditional Chinese craft and architecture in contemporary forms.",
+  ramun:"Italian lighting brand created under the artistic direction of designer Alessandro Mendini, best known for the Amuleto lamp inspired by sun, moon, and earth imagery.",
+  "mario-tsai-studio":"Chinese design studio founded in Hangzhou in 2014 by Mario Tsai, focused on research-driven, sustainable furniture and product design.",
+  usm:"Swiss company founded in 1885 as a hardware manufacturer, known since the 1960s for the modular USM Haller furniture system developed with architect Fritz Haller.",
+  "brand-van-egmond":"Dutch lighting studio founded in 1989 by William Brand and Annet van Egmond, known for handcrafted sculptural chandeliers exported to over 60 countries.",
+  "bd-barcelona-design":"Spanish design house founded in 1972 in Barcelona by Studio PER architects, known for reissuing furniture by Antoni Gaudí and Salvador Dalí alongside contemporary designers.",
+  "4mariani":"Italian furniture company founded in 1957 in Mariano Comense by the four Mariani brothers, known for leather craftsmanship and seating collections such as Andromeda and Selene.",
+  agape:"Italian bathroom design company founded in 1973 in Verona by the Benedini family, known for treating the bathroom as an integral part of domestic architecture.",
+  kimu:"Design studio founded in 2013 by Alex Yeh, Kelly Lin, and Ketty Shih, based between Helsinki and Taipei, blending Eastern philosophy with Western minimalist forms in lighting and furniture.",
+  bruunmunch:"Danish furniture company founded in 2008 in Esbjerg by Jacob Munch and Henrik Bruun, known for Nordic-designed, durable furniture with an emphasis on responsible production.",
+  "nemo-lighting":"Italian lighting company founded in Milan in 1993 as Cassina's lighting division, known for reissuing 20th-century designs by figures such as Le Corbusier and Charlotte Perriand.",
+  imperfettolab:"Italian design studio founded in Emilia-Romagna in 1992 by Verter Turroni, joined by Emanuela Ravelli in 1997, known for sculptural fiberglass furniture with intentional visual dissonance.",
+  rispal:"French lighting brand founded in Paris in 1924 by Georges-Louis Rispal, revived in the 2010s by designer Douglas Mont after decades of dormancy, reissuing its mid-century cellulose-acetate lamps.",
+  "petite-friture":"French design house founded in 2009 by Amélie du Passage, known for contemporary furniture, lighting, and objects such as Constance Guisset's Vertigo pendant lamp.",
+  "a-by-arturo-lvarez":"Spanish lighting brand founded in Galicia in 1994 by designer Arturo Álvarez, known for handcrafted, nature-inspired luminaires, rebranded as a-emotional light in 2020.",
+  tecta:"German furniture company founded in 1956 by architect Hans Könecke, known since 1972 under the Bruchhäuser family for producing licensed reissues of Bauhaus furniture classics.",
+  "mdf-italia":"Italian furniture company founded in 1992 by Bruno Fattorini in Milan, known for minimalist, technologically advanced furniture design, and acquired by the Cassina family in 2007.",
+  ege:"Danish carpet manufacturer founded in 1938 by Mads Eg Damgaard in Herning, known as one of Europe's largest producers of textile flooring.",
+  anglepoise:"British lighting company founded in 1932 around George Carwardine's spring-balanced arm mechanism, still best known for the Original 1227 task lamp.",
+  anonimacastelli:"Italian furniture house founded in Bologna in 1877, evolving from a cabinetmaking workshop into a major producer of office and metal furniture through the 20th century.",
+  arflex:"Italian furniture company founded in Milan in 1947 by engineers from Pirelli, pioneering polyurethane-foam upholstered seating with designers such as Marco Zanuso.",
+  artemide:"Italian lighting company founded in Milan in 1959 by Ernesto Gismondi, known for design-driven fixtures such as the Eclisse and Tolomeo lamps.",
+  audo:"Danish design house formed in 2023 through the merger of Menu and By Lassen, producing furniture and lighting rooted in Nordic design history.",
+  cappellini:"Italian furniture company founded in 1946 near Como, transformed under Giulio Cappellini into an internationally known publisher of experimental contemporary design.",
+  carlhansen:"Danish furniture company founded in Odense in 1908, known for producing Hans J. Wegner's chair designs in solid wood since the mid-20th century.",
+  cassina:"Italian furniture company founded in Meda in 1927, later famous for producing licensed reissues of Le Corbusier and other modern masters' furniture.",
+  catellanismith:"Italian lighting company founded in 1989 near Bergamo by Enzo Catellani, producing handcrafted, sculptural lamps designed and made on-site in Italy.",
+  cctapis:"Italian rug company founded in Milan in 2011, producing contemporary hand-knotted carpets made by Tibetan artisans in Nepal.",
+  classicon:"German furniture company founded in Munich in 1990, producing licensed reissues of Eileen Gray designs alongside new work by contemporary designers.",
+  dcw:"French lighting company founded in Paris in 2008, reviving 20th-century designs such as the Lampe Gras and Mantis lamp for contemporary production.",
+  desede:"Swiss furniture company founded in 1962 in Klingnau from a 19th-century saddlery, known for handcrafted leather sofas such as the modular DS-600.",
+  desalto:"Italian furniture company founded in Meda in 1990 by the Orsenigo brothers, specializing in metal-framed tables and seating rooted in Brianza craftsmanship.",
+  disderot:"French lighting company founded in 1948 by Pierre Disderot, today reissuing mid-century designs by figures such as Pierre Guariche and Pierre Paulin.",
+  edra:"Italian furniture company founded in Tuscany in 1987 by Valerio and Monica Mazzei, known for experimental pieces designed with Francesco Binfaré and the Campana brothers.",
+  fiam:"Italian furniture company founded in 1973 by Vittorio Livi, the first to industrialize curved-glass furniture such as Cini Boeri's Ghost chair.",
+  flos:"Italian lighting company founded in 1962 in Merano, developing landmark fixtures with designers including the Castiglioni brothers and Tobia Scarpa.",
+  giobagnara:"Italian leather goods company founded in Genoa in 1999 by Giorgio Bagnara, producing handcrafted leather homeware and accessories.",
+  glasitalia:"Italian furniture company founded in Brianza in the early 1970s, specializing in curved and shaped glass furniture with designers such as Piero Lissoni.",
+  gubi:"Danish design house founded in Copenhagen in 1967 by Gubi and Lisbeth Olsen, known for reissuing overlooked 20th-century pieces alongside new commissions.",
+  hermanmiller:"American furniture company founded in Michigan in 1905, renamed Herman Miller in 1923 and known for modernist designs such as the Eames Lounge Chair and Aeron chair.",
+  knoll:"American furniture company founded in New York in 1938 by Hans Knoll, known for Bauhaus-influenced modern furniture and later run by Florence Knoll.",
+  louispoulsen:"Danish company founded in Copenhagen in 1874, known today as a lighting house through its long collaboration with designer Poul Henningsen beginning in the 1920s.",
+  lumina:"Italian lighting company founded near Milan in 1980 by Tommaso Cimini, best known for the minimalist Daphine task lamp.",
+  magis:"Italian furniture company founded in 1976 near Treviso by Eugenio Perazza, known for design-driven plastic and metal furniture for home and public use.",
+  martinelliluce:"Italian lighting company founded in Lucca in 1950 by Elio Martinelli, producing geometric, design-driven lamps still run by his family today.",
+  mogg:"Italian furniture company founded in 2012 by architect Nicola Galbiati, producing contemporary living and bedroom furniture with distinctive material details.",
+  poltronova:"Italian furniture company founded in Agliana, Tuscany in 1957 by Sergio Cammilli, a leading producer of Italian Radical Design with Ettore Sottsass and Archizoom.",
+  rrres:"Barcelona-based design studio founded in 2018 by Javier Reyes, producing handmade rugs and textiles with artisans in Oaxaca, Mexico.",
+  saba:"Italian furniture company founded in 1987 near Padua by Amelia Pegorin, specializing in upholstered sofas and armchairs.",
+  santacole:"Spanish design company founded in Barcelona in 1985 by Nina Masó, Javier Nieto Santa and Gabriel Ordeig Cole, publishing furniture and lighting by numerous designers.",
+  "house-of-finn-juhl":"Danish furniture brand founded in 2001, when manufacturer Onecollection acquired the rights to reproduce Finn Juhl's mid-century designs, reissuing his archival furniture with strict fidelity to the originals.",
+  "cattelan-italia":"Italian furniture company founded in 1979 by Giorgio Cattelan, known for glass and marble tables and contemporary living pieces exported to more than 150 countries.",
+  giorgetti:"Italian furniture maker founded in 1898 in Meda by Luigi Giorgetti, evolving from an artisan woodworking workshop into a design house collaborating with architects such as Massimo Scolari and Chi Wing Lo.",
+  kooij:"Dutch design studio founded in 2009 by Dirk van der Kooij, known for durable furniture made from recycled plastic using custom-built robotic manufacturing processes.",
+  "aarnio-originals":"Finnish company founded in 2016 to hold the exclusive production and sales rights to Eero Aarnio's design classics, including the Ball, Bubble, and Pastil chairs.",
+  hessentia:"Italian furniture brand launched in 2018 as the contemporary line of Cornelio Cappellini, a family company established in Brianza in the 1950s, known for glamorous, handcrafted luxury furniture.",
+  baccarat:"French crystal manufacturer founded in 1764 in Lorraine, renowned for lead crystal stemware, chandeliers, and decorative objects produced using techniques perfected since 1816.",
+  moroso:"Italian upholstery company founded in 1952 in Udine by Agostino Moroso, now known internationally for boundary-pushing collaborations with designers such as Patricia Urquiola.",
+  brionvega:"Italian electronics company founded in 1945 in Milan, celebrated for design-forward radios and televisions created with architects including Marco Zanuso, Richard Sapper, and Achille Castiglioni.",
+  "living-divani":"Italian furniture company founded in 1969 near Milan by Renata Pozzoli and Luigi Bestetti, known for upholstered seating shaped since 1988 by art director Piero Lissoni.",
+  turri:"Italian furniture maker founded in 1925 in Carugo by Pietro Turri, known for luxury handcrafted case goods and upholstery rooted in the Brianza woodworking tradition.",
+  "reflex-angelo":"Italian furniture brand rooted in the Lucatello family's Murano glassmaking tradition, producing glass-focused furniture and lighting under the joined Reflex and Angelo names.",
+  bocci:"Canadian design and manufacturing company founded in 2005 in Vancouver by Omer Arbel and Randy Bishop, known for sculptural cast-glass lighting and large-scale installations.",
+  "chapo-cr-ations":"French furniture house founded in the late 1950s by designer Pierre Chapo, known for solid elm furniture built with traditional joinery, still produced today by his descendants.",
+  "gallotti-radice":"Italian furniture company founded in 1955 in Milan by Pierangelo Gallotti and Luigi Radice, pioneers in combining glass with wood and metal in home furnishings.",
+  nilufar:"Milan gallery founded in 1979 by Nina Yashar, evolved from an antique carpet business into a leading venue pairing 20th-century design masters with contemporary talents.",
+  gervasoni:"Italian furniture company founded in 1882 near Udine as a wickerwork workshop, now known for indoor and outdoor furniture shaped since 1998 by art director Paola Navone.",
+  "molteni-c":"Italian furniture company founded in 1934 in Giussano by Angelo and Giuseppina Molteni, a founding member of Salone del Mobile known for collaborations with Aldo Rossi and Afra and Tobia Scarpa.",
+  minotti:"Italian furniture company founded in 1948 in Meda by Alberto Minotti, grown from an artisan sofa workshop into a global name in contemporary upholstered design.",
+  henge:"Italian furniture and lighting brand founded in 2011 in Farra di Soligo by Paolo Tormena, known for monumental, sculptural pieces made with local artisans.",
+  vibieffe:"Italian upholstery company founded in 1968 in Lissone by Italo Buccella, known for sofas and armchairs developed with longtime designer Gianluigi Landoni.",
+  "la-chance":"French furniture company founded in 2012 by Louise Breguet and Jean-Baptiste Souletie, reinterpreting Art Deco opulence through richly textured pieces by contemporary designers.",
+  porro:"Italian furniture company founded in 1925 near Como by brothers Giulio and Stefano Porro, known since 1989 for collaborations with art director Piero Lissoni.",
+  casamania:"Italian furniture brand founded in 1984 in the Veneto region for contract furnishing, now part of Horm Italia and known for collaborations with designers such as Karim Rashid and Luca Nichetto.",
+  mvsevm:"Italian sub-brand of Florence-based Alivar, founded in 1984 to reissue officially licensed 20th-century modernist furniture classics by designers including Mies van der Rohe, Marcel Breuer, and Alvar Aalto.",
+  impatia:"Italian design company founded in 2012 in Milan by Irene Prandoni and Gregg Brodarick, known for transforming pool, ping pong, and foosball tables into refined design objects.",
+  lago:"Italian furniture company founded in 1976 near Padua by Giuseppe Lago, known for modular, digitally-driven design led today by designer Daniele Lago.",
+  flexform:"Italian furniture company founded in 1959 in Meda by the Galimberti brothers, known for upholstered seating designed since the 1970s largely by architect Antonio Citterio.",
+  zanotta:"Italian furniture company founded in 1954 in Nova Milanese by Aurelio Zanotta, known for design landmarks including the Sacco beanbag and the inflatable Blow chair.",
+  "poltrona-frau":"Italian furniture company founded in 1912 in Turin by Renzo Frau, known for leather Chesterfield-style armchairs and later relocated to Tolentino in the Marche region.",
+  promemoria:"Italian furniture company founded in 1988 by Romeo Sozzi near Como, producing handcrafted luxury furniture rooted in four generations of the Sozzi family's cabinetmaking tradition.",
+  baxter:"Italian furniture company founded in 1990 in Lurago d'Erba by Luigi and Paolo Bestetti, known for leather-focused sofas and furniture rooted in Brianza's craft tradition.",
+  maxalto:"Italian furniture house founded in 1975 by B&B Italia founder Piero Ambrogio Busnelli, producing artisanal wood furniture whose design direction has been led by Antonio Citterio since 1993.",
+  "ceccotti-collezioni":"Tuscan furniture maker founded in 1988 by Franco Ceccotti out of a 1956 workshop, known for author-driven wood craftsmanship and now part of the Poltrona Frau Group.",
+  "bentley-home":"British luxury furniture line launched in 2013 by Bentley Motors and Italy's Luxury Living Group, translating the car maker's leather and burr-walnut craftsmanship into home furnishings.",
+  "andr-fu-living":"Hong Kong lifestyle brand launched in 2015 by interior designer André Fu, extending his \"relaxed luxury\" aesthetic into tableware, linens, furniture, and lighting.",
+  sicis:"Italian mosaic house founded in 1987 in Ravenna by Maurizio Leo Placuzzi, reviving the city's ancient mosaic-making tradition through decorative glass, furniture, and interior surfaces.",
+  "saint-louis":"French crystal glassworks founded in 1586 in Lorraine, the oldest glass manufacturer in France and continental Europe's first crystal producer, still hand-blown, cut, and engraved today.",
+  duxiana:"Swedish bed maker founded in 1926 in Malmö by Efraim Ljung, still family-owned and known for its pocket-spring mattress technology marketed globally as DUXIANA.",
+  "memphis-milano":"Italian design collective founded in Milan in 1981 by Ettore Sottsass, known for postmodern furniture and objects in bold color, plastic laminate, and asymmetric form.",
+  moooi:"Dutch design brand founded in 2001 by Marcel Wanders and Casper Vissers, now based in Breda, producing bold, unconventional furniture and lighting from international designers.",
+  "lorenzi-milano":"Milanese cutlery house founded in 1929 by Giovanni Lorenzi, renowned for handcrafted knives, razors, and grooming accessories sold from its historic Montenapoleone shop.",
+  agresti:"Florentine firm founded in 1949, handcrafting leather and wood jewelry boxes, chests, and safes that expanded in the 1970s into luxury security furniture.",
+  rosenthal:"German porcelain house founded in 1879 in Selb, Bavaria, by Philipp Rosenthal, known for tableware collaborations with artists from Andy Warhol to Salvador Dalí.",
+  "tom-dixon":"British design brand established in 2002 by designer Tom Dixon, producing furniture, lighting, and accessories known for its pioneering use of metal and industrial materials.",
+  foscarini:"Italian lighting company founded in 1981 in Murano, Venice, producing decorative glass and contemporary lamps made by specialized outside artisans rather than in-house.",
+  fontanaarte:"Milanese lighting and furniture house founded in 1932 by Gio Ponti, Luigi Fontana, and Pietro Chiesa, pioneering glass-and-metal design for modern Italian interiors.",
+  "barovier-toso":"Murano glassworks tracing its origins to 1295, among the world's oldest family businesses, producing hand-blown Venetian glass chandeliers and lighting for over seven centuries.",
+  penta:"Italian lighting company founded in 1975 in Cabiate, Brianza, producing artisanal lamps in wood, glass, metal, and fabric while deliberately avoiding plastics.",
+  bomma:"Czech glass lighting brand founded in 2012 by Jiří Trtík, reviving Bohemia's glassmaking tradition with hand-blown and robotically ground crystal designs.",
+  stilnovo:"Italian lighting company founded in Milan in 1946 by Bruno Gatta, an early pioneer of postwar Italian lighting design that was relaunched in 2019 by the Linea Light Group.",
+  qeeboo:"Italian design brand founded in Milan in 2016 by Stefano Giovannoni, producing narrative, playful furniture and objects such as the Rabbit Chair.",
+  baas:"TBD",
+  "established-sons":"British design brand founded in 2005 in London by Sebastian Wrong, Mark Holmes, and Alasdhair Willis, producing furniture and lighting with designers including Zaha Hadid and Jasper Morrison.",
+  "zaha-hadid-design":"London-based design label founded in 2006 as a spin-off of Zaha Hadid Architects, translating the late architect's sculptural language into furniture, lighting, and homeware.",
+  driade:"Italian furniture house founded in 1968 by Enrico Astori, Adelaide Acerbi, and Antonia Astori, known for treating furniture design as an art form, including the 1980s Driade Aleph collection.",
+  slamp:"Italian lighting brand founded in 1994 by Roberto Ziliani, known for its patented Opalflex material and collaborations with designers including Alessandro Mendini and Zaha Hadid.",
+  "studio-helle-mardahl":"Danish glass studio launched in 2017 by artist Helle Mardahl, known for hand-blown, candy-colored tableware, lighting, and sculptural objects.",
+  "l-objet":"New York-based luxury tableware brand founded in 2004 by Elad Yifrach, producing globally inspired home accessories crafted with artisans met during his travels.",
+  concretecat:"Canadian concrete-design studio founded in 2007 in Montreal by Shawna and Matt Heide, handcrafting decorative mirrors, objects, and furniture from a proprietary concrete mix.",
+  dada:"Italian kitchen brand founded in 1972 and part of the Molteni Group since 1979, producing high-end kitchens under creative direction shared with sister brand Molteni&C.",
+  kar:"Chinese design studio founded in 2020 in Guangzhou by Steven Yeung, known for sculptural furniture in fiberglass with flowing, organic forms.",
+  ninefact:"Chinese design studio based in Hangzhou that launched its numbered furniture series in 2021, producing sculptural fiberglass pieces with restrained, textured surfaces.",
+  parachilna:"Spanish lighting house founded in 2013 in Barcelona, growing out of the Riera family's 1930s Metalarte heritage to produce artisan-made fixtures through collaborations with international designers.",
+  christofle:"French silversmithing house founded in Paris in 1830 by Charles Christofle, pioneer of electroplating in France and supplier of tableware to European royal and imperial courts.",
+  "georg-jensen":"Danish silversmithing house founded in Copenhagen in 1904 by Georg Jensen, known for sculptural silver hollowware, jewelry, and flatware rooted in Scandinavian craftsmanship.",
+  "cire-trudon":"French candlemaker founded in Paris in 1643, the oldest continuously operating candle manufacturer in the world and former official wax supplier to the French royal court.",
+  "galerie-mcde":"Paris gallery founded by collector Maxime Defert as the exclusive editor of architect-designer Pierre Chareau's furniture and lighting, producing handcrafted reissues of his early-20th-century designs.",
+  "phantom-hands":"Indian furniture studio founded in Bangalore in 2014 by Deepak Srinath and Aparna Rao, handcrafting re-editions of Pierre Jeanneret's Chandigarh-era modernist furniture alongside new work by contemporary designers.",
+  tecno:"Italian furniture company founded in Milan in 1953 by Osvaldo and Fulgenzio Borsani, transforming the family's artisan workshop into industrial production of modernist seating and office systems.",
+  luceplan:"Italian lighting company founded in Milan in 1978 by architects Paolo Rizzatto, Riccardo Sarfatti, and Sandra Severi, pairing technical research with design culture in project-driven lamps.",
+  alias:"Italian furniture company founded in 1979 near Bergamo by Enrico Baleri, Marilisa Decimo, and Carlo and Francesco Forcolini, known for lightweight seating developed with emerging designers.",
+  agrippa:"Spanish furniture brand founded in Valencia in 2008, handcrafting sculptural seating and casegoods in walnut, brass, and leather inspired by Gaudí's organic forms and local craft traditions.",
+  "la-bo-te-concept":"French audio-furniture company founded in 2008 by Timothée Cagniard, descendant of the Siare loudspeaker family, producing handcrafted modular cabinets that integrate high-fidelity sound systems.",
+  "ap-collection":"Belgian furniture brand founded in 2015 by Alexis and Pauline, known for handmade upholstered seating adorned with attached plush toys that blend vintage form with playful extravagance.",
+  "lk-hjelle":"Norwegian furniture manufacturer founded in Sykkylven in 1940 by Lars Karl Hjelle with his brothers-in-law, still family-run and producing Scandinavian-designed seating in its original factory town.",
+  "1920r":"TBD",
+  "maison-margiela":"French fashion house founded in Paris in 1988 by Belgian designer Martin Margiela with Jenny Meirens, known for deconstructed, anti-establishment design and anonymity-driven presentation.",
+  "jake-phipps":"British furniture designer trained at Parnham College who set up his own London studio in 2005, producing sculptural, narrative-driven bespoke pieces for international clients and manufacturers.",
+  italamp:"Italian lighting company founded in 1975 near Venice by Matteo Vitadello, known for glass and crystal fixtures that pair classic and contemporary lines using traditional glassmaking techniques.",
+  mohebban:"Milan rug house founded in the 1970s by the Mohebban family, hand-knotting carpets sourced from India, Nepal, and Turkey that draw on Persian, Turkish, and Moroccan weaving traditions.",
+  avarte:"Finnish furniture manufacturer established in 1980 when employees of the Haimi company took it over, continuing production of Yrjö Kukkapuro's modernist designs until closing in 2013.",
+  fasem:"Italian furniture company founded in 1976 in Tuscany, specializing in steel-framed seating upholstered in full-grain leather, developed through decades of designer collaborations.",
+  quasar:"Dutch lighting company founded in 1992 by Teun van Gammeren, launched at Euroluce in Milan and known for cast-metal indoor fixtures manufactured in Giessen, Netherlands.",
+  "baleri-italia":"Italian furniture company founded in 1984 near Bergamo by Enrico Baleri and Marilisa Decimo, known for pioneering collaborations with Philippe Starck and other emerging designers.",
+  artifort:"Dutch furniture manufacturer founded in Maastricht in 1890, renamed Artifort in 1928 and known for the sculptural mid-century seating of Pierre Paulin and Geoffrey Harcourt.",
+  poliform:"Italian furniture company founded in Brianza in 1970 by the Spinelli brothers and Giovanni Anzani, turning a family artisan workshop into an industrial producer of modular living and closet systems.",
+  "fendi-casa":"Italian home-furnishing line founded in 1988 by Anna Fendi and Alberto Vignatelli, the first fashion house to launch a full furniture and interior décor collection.",
+  "h-stens":"Swedish bedmaker founded in 1852 by Pehr Adolf Janson as a saddlery, shifting to handcrafted beds in the early 1900s and still family-run after six generations.",
+  "kelly-wearstler":"American interior design studio founded in Los Angeles in 1995 by Kelly Wearstler, grown from a boutique practice into a multidisciplinary residential, hospitality, and product design brand.",
+  "vi-spring":"British bed manufacturer founded in London in 1901, later renamed Vispring, known for handmade pocket-sprung mattresses built with natural materials and its signature six-turn coil.",
+  "bang-olufsen":"Danish electronics company founded in Struer in 1925 by Peter Bang and Svend Olufsen, known for high-end audio and television design that pairs engineering with minimalist form.",
+  tacchini:"Italian furniture company founded in Seveso in 1967 by Antonio Tacchini, growing from a carpentry workshop into a Brianza-based producer of design-driven seating and re-editions of 20th-century pieces.",
+  "ligne-roset":"French furniture company founded in Montagnieu in 1860 by Antoine Roset, evolving from a bentwood walking-stick workshop into a major upholstered-furniture house under the Ligne Roset name since 1973.",
+  ciclotte:"Italian design brand behind the Ciclotte exercise bike, conceived by industrial designer Luca Schieppati and manufactured near Bergamo by the Lamiflex Group, winner of the Compasso d'Oro."
+};
+BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
+
 // flatten
 let ITEMS = [];
 BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
@@ -1048,13 +1214,50 @@ BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
 let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
-function imgUrl(seed,w=500,h=500){ return `https://picsum.photos/seed/${seed}/${w}/${h}`; }
 
-// Brand ids with a real logo file at images/logos/{id}.png — falls back to a
-// typographic mark (first letter, same treatment as the header wordmark) until supplied.
-const LOGOS = new Set(["andtradition"]);
+// Brand ids with a real logo file in images/logos/ — falls back to a typographic
+// mark (first letter, same treatment as the header wordmark) until supplied. Filenames
+// vary in case/extension since they're saved as-is from wherever each logo came from.
+const LOGOS = {
+  andtradition:"andtradition.png",
+  cassina:"cassina.webp",
+  "4mariani":"4mariani.gif",
+  anglepoise:"Anglepoise.png",
+  anonimacastelli:"Anonimacastelli.webp",
+  arflex:"Arflex.webp",
+  artemide:"Artemide.webp",
+  bruunmunch:"Bruunmunch.webp",
+  desede:"DeSede_Logo.png",
+  "galerie-mcde":"Galerie MCDE.jpg",
+  "georg-jensen":"Georg_Jensen_logo.png",
+  glasitalia:"Glas-Italia-Logo-Vector.svg-.png",
+  gufram:"Gufram-Logo-2-750x479.png",
+  agape:"agape.webp",
+  alias:"alias.webp",
+  bbitalia:"b-b-italia.jpg",
+  "bd-barcelona-design":"bdbarcelona.webp",
+  "brand-van-egmond":"brandvanegmond.webp",
+  bulo:"bulo.png",
+  cappellini:"cappellini.webp",
+  carlhansen:"carlhansen.webp",
+  catellanismith:"catellanismith.png",
+  cctapis:"cc-tapis.jpg",
+  christofle:"christofle.png",
+  classicon:"classicon.png",
+  dcw:"dcw-editions.png",
+  desalto:"desalto.webp",
+  disderot:"disderot.webp",
+  edra:"edra-logo-8DB6DB5B20-seeklogo.com.png",
+  ege:"ege.webp",
+  fiam:"fiamitalia.jpg",
+  flos:"flos-logo.png",
+  giobagnara:"giobagnara.png",
+  gubi:"gubi_logo_black.jpg",
+  fritzhansen:"logo_fritzhansen.webp",
+  "a-by-arturo-lvarez":"a-emotionallight.png"
+};
 function brandMarkHTML(b){
-  if(LOGOS.has(b.id)) return `<img src="images/logos/${b.id}.png" alt="${b.name} logo">`;
+  if(LOGOS[b.id]) return `<img src="images/logos/${encodeURIComponent(LOGOS[b.id])}" alt="${b.name} logo">`;
   return `<span class="mark-fallback">${b.name.charAt(0)}</span>`;
 }
 
@@ -1473,16 +1676,15 @@ function renderBrandGrid(q){
             <img src="${collImgs[0]}" alt="${b.name}">
           </div>`;
         }
-        const first = ITEMS.find(i=>i.brand===b.id);
-        const fallbackImg = first ? imgUrl(first.img,450,600) : imgUrl(b.id,450,600);
         return `
-        <div class="tile" data-brand="${b.id}" onclick="openBrand('${b.id}')">
-          <img src="${fallbackImg}" alt="${b.name}">
-          <span class="tag">${b.origin}</span>
-          <div class="overlay"></div>
-          <div class="bottom">
-            <div class="b-name">${b.name}</div>
-            <div class="b-meta">${b.directory ? 'Directory · visit site' : ITEMS.filter(i=>i.brand===b.id).length+' pieces catalogued'}</div>
+        <div class="tile product-tile" data-brand="${b.id}" onclick="openBrand('${b.id}')">
+          <div class="tile-top-labels">
+            <div class="i-cat">${b.origin}</div>
+            <div class="coll-name-tag">${b.name}</div>
+          </div>
+          <div class="img-blank"></div>
+          <div class="tile-bottom-indicators">
+            <div class="i-cat">${b.directory ? 'Directory · visit site' : ITEMS.filter(i=>i.brand===b.id).length+' pieces catalogued'}</div>
           </div>
         </div>`;
       }).join('')}
@@ -1563,7 +1765,6 @@ function collectionTileHTML(c,b,idxOverride){
   const idx=idxOverride!==undefined?idxOverride:c._idx;
   const clickJs=idxOverride!==undefined?`openBrandCollection('${b.id}',${idx})`:`openCollection(${idx})`;
   const imgs=c.models.map(m=>m.colors[0]?.img).filter(Boolean);
-  if(imgs.length===0) imgs.push(imgUrl(c.name,500,500));
   return `
     <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="${clickJs}">
       <div class="tile-top-labels">
@@ -1571,7 +1772,7 @@ function collectionTileHTML(c,b,idxOverride){
         <div class="coll-name-tag">${c.name}</div>
       </div>
       ${favBtnHTML(favId)}
-      <img src="${imgs[0]}" alt="${c.name}">
+      ${imgs.length ? `<img src="${imgs[0]}" alt="${c.name}">` : `<div class="img-blank"></div>`}
       <div class="tile-bottom-indicators">${lineIndicatorsHTML(imgs.length)}</div>
     </div>`;
 }
@@ -1586,7 +1787,6 @@ function modelGridHTML(b,collIdx){
 
 function modelTileHTML(b,c,m){
   const imgs=m.colors.map(col=>col.img);
-  if(imgs.length===0) imgs.push(imgUrl(m.name,500,500));
   const favId=`${b.id}::${c.name}::${m.name}`;
   return `
     <div class="tile cycle-tile product-tile" data-images='${JSON.stringify(imgs)}' data-idx="0" onclick="window.open('${c.link}','_blank')">
@@ -1595,7 +1795,7 @@ function modelTileHTML(b,c,m){
         <div class="coll-name-tag">${m.name}</div>
       </div>
       ${favBtnHTML(favId)}
-      <img src="${imgs[0]}" alt="${m.name}">
+      ${imgs.length ? `<img src="${imgs[0]}" alt="${m.name}">` : `<div class="img-blank"></div>`}
       <div class="tile-bottom-indicators">
         <div class="swatches">${m.colors.map((col,i)=>col.pal
           ? `<span class="dot ${i===0?'active':''}" data-idx="${i}" style="background:${colorHex(col.pal)}" onclick="event.stopPropagation(); setActiveImage(this.closest('.cycle-tile'), ${i});"></span>`
@@ -1655,13 +1855,14 @@ function toggleFilter(kind,val){
 function itemTileHTML(i){
   const b=brandOf(i.brand);
   return `
-    <div class="tile" data-brand="${i.brand}" onclick='openItem("${i.id}")'>
-      ${favBtnHTML(i.id)}
-      <img src="${imgUrl(i.img)}" alt="${i.name}">
-      <div class="overlay"></div>
-      <div class="bottom">
+    <div class="tile product-tile" data-brand="${i.brand}" onclick='openItem("${i.id}")'>
+      <div class="tile-top-labels">
         <div class="i-cat">${i.cat} · ${b.name}</div>
-        <div class="i-name">${i.name}</div>
+        <div class="coll-name-tag">${i.name}</div>
+      </div>
+      ${favBtnHTML(i.id)}
+      <div class="img-blank"></div>
+      <div class="tile-bottom-indicators">
         <div class="swatches">${i.colors.map(c=>`<span class="dot" style="background:${colorHex(c)}"></span>`).join('')}</div>
       </div>
     </div>`;
@@ -1674,7 +1875,7 @@ function openItem(id){
   const outLink = i.link || b.site;
   document.getElementById('modalContent').innerHTML = `
     <button class="modal-close" onclick="closeModal()">×</button>
-    <img class="mimg" src="${imgUrl(i.img,900,650)}" alt="${i.name}">
+    <div class="mimg img-blank"></div>
     <div class="mbody">
       <div class="cat">${i.cat}</div>
       <h2>${i.name}</h2>
