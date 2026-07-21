@@ -138,6 +138,15 @@
   .stockist-item a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--ink); padding-bottom:1px; white-space:nowrap; font-weight:600;}
   .stockist-empty{font-size:11.5px; color:var(--grey);}
 
+  .map-legend{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
+  .map-legend-item{display:flex; align-items:center; gap:6px; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);}
+  .map-legend-item .map-dot{width:10px; height:10px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.2);}
+  .map-container{width:100%; height:520px; border:1px solid var(--ink); background:#f5f5f3;}
+  .map-container .amap-layer{filter:grayscale(1);}
+  .map-loading{display:flex; align-items:center; justify-content:center; height:100%; color:var(--grey); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em;}
+  .map-pin{width:16px; height:16px; border-radius:50%; cursor:pointer;}
+  .map-cluster{border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:600; cursor:pointer;}
+
   .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
   .modal-bg.open{display:flex;}
   @media(min-width:720px){.modal-bg{align-items:center;}}
@@ -174,6 +183,7 @@
       <button class="tab-btn" data-tab="catalog">Catalog</button>
       <button class="tab-btn" data-tab="color">Color</button>
       <button class="tab-btn" data-tab="favorites">Favorites</button>
+      <button class="tab-btn" data-tab="map">Map</button>
     </nav>
     <div class="search-wrap"><input id="searchInput" placeholder="Search brand or item…" oninput="renderCurrent()"></div>
   </div>
@@ -1093,6 +1103,7 @@ function renderCurrent(){
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
   if(state.brand){ renderBrandDetail(state.brand,q); return; }
   if(state.tab==='shared') { renderSharedList(q); return; }
+  if(state.tab==='map') { renderMap(); return; }
   if(state.tab==='brands') renderBrandGrid(q);
   else if(state.tab==='favorites') renderFavorites(q);
   else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
@@ -1187,6 +1198,149 @@ function renderSharedList(q){
   wireHoverFlash();
   wireHoverCycle();
   fillGridGap('.item-grid',640,960);
+}
+
+// --- Map tab: an embedded Amap (JS API) view with color-coded pins ---
+// Note: the key + security code below run in plain text in the browser (Amap's own
+// docs flag this as not ideal for production), but for a small internal tool on the
+// free tier this is a normal, accepted tradeoff — the alternative is standing up a
+// real backend proxy, which this static site doesn't have.
+const AMAP_KEY="2eb47727f8b6062715174dff68376071";
+const AMAP_SECURITY_CODE="083cb6effda3225b85e6f12fed69532f";
+
+const MAP_CATEGORIES={
+  store:{label:"Store / Showroom", color:"#F4633A"},
+  materials:{label:"Materials Showroom", color:"#8FB3A9"},
+  factory:{label:"Factory", color:"#D9A3A9"},
+  beautiful:{label:"Beautiful Space", color:"#8B7CBF"}
+};
+
+// Add more spots here as you send them — {name, address, cat: one of the keys above}.
+const EXTRA_MAP_LOCATIONS=[
+  {name:"ziihome致家家居(杭州直营一店)", address:"杭州市东信和创园19幢", cat:'store'},
+  {name:"梵几客厅(东信·和创园店)", address:"杭州市留和路东信和创园15幢", cat:'store'},
+  {name:"壹集", address:"杭州市五常街道荆长路40号1幢2层", cat:'store'},
+  {name:"NORHOR北欧表情家居(杭州运河店)", address:"杭州市运河万科中心B区B2幢(沿萍水东街)", cat:'store'},
+  {name:"NORHOR北欧表情家居(杭州西溪直营店)", address:"杭州市余杭塘路1220号天空之城未来天空中心3、4幢", cat:'store'},
+  {name:"coconordic杭州", address:"杭州市吉如路88号LOFT49创意城市先行区4号楼1层", cat:'store'},
+  {name:"HomeGallery", address:"杭州市石桥街石桥路279号经纬国际创意园9号楼F座", cat:'store'},
+  {name:"矾物·杭州", address:"杭州市闻堰街道三江汇创谷F14幢2F", cat:'materials'},
+  {name:"福里庭FURRY", address:"杭州市万达中路127号三江汇创谷F14幢", cat:'store'},
+  {name:"For D.福邸(赞成大厦店)", address:"杭州市飞云江路9号赞成中心1层", cat:'store'},
+  {name:"LINE PARK", address:"杭州市留和路139号11幢", cat:'store'},
+  {name:"grado格度杭州店", address:"杭州市王道公园优迈一号楼6号楼1楼", cat:'store'},
+  {name:"Maison Joseph 进口家具集合店", address:"杭州市长河街道滨安路1193号5栋", cat:'store'},
+  {name:"MARIO TSAI", address:"杭州市留下街道留和路139号东信和创园72幢", cat:'store'},
+  {name:"木墨(留和路139号32幢店)", address:"杭州市留和路139号东信和创园32幢", cat:'store'},
+  {name:"Beb Italia(杭州旗舰店)", address:"杭州市钱江路58号赞成大厦(南星桥地铁站D口步行170米)", cat:'store'},
+  {name:"Mirage25", address:"杭州市留和路139号东信和创园23幢", cat:'beautiful'},
+  {name:"石光艺境天然奢石艺术馆", address:"杭州市文一西路830号第六空间家居电器超级电器MALL", cat:'materials'},
+  {name:"Royana", address:"杭州市古墩路808号新时代装生活家居广场E座1楼", cat:'store'},
+  {name:"二黑木作(元谷长乐园店)", address:"杭州市拱墅区长乐路29号4-204", cat:'store'},
+  {name:"杭州叁创家居", address:"杭州市运溪路650号1幢5楼", cat:'store'},
+  {name:"一屿家居(留和路139号65幢店)", address:"杭州市留和路139号东信和创园65幢", cat:'store'},
+  {name:"Huah全晟照明进口灯具品牌集合店", address:"杭州市南星街道赞成中心东楼飞云江路3号HUAH店铺", cat:'store'},
+  {name:"Poliform(杭州旗舰店)", address:"杭州市飞云江路37号(南星桥地铁站C口步行200米)", cat:'store'},
+  {name:"乙舟筑物集", address:"杭州市凤山路79号杭州商业储运有限公司2仓1层", cat:'store'}
+];
+
+function getAllMapLocations(){
+  const stockistLocs=(brandOf('andtradition').stockistCN||[]).map(s=>({
+    name:`${s.name} (&Tradition)`, address:s.address, cat:'store'
+  }));
+  return [...stockistLocs, ...EXTRA_MAP_LOCATIONS];
+}
+
+let amapLoadingPromise=null;
+function loadAmapSDK(){
+  if(window.AMap) return Promise.resolve();
+  if(amapLoadingPromise) return amapLoadingPromise;
+  amapLoadingPromise=new Promise((resolve,reject)=>{
+    window._AMapSecurityConfig={securityJsCode:AMAP_SECURITY_CODE};
+    const script=document.createElement('script');
+    script.src=`https://webapi.amap.com/maps?v=2.0&key=${AMAP_KEY}`;
+    script.onload=resolve;
+    script.onerror=reject;
+    document.head.appendChild(script);
+  });
+  return amapLoadingPromise;
+}
+function geocodeAddress(geocoder,address){
+  return new Promise(resolve=>{
+    let done=false;
+    const finish=(val)=>{ if(!done){ done=true; resolve(val); } };
+    setTimeout(()=>finish(null), 6000);
+    geocoder.getLocation(address,(status,result)=>{
+      finish(status==='complete' && result.geocodes.length ? result.geocodes[0].location : null);
+    });
+  });
+}
+
+function renderMap(){
+  const locs=getAllMapLocations();
+  document.getElementById('main').innerHTML = `
+    <div class="section-head">
+      <div><h1>Map</h1><p>Showrooms, materials sources, factories, and spaces worth remembering.</p></div>
+      <span class="count-pill">${locs.length} pins</span>
+    </div>
+    <div class="map-legend">
+      ${Object.values(MAP_CATEGORIES).map(c=>`<span class="map-legend-item"><span class="map-dot" style="background:${c.color}"></span>${c.label}</span>`).join('')}
+    </div>
+    <div id="amap-container" class="map-container"><div class="map-loading">Loading map…</div></div>
+  `;
+  loadAmapSDK().then(()=>{
+    const container=document.getElementById('amap-container');
+    container.innerHTML='';
+    const map=new AMap.Map(container,{zoom:5,center:[113.5,34.5],mapStyle:'amap://styles/whitesmoke'});
+    AMap.plugin(['AMap.Geocoder','AMap.MarkerCluster'], async ()=>{
+      const geocoder=new AMap.Geocoder({});
+      const points=[];
+      for(const loc of locs){
+        const pos=await geocodeAddress(geocoder,loc.address);
+        if(!pos) continue;
+        points.push({lnglat:pos, name:loc.name, address:loc.address, cat:loc.cat});
+      }
+      if(points.length){
+        const byCat={};
+        points.forEach(p=>{ (byCat[p.cat]=byCat[p.cat]||[]).push(p); });
+        Object.keys(byCat).forEach(catKey=>{
+          const cat=MAP_CATEGORIES[catKey]||MAP_CATEGORIES.store;
+          new AMap.MarkerCluster(map, byCat[catKey], {
+            gridSize:20,
+            renderClusterMarker(context){
+              const count=context.count;
+              const size=Math.min(20+Math.sqrt(count)*6, 40);
+              const el=document.createElement('div');
+              el.className='map-cluster';
+              el.style.background=cat.color;
+              el.style.width=el.style.height=size+'px';
+              el.style.fontSize=(size>32?'12.5px':'11px');
+              el.textContent=count;
+              context.marker.setContent(el);
+              context.marker.setOffset(new AMap.Pixel(-size/2,-size/2));
+              context.marker.on('click',()=>{
+                map.setZoomAndCenter(Math.min(map.getZoom()+2,18), context.marker.getPosition());
+              });
+            },
+            renderMarker(context){
+              const d=context.data[0];
+              const el=document.createElement('div');
+              el.className='map-pin';
+              el.style.background=cat.color;
+              context.marker.setContent(el);
+              context.marker.setOffset(new AMap.Pixel(-8,-8));
+              context.marker.on('click',()=>{
+                new AMap.InfoWindow({content:`<div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;padding:2px 4px;max-width:200px;"><strong>${d.name}</strong><br>${cat.label}<br>${d.address}</div>`}).open(map,d.lnglat);
+              });
+            }
+          });
+        });
+        map.setFitView();
+      }
+    });
+  }).catch(()=>{
+    document.getElementById('amap-container').innerHTML='<div class="map-loading">Could not load the map — check your connection or API key.</div>';
+  });
 }
 
 // Preview cycling only runs while a tile is actually hovered (desktop) — no more
