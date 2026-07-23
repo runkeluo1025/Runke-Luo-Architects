@@ -93,6 +93,35 @@
   .tile.product-tile .fav-btn svg path{stroke:var(--ink);}
   .tile.product-tile .fav-btn.faved svg path{fill:var(--ink);}
 
+  .ambiance-head{margin-top:40px;}
+  .ambiance-wrap{display:flex; align-items:center; gap:4px;}
+  .ambiance-grid{display:flex; gap:12px; overflow-x:auto; flex:1 1 auto; min-width:0;
+    scrollbar-width:none; -ms-overflow-style:none;}
+  .ambiance-grid::-webkit-scrollbar{display:none; height:0;}
+  .ambiance-card{flex:0 0 auto; display:flex; flex-direction:column;}
+  .ambiance-imgwrap{position:relative; height:200px; cursor:pointer;}
+  .ambiance-imgwrap img{height:100%; width:auto; display:block;}
+  .amb-side{flex:0 0 auto; border:none; background:none; color:var(--ink); font-size:22px; line-height:1; cursor:pointer; padding:4px 8px;}
+  .ambiance-caption{padding:8px 2px 0; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--grey);}
+  .ambiance-brand-block{margin-bottom:36px;}
+  .ambiance-brand-name{font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:.02em; margin:0 0 10px; cursor:pointer; display:inline-block;}
+  .ambiance-brand-name:hover{text-decoration:underline;}
+  .ambiance-fav-link{display:inline-block; margin:-8px 0 24px; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink); text-decoration:underline;}
+  .amb-modal-imgwrap{position:relative; width:100%; background:#F2F2F0; border-bottom:1px solid var(--ink); overflow:hidden;}
+  .amb-modal-imgwrap img{width:100%; height:auto; display:block;}
+  .amb-modal-imgwrap .fav-btn{top:12px; right:12px;}
+  .amb-modal-nav{position:absolute; top:50%; transform:translateY(-50%); border:none; background:none; color:var(--ink); font-size:30px; line-height:1; cursor:pointer; padding:6px 12px; z-index:2;
+    text-shadow:0 0 6px rgba(255,255,255,.85), 0 0 3px rgba(255,255,255,.85);}
+  .amb-modal-prev{left:2px;}
+  .amb-modal-next{right:2px;}
+  .amb-modal-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
+  .modal .amb-modal-top h2{font-size:14px; margin:2px 0 0;}
+  .ambiance-wall{column-width:220px; column-gap:32px;}
+  .ambiance-wall-item{position:relative; width:90%; break-inside:avoid; margin-bottom:32px; cursor:pointer;}
+  .ambiance-wall-item img{width:100%; height:auto; display:block;}
+  .ambiance-wall-item.amb-portrait{width:81%;}
+  .ambiance-wall-item.amb-landscape{width:99%;}
+
   /* manual carousel controls: line segments (one per model) on collection tiles —
      fixed width each, don't stretch to fill the tile regardless of model count */
   .tile-lines{display:flex; gap:4px; flex-wrap:wrap;}
@@ -141,7 +170,7 @@
   .map-legend{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:14px;}
   .map-legend-item{display:flex; align-items:center; gap:6px; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);}
   .map-legend-item .map-dot{width:10px; height:10px; border-radius:50%; display:inline-block; border:1px solid rgba(0,0,0,.2);}
-  .map-container{width:100%; height:520px; border:1px solid var(--ink); background:#f5f5f3;}
+  .map-container{width:100%; aspect-ratio:1/1; border:1px solid var(--ink); background:#f5f5f3;}
   .map-container .amap-layer{filter:grayscale(1);}
   .map-loading{display:flex; align-items:center; justify-content:center; height:100%; color:var(--grey); font-size:12.5px; text-transform:uppercase; letter-spacing:.04em;}
   .map-pin{width:16px; height:16px; border-radius:50%; cursor:pointer;}
@@ -186,6 +215,7 @@
       <button class="tab-btn" data-tab="color">Color</button>
       <button class="tab-btn" data-tab="favorites">Favorites</button>
       <button class="tab-btn" data-tab="map">Map</button>
+      <button class="tab-btn" data-tab="ambiance">Ambiance</button>
     </nav>
     <div class="search-wrap"><input id="searchInput" placeholder="Search brand or item…" oninput="renderCurrent()"></div>
   </div>
@@ -1204,6 +1234,3734 @@ const BIOS = {
 };
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
+const STOCKIST_DATA = {
+  "anonimacastelli": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/65c201f5000000001101b52d?m_source=pwa&xsec_token=ABMdToVXZ78gzrt8LL8nPY4sqaSUB4Q_9_iqEjRmeprMI=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "HOMTIQUE",
+        "address": "上海市徐汇区五原路250号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "HOMTIQUE",
+        "address": "上海市长宁区愚园路1214号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "HOME GALLERY",
+        "address": "杭州市拱墅区石桥路279号经纬国际创意园9号楼F座117室"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "MAISON JOSEPH",
+        "address": "杭州市滨江区诚业路415号江南岸艺术园区A座"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "UN HOME",
+        "address": "杭州市上城区山南印4幢104号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "成都市龙泉驿区东洪路666号梵木创意区F区"
+      },
+      {
+        "city": "Fuzhou",
+        "name": "GALERIE WAVE",
+        "address": "福州市闽侯县甘蔗街道过浦路26号1号楼西侧3楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "HOME GALLERY",
+        "address": "苏州市吴中区双银国际金融城70栋"
+      },
+      {
+        "city": "Hefei",
+        "name": "HOMTIQUE",
+        "address": "合肥市潜山路3号第六空间A馆"
+      },
+      {
+        "city": "Xi'an",
+        "name": "HOMTIQUE",
+        "address": "西安市雁塔曲江新区寒窑路新社K栋"
+      },
+      {
+        "city": "Jinan",
+        "name": "HOMTIQUE",
+        "address": "山东济南天桥区北园大街红星美凯龙一楼西厅"
+      }
+    ]
+  },
+  "arflex": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5cb08f7500000000100231bd?m_source=pwa&xsec_token=AB14hbPrPR6pA-lSlYivmXQbEq0u8UqXZeD4HarsZwFUI=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "NORHOR北京店",
+        "address": "北京市朝阳区青年路113号悦鑫园5号库NORHOR家居"
+      },
+      {
+        "city": "Beijing",
+        "name": "北京纳沃家居有限公司",
+        "address": "北京市朝阳区东坝郎园station, D4-2"
+      },
+      {
+        "city": "Beijing",
+        "name": "101+ 旗舰店",
+        "address": "北京市朝阳区半截塔路七棵树创意园A6"
+      },
+      {
+        "city": "Foshan",
+        "name": "罗浮宫进口馆（佛山总部）",
+        "address": "广东顺德乐从罗浮宫国际家具博览中心5-6F"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "NORHOR深圳店",
+        "address": "广东省深圳市南山区西丽街道打石二路万科云设计公社B301室NORHOR家居"
+      },
+      {
+        "city": "Wuhan",
+        "name": "铂翡国际贸易",
+        "address": "湖北省武汉市武昌区和平大道水岸国际"
+      },
+      {
+        "city": "Wuhan",
+        "name": "NORHOR武汉店",
+        "address": "湖北省武汉市江岸区台北路96号桃源里2栋B01室NORHOR家居"
+      },
+      {
+        "city": "Wuhan",
+        "name": "武汉欧戈雅国际贸易有限公司",
+        "address": "武汉市江汉区青年路299号华发中城商都B9楼L1-12、L1-26、L2-115"
+      },
+      {
+        "city": "Wuhan",
+        "name": "鼎呈国际家居用品(武汉)有限公司",
+        "address": "武汉市洪山区徐东大街岳家嘴立交桥旁中冶南方大厦项目第1层102号、2层102号、3层103号"
+      },
+      {
+        "city": "Nanjing",
+        "name": "NORHOR南京店",
+        "address": "南京市鼓楼区南京华贸中心C区华贸新天地5号楼C107室NORHOR家居"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "NORHOR杭州店",
+        "address": "浙江省杭州市余杭区五常街道余杭塘路1220号天空之城未来天空中心风之筑4号楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "HOMEGALLERY杭州",
+        "address": "浙江省杭州市拱墅区石桥路279号经纬国际创意园9号楼F座117室"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "MAISON JOSEPH",
+        "address": "浙江省杭州市滨江区滨安路1193号5栋"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Unhome",
+        "address": "杭州市上城区山南印4号楼A座104室"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Space 101",
+        "address": "杭州市西湖区留和路139号东信和创园29幢"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "班伯国际贸易（杭州）有限公司",
+        "address": "杭州市上城区高德置地广场2楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "NORHOR上海店",
+        "address": "上海市徐汇区龙华街道龙文路317号星瀚广场R3栋1楼NORHOR家居"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Pro 101",
+        "address": "上海市静安区福建北路100号苏河湾万象天地慎余里8幢"
+      },
+      {
+        "city": "Shanghai",
+        "name": "陆家居（昆山）家居用品有限公司",
+        "address": "上海市黄浦区中山东二路558号1栋201,202单元"
+      },
+      {
+        "city": "Chengdu",
+        "name": "NORHOR成都店",
+        "address": "四川省成都市锦江区龙舟路顺江路交汇处望江名门1层NORHOR家居"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Haus 101",
+        "address": "四川省成都市天府新区华阳街道雅州路188号CPI项目W05栋（近北入口）"
+      },
+      {
+        "city": "Chengdu",
+        "name": "成都兰花草",
+        "address": "四川省成都市武侯区新光路1号5幢6楼"
+      },
+      {
+        "city": "Chongqing",
+        "name": "NORHOR重庆店",
+        "address": "重庆市南岸区龙门浩街道南滨路周家湾米市街NORHOR家居"
+      },
+      {
+        "city": "Ningbo",
+        "name": "NORHOR宁波店",
+        "address": "浙江省宁波市鄞州区杉杉国贸天地A栋NORHOR家居"
+      },
+      {
+        "city": "Xi'an",
+        "name": "NORHOR西安店",
+        "address": "陕西省西安市雁塔区曲江街道曲江池北路南湖金座2楼NORHOR家居"
+      },
+      {
+        "city": "Changsha",
+        "name": "NORHOR长沙店",
+        "address": "湖南省长沙市岳麓区枫林一路大汉友阿INPark园区A03铺NORHOR家居"
+      },
+      {
+        "city": "Suzhou",
+        "name": "HOMEGALLERY苏州",
+        "address": "江苏省苏州市吴中区双银国际金融城70幢"
+      },
+      {
+        "city": "Suzhou",
+        "name": "武建峰",
+        "address": "苏州园区扬清路1号红星美凯龙一楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "梅尔维尔国际贸易（苏州）有限公司",
+        "address": "江苏省苏州市工业园区唯和路94号哈耶科技园C栋"
+      },
+      {
+        "city": "Wuxi",
+        "name": "艾恒国际",
+        "address": "无锡市锡沪东路201号第六空间A110a"
+      },
+      {
+        "city": "Jinan",
+        "name": "撒罗米",
+        "address": "山东省济南市天桥区小清河北路中段177-1号"
+      },
+      {
+        "city": "Changzhou",
+        "name": "班伯国际贸易（常州）有限公司",
+        "address": "江苏省常州市运河五号创意街区16号楼"
+      },
+      {
+        "city": "Taizhou",
+        "name": "班伯国际贸易（台州）有限公司",
+        "address": "浙江省台州市东环大道路2099号"
+      }
+    ]
+  },
+  "artemide": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5ffd153d0000000001001620?channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABjaDJgw0j5eQyMT1We8jiS4KzzfphlQC_ZPB4VelR8Z0=&xsec_source=pc_search",
+    "taobao": "https://artemide.world.tmall.com/shop/view_shop.htm?appUid=RAzN8HWJZztTk2vGYzfq4NQJHAcymomfjX79GoAeiimis223eD2&spm=a21n57.1.hoverItem.2",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Casa Casa",
+        "address": "L112 CP Center, Guanghua Rd, Beijing 100020"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa",
+        "address": "150 Yueyang Road, Xuhui District, Shanghai 200031"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Chong Qing Hertz Lighting Design Co., Ltd",
+        "address": "1F, Block 7, Jin Shan Yi Ku Culture Innovation Park, Yu Bei District, Chongqing"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Nanjing A-lighting Co., Ltd. (Archimedes)",
+        "address": "Jin Sheng International Home Plaza (East), No.80, Jiang Dong Middle Road, Jian Ye District, 1st Floor, Nanjing, Jiangsu"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Bluce Lighting",
+        "address": "1555 Wenshui Road, E8111, 5F, Red Star Macalline, Shanghai 200436"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai She Ye Household Products Co., Ltd (Splendor)",
+        "address": "Room 308, No. 135, Liu Ying Road, Hong Kou District, Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Shen Yong Lighting Co., Ltd",
+        "address": "#2083, No. 285, Tian Lin Road, Xuhui District, Shanghai 200000"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Xi'an Golden Stone Lighting Co., Ltd.",
+        "address": "Da Ming Gong Diamond Mall, Wei Yang District, 4th Floor, Xi'an, Shaanxi"
+      }
+    ]
+  },
+  "agape": {
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "#5, No.600, ShanXi N. Road, 201508 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "G-Across",
+        "address": "Room B-127b, No. 328, Xizang South Road, Huangpu District, 200023 Shanghai"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Haus101",
+        "address": "W05 CPI, No. 188 Yazhou Road, Tianfu New District, Chengdu, Sichuan Province"
+      },
+      {
+        "city": "Beijing",
+        "name": "Hengyue Rongsheng",
+        "address": "C2-A, Jili International Art Zone, No.6, Middle Street, Jinjia Village, North Garden, Beijing"
+      },
+      {
+        "city": "Beijing",
+        "name": "Jian Casa",
+        "address": "Room No.S101 Yansha Office Center, No.50 Liangmahe Road, Chaoyang District, 100125 Beijing"
+      }
+    ]
+  },
+  "a-by-arturo-lvarez": {
+    "site": "https://www.a-emotionallight.com/",
+    "stockistCN": [
+      {
+        "city": "China/HK Office",
+        "name": "Nicole Cai 蔡芳芳 / Christophe Lefevre",
+        "address": "CN +86 135 8568 5848 · CN +86 1381 782 5400 (ENG) · HK +852 9712 7140 · china@a-emotionallight.com"
+      }
+    ]
+  },
+  "alias": {
+    "site": "https://alias.design/en",
+    "stockistCN": [
+      {
+        "city": "Hefei",
+        "name": "HOMTIQUE",
+        "address": "Derlook C304, No.3 Qianshan Rd, Hefei Shi, Anhui Sheng 230088"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Banbury Commercial Shanghai",
+        "address": "3025 Cimen, 407 Yishan Road, Xuhui Qu, Shanghai Shi 200000"
+      },
+      {
+        "city": "Taipei",
+        "name": "Modpoly Co. Ltd",
+        "address": "1F., No. 16, Ln. 295 Sec. 1, Fuxing S. Rd., Da'an District, Taipei City 33044"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Indesign Space",
+        "address": "24-101 Chaoyang Road, High-tech Zone, Chengdu Shi, Sichuan Sheng 610000"
+      }
+    ]
+  },
+  "agrippa": {
+    "site": "https://agrippacollection.com/"
+  },
+  "bulo": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/66d5c275000000001d0224cd?m_source=pwa&xsec_token=AB2EIlYMOGkL0s0Rom56DYEHXHXhgkr14AnUB35XNC4Jo=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Delicato",
+        "address": "Shanghai, China"
+      }
+    ]
+  },
+  "bbitalia": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/620b6f66000000001000cc6b?xsec_token=ABU7O0B2ylGc5Ewf51CsPFZGnRrOnnXIWuR32njTa1OUw%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "静安区陕西北路600号5号楼Area Living"
+      },
+      {
+        "city": "Shanghai",
+        "name": "无限极荟",
+        "address": "黄浦区湖滨路168号无限极荟一楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "福邸国际家居",
+        "address": "飞云江路9号赞成中心福邸博展馆2楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "居然之家国际馆",
+        "address": "朝阳区北四环东路居然之家国际馆1F"
+      },
+      {
+        "city": "Beijing",
+        "name": "北京SKP SELECT HOME",
+        "address": "朝阳区大望桥北京SKP SELECT HOME 5F"
+      },
+      {
+        "city": "Ningbo",
+        "name": "一再一物RenUno",
+        "address": "鄞州区宁穿路315号第六空间一楼A-28"
+      },
+      {
+        "city": "Chengdu",
+        "name": "意点家居",
+        "address": "高新区盛和二路18号富森美三号家具馆一楼1075"
+      },
+      {
+        "city": "Chengdu",
+        "name": "成都SKP SELECT HOME",
+        "address": "高新区天府大道锦城广场成都SKP北馆1F"
+      },
+      {
+        "city": "Wuhan",
+        "name": "诠适Living",
+        "address": "硚口区京汉大道668号恒隆广场五层L528"
+      },
+      {
+        "city": "Wuhan",
+        "name": "欧亚达家居（徐东店）",
+        "address": "武昌区徐东大街38号一楼"
+      },
+      {
+        "city": "Wuhan",
+        "name": "武汉SKP SELECT HOME",
+        "address": "武昌区沙湖大道18号武汉SKP 4F"
+      },
+      {
+        "city": "Wuxi",
+        "name": "瑞邸Living",
+        "address": "梁溪区锡沪路201号第六空间1楼"
+      },
+      {
+        "city": "Dalian",
+        "name": "丽居家居",
+        "address": "中山区人民东路72号一层"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "琶洲吉盛伟邦5楼国际馆5027",
+        "address": "海珠区新港东路1000号"
+      },
+      {
+        "city": "Taizhou",
+        "name": "梵逊邦德家居",
+        "address": "椒江区海龙路290号"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "鹿城区三友路121号万萃广场1幢"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧亚达家居国际馆",
+        "address": "天桥区北园大街371号一楼A1-1"
+      },
+      {
+        "city": "Qingdao",
+        "name": "朵致国际家居",
+        "address": "市南区香港中路136号"
+      },
+      {
+        "city": "Nanjing",
+        "name": "永隆·圣马可国际家居广场",
+        "address": "建邺区江东中路168号"
+      },
+      {
+        "city": "Xi'an",
+        "name": "西安SKP SELECT HOME",
+        "address": "碑林区长安北路261号西安SKP五层"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "SENCO+国际家居生活广场",
+        "address": "裕华区联创壹号C座二楼"
+      },
+      {
+        "city": "Shenyang",
+        "name": "红星美凯龙综合馆",
+        "address": "铁西区北二东路35号一楼"
+      }
+    ]
+  },
+  "brand-van-egmond": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6503dae80000000012006cfe?m_source=pwa&xsec_token=AB9-nzmF_ZMI1QotQhtBspRxnLx0YkgJ8IxFWnHD5xUO8=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Hong Kong",
+        "name": "Zodiac Lighting LTD.",
+        "address": "2 Hong Man Street, Chai Wan, Hong Kong"
+      },
+      {
+        "city": "Taipei",
+        "name": "Fashion Lighting Group Co., Ltd.",
+        "address": "1F. No. 120, Sec 4, Mingsheng E. Rd, Songshan District, Taipei 105"
+      }
+    ]
+  },
+  "bd-barcelona-design": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/64891c05000000001c02a91b?m_source=pwa&xsec_token=ABqf573UqPqAySPwNFs3JIGqsrCN9s0M7gD-nCwP4WkNs=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Chengdu",
+        "name": "Chengdu Emma Furnishing Company",
+        "address": "No.288 Dayou Zhihui Plaza, Tianfu 3rd Street, Chengdu"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Design Republic",
+        "address": "511 Jiang Ning Road, Shanghai"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Ford Casa",
+        "address": "RM 504 East Wing Zancheng Central Plaza, 9 Feiyunjiang Road, Hangzhou"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Homtique",
+        "address": "250 Wuyuan Road, Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Iyouth",
+        "address": "No. 309, Jia Shan Road, Xu Hui District, Shanghai"
+      }
+    ]
+  },
+  "cappellini": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/670cd6db000000000d027749?xsec_token=ABMNZrtIC5es3p0Ky8LUPwIZ-JgVNtle7Sye78tjQjkTw%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "CABANA",
+        "address": "N.2 Lane 289 Anfu Road, Xuhui District, Shanghai 200041"
+      },
+      {
+        "city": "Beijing",
+        "name": "CABANA",
+        "address": "Taikooli Sanlitun North, N7-3F&4F, Beijing 100027"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "CABANA",
+        "address": "Tianhe Road, Tianhe District, Tianhuan Plaza, Shop B227, Basement 2, Guangzhou 510000"
+      },
+      {
+        "city": "Shanghai",
+        "name": "CABANA",
+        "address": "S1-01A-01, Kerry Center South, Jing'an District, Shanghai 200040"
+      },
+      {
+        "city": "Taipei",
+        "name": "Lealty International Ltd.",
+        "address": "1F., No. 63, Lane 248, Sec. 3, Zhongxiao E. Road, Taipei City"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Guangzhou Meishuguan Furniture Co.",
+        "address": "666 Huangpu Avenue Middle, Tianhe District, Building C, 1st floor, Guangzhou"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Home Expo Co.,Ltd. / TIAMANTTI",
+        "address": "No. 1263 Wuzhong Road, 5F, Shanghai 201103"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Banbury International Trade",
+        "address": "3025 Cimen, 407 Yishan Road, Xuhui District, Shanghai 200000"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Banbury International Trade",
+        "address": "Gongjia Avenue East Gong Road No.1, Deerlook Taizhou, Jiaojiang District, Taizhou"
+      },
+      {
+        "city": "Wuhan",
+        "name": "August Walden",
+        "address": "2F, Shangdu, Huafa Zhongcheng, 299 Qingyouth Road, Jianghan District, Wuhan City 430000"
+      },
+      {
+        "city": "Changsha",
+        "name": "Banshe Space Design Headquarter",
+        "address": "36 Section 3, Wanjiali Middle Road, Yuhua District, Changsha City, Hunan Province 410000"
+      },
+      {
+        "city": "Jinan",
+        "name": "Banshe Space Design Headquarter",
+        "address": "No.177-1 Middle Sec. Xiaoqing North, Tianqiao District, Jinan 250108"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "2/F, M House, Fanmate Creative Art Area, 666 Donghong Road, Chengdu 610110"
+      },
+      {
+        "city": "Nanjing",
+        "name": "TODAYS SHOP",
+        "address": "Room103, Building No.19, Guochuang Park, Lingjiaoshi No.66, Qinhuai District, Nanjing 210000"
+      },
+      {
+        "city": "Xi'an",
+        "name": "HUMOR",
+        "address": "Room 103, building 32, Ziwei Yonghefang, Qujiang New Area, Xi'an 710061"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Brownstone Furniture",
+        "address": "1A21 District A, Baoneng First Space Furniture Mall, Luohu, Shenzhen, Guangdong 518001"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Equal Plus",
+        "address": "22/F, Lee Garden Six, 111 Leighton Road, Causeway Bay, Hong Kong"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa",
+        "address": "L112, CP Center, Guanghua Rd, Beijing 100020"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa",
+        "address": "150 Yueyang Road, Xuhui District, Shanghai 200031"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BOELLA",
+        "address": "E21, 5th Floor DERLOOK, No.18 West Lake Road, Hangzhou 310007"
+      },
+      {
+        "city": "Chongqing",
+        "name": "NNS",
+        "address": "Gate 1, building 5, Jinke Times Center, Renhe Street, Yubei District, Chongqing 401120"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Fusion M",
+        "address": "Block C110, Dongnan Tiandi, No.125 Huachang Road, Huli District, Xiamen, Fujian 361006"
+      },
+      {
+        "city": "Shanghai",
+        "name": "C16",
+        "address": "16 Floor, Block C, Huafenglu 1177, Qingpu District, Shanghai 201700"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Taizhou Zhiqinjujia Home Co., Ltd",
+        "address": "Room 108, No.5 Intime City Taizhou Shopping Mall, Hongjia Road, Zhongxin Av., Jiaojiang District, Taizhou"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "PRO 101",
+        "address": "No. 245, L2 floor, Shenye Shangcheng Block 1, 5001 Huanggang Road, Futian District, Shenzhen 518000"
+      },
+      {
+        "city": "Beijing",
+        "name": "PRO 101",
+        "address": "101 Gujiaju Street, Gaobeidian, Chaoyang District, Beijing"
+      }
+    ]
+  },
+  "carlhansen": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63491949000000001802f803?xsec_token=ABr9dafn913eCq9JbWWAYpZzJLnUivxINix9buUaJhm-8%3D&xsec_source=pc_search"
+  },
+  "cassina": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5c315c3d0000000007014c1b?xsec_token=ABq2riHnpmHJuo-JB0PXAltXU0ooGYOe5PmNoBh65xcik%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Cassina授权经销店",
+        "address": "银城路66号一层102单元"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Cassina授权经销店",
+        "address": "徐汇区建国西路284号"
+      },
+      {
+        "city": "Beijing",
+        "name": "克拉斯国际家居",
+        "address": "朝阳区北四环东路65号居然之家家之尊5-1-05"
+      },
+      {
+        "city": "Beijing",
+        "name": "克拉斯家居",
+        "address": "朝阳区农展南里10号院"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Cassina授权经销店",
+        "address": "海珠区新港东路1000号琶洲吉盛伟邦五楼5025"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "第六空间国际家居",
+        "address": "滨江区江南大道1088号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "富森美家居",
+        "address": "武侯区高新区盛和二路18号富森美家居3号店1楼1089号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "梵木创意区F馆",
+        "address": "龙泉驿区东洪路666号"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "丽兹家居",
+        "address": "南山区深南大道9968号汉京中心Soma101"
+      },
+      {
+        "city": "Ningbo",
+        "name": "第六空间",
+        "address": "鄞州区宁穿路315号"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Cassina授权经销店",
+        "address": "中西区中环云咸街19-27号威信大厦地下A1铺"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Cassina授权经销店",
+        "address": "秦淮区龙蟠中路216号金城大厦B座1楼"
+      },
+      {
+        "city": "Wuxi",
+        "name": "华厦家居港二期家具馆",
+        "address": "梁溪区锡沪路280号A008"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "鹿城区南汇街道三友路121号万萃广场二幢"
+      },
+      {
+        "city": "Chongqing",
+        "name": "红星美凯龙至尊Mall",
+        "address": "渝北区金州大道1楼"
+      },
+      {
+        "city": "Xi'an",
+        "name": "大明宫钻石店",
+        "address": "未央区大明宫钻石店一层"
+      },
+      {
+        "city": "Kunming",
+        "name": "红星美凯龙",
+        "address": "西山区广福路318号一楼"
+      },
+      {
+        "city": "Hefei",
+        "name": "红星美凯龙",
+        "address": "庐阳区四里河西北角"
+      },
+      {
+        "city": "Wuhan",
+        "name": "咸安坊D1号楼",
+        "address": "江岸区胜利街与北京路交叉口"
+      },
+      {
+        "city": "Shenyang",
+        "name": "k11购物中心",
+        "address": "和平区博览路2甲1号1层A1016"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "欧凯龙北广场",
+        "address": "商都路农业南路"
+      },
+      {
+        "city": "Zhuhai",
+        "name": "世邦家居四号馆",
+        "address": "香洲区三台石路31号"
+      },
+      {
+        "city": "Suzhou",
+        "name": "第六空间F102",
+        "address": "工业园区东环路1118号"
+      },
+      {
+        "city": "Tianjin",
+        "name": "国际美学中心",
+        "address": "河西区解放南路475号A01 1-17"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Cassina授权经销店",
+        "address": "椒江区中心大道1717号"
+      }
+    ]
+  },
+  "catellanismith": {
+    "stockistCN": [
+      {
+        "city": "Chengdu",
+        "name": "Chengdu Qidian QQODD",
+        "address": "QQODD Fanmate Creative Area, 3 Taipingsi West Road, Wuhou, Chengdu"
+      },
+      {
+        "city": "Dongguan",
+        "name": "LeeVida Gallery",
+        "address": "301#, No.2 Huizhan South Road, Houjie Town, Dongguan City, Guangdong Province"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford",
+        "address": "Pacific Place, 88 Queensway, Admiralty, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Master Resources",
+        "address": "Unit B, 11/F, Winsan Tower, 98 Thomson Road, Wanchai, Hong Kong"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa Beijing",
+        "address": "L112 CP Center Guanghua Rd 100020"
+      },
+      {
+        "city": "Beijing",
+        "name": "Delta Lighting Aesthetics Design Center",
+        "address": "Store 026, 4th Floor, Hall 5, Juran Home 'Jia Zhi Zun', North 4th Ring Road, Chaoyang District"
+      },
+      {
+        "city": "Xiamen",
+        "name": "FushionM Xiamen",
+        "address": "Block C110, No. 125 Huachang Road, Huli District, Xiamen City, Fujian"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Qidian QQODD",
+        "address": "Shop B8039 2F, Red Star Macalline International Home Furnishing Store, 1388 Wu Zhong Road"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Jingci Trading Co., Ltd.",
+        "address": "House 3, No 3825, Xinzhuangong RD, Songjiang District 201600"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Bluce Lighting Technology Co., Ltd",
+        "address": "Baoshan District No 39, Lane 1861, Hutai Road"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Shenyong Lighting SYL",
+        "address": "Shop 2083 2F Haoshijia Lighting Square, 198 Caoxi Road"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa Shanghai",
+        "address": "G/F West Gate 201-1 Anfu Road 200031"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Splendor Lighting",
+        "address": "3rd Floor No.135 Liuying Road"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Z Space Technology Co., Ltd",
+        "address": "Building 8, No. 1098, Chuansha Road, Pudong New Area 201200"
+      },
+      {
+        "city": "Taoyuan",
+        "name": "Paul Cheng Lighting Ltd.",
+        "address": "1 Fl., No. 1337, Zhongzheng Road, Taoyuan District, Taiwan 33071"
+      }
+    ]
+  },
+  "cctapis": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/62444b470000000021021df7?xsec_token=AB7P624AS_eCYonhJ9UXfxDH2UAKZtEmLVDWOZZZBXh_s%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Foshan",
+        "name": "Foshan Shunde Louvre Furniture",
+        "address": "乐从镇, 顺德区, 佛山市 528315"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph",
+        "address": "Binjiang District, Block 5, Binan Road 1193, 310052"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Taizhou Fashion Bond",
+        "address": "Zhao Hui Lu, Jiao Jiang Qu, Taizhou Shi"
+      },
+      {
+        "city": "Wuhan",
+        "name": "Wuhan Parfait Co.",
+        "address": "He Ping Da Dao, Wu Chang Qu, 700, Wuhan Shi 430062"
+      }
+    ]
+  },
+  "classicon": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6751a827000000001c01a3ce?xsec_token=ABRA-RbFizeAqwQDBSNofCQ1WowtNszWw1UEazYS7PRcg%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "101PLUS旗舰店",
+        "address": "北京"
+      },
+      {
+        "city": "Changzhou",
+        "name": "Banbury班伯",
+        "address": "常州"
+      },
+      {
+        "city": "Chengdu",
+        "name": "haus101 / YEPOM",
+        "address": "成都"
+      },
+      {
+        "city": "Chongqing",
+        "name": "阿宝悦家进口家居馆",
+        "address": "重庆"
+      },
+      {
+        "city": "Fuzhou",
+        "name": "wavehaus",
+        "address": "福州"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "美墅馆misu house",
+        "address": "广州"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BANBURY班伯 / 福邸国际 / Maison Joseph / SPACE101",
+        "address": "杭州"
+      },
+      {
+        "city": "Shanghai",
+        "name": "设计共和 / GALLERY101 / HOMTIQUE / PROIOI",
+        "address": "上海"
+      },
+      {
+        "city": "Suzhou",
+        "name": "BANBURY班伯",
+        "address": "苏州"
+      },
+      {
+        "city": "Taizhou",
+        "name": "BANBURY班伯",
+        "address": "台州"
+      },
+      {
+        "city": "Xi'an",
+        "name": "YCUBE进口家居",
+        "address": "西安"
+      }
+    ]
+  },
+  "christofle": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5b2905754eacab76d3216c06?m_source=pwa&xsec_token=ABiVj4iDnjGTjRr4a2RzexHztpHspzCwYhgJrBBrA6naY=&xsec_source=pc_search",
+    "taobao": "https://christofle.world.tmall.com/?spm=a312a.7700824.0.0.26157a81Tslocz",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Christofle CWTC Beijing",
+        "address": "Shop SL4015, Guomao Mall, 1 Jianguomenwai Street, Beijing 100004"
+      },
+      {
+        "city": "Beijing",
+        "name": "Christofle SKP Beijing",
+        "address": "D5204, SKP, No.87 Jianguo Road, Chaoyang District, Beijing 100025"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Christofle Hangzhou",
+        "address": "L506, Hangzhou MIXC, No. 701 Fuchun Road, Sijiqing Street, Jianggan District, Hangzhou 310020"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Christofle Sogo Shanghai",
+        "address": "D702, 7F Jiuguang Department Store, 1618 West Nanjing Road, Shanghai 200040"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Christofle Plaza 66",
+        "address": "Unit 415A, Plaza 66, No. 1266 West Nanjing Road, Shanghai 200040"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Christofle IAPM Shanghai",
+        "address": "Shop No. L4-405 & 406, IAPM, 999 Huai Hai Middle Road, Shanghai 200030"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Christofle Yaohan Shanghai",
+        "address": "7F, Yaohan, No. 501, Zhangyang Road, Pudong New Area, Shanghai 200122"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Home Select, Xi'an Hualian SKP",
+        "address": "9F Xi'an Hualian SKP Dept. Store, No. 261 Chang'an Bei Road, Beilin District, Xi'an 710061"
+      },
+      {
+        "city": "Beijing",
+        "name": "Home Select, Beijing Hualian SKP",
+        "address": "5F Beijing Hualian SKP Dept. Store, No.87 Jianguo Road, Chaoyang District, Beijing 100025"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "For D Casa, Bo Zhan Guan",
+        "address": "Zan Cheng Zhong Xin, No.9 Feiyunjiang Road, Shangcheng District, Hangzhou 310008"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Tiamantti Living Dept, Shanghai Home Expo",
+        "address": "5F No.1265 Wuzhong Rd., Shanghai 201103"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Royal Wings, Shanghai TAKASHIMAYA",
+        "address": "06-53/54 6F Shanghai TAKASHIMAYA Dept. Store, No.1438 Hongqiao Road, Shanghai 201103"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Royal Wings, JSWB Global Home Furnishings Center",
+        "address": "Unit 207 2F JSWB Gubei, No.75 Lou Shan Guan Road, Changning District, Shanghai 200336"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "King Gold, Shenzhen Nanshan MixC",
+        "address": "L351 3F Shenzhenwan MixC, No. 2888 Keyuan Nan Road, Nanshan District, Shenzhen 518057"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Christofle IFS Chengdu",
+        "address": "LG217, Chengdu IFS, No.1, Section 3 Hongxing Road, Chengdu, Sichuan"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "David Plaza",
+        "address": "No. B007, 8th Floor, David Plaza, intersection of Xitakang Road and Erjiu Road, Zhengzhou, Henan 450000"
+      },
+      {
+        "city": "Wuxi",
+        "name": "Center66 WX",
+        "address": "No. 522, 5th Floor, Henglong Plaza, No. 139 Renmin Road, Wuxi 214000"
+      },
+      {
+        "city": "Dalian",
+        "name": "Olympia 66",
+        "address": "No. 521, Central Zone, Henglong Plaza, 5th Floor, Dalian, Liaoning 116011"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Bicester SH",
+        "address": "No. 3217 Avenue du Palais, Shanghai Village, 88 Shendi Rd (E), Shanghai 201205"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "MixC Shenzhenbay",
+        "address": "No. CB174, B1 Floor, Zone C, Shenzhenbay MixC, Shenzhen 518051"
+      },
+      {
+        "city": "Shenyang",
+        "name": "MixC Shenyang",
+        "address": "No. L612, Lianhe City Mall, 288 Qingnian Street, Shenyang 110011"
+      }
+    ]
+  },
+  "dcw": {
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "Loft 29",
+        "address": "No. 11-2, Lane 123, Section 3, Ren'ai Rd, Da'an District, Taipei City 106"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Master Resource Lighting International Limited",
+        "address": "98 Thomson Rd, 1st floor, Wanchai, Hong Kong"
+      }
+    ]
+  },
+  "desede": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6390168f000000001f01f380?xsec_token=ABG4gPQv3zXhPkFxfWSqfHcBlY1KUkIlbW2UrSXLE3nNY%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shenzhen",
+        "name": "Dilise蒂丽舍家居",
+        "address": "深圳星河.第3空间体验店"
+      },
+      {
+        "city": "Taipei",
+        "name": "Raytext Co. Ltd.",
+        "address": "1F, No. 12, Sec 2, Jen Ai Road, Taipei, Taiwan"
+      }
+    ]
+  },
+  "desalto": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6556226500000000020340fe?xsec_token=AB4tJYIaDP1pp-OQ4jED8JVimdq5fpm0C1NcP52YIkH74%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Nanjing",
+        "name": "潸邸",
+        "address": "江苏省南京市建邺区江东中路88号金陵国际家具1层"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph",
+        "address": "浙江省杭州市滨江区滨安路1193号5栋"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "安邸国际",
+        "address": "浙江省温州市瓯海区红星国际家居生活广场7层"
+      },
+      {
+        "city": "Ningbo",
+        "name": "青松家居",
+        "address": "浙江省宁波市江北区槐树路256号槐望官邸10号楼2层"
+      },
+      {
+        "city": "Beijing",
+        "name": "Molecule",
+        "address": "北京市朝阳区草场地155号"
+      },
+      {
+        "city": "Beijing",
+        "name": "101PLUS",
+        "address": "北京市朝阳区七棵树创意园A6"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Homtique",
+        "address": "上海市徐汇区五原路250号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "doz.lOlll PROJECT(S) (应公馆)",
+        "address": "上海市黄浦区凤阳路288弄338号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Banbury",
+        "address": "上海市宜山路407号喜盈门国际馆3楼"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Homy Lab",
+        "address": "广东省深圳市罗湖区宝安北路3008号宝能第一空间1C06-08"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "美墅馆",
+        "address": "广东省广州市天河区黄埔大道中666号罗浮宫家居艺术中心C栋1楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Home Gallery",
+        "address": "江苏省苏州市吴中区双银国际金融城70幢"
+      },
+      {
+        "city": "Taizhou",
+        "name": "至臻居家",
+        "address": "浙江省台州市椒江区中心大道银泰城1楼"
+      },
+      {
+        "city": "Hefei",
+        "name": "antoniolupi",
+        "address": "安徽省合肥市蜀山区潜山路3号第六空间国际家居B馆一层B118"
+      },
+      {
+        "city": "Jinan",
+        "name": "WUWU",
+        "address": "山东省济南市天桥区小清河北路中段177-1号"
+      },
+      {
+        "city": "Qingdao",
+        "name": "朵致国际家居",
+        "address": "山东省青岛市市南区香港中路136号"
+      }
+    ]
+  },
+  "disderot": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6094bf2c000000000100ba1b?xsec_token=ABmiOCtsy6JIwkyEqKNCh12vSboGOHsF6ZjHE9lfk8HrY%3D&xsec_source=pc_search"
+  },
+  "edra": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6230fc50000000001000ffbe?xsec_token=ABsRFPILF_kDdYXsfeY3PkAFEYq5wLClXjJL4QICGwPn4%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "克拉斯家居",
+        "address": "北京朝阳区农展馆南里10号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "央舍",
+        "address": "上海市吴中路1388号红星欧丽全球家居至尊2F"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "广州意丰",
+        "address": "广州市海珠区新港东路1000号吉盛伟邦5楼5008号"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "布朗斯通家具",
+        "address": "广东省深圳市宝安北路3008号宝能环球汇1楼1A11-1A21"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "铂艾雅",
+        "address": "浙江省杭州市滨江区江南大道1088号第六空间A区101"
+      },
+      {
+        "city": "Ningbo",
+        "name": "御景汇家居",
+        "address": "浙江省宁波市鄞州区中山东路1751号德克德家国际家居2楼"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "安邸国际",
+        "address": "浙江省温州市瓯海区红星国际家具生活广场7层"
+      },
+      {
+        "city": "Taizhou",
+        "name": "梵逊邦德",
+        "address": "浙江省台州市椒江区海龙路260-292号"
+      },
+      {
+        "city": "Nanjing",
+        "name": "潸邸",
+        "address": "江苏省南京市建邺区江东中路88号金陵国际家居1楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "幸岛",
+        "address": "苏州市吴中区东山环山路666号"
+      },
+      {
+        "city": "Suzhou",
+        "name": "苏州赢得喜家电厨卫",
+        "address": "江苏省苏州市吴中区苏州工业园区李公堤4期2栋1楼"
+      },
+      {
+        "city": "Wuxi",
+        "name": "瑞邸living家居",
+        "address": "江苏省无锡市梁溪区锡沪路280号华厦家居港二期家具馆A106"
+      },
+      {
+        "city": "Chengdu",
+        "name": "布朗斯通家具",
+        "address": "四川省成都市武侯区天和西二街189号富森美家居1号馆一楼1026-1028号"
+      },
+      {
+        "city": "Chongqing",
+        "name": "意美奢享家",
+        "address": "重庆市渝北区新南路888号红星美凯龙西南全球家居1号店"
+      },
+      {
+        "city": "Xi'an",
+        "name": "样家",
+        "address": "陕西省西安市未央区太华北路88号大明宫建材家居钻石店北门独立楼"
+      },
+      {
+        "city": "Wuhan",
+        "name": "欧戈雅",
+        "address": "湖北省武汉市武昌区岳家嘴居然之家A门"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "现代维度",
+        "address": "河南省郑州市金水区花园北路39号"
+      },
+      {
+        "city": "Jinan",
+        "name": "兀物家居",
+        "address": "山东省济南市天桥区小清河北路中段177/1号"
+      },
+      {
+        "city": "Qingdao",
+        "name": "梵克国际家居",
+        "address": "山东省青岛市北区黑龙江南路77号居然之家A座一楼中厅"
+      },
+      {
+        "city": "Changsha",
+        "name": "澜缔家居",
+        "address": "湖南省长沙市雨花区喜盈门建材广场8楼1号中厅"
+      },
+      {
+        "city": "Dalian",
+        "name": "福瑞家居",
+        "address": "辽宁省大连市沙河口区五一广场四号大世界家居广场4层11号"
+      },
+      {
+        "city": "Nanchang",
+        "name": "珺沂家居",
+        "address": "江西省南昌市西湖区抚生路1155号（第1—5层）B502"
+      }
+    ]
+  },
+  "ege": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/64e2c1f0000000000200ebc6?m_source=pwa&xsec_token=ABFYleNCjeN7RPG2Qdzk1rVW27tEEiAEx77c9fvj3McVk=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "Chain Kuo Cabinetry Business Co., Ltd",
+        "address": "1F, No.107, Sec. 2, Keelung Rd., Taipei"
+      },
+      {
+        "city": "Taipei",
+        "name": "New Chin Chin Corp.",
+        "address": "12F, No.309 Fu Xing North Road, Taipei"
+      }
+    ]
+  },
+  "fiam": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/688b464000000000280254f5?xsec_token=AB2OAYYZ7RE3Ca2u4EbyR9DdnKJLysVz2Bdwi4J9sWreg=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "柏纳家居",
+        "address": "北京"
+      }
+    ]
+  },
+  "flos": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5fd98512000000000101deed?xsec_token=AByn1wtBmnEwByMrB31psn28RJZ9fYLPC7r-pEZ_f8mzE%3D&xsec_source=pc_search",
+    "taobao": "https://flos.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
+    "stockistCN": [
+      {
+        "city": "Hangzhou",
+        "name": "FLOS中国大陆首家专卖店",
+        "address": "杭州市拱墅区环城北路258号杭州大厦D座3楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "第六空间滨江店·哲欣",
+        "address": "杭州市滨江区江南大道1088号第六空间大都会现代馆1楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "石头剪刀布·申甬灯饰",
+        "address": "上海市闵行区吴中路1265号剪刀石头布5楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "瑞明大厦·Royana",
+        "address": "上海市浦东新区银城路117号1楼105"
+      },
+      {
+        "city": "Shanghai",
+        "name": "红星美凯龙汶水店·Bluce Lighting",
+        "address": "上海市宝山区汶水路1555号红星美凯龙5楼E8111"
+      },
+      {
+        "city": "Beijing",
+        "name": "正大中心·casacasa",
+        "address": "北京市朝阳区光华路10号正大中心1楼L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "红星美凯龙至尊Mall店·Enest",
+        "address": "北京市朝阳区大郊亭桥南红星美凯龙至尊Mall店6楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "居然之家·Jasming",
+        "address": "北京市朝阳区崔各庄镇来广营西路55号居然靓屋灯饰城1楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "喜盈门·上海凯务",
+        "address": "徐汇区宜山路407号喜盈门商场硫B1-027"
+      },
+      {
+        "city": "Shanghai",
+        "name": "红星美凯龙吴中店·染点",
+        "address": "上海红星美凯龙吴中路1388号1楼A8009"
+      },
+      {
+        "city": "Shanghai",
+        "name": "尚悦湾·丽兹家居",
+        "address": "上海市浦东新区银城路66号尚悦湾1楼L115"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "吉盛伟邦·奕居生活",
+        "address": "广州海珠区新港东路1000号吉盛伟邦5楼"
+      },
+      {
+        "city": "Tianjin",
+        "name": "A01国际家居美学中心·意美达",
+        "address": "天津市河西区解放南路475号A01国际家居美学中心1层"
+      },
+      {
+        "city": "Chongqing",
+        "name": "金山意库·重庆和致",
+        "address": "重庆市渝北区汇丰路金山意库7栋1楼"
+      },
+      {
+        "city": "Chengdu",
+        "name": "梵木创意园·YEPOM",
+        "address": "成都市龙泉驿区外东洪路666号梵木创意园F馆"
+      },
+      {
+        "city": "Xi'an",
+        "name": "西安大明宫钻石店·佳驰美邑",
+        "address": "西安市未央区太华北路198号大明宫钻石店1楼中厅"
+      },
+      {
+        "city": "Qingdao",
+        "name": "朵致独立店·朵致家居",
+        "address": "青岛市市南区香港中路136号"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧亚达·朵致家居",
+        "address": "济南市天桥区北园大街371号欧亚达1楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "金盛国际家居·A-Lighting",
+        "address": "南京市建邺区江东中路80号金盛国际家居1楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "星光智能大楼·苏州时影",
+        "address": "苏州市工业园区红枫路35号星光智能大楼"
+      },
+      {
+        "city": "Taizhou",
+        "name": "洪家红星美凯龙·One More",
+        "address": "台州市椒江区洪家街道东环大道1990号红星美凯龙6楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "七棵树·101",
+        "address": "北京市朝阳区半截塔路55号七棵树创意园A6"
+      },
+      {
+        "city": "Beijing",
+        "name": "居然之家·HC28",
+        "address": "北京北四环东路65号居然之家一号馆一层/二层"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP SELECT",
+        "address": "北京市朝阳区建国路86号SKP-S5层"
+      },
+      {
+        "city": "Xi'an",
+        "name": "大明宫钻石店·佳驰美邑",
+        "address": "西安市太华南路198号大明宫钻石店一楼中厅"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SKP SELECT",
+        "address": "成都市高新区天府大道北段2001号"
+      },
+      {
+        "city": "Wuhan",
+        "name": "SKP SELECT",
+        "address": "武汉市武昌区沙湖大道18号"
+      },
+      {
+        "city": "Dalian",
+        "name": "磐海·丽居家居",
+        "address": "大连市中山区人民东路72号磐海3号楼"
+      },
+      {
+        "city": "Changzhou",
+        "name": "运河五号·Banbury",
+        "address": "常州市运河五号创意街区16号楼"
+      },
+      {
+        "city": "Wuxi",
+        "name": "华夏家居港·Artouch",
+        "address": "无锡市梁溪区广益街道锡沪路280号华厦家居港建材馆1D158"
+      },
+      {
+        "city": "Shenyang",
+        "name": "嘉里城·凯文博朗",
+        "address": "沈阳市沈河区青年大街125号嘉里城一楼L103"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧亚达家居·悦家智享",
+        "address": "济南市天桥区欧亚达家具厅东厅一楼门头店B1-5/6/6-1"
+      },
+      {
+        "city": "Changsha",
+        "name": "欧亚达家居广场·艺润",
+        "address": "长沙市雨花区劳动东路欧亚达家居广场1楼mole house"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "红星美凯龙·郑州轩荣",
+        "address": "郑州市金水区红星麦凯龙家居馆1楼"
+      },
+      {
+        "city": "Kunming",
+        "name": "恒大云玺·SPLD",
+        "address": "昆明市官渡区昌宏西路7317号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "岳阳路·casa casa",
+        "address": "上海市徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "建国西路·家天地",
+        "address": "上海市黄浦区建国西路151号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "即墨路·Royana",
+        "address": "上海浦东新区即墨路5-2号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "源创创意园·Area Living",
+        "address": "上海市静安区陕西北路600号五号楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "荟购物中心·Area Living",
+        "address": "上海市黄浦区湖滨路168号无限极荟购物中心1楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "好饰家·申甬灯饰",
+        "address": "上海市徐汇区田林东路285号2楼2083"
+      },
+      {
+        "city": "Shanghai",
+        "name": "大上海时代广场·Lane Crawford",
+        "address": "上海市黄浦区淮海中路99号大上海时代广场商场"
+      },
+      {
+        "city": "Shanghai",
+        "name": "江宁路·design republic",
+        "address": "上海市静安区江宁路511号"
+      },
+      {
+        "city": "Beijing",
+        "name": "王府半岛·家天地",
+        "address": "北京市东城区金鱼胡同8号1号楼王府半岛负1商铺L17及负2楼商区"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "罗浮宫·Nana",
+        "address": "广州市天河区罗浮宫家居艺术中心B馆独立店"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "罗浮宫·简美",
+        "address": "广州罗浮宫家居艺术中心A馆1楼NOBILIA"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "吉盛伟邦·简美",
+        "address": "广州番禺区吉盛伟邦家具馆F馆1楼NOBILIA"
+      },
+      {
+        "city": "Tianjin",
+        "name": "A01国际家居美学中心·智强未来",
+        "address": "天津市河西区解放南路475号A01国际家居美学中心1层poliform"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "深业上城·家天地",
+        "address": "深圳市福田区皇岗路5001号深业上城"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "汉京中心·丽兹家居",
+        "address": "深圳市南山区汉京金融中心2F"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "宝能·莱可国际",
+        "address": "深圳市罗湖区宝安北路3038号宝能第一空间7楼"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "华侨城·泡泡家居",
+        "address": "深圳市南山区华侨城OCT创意文化园北区A4栋1层106-110"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "万科云城·The Big Bang",
+        "address": "深圳南山区创科路万科云城设计公社D区负1楼"
+      },
+      {
+        "city": "Chengdu",
+        "name": "麓湖生态城·101",
+        "address": "成都市天府新区麓湖生态城雅州路188号CPI项目W05"
+      },
+      {
+        "city": "Chengdu",
+        "name": "南富森美·YEPOM",
+        "address": "成都高新区盛和二路富森美家具3号馆1楼Rimadeso"
+      },
+      {
+        "city": "Chengdu",
+        "name": "红星美凯龙·染点",
+        "address": "成都市双流区剑南大道南一段红星美凯龙四川全球家具1号店2楼C8003,C8005"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Songcasa·陕西万众",
+        "address": "西安市雁塔区曲江池东路西安W酒店大堂西侧SongCasa"
+      },
+      {
+        "city": "Wuhan",
+        "name": "居然之家·欧戈雅",
+        "address": "武汉市武昌区居然之家1楼Poliform"
+      },
+      {
+        "city": "Wuhan",
+        "name": "华发中城商都·欧戈雅",
+        "address": "武汉市江汉区淮海路华发中城商都Minotti"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "滨安路·Maison Joseph",
+        "address": "浙江省杭州市滨江区滨安路1193号5栋Maison Joseph进口家具集合店"
+      },
+      {
+        "city": "Kunming",
+        "name": "红星美凯龙·鹰煌灯光",
+        "address": "昆明市西山区广福路318号红星美凯龙云南全球1号店负1楼G700711"
+      },
+      {
+        "city": "Taizhou",
+        "name": "海龙路·梵逊邦德",
+        "address": "台州市椒江区白云山西路与海龙路交叉口"
+      },
+      {
+        "city": "Taizhou",
+        "name": "第六空间·Banbury",
+        "address": "台州市椒江区东环大道2099号第六空间1楼A1-03"
+      },
+      {
+        "city": "Taizhou",
+        "name": "中心大道·OneMore",
+        "address": "台州市椒江区中心大道1709号"
+      },
+      {
+        "city": "Changzhou",
+        "name": "现代传媒中心·常州众凡",
+        "address": "常州市新北区龙锦路1590号常州现代传媒中心50楼"
+      },
+      {
+        "city": "Xiamen",
+        "name": "磐基名品中心·齐物家居",
+        "address": "厦门思明区磐基名品中心301"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "恒泰商厦·温州瑞极",
+        "address": "温州市鹿城区南汇街道锦江路426号恒泰商厦2楼"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "万萃广场·今世家",
+        "address": "温州市鹿城区三友路121号万萃广场1幢1楼"
+      },
+      {
+        "city": "Fuzhou",
+        "name": "喜盈门·双福灯饰",
+        "address": "福州市仓山区潘墩路1号喜盈门家居馆6楼"
+      },
+      {
+        "city": "Changsha",
+        "name": "喜盈门·澜缔进口家居",
+        "address": "长沙市雨花区万家丽路喜盈门范城家居建材馆7楼7015A"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "红星·郑州轩荣",
+        "address": "郑州市郑东新区商都路1号红星1F"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "环贸中心·石家庄中亨",
+        "address": "石家庄裕华区裕华路联创壹号C座5层"
+      },
+      {
+        "city": "Guiyang",
+        "name": "璞道装饰设计·上海光无垠",
+        "address": "贵阳市南明区水东路1号2楼"
+      },
+      {
+        "city": "Suzhou",
+        "name": "哈耶科技园·Banbury",
+        "address": "苏州市工业园区唯和路93号哈耶科技园C栋banbury"
+      },
+      {
+        "city": "Suzhou",
+        "name": "嘉实大厦·Uliving",
+        "address": "苏州市工业园区苏州大道西311号嘉实大厦ULIVING"
+      },
+      {
+        "city": "Suzhou",
+        "name": "苏州中心·新梦想",
+        "address": "苏州市苏州工业园区苏州中心商场L2层Poliform展厅"
+      },
+      {
+        "city": "Shenyang",
+        "name": "铁西红星美凯龙·沈阳集悦家居",
+        "address": "沈阳市铁西区北二东路红星美凯龙poliform"
+      },
+      {
+        "city": "Shenyang",
+        "name": "万象城·凯文博朗",
+        "address": "沈阳市和平区青年大街288号万象城六楼L681"
+      }
+    ]
+  },
+  "fritzhansen": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/60b1f91f0000000001009bb4?xsec_token=AB0R45l664J8YcP8dcrEKOfGW4Goh3wLiiXJqYdyZvn1E%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "F.H. Mono Store 上海店",
+        "address": "浦东新区东育路500弄前滩太古里石区2楼S-L2-33"
+      },
+      {
+        "city": "Ningbo",
+        "name": "F.H. Mono Store 宁波店",
+        "address": "浙江省宁波市鄞州区中山东路1751号德克德家国际家居一楼118展位"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "F.H. Mono Store 杭州店",
+        "address": "浙江省杭州市滨江区滨盛路4319号"
+      },
+      {
+        "city": "Beijing",
+        "name": "casa casa",
+        "address": "北京市朝阳区光华路正大中心1层L112"
+      },
+      {
+        "city": "Chengdu",
+        "name": "意美",
+        "address": "四川省成都市武侯区富森美家居(3号店)独立馆一楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "STREAM（需预约）",
+        "address": "浙江省杭州市天目里15号楼7楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "川至悦来 Van Collection",
+        "address": "上海市徐汇区龙腾大道2266号西岸梦中心1号楼301"
+      },
+      {
+        "city": "Suzhou",
+        "name": "HomeGallery",
+        "address": "江苏省苏州市吴中区双银国际金融城70幢负1楼B101室"
+      }
+    ]
+  },
+  "glasitalia": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6214d5020000000010004cbc?xsec_token=ABYcJ-xImEtK5pbC7EPWQ1F2MHI6EsX-FJuvgrj5Cd9gA%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Nanjing",
+        "name": "Glas Italia 南京专卖店",
+        "address": "江苏省南京市建邺区江东中路金盛国际家居一号门一楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Glas Italia 展厅",
+        "address": "上海静安区汶水路40号10号楼1层"
+      }
+    ]
+  },
+  "gubi": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5a9e03df11be1005d756ebf7?xsec_token=AB6IV-gYJKJS_VJ1d_CSCjkJ8CtvNNVmugjnNmTaVhfGo%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "GUBI Home",
+        "address": "No. 1388 Wuzhong Road, Hongqiao Town, Minhang District, 1F A8019 Red Star OLI Global Furniture Mall, Shanghai 201103"
+      },
+      {
+        "city": "Chengdu",
+        "name": "GUBI Chengdu",
+        "address": "South Fusen-Noble House No.3 Shop 1F, Chengdu 610000"
+      },
+      {
+        "city": "Dalian",
+        "name": "GUBI Dalian Brand Space",
+        "address": "Shahekou District Wuyi Square Home Furnishings 5th Floor, Liaoning 116021"
+      },
+      {
+        "city": "Ningbo",
+        "name": "GUBI Ningbo Mono Brand",
+        "address": "Yinzhou District, Ning Chuan Road DERLOOK, Ningbo 315010"
+      },
+      {
+        "city": "Shanghai",
+        "name": "GUBI x NANA Mono Brand Shop",
+        "address": "No. 407, Yishan Road, Xuhui District, Xiyingmen International Pavilion 2nd Floor 2001, Shanghai 200030"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "GUBI x Royana Guangzhou Mono Brand Shop",
+        "address": "Room A3-805-806, Louvre A, Huangpu Avenue, Tianhe District, Guangzhou 510630"
+      },
+      {
+        "city": "Shanghai",
+        "name": "GUBI Brand Space (Anfu 275) by Van Collection",
+        "address": "No. 6, Lane 275, Anfu Road, Xuhui District, Shanghai 200030"
+      }
+    ]
+  },
+  "gufram": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6130938b0000000002021aff?m_source=pwa&xsec_token=ABF5K3-4fRP4uyGnsLmB1-k5r9hB-_yXHzZzA2U5055t0=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Jinan",
+        "name": "ideaLiving(贵和购物中心店)",
+        "address": "济南市历下区天地坛街6号B1层"
+      }
+    ]
+  },
+  "georg-jensen": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5b484ec0e8ac2b36019b6c5c?m_source=pwa&xsec_token=ABGvap9aJiVae8_LWEOzl594MWII-Hj3FcP6Ep51UKLb4=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Georg Jensen (CN Yin Tai)",
+        "address": "No.127 Floor1 In01, No.2 Jianguomenwai Street, Beijing 100022"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Georg Jensen IFC Mall",
+        "address": "Shop 2030, Podium Level 2, Central, Hong Kong"
+      },
+      {
+        "city": "Taipei",
+        "name": "Taipei Far Eastern Xinyi A13",
+        "address": "2nd Floor, No. 58, Songren Road, Xinyi District, Taipei 110"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Georg Jensen（港汇恒隆广场店）",
+        "address": "上海市徐汇区虹桥路1号港汇广场5楼505B"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Georg Jensen（K11 Musea）",
+        "address": "香港特别行政区油尖旺区尖沙咀梳士巴利道18号K11 Musea1F层"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Georg Jensen乔治杰生（罗湖万象城店）",
+        "address": "深圳市罗湖区宝安南路1881号罗湖万象城二楼S223"
+      }
+    ]
+  },
+  "galerie-mcde": {
+    "site": "https://www.pierrechareau-edition.fr/",
+    "stockistCN": [
+      {
+        "city": "Hangzhou",
+        "name": "Gallery Sohe",
+        "address": "No.10 Building Eastcom Park, No.139 Liuhe Rd, Hangzhou"
+      }
+    ]
+  },
+  "hermanmiller": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/60adcdc20000000001003d30?xsec_token=ABMZXKLqBYNI6dXiNzrAF58a9v3DheGHqgXlB2LhBiSf0%3D&xsec_source=pc_search",
+    "taobao": "https://hermanmiller.world.tmall.com/?spm=a312a.7700824.0.0.4c754816P6nhFx",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "川至悦来",
+        "address": "上海市徐汇区龙腾大道2266号西岸梦中心1号楼301 · 17001648027"
+      },
+      {
+        "city": "Shanghai",
+        "name": "AnFu 275",
+        "address": "上海市徐汇区安福路275弄6号 · 13003162759"
+      },
+      {
+        "city": "Shanghai",
+        "name": "iyouth",
+        "address": "上海市长宁区昭化路189号 · 13166456248"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Herman Miller Store by Danpu",
+        "address": "上海市闵行区吴中路万象城五楼L528a · 13611896758"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Herman Miller Store by Danpu",
+        "address": "上海市浦东新区张杨路501号第一八佰伴七楼 · 13611896758"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Herman Miller Store by Danpu",
+        "address": "杭州市滨江区江南大道1088号第六空间家具馆一楼 · 15314627282"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Herman Miller Store by Danpu",
+        "address": "杭州市拱墅区展览东路150号杭州中心裙楼L515 · 0571-87911352"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Herman Miller Store by Danpu",
+        "address": "杭州市萧山区金城路927号杭州万象汇购物中心L554 · 0571-87799218"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Herman Miller Store by Danpu",
+        "address": "杭州市滨江区江汉路1515号龙湖杭州滨江天街A馆4楼L405 · 0571-86625938"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "福邸ForD",
+        "address": "杭州市上城区飞云江路9号赞成中心一楼 · 0571-86982555"
+      },
+      {
+        "city": "Nanjing",
+        "name": "BNJ HOME",
+        "address": "南京市秦淮区龙蟠中路216号金城大厦B座 · 025-85865566"
+      },
+      {
+        "city": "Nanjing",
+        "name": "BNJ LIFE",
+        "address": "南京市建邺区江东中路88号金陵国际家居1-2楼 · 025-52389966"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Future Life Home",
+        "address": "宁波市宁穿路第六空间A19 · 13805875905"
+      },
+      {
+        "city": "Changzhou",
+        "name": "康睦家居 kangmu",
+        "address": "常州市钟楼区小河沿5号九序世家大厦103号商铺二楼 · 13912332176"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Uliving",
+        "address": "苏州市工业园区苏州大道西311号 · 0512-65230208"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "吉盛伟邦 琶洲店",
+        "address": "广州市海珠区新港东路1000号吉盛伟邦5021 · 020-89309291"
+      },
+      {
+        "city": "Xi'an",
+        "name": "意美 Yimei",
+        "address": "西安市雁塔区高新四路高新九号广场居然之家至尊店一层中庭 · 029-81889898"
+      },
+      {
+        "city": "Chengdu",
+        "name": "川至悦来",
+        "address": "成都市武侯区诚通路176号 · 18113165176"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "成都市龙泉驿区东洪路666号梵木创意区F馆 · 19923952814"
+      },
+      {
+        "city": "Xiamen",
+        "name": "齐物 Chiagu Living",
+        "address": "厦门市思明区嘉禾路197号磐基中心311-312 · 15860786138"
+      },
+      {
+        "city": "Qingdao",
+        "name": "琅琪家具 Lanzi",
+        "address": "青岛市崂山区云岭路5号 · 0532-66711788"
+      },
+      {
+        "city": "Qingdao",
+        "name": "Unika",
+        "address": "青岛市市南区澳门路117号海信广场3/4F · 17669750169 / 17669753739"
+      },
+      {
+        "city": "Dalian",
+        "name": "SUNDAYSPACE",
+        "address": "大连市沙河口区黄河街12号A · 13942083757"
+      }
+    ]
+  },
+  "knoll": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63e2220d000000002601238e?xsec_token=AB9CY0mZKOlZTaWpPZgp0tgE1NNPCI7KyLue17Wqueco4%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Beijing EGS Trading Co. Ltd.",
+        "address": "2nd Floor, Tower D, Bloomage International Center, 6A Jianguomen Wai Street, Chaoyang District, Beijing"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "Henan Clever Industrial Co. Ltd.",
+        "address": "5th Floor, Tower 6, Zensun Jingkai Plaza, Zhengzhou"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Jiangsu He Space & Environment Engineering Co. Ltd.",
+        "address": "No.18 Jinghuai Street, Jiangning District, Nanjing, Jiangsu 266071"
+      },
+      {
+        "city": "Shanghai",
+        "name": "M-Space Company Limited",
+        "address": "Surpass Space Heritage Plaza, A201, Block 3, No.388 BanSongYuan Road, Huangpu District, Shanghai 201103"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BDI Furniture Technology Co.",
+        "address": "Technology Park, 3C101, Binjiang District, Hangzhou 310051"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Sunote Home Furnishing Co. Ltd.",
+        "address": "9/F, Building 1, No. 116 Xianghong Road, Gongshu District, Hangzhou"
+      },
+      {
+        "city": "Taipei",
+        "name": "York Business Interiors Corp.",
+        "address": "3F, No.303, Xinhu 1st Rd, Neihu District, Taipei City 114065"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Guangzhou Kindle Horizon Furniture Co. Ltd.",
+        "address": "Unit 609, 6F, International Metropolitan Plaza, 68 Hua Cheng Avenue, Zhu Jiang New Town, Tianhe District, Guangzhou"
+      },
+      {
+        "city": "Dongguan",
+        "name": "DG Steeline Co. Ltd.",
+        "address": "Dongcheng Middle Road East Section No. 62 Room 113, Dongguan 523000"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Kozii Space Co. Ltd.",
+        "address": "Rm101, Building 6, Nanhai E-cool, Xinghua Road, Shekou, Nanshan District, Shenzhen 518067"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "POSH Office Systems (HK) Limited",
+        "address": "Room 4707-13, 47/F, Hopewell Centre, 183 Queen's Road East, Wanchai, Hong Kong"
+      }
+    ]
+  },
+  "kimu": {
+    "site": "https://www.kimudesign.com/",
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "柒木展間",
+        "address": "臺北市中山區八德路二段172號, 104"
+      }
+    ]
+  },
+  "louispoulsen": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6087a3d6000000000101f71f?xsec_token=ABRptQMcVDI80s1AY8tRX8D6V1uRsZKbx4KQ2-zy7GaBw%3D&xsec_source=pc_search",
+    "taobao": "https://louispoulsen.world.tmall.com/category.htm?spm=pc_detail.30350276.shop_block.dshopinfo.e8917dd6uLohDG",
+    "stockistCN": [
+      {
+        "city": "Xi'an",
+        "name": "Shaan Xi Jia Chi Mei Yi Industrial",
+        "address": "11F, Bldg D, Daminggong Center Sq, Shaanxi Province 710016"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Xi'an SKP Select Home",
+        "address": "5F Xi'an Hualian (SKP) Department Store, No 261 Chang'an North Road, Beilin District, Xi'an 710061"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "Hall M Fanmate Creative Art Area, No.666 Donghong Road, Long-quan District, Chengdu 610000"
+      },
+      {
+        "city": "Beijing",
+        "name": "Beijing SKP Select Home",
+        "address": "5F Beijing Hualian (SKP) Department Store, No. 87 Jianguo Road, Chaoyang District, Beijing 100025"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa Beijing",
+        "address": "L112 CP Center Guanghua Rd, Beijing 100020"
+      },
+      {
+        "city": "Beijing",
+        "name": "Concept101 Beijing",
+        "address": "A6, QiKeShu ChuangYiYuan, No.55 Banjieta Road, Chaoyang District, Beijing 100016"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Banbury Shanghai CIMEN",
+        "address": "3025-3027 Cimen International, No. 407 Yishan Road, Xuhui District, Shanghai 200030"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Banbury Suzhou",
+        "address": "Building C Haye Science and Technology Park, 93 Weihe Road, Suzhou Industrial Park, Suzhou 215000"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Banbury Suzhou Derlock",
+        "address": "2F, Sixth Space Art Life Plaza, No. 1118, East Ring Road, Suzhou 215004"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa Shanghai Anfu Store",
+        "address": "No 150 Yueyang Rd, Shanghai 200031"
+      },
+      {
+        "city": "Changzhou",
+        "name": "Changzhou Qizhiguan",
+        "address": "29-3, No298, Jin Ling Bei Road, East Gate of Tian'an Garden, Xinbei District, Changzhou 213022"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Chiagu Living Paragon Store",
+        "address": "410B-411A, Paragon Center, No 197 Jiahe Road, Siming District, Xiamen 361007"
+      },
+      {
+        "city": "Jiaxing",
+        "name": "Domus Haus",
+        "address": "Block 20 Xiangdaolanwan, No.1 Linghu East Road, Nanhu District, Jiaxing 314000"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Flora Innovative Lighting Limited",
+        "address": "Unit No. 3, 22/F, Kodak House II, 39 Healthy Street East, North Point, Hong Kong"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Guangzhou Yi's House Furniture Co.",
+        "address": "5021, No. 1000 Xingang Road East, Guangzhou 510000"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Zhexin The Sixth Space",
+        "address": "1F, No. 1088 Jiangnan Avenue, Hangzhou 310000"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Zhexin Derlook",
+        "address": "1F, Derlook, No 1088 Jiangnan Avenue, Hangzhou 310051"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Zhexin Hangzhou Tower",
+        "address": "3rd Floor Block D Hangzhou Tower, No. 231 Huancheng North Road, Hangzhou"
+      },
+      {
+        "city": "Taipei",
+        "name": "JYT Design",
+        "address": "No. 161, Siwei Road, Da'an District, Taipei 106"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford - Canton Road",
+        "address": "3 Canton Rd, Tsim Sha Tsui, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford - IFC Mall",
+        "address": "Podium 3, 8 Finance Street Central, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford - Pacific Place",
+        "address": "88 Queensway, Admiralty, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford - Times Square",
+        "address": "1 Matheson Street, Causeway Bay, Hong Kong"
+      },
+      {
+        "city": "Taichung",
+        "name": "Louis Poulsen Taichung",
+        "address": "No.103 GongYi Road Sec. 2, Taichung 408"
+      },
+      {
+        "city": "Taipei",
+        "name": "Louis Poulsen Taipei",
+        "address": "160 Siwei Road, Taipei 106"
+      },
+      {
+        "city": "Taipei",
+        "name": "Luxury Life - Taipei",
+        "address": "No.126, SiWei Road, Da'an District, Taipei 100"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Manks Ltd",
+        "address": "18/F Heung Wah Industrial Building, 12 Wong Chuk Hang Road, Wong Chuk Hang, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "MyConcept Hong Kong Ltd",
+        "address": "Lee Garden 3, 1 Sunning Road, Wan Chai District, Hong Kong"
+      },
+      {
+        "city": "Taoyuan",
+        "name": "Motive Taoyuan",
+        "address": "2F, 330 Zhongzheng Rd, Taoyuan City, Taoyuan District 935"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Nanjing BNJ Trading Co., Ltd",
+        "address": "216-1, 216-2, Longpan Middle Road, Nanjing 210001"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Net Furniture Rail In Store",
+        "address": "2nd Floor, L219, Rail In, Baishi 3rd Road, Nanshan District, Shenzhen 518053"
+      },
+      {
+        "city": "Ningbo",
+        "name": "The Pine",
+        "address": "2nd Floor, Building 10, Huai Stage, No. 256 Huaishu Road, Jiangbei District, Ningbo 315031"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Pro101 Shanghai",
+        "address": "No.8 Shenyu Lane, Suhewan MIXC World, No.100 Fujian Road North, Jing'an District, Shanghai 200085"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Pro101 Shenzhen",
+        "address": "L2-245 UpperHills, No.5001 Huanggang Road, Futian District, Shenzhen 518038"
+      },
+      {
+        "city": "Taipei",
+        "name": "Romulus Inc.",
+        "address": "No. 33, Leli Road, Taipei 106"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Bluce Lighting Technology",
+        "address": "E8111, No 1555, Wenshui Road, Baoshan, Shanghai 200436"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "Building 5, No 600 North ShanXi Road, Jing'an District, Shanghai 200041"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai SYL",
+        "address": "A5-01/02, Building A, Rock, Paper, Scissors, 1265 Wuzhong Road, Minhang District, Shanghai 200233"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Van Collection",
+        "address": "102, No.1887 Long Hua Road, Shanghai 200032"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "The Beast Home Guangzhou IGC",
+        "address": "L201 IGC Mall, No 222 Xingmin Road, Tianhe District, Guangzhou 510630"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Space101 Hangzhou",
+        "address": "West Gate Block 29, Eastcom Hechuang Park, No.139 Liuhe Road, Xihu District, Hangzhou"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Huang Xiaoling",
+        "address": "Cosmo, L219 RailIN Mall, Shenwan 1st Road, Nanshan District, Shenzhen"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Taizhou Fashion Bonde",
+        "address": "2F, No 220, Chaohui Road, Jiaojiang, Taizhou 318015"
+      },
+      {
+        "city": "Jiaxing",
+        "name": "Muyi Home",
+        "address": "No.159 Wangjiamen Road, Wu Tong Street, Tongxiang City, Zhejiang Province 314599"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Wenzhou Womehome",
+        "address": "Floor 3 Building 1, Wancui Plaza, 121 Sanyou Road, Lucheng District, Wenzhou 325000"
+      },
+      {
+        "city": "Foshan",
+        "name": "272 Gallery by STREAM",
+        "address": "23-5F, No. 1F & No. 27, No. 9, Chuihong Road, Chancheng District, Foshan 528011"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Zhejiang ACME CASA",
+        "address": "B416, 4th Floor, Derlook, No. 315, Ningchuan Road, Yinzhou District, Ningbo 315000"
+      }
+    ]
+  },
+  "lumina": {
+    "site": "https://www.lumina.it/"
+  },
+  "luceplan": {
+    "stockistCN": [
+      {
+        "city": "Hangzhou",
+        "name": "Calligaris Store Hangzhou",
+        "address": "Red Star Macalline, 2nd Floor, 888 Gudun Road, B8037/B8039, Hangzhou"
+      },
+      {
+        "city": "Beijing",
+        "name": "Calligaris Store Beijing East",
+        "address": "Red Star Macalline C8236, 2nd Floor, 193 Fourth Ring East Road, Chaoyang District, Beijing 100007"
+      },
+      {
+        "city": "Beijing",
+        "name": "Calligaris Store Beijing North",
+        "address": "Easyhome Mall, Ground Floor, 1 Yuanda Road, Haidian District, Beijing"
+      },
+      {
+        "city": "Beijing",
+        "name": "Calligaris Store Beijing West",
+        "address": "Easyhome Mall, Basement Floor, 65 North Fourth Ring Road East, Chaoyang District, Beijing 100007"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Hong Kong Win-Living & Shanghai Z Space",
+        "address": "1st & 2nd Floor, No.5 Building, Lane 98, Hexuan East Road, Jiading District, Shanghai"
+      },
+      {
+        "city": "Chengdu",
+        "name": "QiDian (Chengdu) International Trading Co. Ltd. (QQODD)",
+        "address": "C8003, C8005, 2nd Floor, Red Star Macalline Global Home Furnishing Store, South Section 1, Jiannan Avenue, Shuangliu District, Chengdu"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Qizhilu (Shanghai) Trading Co., Ltd. (QQODD)",
+        "address": "A8009, 1F, No. 1388 Wuzhong Road, Shanghai Red Star O'gloria Home Furnishing Mall, Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Quansheng Lighting Design & Engineering Co. Ltd",
+        "address": "Room 7302, 3rd F, Building 7, No.8 Bridge, Jianguo Rd, Huangpu District, Shanghai 200025"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Bluce Lighting",
+        "address": "Section E8111 5th Macalline, No.1555, Wenshui Road, Baoshan District, Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Bluce Lighting Technology Co., Ltd",
+        "address": "Section E8111, 5F, Red Star Macalline, No.1555, Wenshui Road, Baoshan District, Shanghai 200436"
+      }
+    ]
+  },
+  "lk-hjelle": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "CABANA",
+        "address": "Cabana 101B, Building 15, Taikoo Li Sanlitun North, Chaoyang District, Beijing"
+      },
+      {
+        "city": "Hefei",
+        "name": "Homtique Hefei",
+        "address": "Derlook A205, No.3 Qianshan Rd, Hefei, Anhui 230000"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Homtique Shanghai",
+        "address": "No.250, Wuyuan Road, Shanghai 200031"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Homtique Xi'an",
+        "address": "Building K, Xinshe, Hanyao Road, Qujiang New District, Yanta District, Xi'an"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Shenzhen Beiwo Culture Ltd Co",
+        "address": "Room 101, Building B, Jun Ziang, Nan Shan District, Zhong Shan Yuan, Shenzhen 518051"
+      }
+    ]
+  },
+  "magis": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5ea6e45e000000000100b659?xsec_token=ABJbAqGoDBZUCe8WaTLtnIIy-QyxtItBL7Z8Cw8UMMNKM%3D&xsec_source=pc_search",
+    "taobao": "https://magis.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "剪刀石头布家居",
+        "address": "吴中路1265号4楼（帝幔进口家具精选馆）"
+      },
+      {
+        "city": "Shanghai",
+        "name": "川至悦来 Van Collection",
+        "address": "上海市徐汇区龙腾大道2266号西岸梦中心1号楼301"
+      },
+      {
+        "city": "Qingdao",
+        "name": "海日欣家居",
+        "address": "青岛市市北区黑龙江路77号居然之家A座1楼"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "奕居国际",
+        "address": "广州市海珠区新港东路1000号琶洲吉盛伟邦5楼进口馆5021"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "PP Design gallery",
+        "address": "深圳市南山区华侨城创意文化园北区A4栋一层108-110"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Ansel Home",
+        "address": "重庆市江北区观音桥街道星光68B区L1"
+      },
+      {
+        "city": "Suzhou",
+        "name": "优丽文ULIVING嘉实旗舰店",
+        "address": "苏州工业园区苏州大道西313号"
+      },
+      {
+        "city": "Kunshan",
+        "name": "苏州来福牛lifenew",
+        "address": "江苏省昆山市虹祺路283号西城后街商业广场B1栋106-1"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "成都龙泉驿区东洪路666号梵木创意区M馆"
+      },
+      {
+        "city": "Tongxiang",
+        "name": "MUYI HOME",
+        "address": "浙江省桐乡市王家门路161号对面仓库2楼"
+      },
+      {
+        "city": "Fuzhou",
+        "name": "福州美邦实业有限公司",
+        "address": "福州市晋安区连江北路293号"
+      },
+      {
+        "city": "Xi'an",
+        "name": "西安様家HBRIGHT",
+        "address": "西安市未央区大明宫中央广场八角楼"
+      },
+      {
+        "city": "Xiamen",
+        "name": "齐物CHIAGU",
+        "address": "厦门市思明区嘉禾路197号磐基中心311-312"
+      },
+      {
+        "city": "Beijing",
+        "name": "北京SKP SELECT HOME",
+        "address": "北京市朝阳区建国路87号北京SKP 5F"
+      },
+      {
+        "city": "Xi'an",
+        "name": "西安SKP SELECT HOME",
+        "address": "陕西省西安市碑林区长安北路261号西安SKP 5F"
+      },
+      {
+        "city": "Chengdu",
+        "name": "成都SKP SELECT HOME",
+        "address": "四川省成都市高新区天府大道北段成都SKP 1F"
+      },
+      {
+        "city": "Chengdu",
+        "name": "RDV DESIGN",
+        "address": "四川省成都市武侯区天府大道北段2001号成都SKP F2层"
+      },
+      {
+        "city": "Wuhan",
+        "name": "武汉SKP SELECT HOME",
+        "address": "中国湖北省武汉市武昌区沙湖大道18号武汉SKP 4F"
+      },
+      {
+        "city": "Changsha",
+        "name": "mole house",
+        "address": "湖南省长沙市欧亚达家居广场1楼B16门店"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "浙江省温州市鹿城区三友路121号万萃广场1幢3楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "杭州德先居DAVIDECO",
+        "address": "杭州"
+      }
+    ]
+  },
+  "martinelliluce": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63044d15000000001200ca0a?xsec_token=ABT5EGo7pqwLU5KLu-uK7QArbYjzgF6XCdyVk2MKOoWcA%3D&xsec_source=pc_search"
+  },
+  "mogg": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5fc4dcea00000000010090f0?xsec_token=ABbdflBtmBT1dJnS00-_7ekJVDE21A_K7S-0BMvhHB6ZQ%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Taizhou",
+        "name": "BANBURY",
+        "address": "浙江省台州市椒江区洪家第六空间"
+      },
+      {
+        "city": "Beijing",
+        "name": "CLASSIC LIVING",
+        "address": "北京朝阳区农展馆南里10号"
+      },
+      {
+        "city": "Beijing",
+        "name": "CONCEPT101",
+        "address": "北京市朝阳区半截塔路53号朗园"
+      },
+      {
+        "city": "Beijing",
+        "name": "DOMUSTIANDI",
+        "address": "北京市东城区金鱼胡同8号王府半岛酒店B2家天地"
+      },
+      {
+        "city": "Shanghai",
+        "name": "DOMUSTIANDI",
+        "address": "上海市黄浦区半淞园路街道望达路19号B3-A"
+      },
+      {
+        "city": "Taizhou",
+        "name": "FASHIONBOND",
+        "address": "浙江省台州市椒江区朝晖路200-220号（玉兰广场琼华园南大门）"
+      },
+      {
+        "city": "Nanjing",
+        "name": "FANCY",
+        "address": "江苏省南京市建邺区河西大街239号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "FOR D",
+        "address": "浙江省杭州市上城区飞云江路9号赞成中心一楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "HOMTIQUE",
+        "address": "上海市徐汇区五原路250号"
+      },
+      {
+        "city": "Hefei",
+        "name": "HOMTIQUE",
+        "address": "安徽省合肥市潜山路3号第六空间A馆205"
+      },
+      {
+        "city": "Xi'an",
+        "name": "HOMTIQUE",
+        "address": "陕西省西安市雁塔区曲江新区寒窑路新社K栋"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "HOME GALLERY",
+        "address": "浙江省杭州市拱墅区石桥路279号经纬国际创意园9号楼F座117室"
+      },
+      {
+        "city": "Suzhou",
+        "name": "HOME GALLERY",
+        "address": "江苏省苏州市吴中区双银国际金融城70栋"
+      },
+      {
+        "city": "Changsha",
+        "name": "LANDI 澜缔",
+        "address": "湖南省长沙市雨花区喜盈门建材广场七楼7015A"
+      },
+      {
+        "city": "Foshan",
+        "name": "LOUVRE CASA",
+        "address": "广东省佛山市顺德区乐从镇罗浮宫国际家具博览中心5-6F"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "MAISON JOSEPH",
+        "address": "浙江省杭州市滨江区诚业路415号江南岸艺术园区A座402"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "MAISON JOSEPH（万象城店）",
+        "address": "杭州拱墅区富春路701号万象城2楼"
+      },
+      {
+        "city": "Jiaxing",
+        "name": "MUYI HOME",
+        "address": "嘉兴桐乡梧桐街道利民路857号盛华园1幢"
+      },
+      {
+        "city": "Shanghai",
+        "name": "NOVI",
+        "address": "上海市徐汇区田林东路285号2层"
+      },
+      {
+        "city": "Shanghai",
+        "name": "PWG",
+        "address": "上海市虹口区吴淞路328号一层"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "7/7HOME",
+        "address": "浙江省温州市永嘉县三江商务区中村104国道旁原野春天7号楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP",
+        "address": "北京市朝阳区建国路87号"
+      },
+      {
+        "city": "Dalian",
+        "name": "SUNDAY SPACE (DC SUNMY)",
+        "address": "辽宁省大连市沙河口区黄河街12号A"
+      },
+      {
+        "city": "Qingdao",
+        "name": "TOLISPACE",
+        "address": "青岛市辽宁西路120号富尔玛国际家居博览中心"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "UN HOME",
+        "address": "杭州市上城区山南印4幢104号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "1HOUSE",
+        "address": "中国（四川）自由贸易试验区成都高新区盛华北路116号1栋附208"
+      },
+      {
+        "city": "Shanghai",
+        "name": "YU12",
+        "address": "上海市黄浦区湖滨路210号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Z SPACE",
+        "address": "上海嘉定区鹤旋东路98弄慧创新视界商务中心5号楼1-2层"
+      }
+    ]
+  },
+  "mario-tsai-studio": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/60d1a9d300000000200290c7?xsec_token=ABpMSFX7fe6F6ZWCKCVyO9_SVCm3DGPlvtgRnRIFYdNU0%3D&xsec_source=pc_search",
+    "site": "https://mariotsai.studio/",
+    "stockistCN": [
+      {
+        "city": "Hangzhou",
+        "name": "MARIO TSAI",
+        "address": "浙江省杭州市西湖区留和路138号东信和创园72幢 · 开放时间10:00-18:00 · 0571-81902374"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "SPACE101",
+        "address": "浙江省杭州市西湖区留和路139号东信和创园29幢 · 预约制 开放时间9:30-18:00"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "HOME GALLERY",
+        "address": "浙江省杭州市拱墅区石桥路279号经纬国际创意园9号楼F座117室 · 开放时间10:00-18:00 · 18258063396"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "MAISON JOSEPH",
+        "address": "浙江省杭州市滨江区长河街道滨安路1193号5栋203号 · 开放时间11:00-20:00 · 13170936993 Nathan"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Banbury",
+        "address": "浙江省杭州市上城区解放东路45号高德置地广场2层L218 · 开放时间周一至周四10:00-19:00/周五至周日10:00-21:00 · 15355435556"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "LINEPARK",
+        "address": "浙江省杭州市西湖区留和路138号东信和创园11幢LINE PARK线形公园 · 开放时间10:00-18:00 · 0571-89990211"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "壹集",
+        "address": "浙江省杭州市西湖区文二西路西溪湿地西侧荆长大道40号 · 开放时间10:00-19:00"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "B1OCK",
+        "address": "浙江省杭州市西湖区天目清水商业中心11号楼9层 · 开放时间11:00-21:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "家天地(MINOTT展厅)",
+        "address": "上海市黄浦区瑞金二路街道建国西路151号（近陕西南路） · 预约制 开放时间10:00-19:00 · 18321299988"
+      },
+      {
+        "city": "Shanghai",
+        "name": "PRO101",
+        "address": "上海市静安区福建北路100号苏河湾万象天地慎余里8幢 · 开放时间10:00-22:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Veenue",
+        "address": "上海市徐汇区衡山路890弄7号楼 · 18512124999"
+      },
+      {
+        "city": "Beijing",
+        "name": "101+旗舰店",
+        "address": "北京市朝阳区半截塔路55号七棵树创意园A6 · 开放时间9:30-18:30"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "PP/鹏和朋友们设计事务所",
+        "address": "深圳市南山区西丽万科云城设计公社B区B215"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "hesper赫光照明设计",
+        "address": "广东省广州市天河区罗浮宫家居艺术中心A座4楼A4-810S · 开放时间10:00-18:30 · 18028098359"
+      },
+      {
+        "city": "Dongguan",
+        "name": "LeeVida",
+        "address": "广东省东莞市厚街镇会展南路2号"
+      },
+      {
+        "city": "Foshan",
+        "name": "良行文化",
+        "address": "佛山市南海区桂城街道简平路12号天安南海数码新城6期2座三层之六 · 开放时间9:30-18:00 · 李先生 13760957861"
+      },
+      {
+        "city": "Chongqing",
+        "name": "壹集",
+        "address": "重庆市渝北区金山街道金山意库文化产业创意园1号楼1-4楼壹集 · 开放时间10:00-18:00"
+      },
+      {
+        "city": "Ningbo",
+        "name": "集致廊",
+        "address": "浙江省宁波市鄞州区东胜街道宁穿路315号第六空间B馆415 · 开放时间9:30-17:30 · 13957411999"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Banbury",
+        "address": "浙江省台州市路桥区东环大道2099号第六空间A1-03/05 · 开放时间9:30-17:30"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "欧顿灯饰",
+        "address": "浙江省瑞安市罗阳大道瑞源华府八号楼欧顿灯饰 · 开放时间10:00-18:00 · 18838867577"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Lar Lar",
+        "address": "浙江省温州市鹿城区滨江万象城L526 · 开放时间9:00-17:00 · 18957796655"
+      },
+      {
+        "city": "Yiwu",
+        "name": "观云空间",
+        "address": "浙江省义乌市世贸中心60F观雲空間 · 19941770001"
+      },
+      {
+        "city": "Tongxiang",
+        "name": "MUYI HOME",
+        "address": "浙江省桐乡市梧桐街道王家门路159号对面大仓库2楼(蓝色大铁门进) · 开放时间9:00-17:00 · 13867321591"
+      },
+      {
+        "city": "Hefei",
+        "name": "THE JIN",
+        "address": "安徽省合肥市包河区黑龙江路8号滨湖金融小镇B栋一层 · 开放时间9:30-17:30 · 13505618119"
+      },
+      {
+        "city": "Suzhou",
+        "name": "HOME GALLERY",
+        "address": "江苏省苏州市吴中区双银国际金融城70幢 · 开放时间10:00-18:00"
+      },
+      {
+        "city": "Changsha",
+        "name": "mole house",
+        "address": "湖南省雨花区劳动东路欧亚达家居广场1层B16 · 开放时间9:30-17:30 · 15527776644"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Pholdin哲叠",
+        "address": "厦门市湖里区高崎北二路61-63号第六空间商场二楼B3-B6店"
+      },
+      {
+        "city": "Taipei",
+        "name": "MD PURSUIT",
+        "address": "台北市松山區民生東路五段69巷2弄1號 · 预约制 开放时间10:00-19:00"
+      }
+    ]
+  },
+  "mdf-italia": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Casa Casa Beijing",
+        "address": "L112 CP Center, Guanghua Rd, Chaoyang District, Beijing 100020"
+      },
+      {
+        "city": "Jinan",
+        "name": "Wuwu Home",
+        "address": "No. 177-1 Middle Xiaoqinghe North Road, Tianqiao District, Jinan 250100"
+      },
+      {
+        "city": "Xi'an",
+        "name": "The Humor",
+        "address": "South Qujiang 32-103 Ziwei Yonghe Fang, Yanzhang Rd, Xi'an 710054"
+      },
+      {
+        "city": "Hefei",
+        "name": "The Jin",
+        "address": "Floor 1, Building B, Block A, Binhu Financial Town, No. 8 Heilongjiang Road, Baohe District, Hefei"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Jiangsu Peitan Export and Import Trading Co., Ltd",
+        "address": "No. 68 Suyuan Avenue, Jiangning District, Nanjing, Jiangsu"
+      },
+      {
+        "city": "Chengdu",
+        "name": "LHC",
+        "address": "6F, 5 Block, Utopia No.1, Xin'guang Rd, Wuhou District, Chengdu, Sichuan 610041"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Emma",
+        "address": "Dayouzhihui Plaza, No.288 3rd Tianfu St, Gaoxin District, Chengdu, Sichuan"
+      },
+      {
+        "city": "Foshan",
+        "name": "Louvre Casa",
+        "address": "Shunde District 325, Foshan 528315"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Guangzhou Meishuguan Furniture Co., Ltd",
+        "address": "1/F, Building C, No. 666 Huangpu Avenue, Louvre Art Center, Tianhe District, Guangzhou 510665"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford",
+        "address": "27F One Island South, 2 Heung Yip Rd, Wong Chuk Hang, Hong Kong"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "An Di",
+        "address": "7th Floor, Wenzhou Hongxing International Home Furnishing Plaza, No. 8 Cihu Section, 104 National Road, Ouhai District, Wenzhou 325000"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Casanova",
+        "address": "1st Room In West No.101, Bldg.1 Jingleju, Kaiyuan Rd, Wenzhou 325000"
+      },
+      {
+        "city": "Ningbo",
+        "name": "The Pine",
+        "address": "2/F, Bldg 10, No. 256 Huaishu Road, Jiangbei District, Ningbo 315031"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Danyi",
+        "address": "Yongwang Village, Zhuangshi Street, Zhenhai District, Ningbo 315201"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Boella",
+        "address": "E21, 5th Floor Derlook, No. 18 West Lake Road, Shangcheng District, Hangzhou 310002"
+      },
+      {
+        "city": "Tongxiang",
+        "name": "Muyi Home",
+        "address": "Shenghuayuan 1-2-301, No. 857 Limin Rd, Wutong St, Tongxiang City, Zhejiang"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa 16",
+        "address": "16/F, Bldg C, Huaxin Park, No.1777 Rd. Hualong, Qingpu District, Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Leonardo",
+        "address": "16 Floor, Block C, No.1177 Huafeng Rd, Qingpu District, Shanghai 201708"
+      },
+      {
+        "city": "Shanghai",
+        "name": "The Banbury",
+        "address": "Room 1062, Xiyingmen International Pavilion, No. 407, Yishan Rd., Xuhui District, Shanghai 200030"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Element Plus",
+        "address": "2nd Floor, Bldg 1, The Bund Finance Centre, 558 Zhongshan No.2 Rd (E), Shanghai 200010"
+      },
+      {
+        "city": "Shanghai",
+        "name": "H.N.Lin Design Center",
+        "address": "No.4, Lane 268 West Jian Guo Road, Xuhui District, Shanghai 200031"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa Shanghai",
+        "address": "No. 150 Yueyang Road, Xuhui District, Shanghai 200031"
+      }
+    ]
+  },
+  "poltronova": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/69c1117300000000260026c3?m_source=pwa&xsec_token=ABBxTHcTyzJvYtYQW7moUyhIAGhtfQIxSR3w11z9Q-I_8=&xsec_source=pc_search"
+  },
+  "petite-friture": {
+    "stockistCN": [
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford",
+        "address": "One Pacific Place, Level 88, Queensway, Hong Kong"
+      }
+    ]
+  },
+  "parachilna": {
+    "site": "https://www.parachilna.eu/"
+  },
+  "phantom-hands": {
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "Retro Studio Taipei",
+        "address": "Taipei, Taiwan"
+      },
+      {
+        "city": "Beijing",
+        "name": "101+ Flagship",
+        "address": "Beijing"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Space101",
+        "address": "Hangzhou"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "PRO101",
+        "address": "Shenzhen"
+      },
+      {
+        "city": "Shanghai",
+        "name": "PRO101",
+        "address": "Shanghai"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Wool",
+        "address": "Hong Kong"
+      }
+    ]
+  },
+  "rrres": {
+    "site": "https://rrrrrr.es/Studio"
+  },
+  "saba": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/653b2f7b0000000002010d41?xsec_token=ABXFWIyoTyh9v-_QO_Thsfu1Ovwg_f8Ss6nSE56498Wcg%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Xi'an",
+        "name": "SKP Xi'an",
+        "address": "5F, Xi'an SKP, No. 261 Chang'an North Road, Beilin District, Xi'an 710000"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SKP Chengdu",
+        "address": "North Section of Tianfu Avenue, High-tech Zone, Chengdu, Sichuan 610000"
+      },
+      {
+        "city": "Chongqing",
+        "name": "APO",
+        "address": "Apo Yue Jia Imported Collection Hall 1F, Red Star Macalline Chongqing Premier Mall, Jinzhou Avenue, Yubei District, Chongqing 400000"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "Henan Hermes",
+        "address": "Modern Dimension Imported Home Lifestyle Gallery, No. 39 Huayuan North Road, Jinshui District, Zhengzhou, Henan 450000"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "SundaySpace Shijiazhuang",
+        "address": "Unit C8028, 1F Comprehensive Hall, Red Star Macalline Fangbei Mall, No. 108 Yuhua East Road, Yuhua District, Shijiazhuang, Hebei 050000"
+      },
+      {
+        "city": "Wuhan",
+        "name": "SKP Wuhan",
+        "address": "4F, Wuhan SKP, No. 18 Shahu Avenue, Wuchang District, Wuhan, Hubei 430000"
+      }
+    ]
+  },
+  "rispal": {
+    "site": "https://rispal.shop/en"
+  },
+  "santacole": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/66409b6a0000000003033188?xsec_token=ABs4oVm28NA2pK-dIp70_nQckiRAmLaYVdFThoti_qLl4%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Banbury Commercial Shanghai",
+        "address": "407 Yi Shan Lu, Xu Hui Qu, Shanghai 200030"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa Shanghai",
+        "address": "150 Yue Yang Lu, Xu Hui Qu, Shanghai 200031"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Colourliving BSC",
+        "address": "333 Lockhart Rd, Wan Chai, Hong Kong"
+      },
+      {
+        "city": "Beijing",
+        "name": "Concept 101 Beijing",
+        "address": "Chao Yang Qu, Beijing 100025"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Fushionm Xiamen / Xiamen Foldin Trading Co Ltd",
+        "address": "61 Gao Qi Bei Er Lu, Xia Men Shi 361011"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford",
+        "address": "8 Finance St, Central, Hong Kong"
+      },
+      {
+        "city": "Taipei",
+        "name": "Lightplus",
+        "address": "Minhui Village, Lane 10, Section 3, Zhongxiao E Rd, Da'an District, Taipei 106"
+      },
+      {
+        "city": "Taipei",
+        "name": "Loft29",
+        "address": "No. 11-2, Lane 123, Section 3, Ren'ai Rd, Yicun Village, Da'an District, Taipei 106"
+      },
+      {
+        "city": "Shanghai",
+        "name": "QQODD",
+        "address": "1388 Wu Zhong Lu, Min Hang Qu, Shanghai 201101"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Shen Yong Lighting",
+        "address": "198-3109 Cao Xi Lu, Xu Hui Qu, Shanghai 200235"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Splendor Lighting",
+        "address": "135 Liu Ying Lu, Hong Kou Qu, Shanghai 200070"
+      }
+    ]
+  },
+  "stoffnagel": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "42Art Space",
+        "address": "301A, Building B1, Jingying Menggu Changying, No. 27 Chaoyang North Road, Chaoyang District, Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Atelier Soie Lifestyle",
+        "address": "1st Floor, No. 5, Lane 275, Anfu Road, Xuhui District, Shanghai"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Chengdu Minglushi Wenhuachaunbo Co. Ltd",
+        "address": "2/F, Dalu Building No. 11, Renmin South Road Section 4, Chengdu, Sichuan 610041"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Finnnavian Lifestyle Center",
+        "address": "1st Floor, Vientiane Qianhai Shopping Center, No. 169, Guiwan West Road, Qianhai Shenzhen-Hong Kong Cooperation Zone, Shenzhen"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Youlin Trading Co. Ltd",
+        "address": "A-10, 18F, Moganshan Rd, Gongshu District, Hangzhou 310000"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Lane Crawford Department Store (Shanghai) Limited",
+        "address": "Level 1-4, Shanghai Times Square, 99 Huaihaizhong Road, Shanghai"
+      },
+      {
+        "city": "Foshan",
+        "name": "Masanori Art",
+        "address": "Tian'an Cybercity Phase VI Block2, 3-1, Foshan"
+      },
+      {
+        "city": "Tianjin",
+        "name": "Norden-inteDyrt 北欧不贵",
+        "address": "Nr 6, Nanniwan Road, Nankai District, Tianjin"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Shum Yip Upperhills",
+        "address": "5001 Huanggang Rd, Futian District, Shenzhen"
+      },
+      {
+        "city": "Beijing",
+        "name": "Taikoo Li Sanlitun Department Store",
+        "address": "SLG-L03-01, 1st Floor, Taikoo Li South District, Sanlitun, Chaoyang District, Beijing"
+      }
+    ]
+  },
+  "serax": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/69a8e80a0000000033033488?m_source=pwa&xsec_token=AB0VXKUSYfBaNOViHL5zkW0838xc1v4ZungwJA9dIFSmE=&xsec_source=pc_search",
+    "taobao": "https://serax.world.tmall.com/?spm=a312a.7700824.0.0.4bc54bcdYQEkm9"
+  },
+  "spectrum": {
+    "site": "https://www.spectrumdesign.nl/en"
+  },
+  "singchan": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5cc6c4ec0000000012007414?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABiJRGrwp_WiEVPoySSTpvJ9qdhkLB4doksI3Gl-ggMrQ=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Sing Chan Design 工作室",
+        "address": "上海外滩四川中路33号创业大楼817室"
+      }
+    ]
+  },
+  "thonet": {
+    "stockistCN": [
+      {
+        "city": "Chengdu",
+        "name": "Chengdu FDL Furniture Co Ltd.",
+        "address": "8F No 3, Taipingsi Road, Wuhou District, Chengdu"
+      },
+      {
+        "city": "Beijing",
+        "name": "Concept101",
+        "address": "No. 101 Gujiaju Street, Gaobeidian, Chaoyang District, Beijing 100123"
+      },
+      {
+        "city": "Jiaxing",
+        "name": "Domus Haus",
+        "address": "No.1 Linghu East Road, Nanhu District, Jiaxing City, Zhejiang 314000"
+      },
+      {
+        "city": "Shanghai",
+        "name": "The Designrepublic",
+        "address": "511 Jiang Ning Road, Shanghai 200041"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Leanon Furniture Co. Ltd",
+        "address": "2F Meihuan Building, No 107 South Zhongshan No 2 Road, Shanghai 200023"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Senab",
+        "address": "Jiu Jiang Rd No.501, Rm. 118, Shanghai 200001"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Asia View",
+        "address": "Rm 401, No. 457 Ju Men Road, Shanghai 200023"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Design & Distribution Link Ltd.",
+        "address": "Unit 1C, Kwai Shu Ind. Center, 51-6 Container Port Road, Kwai Chung, Kowloon, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Thonet Limited",
+        "address": "2F, Lok's Industrial Building, 204 Tsat Tsz Mui Road, Quarry Bay, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Frontier Workspace",
+        "address": "Offices AB, 23/F, AXA Southside, 38 Wong Chuk Hang Road, Hong Kong"
+      },
+      {
+        "city": "Kaohsiung",
+        "name": "Lafon Trading Co",
+        "address": "11F-3, No 12 Fu-Hsing 4th Rd, Chien-Chien District, Kaohsiung 80661"
+      }
+    ]
+  },
+  "tecta": {
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "IYOUTH",
+        "address": "No. 309, Jia Shan Road, Xu Hui District, Shanghai"
+      }
+    ]
+  },
+  "cire-trudon": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/59eea81e11be107cd27ba6de?m_source=pwa&xsec_token=AB-RHRcx9Ufp_85lL6jH-n-4QcD9Ztg9yVwrTyGRWhmuo=&xsec_source=pc_search",
+    "taobao": "https://trudon.world.tmall.com/?spm=a312a.7700824.0.0.125455f9kTiJXa",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Trudon楚敦（张园）",
+        "address": "上海市静安区茂名北路258号张园L1层"
+      }
+    ]
+  },
+  "usm": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/54e4b81eb4c4d65b75a87796?xsec_token=ABaP7V_Ihr-g6_-1Vajqixt6-DNnpk5gODGPgW9O9Isgs%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "USM中国官方品牌展厅 / USM Design Capsule",
+        "address": "上海市静安区永源路12号C栋201室 · 周二至周日11:00-19:30"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Bookart",
+        "address": "上海市徐汇区龙腾大道2600号 · 周二至周日10:00-17:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "川至悦来 Van Collection",
+        "address": "上海市徐汇区龙腾大道2266号西岸梦中心1号楼301 · 周一至周日10:00-22:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "casa casa",
+        "address": "上海市徐汇区岳阳路150号 · 周一至周日10:00-19:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "川至悦来 安福店",
+        "address": "上海市徐汇区安福路275号 · 周一至周日10:00-18:00"
+      },
+      {
+        "city": "Shanghai",
+        "name": "宝徽家具",
+        "address": "上海市徐汇区中山西路2020号1号楼3层302 · 周一至周五09:00-17:30（办公展厅，需预约）"
+      },
+      {
+        "city": "Shanghai",
+        "name": "连卡佛",
+        "address": "上海市黄浦区淮海中路99号大上海时代广场商场 · 周一至周日11:00-22:00"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph 杭州滨江店",
+        "address": "杭州市滨江区长河街道滨安路1193号5幢 · 周一至周日11:00-20:00"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Enjoy Space 杭州城北展厅",
+        "address": "杭州市拱墅区祥茂路166号华滋科欣设计创意园3号楼101室 · 周二至周六09:00-18:00"
+      },
+      {
+        "city": "Ningbo",
+        "name": "(御景汇)汇集SPACE",
+        "address": "宁波市鄞州区中山东路1751号德克德家二楼 · 周一至周日09:30-17:30"
+      },
+      {
+        "city": "Nanjing",
+        "name": "BNJ HOME 北纳家设计生活馆",
+        "address": "南京市秦淮区龙蟠中路216号金城大厦B区北纳家 · 周一至周日09:30-18:00"
+      },
+      {
+        "city": "Hefei",
+        "name": "313SPACE",
+        "address": "合肥市庐阳区三十岗乡崔岗艺术村313SPACE · 周一至周日10:00-17:30"
+      },
+      {
+        "city": "Beijing",
+        "name": "casa casa",
+        "address": "北京市朝阳区正大中心L112 · 周一至周日10:00-20:00"
+      },
+      {
+        "city": "Beijing",
+        "name": "连卡佛",
+        "address": "北京市西城区金城街坊2号金融街购物中心1层至3层 · 周一至周日11:00-20:30"
+      },
+      {
+        "city": "Xi'an",
+        "name": "意美家居",
+        "address": "西安市未央区北二环与太华北路十字东南角大明宫建材家居钻石店1F · 周一至周日10:00-18:00"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "COSMO",
+        "address": "深圳市南山区华侨城创意文化园A4栋106室 · 周一至周五10:00-19:00 周六至周日11:00-18:00"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "COSMO 深圳湾睿印RAILIN店",
+        "address": "深圳市南山区深湾一路睿印RAILIN购物中心二楼L219号 · 周一至周四、周日10:00-22:00 周五、周六10:00-22:30"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "内田家具",
+        "address": "深圳市南山区华侨城创意文化园A3栋402 · 周一至周五09:00-18:00（办公展厅，需预约）"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "奕居生活 Yi's house",
+        "address": "广州市海珠区新港东路1000号琶洲吉盛伟邦5楼进口馆5022 · 周一至周五10:00-18:30 周六至周日10:00-19:00"
+      },
+      {
+        "city": "Shenyang",
+        "name": "ALOOSPACE",
+        "address": "沈阳市和平区长白二街186号 · 周三至周日10:00-19:00"
+      },
+      {
+        "city": "Xiamen",
+        "name": "齐物 Chiagu Living",
+        "address": "厦门市思明区磐基中心311-312 · 周一至周日10:00-22:00"
+      },
+      {
+        "city": "Dalian",
+        "name": "SUNDAYSPACE",
+        "address": "大连市沙河口区黄河街12号A · 周一至周日9:00-18:00"
+      },
+      {
+        "city": "Wuhan",
+        "name": "北欧设计之家",
+        "address": "武汉市江岸区胜利街延庆里1-1-2 · 周一至周日10:00-21:00"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "成都市龙泉驿区东洪路666号梵木创艺区F区 · 周一到周日09:00-18:00"
+      },
+      {
+        "city": "Chengdu",
+        "name": "连卡佛",
+        "address": "成都市锦江区红星路3段1号IFS国际金融中心3、4层 · 周一至周日11:00-20:30"
+      },
+      {
+        "city": "Chongqing",
+        "name": "ITEM",
+        "address": "重庆市渝北区中瑞产业园F2栋 · 周一到周日10:00-19:00"
+      }
+    ]
+  },
+  "verpan": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/616917770000000002019b04?m_source=pwa&xsec_token=ABb0DR086b_JOmsZwfHnnMNArBan-TgC6GAYf698Vn1tg=&xsec_source=pc_search"
+  },
+  "vipp": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/559ca6fce4b1cf3b72244fec?m_source=pwa&xsec_token=AB6eWC6TK-xgddMfxYBROjafpEShS7HgOHOjjka__niG4=&xsec_source=pc_search",
+    "taobao": "https://vipp.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
+    "stockistCN": [
+      {
+        "city": "Shenzhen",
+        "name": "Scandi Trading (Shenzhen) Co., Ltd",
+        "address": "LC407, Shenye Uptown, No. 5001 Huanggang Road, Shenzhen 518048"
+      }
+    ]
+  },
+  "vitra": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/66b1ba8c000000001d0319e2?xsec_token=ABWjAMSlC6C_vnVgi4lM3f_bMQ5EEPIc0HtPCl8IhhllA%3D&xsec_source=pc_search",
+    "taobao": "https://vitra.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "casa casa 北京店",
+        "address": "北京市朝阳区光华路正大中心北塔1层L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "北京 SKP SELECT HOME",
+        "address": "北京市朝阳区建国路87号 北京SKP 5F SKP SELECT HOME"
+      },
+      {
+        "city": "Beijing",
+        "name": "DT51 SKP SELECT HOME",
+        "address": "北京市朝阳区北苑路98号院1号楼 DT51 5F SKP SELECT HOME"
+      },
+      {
+        "city": "Beijing",
+        "name": "克拉斯家居旗舰店",
+        "address": "北京市农展馆南里10号"
+      },
+      {
+        "city": "Beijing",
+        "name": "野兽派 北京颐堤港店",
+        "address": "北京市朝阳区酒仙桥路18号颐堤港LG层-19"
+      },
+      {
+        "city": "Beijing",
+        "name": "PWG",
+        "address": "北京市朝阳区东风南路8号院C栋3楼翩美集团"
+      },
+      {
+        "city": "Beijing",
+        "name": "X-work",
+        "address": "北京市朝阳区呼家楼街道好世界商业广场3层"
+      },
+      {
+        "city": "Shanghai",
+        "name": "casa casa 上海店",
+        "address": "上海市徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Design Republic 设计共和",
+        "address": "上海市静安区江宁路511号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Homtique",
+        "address": "上海市徐汇区五原路250号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Element Plus",
+        "address": "上海市黄浦区中山东二路600号上海外滩金融中心S2栋301-305"
+      },
+      {
+        "city": "Shanghai",
+        "name": "JEB",
+        "address": "上海市黄浦区中山南一路768号博荟广场C座1606-07室"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "野兽派 天汇广场IGC店",
+        "address": "广州市天河区珠江新城兴民路222号IGC天汇广场L201"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Cosmo",
+        "address": "深圳市南山区华侨城创意文化园(LOFT)2期A4栋106-107室"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Cosmo 深圳湾睿印店",
+        "address": "深圳市南山区白石三路睿印RAILIN二楼L219"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "NET",
+        "address": "广州市天河北路时代广场东座817"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "NET",
+        "address": "深圳市南山区华侨城创意文化园(LOFT)2期A3栋402"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "SPACE101",
+        "address": "杭州市西湖区留和路139号东信和创园29幢西门"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BANBURY 班伯",
+        "address": "杭州市上城区解放东路45号高德置地广场L218"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph",
+        "address": "杭州市滨江区长河街道滨安路1193号5栋203号"
+      },
+      {
+        "city": "Huzhou",
+        "name": "MUYI HOME",
+        "address": "湖州市吴兴区爱山街道红旗景都环城西路484-486号"
+      },
+      {
+        "city": "Tongxiang",
+        "name": "MUYI HOME",
+        "address": "桐乡市梧桐街道王家门路159号对面大仓库2楼(蓝色大铁门进)"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Hangzhou Zhikai",
+        "address": "杭州市拱墅区萍水东街888号运河万科中心C区6幢4楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "BNJ 北纳家生活馆",
+        "address": "南京市建邺区梦都大街80号红星美凯龙河西进口商场7号馆"
+      },
+      {
+        "city": "Changzhou",
+        "name": "BANBURY 班伯",
+        "address": "常州市钟楼区运河五号街区16号楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Nanjing LingYu Space",
+        "address": "南京市江宁区天元中路126号新城发展中心1幢401室"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Melodycity",
+        "address": "苏州市工业园区唯新路58号启迪科技园21幢"
+      },
+      {
+        "city": "Xiamen",
+        "name": "齐物 CHIAGU",
+        "address": "厦门市思明区嘉禾路197号磐基中心311-312"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Vanderrohe 凡德罗",
+        "address": "成都市武侯区太平寺西路3号E TWO机库"
+      },
+      {
+        "city": "Chengdu",
+        "name": "成都 SKP SELECT HOME",
+        "address": "成都市高新区天府大道北段 成都SKP 1F SKP SELECT HOME"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Desys",
+        "address": "成都市武侯区新园大道8号10栋108-112号临街二楼"
+      },
+      {
+        "city": "Dalian",
+        "name": "Sunday Space",
+        "address": "大连市沙河口区黄河街12号A"
+      },
+      {
+        "city": "Xi'an",
+        "name": "西安 SKP SELECT HOME",
+        "address": "西安市碑林区长安北路261号 西安SKP 5F SKP SELECT HOME"
+      },
+      {
+        "city": "Kunming",
+        "name": "每乐奇",
+        "address": "昆明市西山区滇池度假区滇池高尔夫"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "HPSY 华鹏实业",
+        "address": "郑州市管城回族区城发金岱智慧产业园二期29栋101室"
+      }
+    ]
+  },
+  "zieta": {
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "Yuan Sheng Home Co.",
+        "address": "No. 166, No. 104, Section 2, Bade Rd, Zhongshan District, Taipei 10491"
+      },
+      {
+        "city": "Taipei",
+        "name": "Raytext Co., Ltd.",
+        "address": "No. 12, No. 1, Section 2, Ren'ai Rd, Zhongzheng District, Taipei 100"
+      },
+      {
+        "city": "Taipei",
+        "name": "Fuhaus Inc.",
+        "address": "No. 88, Section 2, Fuxing S Rd, Da'an District, Taipei 106"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Global Design Distribution",
+        "address": "Yu Yao Lu, Caojiadu, Jing An Qu, Shanghai"
+      }
+    ]
+  },
+  "tacchini": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6707ea9b000000001d032b72?m_source=pwa&xsec_token=ABtXIGnGlVgKNr3wllbwycu-lcqYgZzo0UsPSLngjhozA=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Qingdao",
+        "name": "Qingdao Doograce International Trade Co. Ltd",
+        "address": "Qingdao, Shandong"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Xi'an Humor Spatial Design Co. Ltd",
+        "address": "Yan Zhan Lu, Yan Ta Qu, Xi'an, Shaanxi 710063"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Concept 101",
+        "address": "139 Liu He Lu, Xi Hu Qu, Hangzhou, Zhejiang 080830"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Yepom Culture Co., Ltd",
+        "address": "Dong Hong Lu, Chengdu 610110"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Chongqing Buba Decoration Engineering Design Co., Ltd",
+        "address": "888 Xin Nan Lu, Yu Bei Qu, Chongqing 400021"
+      },
+      {
+        "city": "Foshan",
+        "name": "Foshan Shunde Louvre Furniture",
+        "address": "Lecong, Shunde District, Foshan, Guangdong 528315"
+      },
+      {
+        "city": "Jinan",
+        "name": "Wuwu Home (Jinan) Co., Ltd",
+        "address": "Xiao Qing He Bei Lu, Jinan 250100"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Andi",
+        "address": "7th Floor, Wenzhou Hongxing International Home Furnishing Plaza, No. 8 Cihu Section, 104 National Road, Ouhai District, Wenzhou"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Tiamantti",
+        "address": "5F No.1265 Wuzhong Rd., Shanghai 201103"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford",
+        "address": "Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Wool Limited",
+        "address": "Hong Kong"
+      }
+    ]
+  }
+};
+BRANDS.forEach(b=>{
+  const d=STOCKIST_DATA[b.id];
+  if(!d) return;
+  if(d.rednote || d.taobao){
+    b.social = b.social || {};
+    if(d.rednote) b.social.rednote = d.rednote;
+    if(d.taobao) b.social.taobao = d.taobao;
+  }
+  if(d.site) b.site = d.site;
+  if(d.stockistCN) b.stockistCN = d.stockistCN;
+});
+
+// Ambiance: curated lifestyle/project photography, hotlinked directly from each brand's
+// own site (never downloaded or rehosted here) — only populated for brands the studio
+// has actually curated a gallery for.
+const AMBIANCE_DATA = {
+  "andtradition": [
+    {"project": "", "images": [
+          "https://wp.andtradition.com/wp-content/uploads/2024/08/ATD_26_3-Days-of-Design_Langelinie_Interior_6-1333x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2026/05/ATD26_AMBRA_low-res_1-1-e1782997208679.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/OAKV-by-Atelier-Carle-Photo-Copyright-Alex-Lesage-13_4.png",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/OAKV-by-Atelier-Carle-Photo-Copyright-Alex-Lesage-1-2_2.png",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/OAKV-by-Atelier-Carle-Photo-Copyright-Alex-Lesage-26-2-e1772201592553-1601x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/ATD26_Politikens-Boghal_2-1333x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2026/03/DSCF5918-scaled-e1776261543726-2000x1310.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2026/07/zenitborrell-comedor-alta-cesarlloreda-24_mobile-1600x2000.png",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/Aethos-Monterosa-_-Credits-PION-Studio-3-2000x1333.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/10/Aethos-Monterosa-_-Credits-PION-Studio-16-scaled-e1763124777593-1335x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/10/241017_TRADITION_NOMA16416-1500x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/05/250605_EH_TRADITION_PETRA_19_0233.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/04/000076760019-copy-1326x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/10/241017_TRADITION_NOMA16526-1500x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/10/241017_TRADITION_NOMA16444-1500x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/10/241017_TRADITION_NOMA16490-1500x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/10/241017_TRADITION_NOMA16374-1500x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/05/250605_EH_TRADITION_PETRA_03_0071-1.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/05/250328_TRADITION_PETRA_EH_31_0447_5_STARS.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/05/250328_TRADITION_PETRA_EH_05_0091_5_STARS.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/03/ATD24_DONNA_CASE_1-1333x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/06/Industry-reference_tradition_Develius-Sofa_Fuse-0421_Kvadrat-Raf-Simons_2021_Photo-by-Benjamin-Lund-1-1600x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2023/02/AzoresWineCompany6547.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/03/ATD24_DONNA_CASE_4-1333x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2023/08/ATD_Lifestyle-Images_Collection-2026.02_Momento-JH38_Numbra-TY1_Gio-LN28_Collect-SC78_Pavilion-AV18_Rely-HW51-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/05/ATD_Retail_2024_Flowerpot_Chandelier_VP10_In_Between_SK19_Wire_Stool_VP11_Momento_Jug_JH38_The_Moor_AP7_Collect_glass_SC78.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/05/ATD_Contract-Images_Collection-2026.02_Mist-AP17_Wire-Coffee-Table-VP17_Cloud-LN1--1428x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/05/ATD_Lifestyle-Images_Collection-2026.02_Bella-SC115_In-Between-SK12_Collect-SC60_Rely-HW19_Rely-HW40-1429x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/06/ATD_Retail_2025_Mist-AP20_In-Between-SK12_Collect-SC79_Loafer-SC106-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2022/03/Flowerpot-VP7-Pale-Sand-I-Betty-TK1-Black-w.-Natural-Linen-I-In-Between-SK19-Bronzed-w.-Nero-Marquina-I-Collect-Carafe-SC62-Clear-I-Collect-Glass-SC60-Clear-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/05/ATD_RE1-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2019/07/ATD_Retail_2025_Loafer-SC24_In-Between-SK12_Momento-Jug-JH38_P376-KF2-1429x2000.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2021/08/ATD_23_3DOD_Showroom_300523_0536-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/05/ATD_Retail_2024_Inland-AV42_The-Moor-AP19_Flowerpot-VP12_Tung-JA3_Mist-AP15_Collect-Carafe-SC63_Momento-Vase-JH41_Sett-LN12-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/05/ATD_Retail_2024_RFH-Lounge-Chair-RD8_The-Moor-AP19_Tripod-HM9_Wire-Stool-VP11_Wire-Stool-Seat-Pad-VP11.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/11/ATD_Retail_2025_X-HM10_X-HM13_Gio-LN15-1200x1600.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/05/ATD_Retail_2024_Massif_04_Collect-Wine-glass-SC79.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2024/11/ATD_Retail_2025_Muno-LN17_Ita-OS3_Journey-SHY1_Flowerpot-VP12.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2025/04/ATD_3DOD_Hi-Lo20Lounge_01_LOW-2000x1333.jpg",
+          "https://wp.andtradition.com/wp-content/uploads/2019/09/ATD_Contract_2025_Meantime-AV29_Tung-JA3_Mist-AP15_Flowerpot-VP9.jpg"
+    ]}
+  ],
+  "tacchini": [
+    {"project": "", "images": [
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/2_2026-03-16-082414_xyqr.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Domestic-Casablanca-01.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/image00042.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Projects-Domestic-Ruditze-03.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Project-PrivateHouse-Vic-Australia-01.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Project-PrivateHouse-Vic-Australia-02.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Project-PrivateHouse-Vic-Australia-03.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/%C2%A9-Andrea-Ferrari-DSC_3623.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Homepage-Roma-B.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-KellyE2.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Isola-Bella-Studiopepe-2025.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/%C2%A9-Andrea-Ferrari-_DSC6246.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/%C2%A9-Andrea-Ferrari_DSC_7430.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/%C2%A9-Andrea-Ferrari_DSC_6253.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Julep-PP.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Roma-Nuvola-PP.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Montevideo2.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini_Milano2025_3004%C2%A9valentinasommariva.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Pigreco-PP.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Home-Collection-2024-10.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini_MDW26_046_2026-04-22-121448_cfks.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Colombo-1953-PP.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Parker-PP-02.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-Togrul-2022-01.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini_MDW26_091.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/Tacchini-TTable-Table-Catalogue2023-5.jpg",
+          "https://tacchini-media.fra1.cdn.digitaloceanspaces.com/_w3200/%C2%A9-Andrea-Ferrari_DSC_6567.jpg"
+    ]}
+  ],
+  "kelly-wearstler": [
+    {project:"Russell Hill", images:[
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Russel%20Hill/RUSSELL%20HILL%20Block%206.jpg",
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Russel%20Hill/RUSSELL%20HILL%20Block%203%20SliderImages.jpg",
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Russel%20Hill/RUSSELL%20HILL%20Block%203.jpg"
+    ]},
+    {project:"Malibu PCH", images:[
+      "https://www.kellywearstler.com/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/images/02_Interiors/detail_pages/residences/malibu_pch/Block3IMG.jpg",
+      "https://www.kellywearstler.com/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/images/02_Interiors/detail_pages/residences/malibu_pch/Block6IMG.jpg",
+      "https://www.kellywearstler.com/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/images/02_Interiors/detail_pages/residences/malibu_pch/Block14IMG.jpg"
+    ]},
+    {project:"Selby", images:[
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Selby/Lupine_Hero.jpg",
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Selby/Selby_5.jpg",
+      "https://www.kellywearstler.com/dw/image/v2/AAJB_PRD/on/demandware.static/-/Sites-KellyWearstler-Library/default/v1784652963374/Projects/Selby/Selby_2.jpg"
+    ]}
+  ]
+};
+BRANDS.forEach(b=>{ if(AMBIANCE_DATA[b.id]) b.ambiance = AMBIANCE_DATA[b.id]; });
+
 // flatten
 let ITEMS = [];
 BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
@@ -1211,7 +4969,22 @@ BRANDS.forEach(b=>{ b.items.forEach((it,i)=>{
     img:b.id+"-"+i});
 });});
 
-let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null };
+// Flattened, favoritable/shareable list of every Ambiance photo across all brands —
+// same id scheme (brandId::ambiance::index) is used both for the heart button and for
+// looking the photo back up from a favorites/shared-list id.
+let AMBIANCE_PHOTOS = [];
+BRANDS.forEach(b=>{
+  if(!b.ambiance) return;
+  let i=0;
+  b.ambiance.forEach(proj=>{
+    (proj.images||[]).forEach(img=>{
+      AMBIANCE_PHOTOS.push({id:`${b.id}::ambiance::${i}`, brand:b.id, project:proj.project||'', img});
+      i++;
+    });
+  });
+});
+
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null, favView:"products" };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 
@@ -1254,7 +5027,50 @@ const LOGOS = {
   giobagnara:"giobagnara.png",
   gubi:"gubi_logo_black.jpg",
   fritzhansen:"logo_fritzhansen.webp",
-  "a-by-arturo-lvarez":"a-emotionallight.png"
+  "a-by-arturo-lvarez":"a-emotionallight.png",
+  "baleri-italia":"baleri-italia-logo.png",
+  fasem:"Fasem.png",
+  hermanmiller:"Herman-MIller-Logo-Design.jpg",
+  italamp:"ITALAMP logo.png",
+  "lk-hjelle":"LK-Hjelle-logo.png",
+  "la-bo-te-concept":"logo-la-boite-concept.jpg",
+  "ap-collection":"Logo+AP+Collection.webp",
+  luceplan:"Logo-Luceplan.webp",
+  "mario-tsai-studio":"Mario Tsai logo.jpg",
+  mohebban:"Mohebban-logo.jpg",
+  "phantom-hands":"Phantom Hands.jpg",
+  saba:"Saba Italia.jpeg",
+  stoffnagel:"Stoff Nagel.webp",
+  tecno:"Tecno.webp",
+  thonet:"Thonet_logo.png",
+  verpan:"Verpan.jpeg",
+  "nemo-lighting":"_nemo_lighting.png",
+  agrippa:"agrippa.png",
+  imperfettolab:"imperfettolab logo.png",
+  kimu:"kimu design logo.webp",
+  knoll:"knoll-logo.png",
+  zieta:"logo_zieta.png",
+  louispoulsen:"louis_poulsen_logo.jpg",
+  lumina:"lumina logo.jpeg",
+  magis:"magis logo.webp",
+  martinelliluce:"martinelli luce logo.webp",
+  "mdf-italia":"mdf-italia.png",
+  mogg:"mogg logo.jpeg",
+  parachilna:"parachilna.jpeg",
+  "petite-friture":"petite friture.jpg",
+  poltronova:"poltronova.webp",
+  rispal:"rispalparis_logo.jpeg",
+  santacole:"santacole.png",
+  serax:"serax.webp",
+  singchan:"sing chan design.webp",
+  spectrum:"spectrum design.webp",
+  tecta:"tecta.webp",
+  "cire-trudon":"trudon.png",
+  usm:"usm.png",
+  vo:"valerie-objects.png",
+  vipp:"vipp.webp",
+  vitra:"vitra.webp",
+  yamagiwa:"yamagiwa.png"
 };
 function brandMarkHTML(b){
   if(LOGOS[b.id]) return `<img src="images/logos/${encodeURIComponent(LOGOS[b.id])}" alt="${b.name} logo">`;
@@ -1307,6 +5123,7 @@ function renderCurrent(){
   if(state.brand){ renderBrandDetail(state.brand,q); return; }
   if(state.tab==='shared') { renderSharedList(q); return; }
   if(state.tab==='map') { renderMap(); return; }
+  if(state.tab==='ambiance') { renderAmbianceTab(q); return; }
   if(state.tab==='brands') renderBrandGrid(q);
   else if(state.tab==='favorites') renderFavorites(q);
   else renderCrossFilter(state.tab==='catalog'?'cat':'color', q);
@@ -1324,31 +5141,47 @@ function collectByIds(idSet,q){
       if(idSet.has(`${b.id}::${c.name}::${m.name}`)) models.push({b,c,m});
     });
   });});
+  let ambiancePics=AMBIANCE_PHOTOS.filter(p=>idSet.has(p.id));
   if(q){
     items=items.filter(i=>i.name.toLowerCase().includes(q));
     colls=colls.filter(({c})=>c.name.toLowerCase().includes(q));
     models=models.filter(({m})=>m.name.toLowerCase().includes(q));
+    ambiancePics=ambiancePics.filter(p=>(p.project||'').toLowerCase().includes(q));
   }
-  return {items,colls,models};
+  return {items,colls,models,ambiancePics};
 }
-function tilesHTML({items,colls,models}){
+function tilesHTML({items,colls,models,ambiancePics}){
   return items.map(itemTileHTML).join('')
     + colls.map(({b,c,idx})=>collectionTileHTML(c,b,idx)).join('')
-    + models.map(({b,c,m})=>modelTileHTML(b,c,m)).join('');
+    + models.map(({b,c,m})=>modelTileHTML(b,c,m)).join('')
+    + (ambiancePics||[]).map(ambiancePhotoTileHTML).join('');
 }
 
+function setFavView(v){ state.favView=v; renderCurrent(); }
 function renderFavorites(q){
-  const {items,colls,models}=collectByIds(getFavorites(),q);
-  const total=items.length+colls.length+models.length;
+  const {items,colls,models,ambiancePics}=collectByIds(getFavorites(),q);
+  const productCount=items.length+colls.length+models.length;
+  const total=productCount+ambiancePics.length;
+  const view=state.favView==='ambiance'?'ambiance':'products';
+  const gridHTML = view==='ambiance'
+    ? ambiancePics.map(ambiancePhotoTileHTML).join('')
+    : items.map(itemTileHTML).join('') + colls.map(({b,c,idx})=>collectionTileHTML(c,b,idx)).join('') + models.map(({b,c,m})=>modelTileHTML(b,c,m)).join('');
+  const emptyMsg = view==='ambiance'
+    ? 'No Ambiance photos saved yet — tap the heart on any photo in the Ambiance tab to save it here.'
+    : 'Nothing saved yet — tap the heart on any collection or model to save it here.';
   document.getElementById('main').innerHTML = `
     <div class="section-head">
       <div><h1>Favorites</h1><p>Saved on this device — tap the heart on any tile to add or remove.</p></div>
       <span class="count-pill">${total} saved</span>
     </div>
+    <div class="chips" style="margin-bottom:16px;">
+      <button class="chip ${view==='products'?'active':''}" onclick="setFavView('products')">Products &amp; Collections (${productCount})</button>
+      <button class="chip ${view==='ambiance'?'active':''}" onclick="setFavView('ambiance')">Ambiance (${ambiancePics.length})</button>
+    </div>
     ${total>0?`<button class="btn ghost" style="margin-bottom:16px;" onclick="shareMyFavorites()">Share this list 🔗</button>`:''}
     <div class="grid item-grid">
-      ${tilesHTML({items,colls,models})}
-      ${total===0?'<div class="empty">Nothing saved yet — tap the heart on any collection or model to save it here.</div>':''}
+      ${gridHTML}
+      ${(view==='ambiance'?ambiancePics.length:productCount)===0?`<div class="empty">${emptyMsg}</div>`:''}
     </div>
   `;
   wireHoverFlash();
@@ -1385,8 +5218,8 @@ function shareMyFavorites(){
 }
 function renderSharedList(q){
   const idSet=new Set(SHARED_IDS||[]);
-  const {items,colls,models}=collectByIds(idSet,q);
-  const total=items.length+colls.length+models.length;
+  const {items,colls,models,ambiancePics}=collectByIds(idSet,q);
+  const total=items.length+colls.length+models.length+ambiancePics.length;
   document.getElementById('main').innerHTML = `
     <button class="back" onclick="goHome()">← Continue browsing</button>
     <div class="section-head">
@@ -1394,7 +5227,7 @@ function renderSharedList(q){
       <span class="count-pill">${total} items</span>
     </div>
     <div class="grid item-grid shared-grid">
-      ${tilesHTML({items,colls,models})}
+      ${tilesHTML({items,colls,models,ambiancePics})}
       ${total===0?'<div class="empty">This shared link did not match anything — it may be out of date.</div>':''}
     </div>
   `;
@@ -1448,10 +5281,13 @@ const EXTRA_MAP_LOCATIONS=[
 ];
 
 function getAllMapLocations(){
-  const stockistLocs=(brandOf('andtradition').stockistCN||[]).map(s=>({
-    name:`${s.name} (&Tradition)`, address:s.address, cat:'store'
+  const brandLocs=BRANDS.flatMap(b=>(b.stockistCN||[]).map(s=>{
+    const address=s.address.includes(s.city) ? s.address : `${s.city} ${s.address}`;
+    return {name:`${s.name} (${b.name})`, address, cat:'store'};
   }));
-  return [...stockistLocs, ...EXTRA_MAP_LOCATIONS];
+  // Hand-curated non-store pins (materials/factory/beautiful) go first so they geocode
+  // and appear immediately, instead of waiting behind ~700 brand-stockist "store" pins.
+  return [...EXTRA_MAP_LOCATIONS, ...brandLocs];
 }
 
 let amapLoadingPromise=null;
@@ -1468,15 +5304,28 @@ function loadAmapSDK(){
   });
   return amapLoadingPromise;
 }
-function geocodeAddress(geocoder,address){
+function geocodeAddress(address){
   return new Promise(resolve=>{
     let done=false;
     const finish=(val)=>{ if(!done){ done=true; resolve(val); } };
     setTimeout(()=>finish(null), 6000);
+    const geocoder=new AMap.Geocoder({});
     geocoder.getLocation(address,(status,result)=>{
       finish(status==='complete' && result.geocodes.length ? result.geocodes[0].location : null);
     });
   });
+}
+
+// Geocoding ~700 addresses on every visit would be slow, so successful results are
+// cached by address text in localStorage — failures aren't cached, so a transient
+// hiccup just gets retried next time instead of being stuck forever.
+const GEOCODE_CACHE_KEY='bb_geocode_cache';
+function loadGeocodeCache(){
+  try{ return JSON.parse(localStorage.getItem(GEOCODE_CACHE_KEY)||"{}"); }
+  catch(e){ return {}; }
+}
+function saveGeocodeCache(cache){
+  try{ localStorage.setItem(GEOCODE_CACHE_KEY, JSON.stringify(cache)); }catch(e){}
 }
 
 function renderMap(){
@@ -1496,50 +5345,76 @@ function renderMap(){
     container.innerHTML='';
     const map=new AMap.Map(container,{zoom:5,center:[113.5,34.5],mapStyle:'amap://styles/whitesmoke'});
     AMap.plugin(['AMap.Geocoder','AMap.MarkerCluster'], async ()=>{
-      const geocoder=new AMap.Geocoder({});
-      const points=[];
-      for(const loc of locs){
-        const pos=await geocodeAddress(geocoder,loc.address);
-        if(!pos) continue;
-        points.push({lnglat:pos, name:loc.name, address:loc.address, cat:loc.cat});
-      }
-      if(points.length){
-        const byCat={};
-        points.forEach(p=>{ (byCat[p.cat]=byCat[p.cat]||[]).push(p); });
-        Object.keys(byCat).forEach(catKey=>{
-          const cat=MAP_CATEGORIES[catKey]||MAP_CATEGORIES.store;
-          new AMap.MarkerCluster(map, byCat[catKey], {
-            gridSize:20,
-            renderClusterMarker(context){
-              const count=context.count;
-              const size=Math.min(20+Math.sqrt(count)*6, 40);
-              const el=document.createElement('div');
-              el.className='map-cluster';
-              el.style.background=cat.color;
-              el.style.width=el.style.height=size+'px';
-              el.style.fontSize=(size>32?'12.5px':'11px');
-              el.textContent=count;
-              context.marker.setContent(el);
-              context.marker.setOffset(new AMap.Pixel(-size/2,-size/2));
-              context.marker.on('click',()=>{
-                map.setZoomAndCenter(Math.min(map.getZoom()+2,18), context.marker.getPosition());
-              });
-            },
-            renderMarker(context){
-              const d=context.data[0];
-              const el=document.createElement('div');
-              el.className='map-pin';
-              el.style.background=cat.color;
-              context.marker.setContent(el);
-              context.marker.setOffset(new AMap.Pixel(-8,-8));
-              context.marker.on('click',()=>{
-                new AMap.InfoWindow({content:`<div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;padding:2px 4px;max-width:200px;"><strong>${d.name}</strong><br>${cat.label}<br>${d.address}</div>`}).open(map,d.lnglat);
-              });
-            }
-          });
+      const clusterOf={};
+      const clusterFor=(catKey)=>{
+        if(clusterOf[catKey]) return clusterOf[catKey];
+        const cat=MAP_CATEGORIES[catKey]||MAP_CATEGORIES.store;
+        clusterOf[catKey]=new AMap.MarkerCluster(map, [], {
+          gridSize:20,
+          renderClusterMarker(context){
+            const count=context.count;
+            const size=Math.min(20+Math.sqrt(count)*6, 40);
+            const el=document.createElement('div');
+            el.className='map-cluster';
+            el.style.background=cat.color;
+            el.style.width=el.style.height=size+'px';
+            el.style.fontSize=(size>32?'12.5px':'11px');
+            el.textContent=count;
+            context.marker.setContent(el);
+            context.marker.setOffset(new AMap.Pixel(-size/2,-size/2));
+            context.marker.on('click',()=>{
+              map.setZoomAndCenter(Math.min(map.getZoom()+2,18), context.marker.getPosition());
+            });
+          },
+          renderMarker(context){
+            const d=context.data[0];
+            const el=document.createElement('div');
+            el.className='map-pin';
+            el.style.background=cat.color;
+            context.marker.setContent(el);
+            context.marker.setOffset(new AMap.Pixel(-8,-8));
+            context.marker.on('click',()=>{
+              new AMap.InfoWindow({content:`<div style="font-family:'Space Grotesk',sans-serif;font-size:12.5px;padding:2px 4px;max-width:200px;"><strong>${d.name}</strong><br>${cat.label}<br>${d.address}</div>`}).open(map,d.lnglat);
+            });
+          }
         });
-        map.setFitView();
+        return clusterOf[catKey];
+      };
+
+      const cache=loadGeocodeCache();
+      let anyPoint=false;
+      const addPoints=(pts)=>{
+        if(!pts.length) return;
+        const byCat={};
+        pts.forEach(p=>{ (byCat[p.cat]=byCat[p.cat]||[]).push(p); });
+        Object.keys(byCat).forEach(catKey=>clusterFor(catKey).addData(byCat[catKey]));
+        anyPoint=true;
+      };
+
+      const cached=[], toGeocode=[];
+      locs.forEach(loc=>{
+        const pos=cache[loc.address];
+        if(pos) cached.push({lnglat:pos, name:loc.name, address:loc.address, cat:loc.cat});
+        else toGeocode.push(loc);
+      });
+      addPoints(cached);
+      if(anyPoint) map.setFitView();
+
+      const CONCURRENCY=4;
+      for(let i=0;i<toGeocode.length;i+=CONCURRENCY){
+        const batch=toGeocode.slice(i,i+CONCURRENCY);
+        const results=await Promise.all(batch.map(loc=>geocodeAddress(loc.address)));
+        const newPoints=[];
+        results.forEach((pos,idx)=>{
+          const loc=batch[idx];
+          if(!pos) return;
+          cache[loc.address]=pos;
+          newPoints.push({lnglat:pos, name:loc.name, address:loc.address, cat:loc.cat});
+        });
+        saveGeocodeCache(cache);
+        addPoints(newPoints);
       }
+      if(anyPoint) map.setFitView();
     });
   }).catch(()=>{
     document.getElementById('amap-container').innerHTML='<div class="map-loading">Could not load the map — check your connection or API key.</div>';
@@ -1741,11 +5616,171 @@ function renderBrandDetail(brandId,q){
     <div class="chips">${colors.map(c=>`<button class="chip ${state.colorFilter===c?'active':''}" onclick="toggleFilter('color','${c}')"><span class="dot" style="background:${colorHex(c)}"></span>${c}</button>`).join('')}</div>
     <div class="grid item-grid">${items.map(itemTileHTML).join('') || (b.directory ? '<div class="empty">No catalogued items yet for '+b.name+' — use the site link above.</div>' : emptyHTML())}</div>
     `}
+    ${b.ambiance ? ambianceSectionHTML(b) : ''}
   `;
   wireHoverFlash();
   sizeBrandLogo();
   wireHoverCycle();
   fillGridGap('.item-grid',640,960);
+}
+
+// Ambiance photos are flattened into one plain list (no per-project sub-carousel) —
+// each photo is its own individual item in a single scrollable strip, favoritable and
+// shareable like anything else, and clicking one opens it larger in the shared modal.
+// The only controls are one pair of ‹ › buttons sitting in the blank margin beside the
+// strip; the strip's own native scrollbar is hidden via CSS so paging only ever happens
+// through the arrows (or a swipe/trackpad gesture, which still works — still scrollable).
+function ambiancePhotos(b){
+  let i=0;
+  return b.ambiance.flatMap(proj=>(proj.images||[]).map(img=>(
+    {project:proj.project, img, id:`${b.id}::ambiance::${i++}`}
+  )));
+}
+function ambianceSectionHTML(b){
+  return `
+    <div class="section-head ambiance-head">
+      <div><h2>Ambiance</h2><p>Real spaces from ${b.name}'s own projects.</p></div>
+    </div>
+    ${ambianceStripHTML(ambiancePhotos(b))}
+  `;
+}
+function ambianceStripHTML(photos){
+  return `
+    <div class="ambiance-wrap">
+      <button class="amb-side amb-side-prev" onclick="ambianceShift(this,-1)" aria-label="Previous">‹</button>
+      <div class="ambiance-grid">
+        ${photos.map(p=>`
+          <div class="ambiance-card">
+            <div class="ambiance-imgwrap" data-amb-id="${p.id}" onclick="openAmbiancePhoto('${p.id}', this)">
+              <img src="${p.img}" alt="${p.project||''}">
+              ${favBtnHTML(p.id)}
+            </div>
+            ${p.project?`<div class="ambiance-caption">${p.project}</div>`:''}
+          </div>`).join('')}
+      </div>
+      <button class="amb-side amb-side-next" onclick="ambianceShift(this,1)" aria-label="Next">›</button>
+    </div>
+  `;
+}
+function ambianceShift(btn,dir){
+  const track=btn.closest('.ambiance-wrap').querySelector('.ambiance-grid');
+  track.scrollBy({left:dir*track.clientWidth*0.9, behavior:'smooth'});
+}
+// The aggregated Ambiance tab shows a single flat wall of every curated photo —
+// smaller thumbnails, no arrows, no per-brand grouping, just scroll the page and
+// click a photo to enlarge. Portrait photos are sized down and landscape photos
+// sized up (10% each way) once their real dimensions are known, so tall images
+// don't visually dominate the wall next to short wide ones.
+function classifyAmbianceOrientation(img){
+  const item=img.closest('.ambiance-wall-item');
+  if(!item || !img.naturalWidth || !img.naturalHeight) return;
+  item.classList.toggle('amb-portrait', img.naturalHeight>img.naturalWidth);
+  item.classList.toggle('amb-landscape', img.naturalWidth>img.naturalHeight);
+}
+function ambianceWallHTML(photos){
+  return `
+    <div class="ambiance-wall">
+      ${photos.map(p=>`
+        <div class="ambiance-wall-item" data-amb-id="${p.id}" onclick="openAmbiancePhoto('${p.id}', this)">
+          <img src="${p.img}" alt="${p.project||''}" onload="classifyAmbianceOrientation(this)">
+          ${favBtnHTML(p.id)}
+        </div>`).join('')}
+    </div>
+  `;
+}
+function ambiancePhotoTileHTML(p){
+  const b=brandOf(p.brand);
+  return `
+    <div class="tile product-tile" data-brand="${p.brand}" onclick="openAmbiancePhoto('${p.id}')">
+      <div class="tile-top-labels">
+        <div class="i-cat">Ambiance · ${b.name}</div>
+        ${p.project?`<div class="coll-name-tag">${p.project}</div>`:''}
+      </div>
+      ${favBtnHTML(p.id)}
+      <img src="${p.img}" alt="${p.project||''}" style="width:100%;height:100%;object-fit:cover;">
+    </div>`;
+}
+// Arrow navigation inside the enlarged view stays within whatever list of photos
+// the user opened it from: the brand page's own strip, or the full cross-brand
+// wall from the main Ambiance tab. `el` (the clicked thumbnail) is only passed the
+// first time a photo is opened — that's when the context list is (re)computed from
+// its containing strip/wall; subsequent nav/favorite re-renders reuse it.
+let AMBIANCE_MODAL_CTX = null;
+function openAmbiancePhoto(id, el){
+  const p=AMBIANCE_PHOTOS.find(x=>x.id===id);
+  if(!p) return;
+  if(el){
+    const container = el.closest('.ambiance-grid, .ambiance-wall');
+    AMBIANCE_MODAL_CTX = container ? [...container.querySelectorAll('[data-amb-id]')].map(n=>n.dataset.ambId) : AMBIANCE_PHOTOS.map(x=>x.id);
+  } else if(!AMBIANCE_MODAL_CTX || !AMBIANCE_MODAL_CTX.includes(id)){
+    AMBIANCE_MODAL_CTX = AMBIANCE_PHOTOS.map(x=>x.id);
+  }
+  const b=brandOf(p.brand);
+  const faved=isFavorited(p.id);
+  const modalContent=document.getElementById('modalContent');
+  modalContent.dataset.ambId=id;
+  modalContent.innerHTML = `
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="amb-modal-imgwrap">
+      <button class="amb-modal-nav amb-modal-prev" onclick="ambianceModalNav(-1)" aria-label="Previous">‹</button>
+      <img src="${p.img}" alt="${p.project||''}">
+      <button class="fav-btn ${faved?'faved':''}" onclick="toggleFavorite('${p.id}',event); openAmbiancePhoto('${p.id}');" title="${faved?'Remove from':'Save to'} favorites">
+        <svg viewBox="0 0 24 24"><path d="${HEART_PATH}"/></svg>
+      </button>
+      <button class="amb-modal-nav amb-modal-next" onclick="ambianceModalNav(1)" aria-label="Next">›</button>
+    </div>
+    <div class="mbody">
+      <div class="amb-modal-top">
+        <div>
+          ${p.project?`<div class="cat">${p.project}</div>`:''}
+          <h2>${b.name}</h2>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="${b.site}" target="_blank" rel="noopener">${b.name} site ↗</a>
+        <a class="btn ghost" href="#" onclick="closeModal(); openBrand('${b.id}'); return false;">View brand page</a>
+      </div>
+    </div>
+  `;
+  document.getElementById('modalBg').classList.add('open');
+}
+function ambianceModalNav(dir){
+  if(!AMBIANCE_MODAL_CTX) return;
+  const curId=document.getElementById('modalContent').dataset.ambId;
+  const idx=AMBIANCE_MODAL_CTX.indexOf(curId);
+  if(idx===-1) return;
+  const nextIdx=(idx+dir+AMBIANCE_MODAL_CTX.length)%AMBIANCE_MODAL_CTX.length;
+  openAmbiancePhoto(AMBIANCE_MODAL_CTX[nextIdx]);
+}
+
+// Round-robin across brands (one photo from each brand in turn) instead of a flat
+// per-brand concat, so the wall reads as a mixed gallery rather than blocks of the
+// same brand back to back. Deterministic — same order every render, no reshuffling
+// mid-session when favoriting triggers a re-render.
+function interleaveByBrand(lists){
+  const result=[];
+  let i=0, added=true;
+  while(added){
+    added=false;
+    for(const list of lists){
+      if(list[i]){ result.push(list[i]); added=true; }
+    }
+    i++;
+  }
+  return result;
+}
+function renderAmbianceTab(q){
+  const curated=BRANDS.filter(b=>b.ambiance && b.ambiance.length);
+  const list=q ? curated.filter(b=>b.name.toLowerCase().includes(q)) : curated;
+  const photos=interleaveByBrand(list.map(b=>ambiancePhotos(b)));
+  document.getElementById('main').innerHTML = `
+    <div class="section-head">
+      <div><h1>Ambiance</h1><p>Curated inspiration galleries — real projects from the brands we've added them for.</p></div>
+      <span class="count-pill">${photos.length} photo${photos.length===1?'':'s'}</span>
+    </div>
+    <a href="#" class="ambiance-fav-link" onclick="setTab('favorites'); return false;">View my favorites →</a>
+    ${photos.length ? ambianceWallHTML(photos) : `<div class="empty">No Ambiance galleries curated yet.</div>`}
+  `;
 }
 
 function collectionsSectionHTML(b,q){
