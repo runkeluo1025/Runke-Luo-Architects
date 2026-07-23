@@ -116,11 +116,11 @@
   .amb-modal-next{right:2px;}
   .amb-modal-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px;}
   .modal .amb-modal-top h2{font-size:14px; margin:2px 0 0;}
-  .ambiance-wall{column-width:220px; column-gap:32px;}
-  .ambiance-wall-item{position:relative; width:90%; break-inside:avoid; margin-bottom:32px; cursor:pointer;}
+  .ambiance-wall{display:flex; flex-wrap:wrap; justify-content:center; gap:32px;}
+  .ambiance-wall-item{position:relative; flex:0 0 calc(25% - 24px); cursor:pointer;}
   .ambiance-wall-item img{width:100%; height:auto; display:block;}
-  .ambiance-wall-item.amb-portrait{width:81%;}
-  .ambiance-wall-item.amb-landscape{width:99%;}
+  .ambiance-wall-item.amb-portrait img{width:82%; margin:0 auto;}
+  .ambiance-wall-item.amb-landscape img{width:110%; margin-left:-5%;}
 
   /* manual carousel controls: line segments (one per model) on collection tiles —
      fixed width each, don't stretch to fill the tile regardless of model count */
@@ -924,14 +924,878 @@ const BRANDS = [
    ["Panton Chair","Seating",["Bordeaux","White","Charcoal"]],["Eames Elephant","Decor",["Forest","Bordeaux","Yellow"]],
    ["EM Table","Tables",["White","Charcoal"]],["Uten.Silo","Storage",["White"]],
    ["Wiggle Side Chair","Seating",["Sand"]]]},
- {id:"yamagiwa",name:"Yamagiwa",origin:"Japan",site:"https://www.yamagiwa.co.jp",items:[
-   ["Taliesin 2 Floor Lamp","Lighting",["Walnut"]],["Taliesin 3 Table Lamp","Lighting",["Walnut"]],
-   ["K-Series Floor Lamp","Lighting",["White"]]]},
- {id:"zieta",name:"Zieta",origin:"Poland",site:"https://www.zieta.pl",items:[
-   ["Chippensteel Chair","Seating",["Silver"]],["Plopp Stool","Seating",["Charcoal"]],
-   ["Tafla Mirror","Mirror",["Silver"]],["Rondel Mirror","Mirror",["Silver"]]]},
- {id:"vo",name:"V_O",origin:"Belgium",site:"https://www.google.com/search?q=V_O+ALU+chair+Belgium+official+site",verify:1,items:[
-   ["ALU Chair","Seating",["Forest","White"]],["ALU Chair · Bordeaux","Seating",["Bordeaux","Forest"]]]},
+ {id:"yamagiwa",name:"Yamagiwa",origin:"Japan",site:"https://www.yamagiwa.co.jp",items:[],
+   collections:[
+  {
+    "name": "CONSTRUCTION",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "CONSTRUCTION Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/construction/construction-pendant-light/0.jpg",
+            "pal": "Warm Silver"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "FUWARI",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "FUWARI Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/fuwari/fuwari-pendant-light/0.jpg",
+            "pal": "Brass"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "GLASSWEAVE",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "GLASSWEAVE Floor Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/glassweave/glassweave-floor-light/0.jpg",
+            "pal": "White"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "JAKOBSSON LAMP",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "JAKOBSSON LAMP Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/jakobsson-lamp/jakobsson-lamp-pendant-light/0.jpg",
+            "pal": "Brown"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "LAMPAS",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "LAMPAS Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/lampas/lampas-pendant-light/0.jpg",
+            "pal": "White"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "MAYUHANA",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "MAYUHANA Floor Light Double",
+        "colors": [
+          {
+            "img": "images/yamagiwa/mayuhana/mayuhana-floor-light-double/0.jpg",
+            "pal": "White"
+          }
+        ]
+      },
+      {
+        "name": "MAYUHANA Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/mayuhana/mayuhana-pendant-light/0.jpg",
+            "pal": "White"
+          }
+        ]
+      },
+      {
+        "name": "MAYUHANA Table Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/mayuhana/mayuhana-table-light/0.jpg",
+            "pal": "White"
+          }
+        ]
+      },
+      {
+        "name": "MAYUHANA Table Light Double",
+        "colors": [
+          {
+            "img": "images/yamagiwa/mayuhana/mayuhana-table-light-double/0.jpg",
+            "pal": "White"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "RAI",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "RAI Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/rai/rai-pendant-light/0.jpg",
+            "pal": "Beige"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "SUI",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "SUI Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/sui/sui-pendant-light/0.jpg",
+            "pal": "Beige"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TWILIGHT",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.yamagiwa.co.jp",
+    "models": [
+      {
+        "name": "TWILIGHT Pendant Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/twilight/twilight-pendant-light/0.jpg",
+            "pal": "Brass"
+          }
+        ]
+      },
+      {
+        "name": "TWILIGHT Table Light",
+        "colors": [
+          {
+            "img": "images/yamagiwa/twilight/twilight-table-light/0.jpg",
+            "pal": "Brass"
+          }
+        ]
+      }
+    ]
+  }
+]},
+ {id:"zieta",name:"Zieta",origin:"Poland",site:"https://www.zieta.pl",items:[],
+   collections:[
+  {
+    "name": "Zieta Decoration",
+    "cat": [
+      "Mirror"
+    ],
+    "link": "https://www.zieta.pl",
+    "models": [
+      {
+        "name": "Oko",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-decoration/oko/0.jpg",
+            "pal": "Aurum Brass Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/1.jpg",
+            "pal": "Aurum Bronze Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/2.jpg",
+            "pal": "Aurum Classic Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/3.jpg",
+            "pal": "Aurum Copper Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/4.jpg",
+            "pal": "Aurum Light Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/5.jpg",
+            "pal": "Aurum Rose Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/6.jpg",
+            "pal": "Gradient Deep Space Blue"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/7.jpg",
+            "pal": "Gradient Emerald"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/8.jpg",
+            "pal": "Gradient Emerald Sapphire"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/9.jpg",
+            "pal": "Gradient Sapphire"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/10.jpg",
+            "pal": "Inox Polished"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/11.jpg",
+            "pal": "Transitions Dark Matter"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/12.jpg",
+            "pal": "Transitions Helix Nebula Amethyst Tanzanite"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/13.jpg",
+            "pal": "Transitions Helix Nebula Rhodonite Topaz"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/14.jpg",
+            "pal": "Transitions Helix Nebula Sapphire Topaz"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/15.jpg",
+            "pal": "Transitions Helix Nebula Tanzanite Amethyst"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/16.jpg",
+            "pal": "Transitions Helix Nebula Topaz Rhodonite"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/17.jpg",
+            "pal": "Transitions Helix Nebula Topaz Sapphire"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/18.jpg",
+            "pal": "Transitions Jade Green"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/oko/19.jpg",
+            "pal": "Transitions Red Rubin"
+          }
+        ]
+      },
+      {
+        "name": "Tafla O",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/0.jpg",
+            "pal": "Aurum Brass Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/1.jpg",
+            "pal": "Aurum Bronze Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/2.jpg",
+            "pal": "Aurum Classic Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/3.jpg",
+            "pal": "Aurum Copper Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/4.jpg",
+            "pal": "Aurum Light Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/5.jpg",
+            "pal": "Aurum Rose Gold"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/6.jpg",
+            "pal": "Candy Blue Matt"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/7.jpg",
+            "pal": "Candy Pink Matt"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/8.jpg",
+            "pal": "Candy White Matt"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/9.jpg",
+            "pal": "Gradient Deep Space Blue"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/10.jpg",
+            "pal": "Gradient Emerald"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/11.jpg",
+            "pal": "Gradient Emerald Sapphire"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/12.jpg",
+            "pal": "Gradient Sapphire"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/13.jpg",
+            "pal": "Inox Polished"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/14.jpg",
+            "pal": "Transitions Dark Matter"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/15.jpg",
+            "pal": "Transitions Jade Green"
+          },
+          {
+            "img": "images/zieta/zieta-decoration/tafla-o/16.jpg",
+            "pal": "Transitions Red Rubin"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zieta Lighting",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.zieta.pl",
+    "models": [
+      {
+        "name": "Harmonica",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-lighting/harmonica/0.jpg",
+            "pal": "Black matt 9005"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/harmonica/1.jpg",
+            "pal": "Heat Flamed Gold"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/harmonica/2.jpg",
+            "pal": "Inox Polished"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/harmonica/3.jpg",
+            "pal": "White Matt 9010"
+          }
+        ]
+      },
+      {
+        "name": "Kin",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-lighting/kin/0.jpg",
+            "pal": "Inox Polished"
+          }
+        ]
+      },
+      {
+        "name": "Lampin",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-lighting/lampin/0.jpg",
+            "pal": "Black matt 9005"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/lampin/1.jpg",
+            "pal": "Heat Flamed Gold"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/lampin/2.jpg",
+            "pal": "Inox Polished"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/lampin/3.jpg",
+            "pal": "True Mocha"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/lampin/4.jpg",
+            "pal": "White Matt 9010"
+          }
+        ]
+      },
+      {
+        "name": "Luna",
+        "colors": [
+          {
+            "img": "images/zieta/zieta-lighting/luna/0.jpg",
+            "pal": "Black matt 9005"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/luna/1.jpg",
+            "pal": "Heat Flamed Gold"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/luna/2.jpg",
+            "pal": "Inox Polished"
+          },
+          {
+            "img": "images/zieta/zieta-lighting/luna/3.jpg",
+            "pal": "White Matt 9010"
+          }
+        ]
+      }
+    ]
+  }
+]},
+ {id:"vo",name:"V_O",origin:"Belgium",site:"https://valerie-objects.com/",items:[],
+   collections:[
+  {
+    "name": "Alu Chair",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Alu Chair",
+        "colors": [
+          {
+            "img": "images/vo/alu-chair/alu-chair/0.jpg",
+            "pal": "Curry Candy Purple"
+          },
+          {
+            "img": "images/vo/alu-chair/alu-chair/1.jpg",
+            "pal": "Dark Blue Green"
+          },
+          {
+            "img": "images/vo/alu-chair/alu-chair/2.jpg",
+            "pal": "Green White"
+          },
+          {
+            "img": "images/vo/alu-chair/alu-chair/3.jpg",
+            "pal": "Yellow Candy Blue"
+          },
+          {
+            "img": "images/vo/alu-chair/alu-chair/4.jpg",
+            "pal": "Yellow Pink"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bar Stool",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Bar Stool M",
+        "colors": [
+          {
+            "img": "images/vo/bar-stool/bar-stool-m/0.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/bar-stool/bar-stool-m/1.jpg",
+            "pal": "Pink"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bench",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Bench",
+        "colors": [
+          {
+            "img": "images/vo/bench/bench/0.jpg",
+            "pal": "Pink"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ceiling Lamp",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Ceiling Lamp N1",
+        "colors": [
+          {
+            "img": "images/vo/ceiling-lamp/ceiling-lamp-n1/0.jpg",
+            "pal": "Brass"
+          }
+        ]
+      },
+      {
+        "name": "Ceiling Lamp N2",
+        "colors": [
+          {
+            "img": "images/vo/ceiling-lamp/ceiling-lamp-n2/0.jpg",
+            "pal": "Black"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Duo Seat",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Duo Seat",
+        "colors": [
+          {
+            "img": "images/vo/duo-seat/duo-seat/0.jpg",
+            "pal": "Blue Green Textile Mustard Frame"
+          },
+          {
+            "img": "images/vo/duo-seat/duo-seat/1.jpg",
+            "pal": "Red Pink Textile Mustard Frame"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Hanging Lamp",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Hanging Lamp N1",
+        "colors": [
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n1/0.jpg",
+            "pal": "Black"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n1/1.jpg",
+            "pal": "Blue"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n1/2.jpg",
+            "pal": "Brass"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n1/3.jpg",
+            "pal": "Curry"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n1/4.jpg",
+            "pal": "Green"
+          }
+        ]
+      },
+      {
+        "name": "Hanging Lamp N2",
+        "colors": [
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/0.jpg",
+            "pal": "Black"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/1.jpg",
+            "pal": "Blue"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/2.jpg",
+            "pal": "Brass"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/3.jpg",
+            "pal": "Chromed Steel"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/4.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n2/5.jpg",
+            "pal": "Ivory"
+          }
+        ]
+      },
+      {
+        "name": "Hanging Lamp N3",
+        "colors": [
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n3/0.jpg",
+            "pal": "Chromed Steel"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n3/1.jpg",
+            "pal": "Ivory"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n3/2.jpg",
+            "pal": "Menie Red"
+          }
+        ]
+      },
+      {
+        "name": "Hanging Lamp N4",
+        "colors": [
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n4/0.jpg",
+            "pal": "Black"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n4/1.jpg",
+            "pal": "Blue"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n4/2.jpg",
+            "pal": "Brass"
+          }
+        ]
+      },
+      {
+        "name": "Hanging Lamp N5",
+        "colors": [
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/0.jpg",
+            "pal": "Blue"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/1.jpg",
+            "pal": "Brass"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/2.jpg",
+            "pal": "Chromed Steel"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/3.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/4.jpg",
+            "pal": "Ivory"
+          },
+          {
+            "img": "images/vo/hanging-lamp/hanging-lamp-n5/5.jpg",
+            "pal": "Menie Red"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Rocking Chair",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Rocking Chair",
+        "colors": [
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/0.jpg",
+            "pal": "Mustard Frame Yellow Textile"
+          },
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/1.jpg",
+            "pal": "Red Frame Leather"
+          },
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/2.jpg",
+            "pal": "Stainless Steel Light Blue"
+          },
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/3.jpg",
+            "pal": "Stainless Steel Pink"
+          },
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/4.jpg",
+            "pal": "Stainless Steel Yellow"
+          },
+          {
+            "img": "images/vo/rocking-chair/rocking-chair/5.jpg",
+            "pal": "White Frame Red Textile"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Solo Seat",
+    "cat": [
+      "Seating"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Solo Seat",
+        "colors": [
+          {
+            "img": "images/vo/solo-seat/solo-seat/0.jpg",
+            "pal": "Red Frame Leather"
+          },
+          {
+            "img": "images/vo/solo-seat/solo-seat/1.jpg",
+            "pal": "Stainless Steel Light Blue"
+          },
+          {
+            "img": "images/vo/solo-seat/solo-seat/2.jpg",
+            "pal": "White Frame Leather"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Standing Lamp",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Standing Lamp N1",
+        "colors": [
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n1/0.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n1/1.jpg",
+            "pal": "Ivory"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n1/2.jpg",
+            "pal": "Menie Red"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n1/3.jpg",
+            "pal": "Red"
+          }
+        ]
+      },
+      {
+        "name": "Standing Lamp N2",
+        "colors": [
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n2/0.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n2/1.jpg",
+            "pal": "Ivory"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n2/2.jpg",
+            "pal": "Menie Red"
+          },
+          {
+            "img": "images/vo/standing-lamp/standing-lamp-n2/3.jpg",
+            "pal": "Red"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Table Lamp",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Table Lamp La Tre e Mezzo",
+        "colors": [
+          {
+            "img": "images/vo/table-lamp/table-lamp-la-tre-e-mezzo/0.jpg",
+            "pal": "Green"
+          },
+          {
+            "img": "images/vo/table-lamp/table-lamp-la-tre-e-mezzo/1.jpg",
+            "pal": "Red"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Wall Lamp",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://valerie-objects.com/",
+    "models": [
+      {
+        "name": "Wall Lamp Tramonto 01",
+        "colors": [
+          {
+            "img": "images/vo/wall-lamp/wall-lamp-tramonto-01/0.jpg",
+            "pal": "Deep Blue"
+          }
+        ]
+      },
+      {
+        "name": "Wall Lamp Tramonto 04",
+        "colors": [
+          {
+            "img": "images/vo/wall-lamp/wall-lamp-tramonto-04/0.jpg",
+            "pal": "Dark Red"
+          }
+        ]
+      }
+    ]
+  }
+]},
  {id:"bulo",name:"Bulo",origin:"Belgium",site:"https://www.bulo.com",items:[
    ["SL58 Chair · 4 Legs","Seating",["Oak"]],["SL58 Chair · 5 Legs","Seating",["Oak"]]]},
  {id:"fritzhansen",name:"Fritz Hansen",origin:"Denmark",site:"https://www.fritzhansen.com",research:1,items:[
@@ -4867,6 +5731,105 @@ BRANDS.forEach(b=>{
 // own site (never downloaded or rehosted here) — only populated for brands the studio
 // has actually curated a gallery for.
 const AMBIANCE_DATA = {
+  "vipp": [
+    {"project": "", "images": [
+          "https://assets.presscloud.com/file/30/304573536003993/vipp-mesura-guesthouse-23.jpg",
+          "https://assets.presscloud.com/file/40/406147377051573/vipp-residences-mallorca-bedroom2-01.jpg",
+          "https://assets.presscloud.com/file/50/500873715130712/vipp-452-453+_combo-camel-thy-01.jpg",
+          "https://media.umbraco.io/vipp-com-2/wktainmz/rmh_kitchen_03.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/ut4f3ptl/rmh_livingroom_1.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/mhyjwuab/norm_architects_archipelago_house_web_119.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/xzube1vc/norm_architects_archipelago_house_web_105.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/m0jfkvl3/vipp_bond_7thave0551.png?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/shwcdr3n/vipp_bond_7thave0699.png?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/ootjyycl/hamburg-kitchenstory-v3-06.png?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/xapkongn/01-jette-slagelse-terrace-02.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/c1eowpxy/25-mr-mao-house-tearoom-small.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/kvnpzh1r/sofie-vipp7645.jpg?width=1920&format=webp",
+          "https://assets.presscloud.com/file/72/724732054426090/vipp-675-cabinet-system-lightoak-jura-04.jpg",
+          "https://assets.presscloud.com/file/99/997323976446468/vipp-452-453+-swivel-family_01.jpg",
+          "https://media.umbraco.io/vipp-com-2/52hml1di/vipp-spencerbailey0677.jpg?width=1920&format=webp",
+          "https://assets.presscloud.com/file/62/624032074349646/vipp900-v4_kitchen-julia_khan_anselmo_campaign-06.jpg",
+          "https://media.umbraco.io/vipp-com-2/w0mhj3kr/12-utzon-livingroom.jpg?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/zx1avc11/maison-melba-by-atelier-l_abri-photo-alex-lesage-13.png?width=1920&format=webp",
+          "https://assets.presscloud.com/file/13/138862813314372/vipp-v2-kitchen-light-oak-16.jpg",
+          "https://assets.presscloud.com/file/84/843145922849578/vipp-v2-kitchen-light-oak-detail-02.jpg",
+          "https://media.umbraco.io/vipp-com-2/1fflrq1m/maison-melba-by-atelier-l_abri-photo-alex-lesage-17.png?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/jmyh2h4a/maison-melba-by-atelier-l_abri-photo-alex-lesage-11.png?width=1920&format=webp",
+          "https://media.umbraco.io/vipp-com-2/sa5dlprl/maison-melba-by-atelier-l_abri-photo-alex-lesage-42.png?width=1920&format=webp",
+          "https://assets.presscloud.com/file/29/294957395923444/vipp-v2-kitchen-light-oak-03.jpg",
+          "https://assets.presscloud.com/file/31/312701040483965/vipp-residences-mallorca-diningroom-03.jpg",
+          "https://assets.presscloud.com/file/84/847253988499377/vipp-residences-mallorca-kitchen-03.jpg",
+          "https://assets.presscloud.com/file/61/610876806874894/vipp-residences-mallorca-livingroom-06.jpg",
+          "https://assets.presscloud.com/file/80/809875937749724/vipp-residences-mallorca-bedroom1-01.jpg",
+          "https://assets.presscloud.com/file/51/515137178937932/vipp-residences-mallorca-bedroom1-06.jpg",
+          "https://assets.presscloud.com/file/51/519595839225203/vipp-residences-mallorca-livingroom-01.jpg",
+          "https://assets.presscloud.com/file/95/950955675900403/Vipp_Kythnos_Render_Edited_High_Res-05.jpg",
+          "https://assets.presscloud.com/file/17/170555497145259/Vipp_Kythnos_Render_Edited_High_Res-08.jpg",
+          "https://assets.presscloud.com/file/85/853216827788259/vipp-residences-mallorca-kitchen-01.jpg",
+          "https://assets.presscloud.com/file/90/902126938546953/vipp-454-swivel-chair-alu-bosco-green-gliders-02.jpg",
+          "https://assets.presscloud.com/file/62/629625549681712/2025_11_11_vipp_swivel_aduro9644.jpg",
+          "https://assets.presscloud.com/file/56/562149414569077/vipp-675-cabinet-system-lightoak-jura-03.jpg"
+    ]}
+  ],
+  "verpan": [
+    {"project": "", "images": [
+          "https://verpan.com/cdn/shop/files/250411_EH_VERPAN_ATELIERHAUS_29_559_1285x1799.jpg?v=1757408907",
+          "https://verpan.com/cdn/shop/files/250409_EH_VERPAN_ETERNITHAUS_DAY_1_21_411_1285x1800.jpg?v=1756465066",
+          "https://verpan.com/cdn/shop/files/100261_Verpan-Moon-Pendant-O44_5-White_02_1800x1800.jpg?v=1730124374",
+          "https://verpan.com/cdn/shop/files/100250_Verpan-Moon-Pendant-O34-White_02_1800x1800.jpg?v=1730124409",
+          "https://verpan.com/cdn/shop/files/104134_Verpan-Wire-Floor-Lamp-Chrome-White_02_1800x1800.jpg?v=1737639886",
+          "https://verpan.com/cdn/shop/files/112752_Verpan-Fun-3DM_Pendant-H240xO56-Seashell_7_1275x1275.jpg?v=1737637384",
+          "https://verpan.com/cdn/shop/files/133823_Verpan-Wire-Table-lamp-H42xO30-Chrome-Yellow-02_1800x1800.jpg?v=1701181375",
+          "https://verpan.com/cdn/shop/files/101330_Verpan-Wire-Table_Lamp-H54xO40-Chrome_White_5_1800x1285.jpg?v=1737641974"
+    ]}
+  ],
+  "vo": [
+    {"project": "", "images": [
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9025002-602_02.jpg?crop=center&height=5760&v=1753787701&width=5760",
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9015018_02-jpg.jpg?crop=center&height=5760&v=1761516794&width=5760",
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9026303-300_02-jpg.jpg?crop=center&height=5760&v=1771947096&width=5760",
+          "https://valerie-objects.com/cdn/shop/collections/Ecom_V9026304-500_02-jpg_f7b280ab-c02b-4f20-a1b7-cc29225e93fc.jpg?v=1772114204&width=600",
+          "https://valerie-objects.com/cdn/shop/collections/V9022101_02.jpg?v=1692709441&width=600",
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9015014B_02-jpg.jpg?crop=center&height=5760&v=1761517278&width=5760",
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9018001M_02-jpg_ad5ae0de-f057-4b55-8589-6e28e7ec6cf0.jpg?crop=center&height=5760&v=1763122157&width=5760",
+          "https://valerie-objects.com/cdn/shop/files/Ecom_V9015030R_02-jpg_29aee94a-99bf-4691-bc4e-c0cf7debdf91.jpg?crop=center&height=5760&v=1763122123&width=5760"
+    ]}
+  ],
+  "yamagiwa": [
+    {"project": "", "images": [
+          "https://cdn.shopify.com/s/files/1/0704/2773/8362/files/tense_tp-img01.jpg?v=1756887474&width=1440",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/138s7581t_3.jpg?v=1748253110",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/138s7581c_6.jpg?v=1748253061",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/138s7581c_7.jpg?v=1748253061",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/149s7573_8.jpg?v=1752135679",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/model548-sub01.jpg?v=1742544982",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/129F-562L-img03.jpg?v=1737705005",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/147S7550B_LL.jpg?v=1778812924",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/320F-571-img02_LL.jpg?v=1727760682",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/320F-521K-img04_LL.jpg?v=1727665943",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/320F-521K-img06_LL.jpg?v=1727665943",
+          "https://cdn.shopify.com/s/files/1/0704/2773/8362/files/jakobsson-t_07.jpg",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/983TR7-P-BR-img01_LL.jpg?v=1727772246",
+          "https://video.visumo.jp/image/e8031b07-153b-4ec4-af19-42cff045dd0d/9a350cab-9fed-4005-a6f4-e08e3f8bc27c/9a350cab-9fed-4005-a6f4-e08e3f8bc27c-large.jpg",
+          "https://video.visumo.jp/image/e8031b07-153b-4ec4-af19-42cff045dd0d/carousel/e8090306-0508-4c63-b9fe-498f6be09f2d-large.jpg",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/6180697023A-img01_LL.jpg?v=1727766180",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/img_kmkr_mayu-flo02.jpg?v=1746689930",
+          "https://shopping.yamagiwa.co.jp/cdn/shop/files/img_kmkr_mayu-flo01.jpg?v=1769216430"
+    ]}
+  ],
+  "zieta": [
+    {"project": "", "images": [
+          "https://storage.zieta.pl/13378/responsive-images/2023_08_29_412538_web___large_1400_933.jpg",
+          "https://storage.zieta.pl/14860/responsive-images/Zieta_WH_Photo_Mateusz_Z%CC%87urowski_Light_Grzegorz_Kurzejamski_Production_RiverCrew12___large_1400_2101.jpg",
+          "https://storage.zieta.pl/14861/responsive-images/Zieta_Lampin_Photo-Mateusz-%C5%BBurowski%2C-Alex-Iwa%C5%84ski%2C-Grzegorz-Kurzejamski_2___large_1400_2101.jpg",
+          "https://storage.zieta.pl/14863/responsive-images/Zieta_WH_Photo_Mateusz_Z%CC%87urowski_Light_Grzegorz_Kurzejamski_Production_RiverCrew4___large_1400_2101.jpg",
+          "https://storage.zieta.pl/14865/conversions/Zieta_Harmonica_Photo-Mateusz-%C5%BBurowski%2C-Alex-Iwa%C5%84ski%2C-Grzegorz-Kurzejamski_1-large.jpg",
+          "https://storage.zieta.pl/14869/responsive-images/ZIETA_LAMPIN_Zieta_Lighting_fot.Weronika_Trojanowska.-%282%29___large_1400_2101.jpg",
+          "https://storage.zieta.pl/10363/responsive-images/Zieta_Revolve_inox_polished___large_1400_2101.jpg",
+          "https://storage.zieta.pl/10362/responsive-images/ZIETA_GALERIA_STUDIO_BWA_WROC%C5%81AW_fot_M.WI%C4%98CEK_A.ROKOSZ_-30___large_1400_2100.jpg"
+    ]}
+  ],
   "andtradition": [
     {"project": "", "images": [
           "https://wp.andtradition.com/wp-content/uploads/2024/08/ATD_26_3-Days-of-Design_Langelinie_Interior_6-1333x2000.jpg",
@@ -5753,26 +6716,10 @@ function ambianceModalNav(dir){
   openAmbiancePhoto(AMBIANCE_MODAL_CTX[nextIdx]);
 }
 
-// Round-robin across brands (one photo from each brand in turn) instead of a flat
-// per-brand concat, so the wall reads as a mixed gallery rather than blocks of the
-// same brand back to back. Deterministic — same order every render, no reshuffling
-// mid-session when favoriting triggers a re-render.
-function interleaveByBrand(lists){
-  const result=[];
-  let i=0, added=true;
-  while(added){
-    added=false;
-    for(const list of lists){
-      if(list[i]){ result.push(list[i]); added=true; }
-    }
-    i++;
-  }
-  return result;
-}
 function renderAmbianceTab(q){
   const curated=BRANDS.filter(b=>b.ambiance && b.ambiance.length);
   const list=q ? curated.filter(b=>b.name.toLowerCase().includes(q)) : curated;
-  const photos=interleaveByBrand(list.map(b=>ambiancePhotos(b)));
+  const photos=list.flatMap(b=>ambiancePhotos(b));
   document.getElementById('main').innerHTML = `
     <div class="section-head">
       <div><h1>Ambiance</h1><p>Curated inspiration galleries — real projects from the brands we've added them for.</p></div>
