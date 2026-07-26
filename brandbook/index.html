@@ -1809,7 +1809,8 @@ const BRANDS = [
    ["Fragment Wall Lamp","Lighting",["Charcoal"]],["The Wall Side Table","Tables",["Charcoal"]],
    ["Fragment Pendant","Lighting",["Silver"]],["Fragment Floor Lamp","Lighting",["Silver"]]]},
  {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.it",verify:1,items:[
-   ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]}
+   ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]},
+ {id:"ramu-home-studio",name:"Ramu Home Studio",origin:"Europe",site:"https://ramuhomestudio.com/",items:[]}
 ];
 
 // DIRECTORY: every other brand from the two logo-wall screenshots. Logo/name + best-effort
@@ -1867,8 +1868,8 @@ const DIRECTORY = [
  ["House of Finn Juhl","Denmark","https://www.finnjuhl.com"],
  ["Cattelan Italia","Italy","https://www.cattelanitalia.com"],
  ["Giorgetti","Italy","https://www.giorgettimeda.com"],
- ["Kooij","Netherlands","https://www.kooij.info"],
- ["Aarnio Originals","Finland","https://www.aarnio-originals.com"],
+ ["Kooij","Netherlands","https://kooij.com/"],
+ ["Aarnio Originals","Finland","https://www.aarniooriginals.com/"],
  ["Hessentia","Italy","https://www.google.com/search?q=Hessentia+Cornelio+Cappellini",1],
  ["Baccarat","France","https://www.baccarat.com"],
  ["Moroso","Italy","https://www.moroso.it"],
@@ -1952,6 +1953,7 @@ const BIOS = {
   gufram:"Italian furniture manufacturer founded in 1966 by the Gugliermetto brothers in Turin, known for Pop and Radical Design pieces such as the Cactus coat rack and Bocca sofa.",
   singchan:"Chinese design studio founded in 2020 by Guangzhou-based designer Sing Chan, known for furniture and lighting that reinterprets traditional Chinese craft and architecture in contemporary forms.",
   ramun:"Italian lighting brand created under the artistic direction of designer Alessandro Mendini, best known for the Amuleto lamp inspired by sun, moon, and earth imagery.",
+  "ramu-home-studio":"European sourcing and design studio producing furniture, lighting, and textiles through workshops in Indonesia and Thailand, working primarily with hotels, hospitality groups, and interior architects on curated projects.",
   "mario-tsai-studio":"Chinese design studio founded in Hangzhou in 2014 by Mario Tsai, focused on research-driven, sustainable furniture and product design.",
   usm:"Swiss company founded in 1885 as a hardware manufacturer, known since the 1960s for the modular USM Haller furniture system developed with architect Fritz Haller.",
   "brand-van-egmond":"Dutch lighting studio founded in 1989 by William Brand and Annet van Egmond, known for handcrafted sculptural chandeliers exported to over 60 countries.",
@@ -2099,6 +2101,215 @@ const BIOS = {
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
 const STOCKIST_DATA = {
+  "baccarat": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5bc9ad37c0fd2b0001509806?m_source=pwa&xsec_token=ABvUwg4fWOg2opkFLyhAqWmNoUH6Jo40g3I6jcZpDen1I=&xsec_source=pc_search",
+    "taobao": "https://baccaratjjry.world.tmall.com/category-1537183070.htm?spm=a312a.7700824.w5003-25776808534.1.2152bb78gw37qn&search=y&catName=%CB%F9%D3%D0%B1%A6%B1%B4&scene=taobao_shop#bd",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Baccarat Boutiques",
+        "address": "Shop D5207, F5, No. 87 Jianguo Road, 100025 Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Baccarat Plaza 66",
+        "address": "Rm415, Plaza 66, No.1266 Nanjing West Road, 200041 Shanghai"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Xi'an SKP",
+        "address": "5F, Homeselect, 261 Chang'an North Road, Xi'an SKP, 710000 Xi'an"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Lane Crawford Chengdu",
+        "address": "Shop L302-303 & L401, No.1 Section 3 Hongxing Road, 610016 Chengdu"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford Times Square",
+        "address": "Times Square, 1 Matheson Street, Causeway Bay, Hong Kong"
+      },
+      {
+        "city": "Macau",
+        "name": "Baccarat Galaxy Macau",
+        "address": "K002, G/F, Galaxy Promenade, Galaxy Macau Integrated Resort, Cotai, Macau"
+      },
+      {
+        "city": "Taipei",
+        "name": "Baccarat Sogo Main Taipei",
+        "address": "8F, Sogo Main Dept. Store, 45 Sec. 4, Zhongxiao E. Road, 10691 Taipei"
+      }
+    ]
+  },
+  "fendi-casa": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6174b3510000000002022195?m_source=pwa&xsec_token=AB_0jWzFT7JSzWsHU2WbhejH-CFY0-IJ__PzUPiGEV9KU=&xsec_source=pc_search"
+  },
+  "house-of-finn-juhl": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Concept 101",
+        "address": "No.101, Gujiaju Street, Gaobeidian, Chaoyang District, 100123 Beijing"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa",
+        "address": "L112, CP Center, Guanghua Rd, 100020 Beijing"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Haus101",
+        "address": "Building W05, CPI Project, No. 188 Yazhou Road, Huayang Street, Tianfu New Area, Chengdu, Sichuan"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Van Collection",
+        "address": "No. 176, Chengtong Road, Wuhou District, Chengdu, Sichuan"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Stream",
+        "address": "7th Floor, Building 15, Tianmuli, No. 398 Tianmushan Road, Xihu District, Hangzhou"
+      },
+      {
+        "city": "Ningbo",
+        "name": "The Pine",
+        "address": "F2001, Building No. 10, No. 256 Huaishu Road, Jiangbei District, 315020 Ningbo"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa Store",
+        "address": "150 Yueyang Road, Xuhui District, 200031 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Pellini Interni Space",
+        "address": "Room 108/401, No.75 LouShanGuan Road, 200336 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Van Collection",
+        "address": "301, Building 1, Gate M, No. 2266 Longteng Ave, Xuhui District, 200030 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Anfu275",
+        "address": "No. 6, Lane 275, Anfu Road, Xuhui District, Shanghai"
+      },
+      {
+        "city": "Kowloon",
+        "name": "La Deux Ltd.",
+        "address": "27G, 15 Chong Yip Street, Kowloon, Hong Kong"
+      },
+      {
+        "city": "Shatin",
+        "name": "Outofstock Design Group",
+        "address": "Rm 1213 Wah Yiu Industrial Centre, 30-32 Au Pui Wan Street, Shatin, N.T., Hong Kong"
+      },
+      {
+        "city": "Taichung",
+        "name": "Mot Casa",
+        "address": "1F., No. 6, Boguan 2nd St., North Dist., Taichung City 404023, Taiwan"
+      },
+      {
+        "city": "Taichung",
+        "name": "Yasen Home",
+        "address": "No. 709, Sec. 2, Gongyi Rd., Nantun Dist., Taichung City 408, Taiwan"
+      },
+      {
+        "city": "Taichung",
+        "name": "Nordic Taichung",
+        "address": "1F., No. 2, Boguan 2nd St., North Dist., Taichung City 404023, Taiwan"
+      },
+      {
+        "city": "Taipei",
+        "name": "The VG House",
+        "address": "1F, No. 38, Aly. 8, Ln. 36, Sec. 5, Minsheng E. Rd, Songshan Dist., Taipei City 10576, Taiwan"
+      },
+      {
+        "city": "Taipei",
+        "name": "Nordic Noke Taipei",
+        "address": "3F., No. 200, Lequn 3rd Rd., Zhongshan Dist., Taipei City 104, Taiwan"
+      },
+      {
+        "city": "Taipei",
+        "name": "Nordic Taipei",
+        "address": "No.9, Ln. 65, Sec. 1, Jianguo S. Rd., Da'an Dist., Taipei City 10666, Taiwan"
+      },
+      {
+        "city": "Taipei",
+        "name": "Mot Casa Taipei",
+        "address": "No.5, Ln. 65, Sec. 1, Jianguo S. Rd., Da'an Dist., Taipei City 10666, Taiwan"
+      }
+    ]
+  },
+  "kooij": {
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "101+",
+        "address": "Shanghai, China"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Of Gaaarden",
+        "address": "Guangzhou, China"
+      }
+    ]
+  },
+  "aarnio-originals": {
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "101PLUS",
+        "address": "Shanghai, China"
+      },
+      {
+        "city": "Shanghai",
+        "name": "iyouthstudio",
+        "address": "Shanghai, China"
+      }
+    ]
+  },
+  "bang-olufsen": {
+    "taobao": "https://bangolufsen.world.tmall.com/?spm=a312a.7700824.0.0.7f29634fC6DCgB",
+    "rednote": "https://www.xiaohongshu.com/user/profile/5fa373dd0000000001005930?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABNWUC-31LUeTsEFgZqoG7Vaozagz4qrTkMk8U4_wMR1s=&xsec_source=pc_search"
+  },
+  "artifort": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Concept 101",
+        "address": "Gujiaju Street 101, 100123 Beijing"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Homegallery Xi'An",
+        "address": "Dahua 1935 S3-3, Taihua South Road, Xincheng District, Xi'An, Shaanxi"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Homegallery Suzhou",
+        "address": "Building 70, Shuangyin International Financial City, Wuzhong District, Suzhou, Jiangsu Province"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Line Park",
+        "address": "No.11 Building, HeChuangYuan, No.139 LiuHe Road, XiHu District, Hangzhou"
+      },
+      {
+        "city": "Hsinchu",
+        "name": "Dutchhaves",
+        "address": "No.6 Guanxin 1st Street, East District, 300 Hsinchu"
+      },
+      {
+        "city": "Taichung",
+        "name": "Dutchhaves",
+        "address": "No.108 Section 2, Jianhe Road, Beitun District, 406 Taichung"
+      }
+    ]
+  },
   "anonimacastelli": {
     "rednote": "https://www.xiaohongshu.com/user/profile/65c201f5000000001101b52d?m_source=pwa&xsec_token=ABMdToVXZ78gzrt8LL8nPY4sqaSUB4Q_9_iqEjRmeprMI=&xsec_source=pc_search",
     "stockistCN": [
@@ -2332,6 +2543,7 @@ const STOCKIST_DATA = {
   "artemide": {
     "rednote": "https://www.xiaohongshu.com/user/profile/5ffd153d0000000001001620?channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABjaDJgw0j5eQyMT1We8jiS4KzzfphlQC_ZPB4VelR8Z0=&xsec_source=pc_search",
     "taobao": "https://artemide.world.tmall.com/shop/view_shop.htm?appUid=RAzN8HWJZztTk2vGYzfq4NQJHAcymomfjX79GoAeiimis223eD2&spm=a21n57.1.hoverItem.2",
+    "wechat": "https://www.artemide.com/res-2051/images/wechatCode.png",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -2961,6 +3173,7 @@ const STOCKIST_DATA = {
   },
   "cctapis": {
     "rednote": "https://www.xiaohongshu.com/user/profile/62444b470000000021021df7?xsec_token=AB7P624AS_eCYonhJ9UXfxDH2UAKZtEmLVDWOZZZBXh_s%3D&xsec_source=pc_search",
+    "wechat": "https://cc-tapis.com/we-chat",
     "stockistCN": [
       {
         "city": "Foshan",
@@ -3274,6 +3487,7 @@ const STOCKIST_DATA = {
   },
   "edra": {
     "rednote": "https://www.xiaohongshu.com/user/profile/6230fc50000000001000ffbe?xsec_token=ABsRFPILF_kDdYXsfeY3PkAFEYq5wLClXjJL4QICGwPn4%3D&xsec_source=pc_search",
+    "wechat": "https://www.edra.com/grafiche/personalizzate/edra_2/style/images/ico_footer_wechat@2x.png",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -3855,6 +4069,7 @@ const STOCKIST_DATA = {
   },
   "glasitalia": {
     "rednote": "https://www.xiaohongshu.com/user/profile/6214d5020000000010004cbc?xsec_token=ABYcJ-xImEtK5pbC7EPWQ1F2MHI6EsX-FJuvgrj5Cd9gA%3D&xsec_source=pc_search",
+    "wechat": "https://www.glasitalia.com/images/icona_wechat.png",
     "stockistCN": [
       {
         "city": "Nanjing",
@@ -5733,6 +5948,1204 @@ BRANDS.forEach(b=>{
 // own site (never downloaded or rehosted here) — only populated for brands the studio
 // has actually curated a gallery for.
 const AMBIANCE_DATA = {
+  "house-of-finn-juhl": [
+      {
+          "project": "Finn Juhl's House",
+          "images": [
+              "https://finnjuhl.com/media/13221/finn_juhls_house15.jpg",
+              "https://finnjuhl.com/media/13518/finn_juhls_house04_1.jpg"
+          ]
+      },
+      {
+          "project": "Model 48",
+          "images": [
+              "https://finnjuhl.com/media/13108/48-chair_oak-dark-oil_walnut.png?center=0.66025641025641024,0.50961538461538458&mode=crop&width=600&height=800&rnd=134024077420000000",
+              "https://finnjuhl.com/media/9673/48-sofa-bench_oak-dark-oil_walnut_elegance_walnut-leather.jpeg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://finnjuhl.com/media/13706/45-sofa_walnut_watercolour_himalaya_soft-linen_02.jpg",
+              "https://finnjuhl.com/media/12873/the-cocktail-bench_walnut_2.jpg",
+              "https://finnjuhl.com/media/12047/egyptian-chair_sacho_moss_walnut_02.png",
+              "https://finnjuhl.com/media/3223/333-japansofa.png",
+              "https://finnjuhl.com/media/11859/46-sofa_sheepskin-honey_02.png",
+              "https://finnjuhl.com/media/3130/little-mother-4.png",
+              "https://finnjuhl.com/media/13469/file-under-pop-495-kopi.jpg",
+              "https://finnjuhl.com/media/13798/the-silverware-cabinet_oregon-pine_walnut07.jpg"
+          ]
+      }
+  ],
+  "kooij": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/752648764_18547488499076349_2867435451762449277_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzk0NTQ4MTQxOTM0Nzk2NDc2Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=P1b2GvBo8MQQ7kNvwFRHdc5&_nc_oc=Adpiu20wM5UVrJDNNkIjzkqrgvpPosSO-d1Kc6LXY-fp6W0PPaXtmnW_CcVwuqOMqmc&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=0zD7XT4uM6WyJtyPeHZbTg&_nc_ss=79689&oh=00_AQB6QSQkhupmLGG8y4YZz_MOOgNQW3IddtlLKd0KD3GK3g&oe=6A6BD811",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/726891785_18539848744076349_1113250766864833338_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzkyMzg2NTg1MTk1NjE1Mzg0MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=YqIn7SQwihQQ7kNvwGu6KzD&_nc_oc=AdpDM8ZEBXRz4MNHQ7qiXCg1foO0ea-GC4vKItXBhWm_el5aQhSX1SYlKzUwLEu5gfU&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=9Vx71930KvgO9vxvIrunAw&_nc_ss=79689&oh=00_AQD_UjPo7CByXtRfcM18VCtvHnmQioro6OIHNSxBcNuHiw&oe=6A6BC207",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/670292649_18525104944076349_6895002338183068559_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzg3NjYxNzc3MjY1NTE3OTY1MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=vGR-wkGdJ30Q7kNvwEIUga9&_nc_oc=AdrkkxSojOxArXKfwYPbu40m5p4zlLSHbi5UAKO_t9dYUPCwjryUC-gi0IjOJDJNme0&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=gf3wyTVRwqrBlL9h63dXoA&_nc_ss=79689&oh=00_AQCTcY54nLq87ZuevWZ10d8CG4aX_EWjrgLjUo4U14QV4g&oe=6A6BDB75",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/500662591_18463812766076349_5565445397649382047_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzYzOTYwNjUzNDQ5MzgwNjc0NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=r-v1h4sKuHQQ7kNvwFw9jd7&_nc_oc=AdpMumzir2QkBk-jfX6eNOJP3_9D7gmUiZgJLtez9DMSv0nO1eKb5ZlvA-Re3JQ-Kts&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=_alVfjjpxv5MO7PhtMU13A&_nc_ss=79689&oh=00_AQB-kTl-2hYVNy4Xkr5Bq6pvC1au_7IzpTsFISqTSdBtYg&oe=6A6BB204",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-15/497150916_18461364100076349_1389040936422970760_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzYyOTQ4NDg3Nzc2MzA3OTQzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=52Olhnx_TuYQ7kNvwHdBQgM&_nc_oc=AdrDAsonbPoHr0eaBOjur1Xb0h4SnusjXrHvnIyPO9ZaBZ4JE0y9XTSTqq6sSh_FOek&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=OeowfhbeYUDCcfJY2jAu4A&_nc_ss=79689&oh=00_AQAD1IMj1jgLqbZnjnK19DHQlnL3atcPiLvomVPgR-4Suw&oe=6A6BBA7E",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/497916978_18462184768076349_3771755716814078066_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzYzMzA5MDYxMTg1MTUyNjM1OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=4BBvcUIWO_cQ7kNvwEfhKQY&_nc_oc=AdqZRo2hrwygbpEu74i5ObeWfNjBrDyvt6WafN9upogmW-CtznWigw2InYW4N6tZN_g&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=R8U0GBNpXXQ7JdhKNqOigg&_nc_ss=79689&oh=00_AQB3Yldbkg5AT31B6asGhylZEPb7WN0wnerdAGwF7ZuwWA&oe=6A6BDBD9",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/491453972_18459432082076349_1481467353049959177_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzYyMDc1NzgzMDU3NjQwMTYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=0XGHVv64mzIQ7kNvwFJVwvz&_nc_oc=AdqanvL6K-pxRmSR7_6EuX_fJ07oQ--SqxgtsBhJvQJR1OvPdIujXXD6wr9385tvoRU&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=beRgw13apVQKB3sU8ORhoA&_nc_ss=79689&oh=00_AQCGpxwkTazMVrsJ9TB5_nqy_5gpa-zwt2KEGFxLV38xHQ&oe=6A6BAA90",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/638863243_18380790505090609_206583306236566359_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzUwNzAzMDk3MzQwNzU0NzAyNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=v4i-7EA_bbkQ7kNvwHCycX1&_nc_oc=AdrYH75FMkVNThuADCj94GOEmTsMB2BZ-4w-FPBiJgUdTELyQHEYKJmQx3WTPOfzLOA&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=Aj-JFXKY6aEXuMNDdPqU1w&_nc_ss=79689&oh=00_AQBXf9OnaI7-GBTW3A9ZNH48aXisNgsE3G-3qqsYkHmgRQ&oe=6A6BC666",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/669727240_18402194836150222_3547482990845950789_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzM1NDA2NzU4MjIzMzYyNjM1OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=P3DzD8Y-e0UQ7kNvwFKJjLl&_nc_oc=AdrdDZaZEoSinDkqz08vg8FJ9WcttbaKnR2BgHA3TzgXxOPl5nhxKS4KmLl7dvO2oKs&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=bo0p68Ylsw0BOYOuii-Plw&_nc_ss=79689&oh=00_AQAZ6wiSKY_PKxPlww6Gb8mmBe9COrwAsbuQwtrwpCNMOA&oe=6A6BDAF2",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/628431982_18310406707269014_2665796031538928079_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzMxMjYzNjU3Njc4NDk1NTAyNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=TsaoYeFBo1IQ7kNvwHFHWTI&_nc_oc=Adr7IaXrIFyby0mHgaQVmzmE-OdovHvfye5-Guv2Bn66MdckMZo-tW4g_mAqXkih6b8&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=h5e07Fecqk0PUGSh0-wogA&_nc_ss=79689&oh=00_AQBtlGWDL9MbH8OW0CqXicwCKHgY803QgploUZUYDIxb_A&oe=6A6BC0F1",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/654015572_18067757963290178_4481210034562854928_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzExMDU0MzI2MzQ3MTUzODc2NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=CP_bkYQay54Q7kNvwEFql9T&_nc_oc=Adp_JXzMHAAwXcQymaT2b0os-lJttDhhRCczEKB_ew-3AcyVMKd5aK8Cw7xi0XmYVpA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=4uM4lgYZCZFZbefoHDUaRQ&_nc_ss=79689&oh=00_AQDgeEq6clPXYaBCfs-mkvnsLtpDC2--8-fmSxAST72PUg&oe=6A6BABAE"
+          ]
+      }
+  ],
+  "baleri-italia": [
+      {
+          "project": "Visual Inspirations, Padova",
+          "images": [
+              "https://baleri-italia.com/uploads/media/1400x/03/3393-Baleri-Italia_Visual-Inspirations-Padova_6.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/1400x/08/4208-Baleri-Italia_Visual-Inspirations-Padova_29.webp?v=1-0"
+          ]
+      },
+      {
+          "project": "Caprilarge",
+          "images": [
+              "https://baleri-italia.com/uploads/media/1400x/02/3592-Baleri-Italia_Caprilarge_Poltrona_Fratino_Tavolo_Dining_01.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/09/129-Baleri-Italia_Caprilarge_Poltrona_Mobili-Moderni_01.webp?v=1-0"
+          ]
+      },
+      {
+          "project": "Obo",
+          "images": [
+              "https://baleri-italia.com/uploads/media/800x/04/3584-Baleri-Italia_Obo_Contenitore-Modulare_Libreria_Arredi-Riciclabili_01.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/06/116-Baleri-Italia_Bermuda_Armchair_Obo_Modular-Complement_Contemporary-Design_01.webp?v=1-0"
+          ]
+      },
+      {
+          "project": "Roundel",
+          "images": [
+              "https://baleri-italia.com/uploads/media/800x/00/140-Baleri-Italia_Donna_Upholstered-Chair_Modern-Dining-Room_02.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/00/3580-Baleri-Italia_Roundel_Dining-Table_Donna_Upholstered-Chair_Modern-Furniture_01.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/06/176-Baleri-Italia_Roundel_Dining-Table_Paloma_Chair_Modern-Furniture_01.webp?v=2-0"
+          ]
+      },
+      {
+          "project": "CopertineProgetti",
+          "images": [
+              "https://baleri-italia.com/uploads/media/800x/07/3267-BI_CopertineProgetti_01.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/09/3269-BI_CopertineProgetti_04.webp?v=1-0"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://baleri-italia.com/uploads/media/1400x/06/3036-Baleri-Italia_Bentz_tavolo_shooting_Como.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/1400x/08/3478-BI_CollectionPreview_L-07.webp?v=1-0",
+              "https://baleri-italia.com/uploads/media/800x/06/3566-Baleri-Italia_Roots_Dining-Table_Modern-Furniture_01.webp?v=1-0"
+          ]
+      }
+  ],
+  "bang-olufsen": [
+      {
+          "project": "",
+          "images": [
+              "https://images.ctfassets.net/8cd2csgvqd3m/1ItBiFvjztAqwc97RE7b4p/b9dad62bcba70e7b5bb16500f443fb21/Lifestyle-beosound-a9-0017-s2000x2000px.jpg?q=90&w=3840&fit=fill&fm=webp"
+          ]
+      }
+  ],
+  "artifort": [
+      {
+          "project": "Lumiere",
+          "images": [
+              "https://www.artifort.com/Portals/0/ThemePluginPro/uploads/2023/2/21/Restaurant_LUMI%C3%88RESJ%C3%A9J%C3%A9_903x584px3.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/BrasHighback_Artifort_5A_1018x652px.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Shark_8A_sfeer_509x652px.jpg"
+          ]
+      },
+      {
+          "project": "Suit",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Inspiratie_foto3_Suit_509x652px79.jpg",
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Inspiratiefoto_Suit_4_509x652px.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Inspiratie_MareFC_5_1018x652px.jpg",
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Arris_4A_1018x652px.png",
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/C684_1_1018x652px.jpg"
+          ]
+      },
+      {
+          "project": "Chaise Longue",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/ChaiseLongue_1_509x652px.jpg",
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Inspiratie_foto_ChaiseLongue_509x652px34.jpg"
+          ]
+      },
+      {
+          "project": "Muse",
+          "images": [
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Muse_8A_Artifort_1018x652px.jpg",
+              "https://www.artifort.com/portals/0/images/collectie/CarouselImages/Muse_sfeer_1018x652px.jpg"
+          ]
+      }
+  ],
+  "artemide": [
+      {
+          "project": "Casa dos Sirenes",
+          "images": [
+              "https://www.artemide.com/contents/immagini/projects/mod-numero26_casadosirenes_diningroom_197233_19d674cf2e0_1920.jpg",
+              "https://www.artemide.com/contents/immagini/projects/mod-dos_01_197234_19d673e90c7_640.jpg",
+              "https://www.artemide.com/contents/immagini/projects/mod-845x1000_03_197235_19d683b23ea_845.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.artemide.com/contents/immagini/projects/biro+_2+1_0032_2638_17f9c41b780_960.jpg",
+              "https://www.artemide.com/contents/immagini/projects/mod_linea05_3400_185a16aaa5f_640.jpg",
+              "https://www.artemide.com/contents/immagini/projects/mod_2271_4169_189e3c473df_1920.jpg",
+              "https://www.artemide.com/contents/immagini/projects/mod_845x1200_2_4402_18d0e1b6697_845.jpg",
+              "https://i.pinimg.com/1200x/96/31/cf/9631cff50a2036d8f5e664b5fe9060ad.jpg"
+          ]
+      }
+  ],
+  "agrippa": [
+    {"project": "", "images": [
+          "https://agrippacollection.com/wp-content/uploads/2019/11/Balzar-1.jpg",
+          "https://agrippacollection.com/wp-content/uploads/2019/11/pepe-cabrera-1.jpg",
+          "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/343427409_252440807174504_1009931648088330061_n.png?_nc_cat=107&ig_cache_key=MzA5MDg2NTcxNzExNzY4MTAxMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTUzNi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=PQGNdyL7UB0Q7kNvwG93pK8&_nc_oc=AdoQhnCcWAy1wWhqOyYnKPWsJR5Clx0HC7h2fsCo6nbvdxspSF-QjNvk9I2LF0y4RLk&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=G6_x2BBYsC4xCKeDnn28Tw&_nc_ss=79689&oh=00_AQDzuFhnFtZfu4fZOxX_X8WMlRYI6ZQzU4F8jgwy2cd3xw&oe=6A6BB264"
+    ]}
+  ],
+  "alias": [
+    {"project": "", "images": [
+          "https://alias-cdn.thron.com/delivery/public/image/alias/f8594bd0-b4b3-4e15-85dc-e183374c3fbe/ninc0a/std/1920x1920/alias_project_indice_2.webp?format=WEBP",
+          "https://elasticbeanstalk-eu-central-1-alias.s3.eu-central-1.amazonaws.com/s3fs-public/styles/max_1920x1920/public/content/image/alias_set_home_sec_maddy_savoy_r-1.jpg.webp?itok=e_N8ZRPm"
+    ]}
+  ],
+  "a-by-arturo-lvarez": [
+    {"project": "", "images": [
+          "https://www.a-emotionallight.com/wp-content/uploads/2021/12/2021-Espana-SantiagoSur-coral-collection-1.jpg",
+          "https://www.a-emotionallight.com/wp-content/uploads/2021/12/tempo-vivace-TEVI04-pendant-lamp-restaurant-lighting.jpg",
+          "https://www.a-emotionallight.com/wp-content/uploads/2021/05/blum-pendant-lamp-spaces-lighting-by-arturo-alvarez-detail.jpg",
+          "https://i.pinimg.com/736x/56/03/7a/56037a6189419ed7cafcde710285ea9b.jpg",
+          "https://i.pinimg.com/1200x/0e/5c/89/0e5c89b0424806d1f3e1032775d6d44b.jpg",
+          "https://i.pinimg.com/1200x/61/d4/38/61d4382e389ee76974be2dddb26f082e.jpg"
+    ]}
+  ],
+  "brand-van-egmond": [
+    {"project": "", "images": [
+          "https://brandvanegmond.com/wp-content/uploads/2023/07/Brandvanegmond-CustomisedFractal-Brass-Residential-KabazBertramBeerbaum-NL-photoKabaz-7.jpg"
+    ]}
+  ],
+  "bbitalia": [
+    {"project": "", "images": [
+          "https://www.bebitalia.com/media/contentmanager/content/B_B_stand_MDW26_2_1.jpg"
+    ]}
+  ],
+  "catellanismith": [
+      {
+          "project": "",
+          "images": [
+              "https://www.catellanismith.com/_next/image/?url=https%3A%2F%2Fwp.catellanismith.com%2Fapp%2Fuploads%2F2020%2F08%2Fimg-pastel-4.jpg&w=3840&q=75"
+          ]
+      },
+      {
+          "project": "Private Villa",
+          "images": [
+              "https://www.catellanismith.com/_next/image/?url=https%3A%2F%2Fwp.catellanismith.com%2Fapp%2Fuploads%2F2025%2F11%2F2025-Img-Pj-Catellani-Private-Villa-by-Pilar-shoots-cop.jpg&w=3840&q=100"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://wp.catellanismith.com/app/uploads/2023/03/Talismano-vert-dettaglio-690x934-1.jpg"
+          ]
+      }
+  ],
+  "cassina": [
+      {
+          "project": "Albini in Present Tense, Alcova 2026",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/library/news/albini-in-present-tense-at-alcova-2026/CASSINA_Alcova_teaser_1752x1312.jpg/jcr:content/renditions/cq5dam.thumbnail.768.768.jpg"
+          ]
+      },
+      {
+          "project": "Fluid, 10 Corso Como",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/library/news/cassina-partners-with-linde-freya-tangelder-for-her-exhibition-fluid-re-collection-at-10-corso-como/CASSINA__Fluid_Joinery_CorsoComo_10_teaser_1752x1312.jpg/jcr:content/renditions/cq5dam.thumbnail.768.768.jpg"
+          ]
+      },
+      {
+          "project": "Sydney",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/library/news/sidney/potrebbe-interessarti-anche/potrebbe.jpg/jcr:content/renditions/cq5dam.thumbnail.768.768.jpg"
+          ]
+      },
+      {
+          "project": "Casa Brivio",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/library/news/casa-brivio/potrebbe-interessarti-anche/potrebbe-interessarti-anche.jpg/jcr:content/renditions/cq5dam.thumbnail.768.768.jpg"
+          ]
+      },
+      {
+          "project": "Waldkliniken Eisenberg",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/projects/health-care/02_details/waldkliniken-eisenberg.jpg/jcr:content/renditions/cq5dam.thumbnail.2200.2200.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/1200x/2a/5c/f1/2a5cf1253e04bc1121f292803a89b47a.jpg",
+              "https://i.pinimg.com/1200x/3b/b5/31/3bb531700655b97b72b6469ed64ba267.jpg",
+              "https://i.pinimg.com/1200x/5f/52/52/5f5252c99f9c3203d4820df17c36bd18.jpg",
+              "https://i.pinimg.com/1200x/a1/dd/9d/a1dd9d038fcba3a78315f064f47e670b.jpg",
+              "https://i.pinimg.com/1200x/dd/91/9e/dd919e6c6c0c04a554b026ad35917f2f.jpg",
+              "https://i.pinimg.com/1200x/be/4d/4c/be4d4c12c0002e9e8b4588078a0f6402.jpg",
+              "https://i.pinimg.com/1200x/5d/57/73/5d577336e188bc87ef5465395fbe1ec5.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/products/s/e/n/556-sengu-sofa/02_ambienti/01_ambienti-sengu-sofa1.jpg/jcr:content/renditions/cq5dam.thumbnail.2200.2200.jpg"
+          ]
+      },
+      {
+          "project": "Esosoft",
+          "images": [
+              "https://www.cassina.com/content/dam/ld/cassina/products/e/s/o/580-esosoft/02_ambienti/001_ambienti-esosoft-new.jpg/jcr:content/renditions/cq5dam.thumbnail.2200.2200.jpg",
+              "https://www.cassina.com/content/dam/ld/cassina/products/e/s/o/580-esosoft/02_ambienti/004_ambienti-esosoft-new.jpg/jcr:content/renditions/cq5dam.thumbnail.2200.2200.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/1200x/e2/5e/be/e25ebed6ce594a7d604f4cf5e1670424.jpg",
+              "https://i.pinimg.com/1200x/77/eb/2c/77eb2cfa70903faef8429142dc19b293.jpg",
+              "https://i.pinimg.com/1200x/df/c4/8a/dfc48a41340af4110df32f0f21c2d079.jpg",
+              "https://i.pinimg.com/1200x/a4/43/8d/a4438d4c89d5c7cd18987a88a2dddbec.jpg"
+          ]
+      }
+  ],
+  "carlhansen": [
+      {
+          "project": "",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Flyden_1801b2.jpg"
+          ]
+      },
+      {
+          "project": "Matsumoto Hotel",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fhotels%2Fmatsumoto%2F_32i0037.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fhotels%2Fmatsumoto%2F_32i0820.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fcontentassets%2F4e1db8f760654ce189c9237526761e98%2F1023-0773_larger_v2.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fcontentassets%2F661b7c6917ce42ac972726bfcef07d13%2Fbunker_t_223.jpg"
+          ]
+      },
+      {
+          "project": "Villa Svartgarn",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fresidences%2Fvilla-svartgarn%2Flyden_1807.jpg"
+          ]
+      },
+      {
+          "project": "Glogauer Strasse",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fresidences%2Fglogauer-strasse%2Fmaberlin08.jpg"
+          ]
+      },
+      {
+          "project": "In the Trees",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fresidences%2Fin-the-trees%2Fin_the_trees_-_photo_by_oni_studio_0024-7.jpg"
+          ]
+      },
+      {
+          "project": "Home Farm by John Pawson",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fcases%2Fresidences%2Fhome-farm-by-john-pawson%2Frk_chs_jp_472.jpg"
+          ]
+      },
+      {
+          "project": "Notes on a Home, Vicky Fogel",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---vicky-fogel%2Fweb_noah3.jpg"
+          ]
+      },
+      {
+          "project": "Notes on a Home, Nanna Flachs",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---nanna-flachs%2F1200x8002.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---nanna-flachs%2Fweb_noah22.jpg"
+          ]
+      },
+      {
+          "project": "Nanna Lagerman",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Flandingpage%2Fwegner-cases%2Fnanna-lagerman%2F20240305-carl_hansen1651.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Flandingpage%2Fwegner-cases%2Fnanna-lagerman%2F20240305-carl_hansen1607.jpg"
+          ]
+      },
+      {
+          "project": "Caroline Hoggarth",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Flandingpage%2Fwegner-cases%2Fcaroline-hoggarth%2F2024.02.29-carl_hansen1165.jpg"
+          ]
+      },
+      {
+          "project": "Noritsugu Oda",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_640,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Flandingpage%2Fwegner-cases%2Fnoritsugu-oda%2Fnoritsugu_oda_ch72_bm0488_bm0865_vintage.jpg"
+          ]
+      },
+      {
+          "project": "Notes on a Home, Caroline & Thomas Vogel",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fimage105-copy.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fweb_1080x13504.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fweb_1080x1350.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fcontentassets%2Ff1a6be7723d54d8b9e27d37a70863c2b%2Fch53_oak_oil_natural_papercord_v1-copy.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black_ch25_oak_oil_-ch008_oak_oil.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black-_-ch25_oak_oil_ch22_oak_oil_-ch292_oak_vidar-0693_-ch008_oak_oil.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black_-ch25_oak_oil_-ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fvla76%2Fvla75_vla76_vla77_oak_sif90.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fvla26p%2Fvla26p.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fow58%2Flifestyle%2Fow58_walnut_oil_sif90_bm1160_walnut_oak_oil_steel_ek61_340_glass_oak_oil_v1.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Flm92c%2Ffb001s_fb001_oak_teak_oil_lm92c_oak_oil_papercord_natural_v1.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Ffootrest--stools%2Fkk87830%2Fkk53130-oak-oil-sif98-bm0864-oak-oilcanvas2col144-kk87830-stained-ash-oil-canvas.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch291%2Fch22_oak_oil_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_ch008_oak_oil_-ch291_oak_oil_serpentine-0118.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch290%2Fch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_v2.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch290%2Fhjw03_black_-ch290_oak_oil_bute_storr-1501-eggshell_ch011_oak_oil.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch101%2Fch103_steel_thor301_ch102_steel_thor301_ch101_steel_thor301_ch108_glass_steel-medium.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch45%2Fch44_ch45_oak_oil_papercord_natural_cu_yetif3290001.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch45%2Fch45_ch44_oak_oil_papercord_natural_ch004_oak_oil_ch72_oak_oil_vidar2222_ek61_o340_mo320_steel_white.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch621%2Fch621-_oak_stainless-steel_sif90_ch621-_oak_stainless-steel_vidar-1062.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch621%2Fch621-_oak_stainless-steel_sif90_ch327_oak_oil_ch621-_oak_stainless-steel_vidar-1062_v1.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch22%2F020020020102%2Fhjw03_black-_-ch25_oak_oil_ch22_oak_oil_-ch292_oak_vidar-0693_-ch008_oak_oil.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fpk1%2Fnatural-paper-cord%2Fbm0121_oak_oil_pk1_stainlesssteel_natural_papercord_bm0568-tapas-board_oak_oil_with-light.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fe020-1395%2Fe20-gallery2-3.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fcoffee-tables%2Fbm0489%2Fbm0489l_oak_oil_papercord_natural_kk75751_kk75752_kk75753_kk75754_80450078_80450079_80480020_80480021_80480022.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fcoffee-tables%2Fch108%2Fhjw03_black_-ch25_oak_oil_-ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_-ch290f_oak-_oil_serpentine-0118.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fch327%2Fch327_teak-mix_ch36_ch37_oak-oil_hjw38_black.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fch006%2Fch36_ch53_oak_oil_papercord_natural_ch006_oak_oil_ek61_o240.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdesk%2Fch110%2Fch111_steel_sif90_ch110_oak_oil_steel.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fch292%2Fch22_oak_oil_hjw03_black_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_-ch008_oak_oil_ch291_oak_oil_serpentine-0118.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Foutdoor-furniture%2Fah502%2Fah502_teak_untreated_v2.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fch72%2Fch72_oak_oil_vidar222_ch008_oak_oil_ch44_oak_black_cu_sif90_ch36_oak_oil_ch006_oak_oil.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fnd52-23%2Fnd55_walnut_oil_nd52-2_oak_oil_sisu-0645_v1.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75%2Flifestyle%2Fecom_4.5_vla75_v2_2.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75s%2Fvla75s_oak_oil_bute-tiree_9667_v5_low.jpg",
+              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75s%2Fvla75s_oak_oil_bute-tiree_9667_v1_low.jpg"
+          ]
+      }
+  ],
+  "cctapis": [
+      {
+          "project": "Omecara",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_Project_260420-Omecara-174-Ronald_Smits-8.jpg"
+          ]
+      },
+      {
+          "project": "MDW26, 6AM",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_extraevents_MDW26_6AM_@Melania-Dalle-Grave-@DSL-Studio9.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_extraevents_MDW26_6AM_@Melania-Dalle-Grave-@DSL-Studio8.jpg"
+          ]
+      },
+      {
+          "project": "Nilufar Grand Hotel",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_custum_rug_byMartino_Gamper_12_GC_NILUFAR_NILUFAR-GRAND-HOTEL_FUMOIR_PH-Alejandro-Ramirez-Orozco.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_Custom_Rug02_GC_NILUFAR_NILUFAR-GRAND-HOTEL_MDW26_PH-ALEJANDRO-RAMIRREZ-OROZCO.jpg"
+          ]
+      },
+      {
+          "project": "MDW26, Studio Utte",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_extraevents_MDW26_studioutte_phGiulioGhirardi_10.jpg"
+          ]
+      },
+      {
+          "project": "MDW26, Meritalia",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_extraevents_MDW26_MERITALIA_@ErcoliGiancola_7.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_STOFF_FRU%CC%88HLING_2026_PatriciaUrquiola_Ripple_2_2026-03-25-114534_sszy.jpg"
+          ]
+      },
+      {
+          "project": "Sabine Marcelis, Casa Valner",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_SabineMarcelis_Roll_CasaValner_PhotoByAlejandroRamirezOrozco_12.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_SabineMarcelis_Roll_CasaValner_PhotoByAlejandroRamirezOrozco_17.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/cc-tapis-Chiara-Bersani_Deserters_02_Ph.-Finn-Curry-GAMEC_11.jpg"
+          ]
+      },
+      {
+          "project": "Vitra Haus Loft",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_project_VitraHausLoft_2024_11-scaled.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_project_VitraHausLoft_2024_5-scaled.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_project_VitraHausLoft_2024_4-scaled.jpg"
+          ]
+      },
+      {
+          "project": "Rooms of AM Tacheles",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-madeinmilanservice-ROOMSofAMTACHELES-StudioUttejpg.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-madeinmilanservice-ROOMSofAMTACHELES-LottoStudio-3_2025-05-21-093235_bpxx.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-madeinmilanservice-ROOMSofAMTACHELES-StudioUtte-5.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-madeinmilanservice-ROOMSofAMTACHELES-LottoStudio-1.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-madeinmilanservice-ROOMSofAMTACHELES-LottoStudio-2_2025-05-21-093508_azvn.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/cc-tapis-CORMIO-fasion-week-SS-2023-7.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/cc-tapis-LambertFils-project.jpg"
+          ]
+      },
+      {
+          "project": "Nomade",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/CCTAPIS_NOMADE2478.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/CCTAPIS_NOMADE2569.jpeg"
+          ]
+      },
+      {
+          "project": "Crisscross by India Mahdavi",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-mobilia-Sydney-crisscrossbyindiamahdavi-3.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis-mobilia-voguevipportrait-crisscrossbyindiamahdavi-5.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/TRULS_AD4524.9.webp"
+          ]
+      },
+      {
+          "project": "Raag by Doshi Levien",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w2400/cc-tapis_Raag-by-Doshi-Levien_Photo-by-Alejandro-Ramirez-Orozco_01.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_rtb_collections_DoshiLevien_Raag_runner_2025-12-23-151704_fjug.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/cc-tapi_Ceremony_MaeEngelgeer_rug_CarlottaManaigo_ph.jpg"
+          ]
+      },
+      {
+          "project": "Claude Cartier",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/CLAUDE-CARTIER_CC-TAPIS-_-8.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-claude-cartier-decoration-plein-cadre-photoshooting-motel-scaled.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/F.jpg"
+          ]
+      },
+      {
+          "project": "Omote by Mae Engelgeer",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_Ready-to-buy_rug_collection_MaeEngelgeer_Omote_ph_Daniel-Faro.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_rtb_collections_MaeEngelgeer_Omote_Fuyu.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_rtb_collections_CharlesAntoineChappuis_OndaOnda_Agua.jpg"
+          ]
+      },
+      {
+          "project": "Villa Clea",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_villa-clea_PatriciaUrquiola_mamanonmama_collection_04.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_villa-clea_PatriciaUrquiola_mamanonmama_collection_07_2024-09-26-101035_fvhz.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_villa-clea_PatriciaUrquiola_mamanonmama_collection_010.jpg"
+          ]
+      },
+      {
+          "project": "Bethan Laura Wood",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_BethanLauraWood_SoftWoodRug_Warm_ph_Daniel-Faro.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-bethan-laura-wood-otomi-photoshooting-motel-scaled.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_KwanghoLee_Tcoc_composition3_ph_Daniel-Faro-1.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-LCAtelier-dagalla-formation-2-edoardo-piermattei.jpg"
+          ]
+      },
+      {
+          "project": "Odd Matter, Car Park",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-TCP-by-Odd-Matter-Creative-Direction-Motel-409-Photo-by-Carlotta-Manaigo-Set-design-by-Sonia-Pravato-Costanza-Manzoni-Location-Damir-Domas-Private-House-03.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/ODDMATTER-CarPark-MAIN-3.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_project_PanoplieWallFlooringSystem_TERRAZZO-007-scaled.jpg"
+          ]
+      },
+      {
+          "project": "Mexico City Art Week",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-artweek-mexico-2024-cover-2.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/05_HighRes_CCTapis-Nilufar-Studio84_MexicoCityArtWeek_PhotoByAlejandroRamirezOrozco.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-formafantasma-gramma-b-photoshooting-motel-scaled_2024-07-26-071836_hvvu.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-patricia-urquiola-pipeline-photoshooting-motel-scaled.jpg"
+          ]
+      },
+      {
+          "project": "David Nicolas, Plasterworks",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_Arflex_David-Nicolas_PlasterworksC_BlackWhite_1_rug.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-david-nicolas-plasterworks-c-photoshooting-motel-scaled.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-david-nicolas-naif-photoshooting-motel-scaled.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_rtb_collections_ChiaraAndreatti_Viceversa2.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_Ready-to-buy_rug_collection_PatriciaUrquiola_CryptidSquare_Air_Detail_ph_Daniel-Faro.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_Ready-to-buy_rug_collection_YabuPushelberg_TesseraOverlay_Rust_ph_Daniel-Faro%CC%80.jpg.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-MINI-INFINI-SOIE-pure-rug-main.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc_tapis_04_048-low.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/VOGUE-LIVING-AUSTRALIA-02.jpeg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis_Marina_Denisova_SegniMinimiBW-1.jpeg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-Chiara-Andreatti-Primitive-Weave-4-undyed-Bolzan-Adv_2024-09-25-140939_fldb.jpg"
+          ]
+      },
+      {
+          "project": "Christophe Delcourt",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/c-tapis-LACK-pure-rug-Christophe-Delcourt-MAIN.jpg",
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-LESS-pure-rug-Christophe-Delcourt-main.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cc-tapis-media.fra1.cdn.digitaloceanspaces.com/_w3200/cc-tapis-Ombra-by-Muller-Van-Severen-Creative-Direction-Motel-409-Photo-by-Carlotta-Manaigo-Set-design-by-Sonia-Pravato-038-Costanza-Manzoni-Location-Damir-Doma%E2%80%99s-Private-House-01.jpg"
+          ]
+      }
+  ],
+  "classicon": [
+    {"project": "", "images": [
+          "https://www.classicon.com/assets/images/d/ClassiCon-the-Park-Hotel-Member-Club_Adjustable-Table-8bvcr6w6fjmfq51.jpg",
+          "https://www.classicon.com/assets/images/w/ClassiCon-the-Park-Hotel-Member-Club_Bibendum-Adjustable-Table-x2xkw799kmsbp89.jpg",
+          "https://www.classicon.com/assets/images/2/ClassiCon-Private-Project-Adjustable-Table_Photo-Matteo-Verzini-4cm46w6z54c7pwa.jpg",
+          "https://www.classicon.com/files/classicon/News_and_Stories/News/2201%20-%20Corker%20-%20New%20Product%202022/ClassiCon-corker-no3-photo-kain_3x.jpg",
+          "https://www.classicon.com/assets/images/c/CLASSICON%202025_%E2%94%AC%C2%AE%20ANDREAS%20HOERNISCH%2015.2_MXM-k9x2a15vb4n4dmr.jpg",
+          "https://www.classicon.com/assets/images/p/ClassiCon-house-soft-stone-sofa-corker-no1-roattino-floor-lamp-materia-table-hz-image-reawote-6h2egvjb067bazq.webp",
+          "https://www.classicon.com/assets/images/n/ClassiCon-centimetre-rug-roattino-floor-lamp-day-bed-occasional-table-photo-hassos-d3hvv89kggq5516.webp",
+          "https://www.classicon.com/assets/images/n/ClassiCon-project-Volkshaus-Basel-Hotel-Junior-Suite-0873-volkshaus-lounge-chair-stool-side-table-photo-robert-rieger-yvbs9n1ep702zar.jpg",
+          "https://www.classicon.com/files/classicon/Collection/Seating%20Furniture/Bibendum%20Armchair/ClassiCon-Bibendum%20Armchair-header_2x.jpg",
+          "https://www.classicon.com/files/classicon/Projekte/ClassiCon-project-hotel-sls-lux-brickell-bell-table-interior-YabuPushelberg-photo-chris-tamburello_thumb_0-100_1500x1000.jpg",
+          "https://www.classicon.com/assets/images/w/ClassiCon-project-hotel-hermitage-bar-corker-architect-HdM-photo-paolo-abate-wzm58gy6fy6g8xj.jpg",
+          "https://www.classicon.com/assets/images/0/CC-Gabriel-Tan-Porto-Home-Story_Ines-Silva-Sa-yr39t8r0ck7fytx.webp",
+          "https://www.classicon.com/assets/images/0/CLASSICON%202025_O%CC%82o%CC%88%C2%BC%E2%94%AC%C2%AB%20ANDREAS%20HOERNISCH%2012-RET1_MXM-y04csx8j1nrv2gp.jpg",
+          "https://www.classicon.com/assets/images/j/ClassiCon-corker-no3-odin-sofa-corker-no2-corker-no1-photo-kain-vzhky5hp74ppvh0.jpg",
+          "https://www.classicon.com/assets/images/7/ClassiCon-house-front-soft-stone-materia-table-selene-pendant-lamp-corker-no1-image-reawote-tbmcrja15ym21cq.webp",
+          "https://www.classicon.com/assets/images/s/ClassiCon-apartment-plissee-floor-lamp-soft-stone-sofa-faubourg-rug-bell-table-plissee-pendant-lamp-hz-image-reawote-8s9fpj47rnz7dqb.webp",
+          "https://www.classicon.com/assets/images/z/ClassiCon-bell-side-table-marble-taidgh-shelf-a-euvira-rocking-chair-lantern-light-floor-lamp-tadaima-console-hz-photo-hassos-cq5f5ps8kvyhb6v.webp",
+          "https://www.classicon.com/assets/images/r/ClassiCon-orcus-home-desk-venus-chair-orbis-lamp-photo-hassos-k984hd4enxf31x1.webp",
+          "https://www.classicon.com/assets/images/1/ClassiCon-munich-lounge-chair-munich-coffee-table-munich-sofa-photo-seelen-bk99a8nzpxmw5wq.webp",
+          "https://www.classicon.com/assets/images/5/ClassiCon-tube-light-munich-table-sofa-coffee-table-lounge-chair-diana-b-side-table-photo-holzherr-6z0dj3p7wky8455.webp",
+          "https://www.classicon.com/assets/images/6/ClassiCon-la-lune-rug-munich-lounge-chair-bell-coffee-table-bell-side-table-photo-hassos-zhbftzs4g7jyr38.webp",
+          "https://www.classicon.com/assets/images/0/ClassiCon-lantern-light-floor-lamp-munich-lounge-chair-taidgh-shelf-d-photo-hassos-y0neaqyzgwb7sz4.webp",
+          "https://www.classicon.com/assets/images/3/ClassiCon-euvira-rocking-chair-materia-side-table-euvira-lounge-chair-materia-long-table-vt-photo-kellermann-dq7shrrwprnh7hy.webp",
+          "https://www.classicon.com/assets/images/g/ClassiCon-materia-series-kilkenny-rug-shia-vase-orange-lota-sofa-selene-pendant-lamp-plissee-floor-lamp-off-photo-kellermann-53845hkyhm14cdp.webp",
+          "https://www.classicon.com/assets/images/v/ClassiCon-tube-light-de-stijl-rug-adjustable-table-e1027-monte-carlo-sofa-photo-hassos-m51zhwfbe018kw8.webp",
+          "https://www.classicon.com/assets/images/y/ClassiCon-aristo-armchair-chrome-bell-dining-table-plissee-pendant-lamp-photo-hoernisch-114ts0fzc1ppw1b.webp",
+          "https://www.classicon.com/files/classicon/Collection/Seating%20Furniture/Bonaparte%20Armchair/ClassiCon-Bonaparte-Armchair-header_2x.jpg",
+          "https://www.classicon.com/assets/images/7/ClassiCon-bibendum-armchair-pli-side-table-bonaparte-armchair-artwork-redjaian-photo-hassos-kv7v4g6cj1cfden.webp",
+          "https://www.classicon.com/assets/images/c/ClassiCon-roattino-floor-lamp-bibendum-armchair-petite-coiffeuse-photo-holzherr-hvfqysmx4ejjnc3.webp",
+          "https://www.classicon.com/assets/images/5/ClassiCon-rivoli-table-1-photo-holzherr-j62cmmfm869n10j.webp",
+          "https://www.classicon.com/assets/images/t/ClassiCon-pallas-table-mars-chair-funky-kitchen-photo-halard-8vq4h4641cn63c0.webp",
+          "https://www.classicon.com/files/classicon/Image%20Gallery/lifestyle%20images/elias%20hassos/ClassiCon-triton-bar-stool-bowl-cypris-mirror-180-bell-light-pendant-lamp-roquebrune-rug-photo-hassos.jpg",
+          "https://www.classicon.com/assets/images/m/ClassiCon-cassis-rug-nettle-bow-coffee-table-aluminium-cypris-mirror-odin-sofa-photo-frinzel-q8rcsgnr1wstgjc.webp",
+          "https://www.classicon.com/assets/images/c/ClassiCon-plissee-floor-lamp-cypris-mirror-venus-chair-pli-table-taidgh-shelf-d-photo-hassos-4d9pcx280njk4hk.webp",
+          "https://www.classicon.com/assets/images/g/ClassiCon-saturn-stool-ulisse-daybed-diana-c-side-table-saturn-coat-stand-photo-holzherr-4p7b4btxck3271n.webp",
+          "https://www.classicon.com/assets/images/m/ClassiCon-cassis-rug-adjustable-table-e1027-black-version-bibendum-armchair-vt-photo-hassos-7kk6cs40ss4m33a.webp"
+    ]}
+  ],
+  "dcw": [
+      {
+          "project": "Focus X5",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X5_15.webp?v=1771858033&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X5_07.webp?v=1771845406&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X5_17.webp?v=1773242449&width=2048"
+          ]
+      },
+      {
+          "project": "Delumina Wall",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_DELUMINA_WALL_06.webp?v=1772554846&width=640",
+              "https://dcw-editions.com/cdn/shop/files/DCW_DELUMINA_WALL_08.webp?v=1772536344&width=1280"
+          ]
+      },
+      {
+          "project": "Focus X4",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X4_01.webp?v=1771883357&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X4_03.webp?v=1771883418&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_FOCUS_X4_22.webp?v=1773162809&width=2048"
+          ]
+      },
+      {
+          "project": "In the Tube 120-700",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_IN_THE_TUBE_120_700_20.webp?v=1772813513&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_IN_THE_TUBE_120_700_21.webp?v=1772813630&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_ITT_120_700_17.webp?v=1772811951&width=2048"
+          ]
+      },
+      {
+          "project": "Light Me Tender",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_LIGHT_ME_TENDER_06.webp?v=1772537496&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_LIGHT_ME_TENDER_02.webp?v=1772537525&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_LIGHT_ME_TENDER_10.webp?v=1774544219&width=1280"
+          ]
+      },
+      {
+          "project": "Mezzaluna",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_MEZZALUNA_14.webp?v=1771604071&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_MEZZALUNA_23.webp?v=1771848421&width=1280"
+          ]
+      },
+      {
+          "project": "Mono",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_MONO_08.webp?v=1773397033&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_MONO_10.webp?v=1773396996&width=1280"
+          ]
+      },
+      {
+          "project": "Munari X10",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_MUNARI_X10_17.webp?v=1771881144&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_MUNARI_X10_15.webp?v=1771881123&width=1280"
+          ]
+      },
+      {
+          "project": "Seagull Wall",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_SEAGULL_WALL_05.webp?v=1772046403&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_SEAGULL_WALL_12.webp?v=1772191140&width=2048"
+          ]
+      },
+      {
+          "project": "Munari X8",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_MUNARI_X8_08.webp?v=1771604727&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_MUNARI_X8_12_d1e423cc-43f1-4460-9d2f-f455b749ab18.webp?v=1772202576&width=1280"
+          ]
+      },
+      {
+          "project": "Munari 6",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCWeditions.Munari.6.Lifestyle.04.jpg?format=webp&v=1772201936&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCWeditions.Munari.6.Lifestyle.02.jpg?format=webp&v=1772201936&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_MUNARI_X6_11.webp?v=1772201893&width=1280"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://dcw-editions.com/cdn/shop/files/DCW_ITS_TABLE_CORDLESS_GG_08.webp?v=1772480193&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_SOUL_HP_01.webp?v=1772704558&width=682",
+              "https://dcw-editions.com/cdn/shop/files/Deskopolitain-10.png?format=webp&v=1770735433&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/Atelier_SL-7.png?format=webp&v=1770733497&width=640",
+              "https://dcw-editions.com/cdn/shop/files/Residence_Wang.png?format=webp&v=1770803675&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/VERRIDE_PALACIO_DE_SANTA_CATARINA-4.png?format=webp&v=1770823830&width=640",
+              "https://dcw-editions.com/cdn/shop/files/Hotel_abbaye-7.png?format=webp&v=1770730845&width=640",
+              "https://dcw-editions.com/cdn/shop/files/DCW_HCS_250_09.webp?v=1771880251&width=640",
+              "https://dcw-editions.com/cdn/shop/collections/DCWeditions.Aaro.Table.Lifestyle.03.jpg?format=webp&v=1768294583&width=640",
+              "https://dcw-editions.com/cdn/shop/files/DCW_ITA_X3_18.webp?v=1772644944&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCWeditions.InTheTube.120-1300_QC-Lifestyle.02.jpg?format=webp&v=1772643449&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_BS5_03.webp?v=1771856461&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_ORG_WALL_02.webp?v=1775553587&width=1280",
+              "https://dcw-editions.com/cdn/shop/files/DCW_POUDRIER_19.webp?v=1772534341&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_ROSALIE_L_02.webp?v=1772475068&width=2048",
+              "https://dcw-editions.com/cdn/shop/files/DCW_CHAUMONT_190_12.webp?v=1772700529&width=640"
+          ]
+      }
+  ],
+  "desede": [
+    {"project": "", "images": [
+          "https://desede.ch/cdn/shop/files/desede_Projekte_BeachHouse-8.jpg?v=1742056213",
+          "https://desede.ch/cdn/shop/files/desede_Projekte_lamarel_11.jpg?v=1742169691",
+          "https://desede.ch/cdn/shop/files/de-sede-Titel_01.jpg?v=1751874302",
+          "https://desede.ch/cdn/shop/files/desede_Projekte_Space_Copenhagen_Mammertsberg_Photography_by_Joachim_Wichmann.jpg?v=1742156468"
+    ]}
+  ],
+  "desalto": [
+    {
+        "project": "Instagram, @desaltospa",
+        "images": [
+
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/747913435_1689903356475260_2494698990337495177_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzk0Mzg5MzkxNTAwMjU3MDIyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=OTZxmmVP1HUQ7kNvwFggiLx&_nc_oc=AdqrfytaxdYw3wDv8Ymx2Xfw-ZTzzkIKwSP2waKqxL1gfuQLapsmYy84l5Mt0V8Glgs&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=eayWlS2QEjDDkulIUeMBPg&_nc_ss=79689&oh=00_AQDWxnG6Qaxi72FRW3PIuR_JO4v5Xmn81vDSNpE67YI7cw&oe=6A6ABAA3",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/740486569_1683215853810677_453869698087707625_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzkzNzM3MDkxMTYwMjgxODIxMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=XmgJ7LJyW78Q7kNvwFVlIWG&_nc_oc=AdqSrf_27W20Lat3H-K-FD-56nZwkgGCnau2va0VdMSSB8xUO_HgSeusrr8mNvA4qcM&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=-Kn7Qhpcml_ZufOr04DjWA&_nc_ss=79689&oh=00_AQAQN330AjoXSXUWEh9qvUTfKlKydyOz4BxP3XtgAiNNYQ&oe=6A6AA65F",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/731808900_1673792624753000_3148812790450473692_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzkzMDg0NzkyMzI1MzU0MzcxNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ofAXneDRv34Q7kNvwHvHN7W&_nc_oc=AdoUFp3nVc_B3JpkFJVnZDw3Q4Y5Cz1wz6X4PPOfANGALTllCUo00k4DxcHJryrVXVs&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=kkKWeRWxNtvKRP2oen7AJw&_nc_ss=79689&oh=00_AQBCd3yk42wV31cc3XKqMm8qhcHImSeCnCZMD02cK21VyA&oe=6A6A9D35",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/730498298_1670014918464104_317198567730550956_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzkyNzIyOTQ1Nzk5MjQ2NjIzNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=QFjfgXSgLzQQ7kNvwGBrPJ9&_nc_oc=AdpkS9HxQBcHxHVTmUuoOQnWpC6aeFX9mPUn0GSw-DcLjFCv-yUSXTNC2DfHZjfCQWY&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=x2G_An3eoQzs_gGuuDyI9w&_nc_ss=7b689&oh=00_AQB5o1yj9VwghKJECgnnz1Ei0Hn3CPs_1M8EUJuElXVvEw&oe=6A6AC648",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/717270241_1653759160089680_673558341854144699_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzkxNTU0OTM3NzA3NTU3MjU3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=geHzXoHL3nUQ7kNvwGV7Sqi&_nc_oc=AdqE6lTaxuOZJL1R_XSqnx-3I_8hx8rrIAPA4MMGptrXIwTDqjNZlo995nkP3-gqVZA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=cQbCth9aL8at7bzAvJkvhA&_nc_ss=79689&oh=00_AQAUTtd0McPmzotNZVSWdBcs26BALm-GewfHqwTyjZApLw&oe=6A6AA854",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/723556801_1659907472808182_1040763918109502828_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzkyMjE1MDY1NjMyODIwMzYyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=by-owrUd-Y4Q7kNvwFwTJ78&_nc_oc=AdpRq8riys-FKbCyBhlmyXfBy04rlWzpqZdiBCiTXw7FRnYKl7XLliWBpDA5RpR9rEE&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=x4OAdhUnuy2jCNRaDtI-2A&_nc_ss=79689&oh=00_AQC02pvucd3iZ8VPN1kIJRM9hCBdE3CDMv0onWWzEmRahw&oe=6A6AA9C5",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/723626661_1659908026141460_2735484317809645762_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzkyMzYwMDE2MTU3ODQ3MTExNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=NymzG4BAKPAQ7kNvwEPrr5J&_nc_oc=AdrFeyCFZsU8SCq7ax8b5H3wgo7aNqKWsDbFGY0ttZtGgzIpIlbKdGzSMt86RR8ax88&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=eyA9VnTRWaKud9fYi8XjCw&_nc_ss=79689&oh=00_AQCb69hbWhmaDN9gcJEbz9mSgAl6rfrMBWA_aRtI32c6PA&oe=6A6AC8EC",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/713943652_1648777747254488_345024529867623134_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzkxMTk3NTg5MjUxMjQwMTIxMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=2fRVahbAT0IQ7kNvwGYRzoJ&_nc_oc=Adq62qx6gPmgqhPvamPGe_UU3oE6s05omJtY7Um8VH1s8BDkJCcM1HVb0ahtddVzUBw&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=GjOU6Lil9AzczpRKjqwrVQ&_nc_ss=79689&oh=00_AQAK_qeElvuuD8A2wdQ4IacIz8OjKhSQRm00-HNYuSNi6Q&oe=6A6AAF31",
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/653910830_1570193971779533_814182721897519183_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzg1NDc2MTYyODQ2NzE0ODY0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=K7iqN5mkFN0Q7kNvwE7Vbka&_nc_oc=AdrVXKNQQm2_RG19pFLa1uHXQ9EZ6y729hSsJWj4H_-ddzrMHmLgSHZRDz-EIPCplGM&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=hGjSZsDXSoBcP8HlYsHwEg&_nc_ss=79689&oh=00_AQBWlQWfzgOvT8OgHfh1mGYxrJbO29XbqAhlDGjLb64uLA&oe=6A6ABB57",
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/651693502_1565572845574979_7348800340450731417_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=Mzg1MTA5NjQ2ODQ5ODEzODAzNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=6kQ2QYLIJeYQ7kNvwFOlBwS&_nc_oc=Adq80d38OtqxLkHarEuY5YEzOwtFLakHTW343Tm4wgLbXV4Rrm06XS-qobv02PA7ouM&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=b2m5dynM5D6HdxdlRpB4Qg&_nc_ss=79689&oh=00_AQBQEnHzcAqKLi0HUBXpJenCXtmEvaZWQr6QLxE7EDoSlg&oe=6A6AAD89",
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/638000024_1544193251046272_1751909771377792503_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzgzNTIwNzczMzkwMTkxOTAwNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=vxh6pEcxJAoQ7kNvwFnYqPB&_nc_oc=AdoecWrun85EuiT-iWGFZalavJmrrldzPcBHMN1Q1PslWJGEfMspdxTmG-xAgQQeZ3U&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=JSHk5oVwk5YfTFaIJBRiEQ&_nc_ss=79689&oh=00_AQBrq_L9b6ucgKIxO1OXUx7MmCiAYBnvQAGUO_BFA-PGTg&oe=6A6AA779",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/627470524_1528382499294014_1262656764420001758_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzgyNDMzNjA4NTQ5MzU4MzE1Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=1_a_aNYK1toQ7kNvwEp9k3e&_nc_oc=AdoeAazJUZZkOcCzLIYnMSPKs3znHn1rZpx9nXxFG12omC2x6R2orHfdpsF7T56C_iQ&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=by7H-bTm0am4MNcFBU5eeA&_nc_ss=79689&oh=00_AQDGmn-VdfsxbKJNxjtr7zBxq2JcPYdVfz2D3GwaglG_tA&oe=6A6AA790",
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/626427204_1526515386147392_7930877636889296820_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzgyMjkwNjA3OTM4NzgyNzY5MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=U-JtSmQKYJcQ7kNvwEf4rEB&_nc_oc=Adrw7r3dRnaJYfPZ1mjLG0hvZ4axpaAg-KRKjL1O_CdD0VPWgepNNaKtQkQmRDmodDQ&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=LKzS40UMTatFNWw6f9ts4g&_nc_ss=79689&oh=00_AQCg6pqfFnZjpX2zmLljzdvBwMKK-pYx53g1npGtqT8i3g&oe=6A6AA842",
+            "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/615820693_1507795501352714_2871452658489945037_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzgwOTg5NjU1NTc0MzgwMjI2MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=1q6skAqowLEQ7kNvwFi1qji&_nc_oc=AdqmK3PIglDOoJ-I47KSCFzvE1OFpQEv1Ho0-ZH5viW3FxnSUjnDe1qpsSgp1YMaZ1Y&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=2A3olfdoeejmjmyQDtI_Fg&_nc_ss=79689&oh=00_AQBHBPOoncxCLEe10J460Te10e-IOh3_Ket40VinpP_rjg&oe=6A6AC930",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/613180137_1500643872067877_5198603108935150482_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzgwNDc1NTg4MDMwMzg3MTkxMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ITUXomV6yloQ7kNvwEWm0a6&_nc_oc=AdqQ5bcR6olQmsXrzjsMjsOfgf2uSZ2KyC_nB-IUSoW7ATzpBPNnGZn4KhRPA3Fmtoo&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=tHJsTqIT-xIQlhG0E8Vj5Q&_nc_ss=79689&oh=00_AQCgH54XCmsNEvgo5z7zsNhmx4T1YJFhFKkziO4clcLTzA&oe=6A6AD0E4",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/606459868_18414045628137204_2063572090924806900_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzc5NDYyNTEwMjEyNjg1NDA3Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=I11wk2fN0bIQ7kNvwHrTZol&_nc_oc=AdqleJuJLwSiZgRuiwp7reYLvxU8iTG8bCgmimb-eLu8ZVX2ILxX8MhM2dl34bb5PfI&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=eLmpBpd5vbHtbDRjSyoP2Q&_nc_ss=79689&oh=00_AQAZCk36KXyfS4U6BCcV5TCTM6_gaR0vF-10W_JwLJkjWw&oe=6A6AC15A",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/600194154_1480622554070009_5993964514557735418_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzc5MDk5NjU2NzY1OTg1ODA2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=gV4j6IEgnIgQ7kNvwHrHB3k&_nc_oc=AdpiwaEaXTNr3LdAi0gcx9F2ptWhXKTV6p31Yk151gTn5lwgT4Pq10rnC6BcaMK6nMc&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=edP01lSF8VFV3MU4QPhxTQ&_nc_ss=79689&oh=00_AQBqsZAOBYg24zOY64F6gfi27BzC7D3QTB8ejOMYFHvk1Q&oe=6A6AA1C9",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/592172561_1467980838667514_8574177351246120809_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzc3ODMwNDYxOTUwOTA0MDY5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=c8T4V11JyH0Q7kNvwHv2K1o&_nc_oc=Adp7k3H42s0WB6-CliJEQ3x-8sZ6VabPhC6mvKgLhGqxCBOOEYI_dUvhp60KjUUUZ8c&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=0BodSolE0MeAxkPkT1mPHg&_nc_ss=79689&oh=00_AQC2pHh42J_7aRMWsZSG-Fnawu0lA5e-ySc9NcssXqTXqw&oe=6A6ACF61",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/587300821_1463091922489739_1718858058783235564_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzc3NDI3ODc2MzE5NTM4NTQ5Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=pk-s2wX742oQ7kNvwG2zwKw&_nc_oc=AdoSnjWaXsw6vWe5wTY2iFC-S8c2WByALy-2XbRJohjVMWL1vusnZF9jhueyrCthdFA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=Dov7avjKslcBt3lshKsKXA&_nc_ss=79689&oh=00_AQC69g5t0v4PVutZu9OMkIPv31UnraATyJwwYtLazHU9aw&oe=6A6AA4AD",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/585415371_1458467949618803_2687602486488018255_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mzc3MDY2MzA3ODIxMjc0NDE3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=lIFCOZz2o_UQ7kNvwGIQAbz&_nc_oc=AdrAEcjkufKV0Vow2F5PxJFxLJ6nC_FhK5WuTvYKuP5S6KA5ZRul0tNiL2xklb3QymE&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=TNmO1RVCJuAv33hY4HgxJw&_nc_ss=79289&oh=00_AQAR-azl3IANzo6xiVgClABli05lMsh6hXeR7I4jDeM_kg&oe=6A6ABCE3",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/571125953_1434441685354763_1017668435518734965_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzc1MjU4MzI5MTgzNzg0MDYxOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=BaUCmMi-WHYQ7kNvwHrDirq&_nc_oc=AdoUtnVm9e0gt52tYVaCXBR9HdKXqQhflPdfrhkHWWM1A14-pgxaEr5wrCs_Sby_ufw&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=XylMH0cZMdTQ5rJjAOdWbQ&_nc_ss=79689&oh=00_AQCACF6WOH10aFXRWGOuCda69YDtxDbhXLaXPkyxnaukQg&oe=6A6ACAFF",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/557257414_1413353420796923_8516906435279697620_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzczODA4NDA5NTE1OTczMTAxOA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=FpHo3OBtz3gQ7kNvwHe9YCM&_nc_oc=Adr85o7Uw4x5NO9nKu3VPc5FeRuqeAaMI-Mhf2CZlhXrOm7Vh_f7LBIzcMgS1zFzQdk&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=QQ7EnXQ6e_2Y1M9Jyv2MLA&_nc_ss=79689&oh=00_AQC35X_cGIkSAN4pcwjrWNfUyXfy02hCkTsz3bEyuAq1GQ&oe=6A6AA42D",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/622861330_18072418937619401_4046253354133595043_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzUxNDczNjE0OTA1Mjc0NjY1MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=DvUovj2Q8PQQ7kNvwEB0bXN&_nc_oc=AdpfvhprDaNfNq41qugRAcZMVK6pBYVr0aq1neeiFrTIMLkgG64HjXyAT5f7xYxH-7Y&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=SBk1NGJHnwBjA2VBATTrDQ&_nc_ss=79689&oh=00_AQDIBiUjpdcnmbtioCw_5E9LN4kKF0oAo2cO1YSWulePHg&oe=6A6AB1D3",
+            "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/622483687_18076002971580668_5432195444591008040_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzA0MjI0MjY1NzkwNzY3NTIyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuNzIwLnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=w1vF1YnQ9rkQ7kNvwGJ8taK&_nc_oc=AdooW6Yf1fg5tbDWKzSp37zh22CODyNWrNBJfLOX_4SbK9HQ8aJsRK9NAJyZvz4ZHzs&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=O--JQHS_ENZ0IeUHqTOkeQ&_nc_ss=79689&oh=00_AQCr6kH-X_ZuRJmWBz1daXg2gxHLdeb4SWyWMSxNgmeS3g&oe=6A6AAD41",
+            "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/627981949_18311041792271963_7688466674633256924_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mjk1ODg5MzYxMDYzNjEwNzE5Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=8PvEW0rJO4wQ7kNvwFitear&_nc_oc=AdrnOYXGQsj011WRaeFfsQIDk5TYcddNnZ_YkrB_Uk6kWbkF5HM3jJLvt1KOaaJZswo&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=gvWq5zM_Cw9cg-FLhyrXFw&_nc_ss=79689&oh=00_AQD5S_0QLe0cM_qoqbQcDrpwC3I91YKPDlK8_R8w499uZw&oe=6A6AC584"
+
+            ]
+    },
+      {
+          "project": "Paul Ramsay Foundation",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/SJB_Paul_Ramsay_Foundation_230222210537.jpg",
+              "https://www.desalto.it/ContentsFiles/SJB_Paul_Ramsay_Foundation_230222210683.jpg"
+          ]
+      },
+      {
+          "project": "Villa Versilia",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/Desalto_2023_VillaVersilia_Plus_01.jpg"
+          ]
+      },
+      {
+          "project": "Villa Mediterranea",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/Desalto_2023_VillaMediterranea_Plus_02.jpg"
+          ]
+      },
+      {
+          "project": "Atico Curvo, Valencia",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/Desalto_2024_Atico_Curvo_Valencia_Spain_Oriz_02.jpg"
+          ]
+      },
+      {
+          "project": "Villa Nadmorska",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/Desalto_2023_VillaNadmorska_Plus_02.jpg",
+              "https://www.desalto.it/ContentsFiles/Desalto_2024_VillaNadmorska_Orizz_01.jpg"
+          ]
+      },
+      {
+          "project": "Messina",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/messina_inside_0001.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.desalto.it/ContentsFiles/51becf32-0755-4c28-8ac9-3b34e911fad7.jpg",
+              "https://www.desalto.it/ContentsFiles/705e4dba-9372-4d30-adad-f932d3646d52(0).jpg"
+          ]
+      }
+  ],
+  "fiam": [
+    {"project": "", "images": [
+          "https://www.fiamitalia.it/wp-content/uploads/2022/12/PUR-1_2000_16noni.jpg",
+          "https://i.pinimg.com/1200x/9d/cd/f7/9dcdf75c82676230218214efe9c30858.jpg",
+          "https://i.pinimg.com/1200x/03/55/f2/0355f2a2e2640f2519d9da33a64b91de.jpg"
+    ]}
+  ],
+  "edra": [
+      {
+          "project": "Sherazade",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/cms/960/720/100_50_68/cms/custom/files/100067/ct50012_id234264_t1/Edra_Sherazade_Ph_Credits_PIETRO_SAVORELLI.jpg"
+          ]
+      },
+      {
+          "project": "Donosti",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100226_t1/6_ADRIANA_NICOLAU_Donosti_Oct24_D_Schafer_033-min.jpg"
+          ]
+      },
+      {
+          "project": "Boccaccio 3",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100220_t1/2506ABNORMAL_INTERIOR_BOCCACCIO_3_02.jpg",
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100220_t1/2506_ABNORMAL_INTERIOR_BOCCACCIO_3_09.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100225_t1/_MRC1180-Modifica.jpg",
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100225_t1/_MRC1995-Modifica.jpg"
+          ]
+      },
+      {
+          "project": "TAOL Interior",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100203_t1/1_HR_IA_Interior_TAOL_012_2-min.jpg"
+          ]
+      },
+      {
+          "project": "Casa Aversa",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100173_t1/Casa_Aversa_6.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/rem/1920/1080/100__/custom/files/114434/ct10032_id100167_t1/_DSC5298.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/rem/1920/1080/100__/custom/files/114434/ct10032_id100110_t1/001_PMB_1807.jpg"
+          ]
+      },
+      {
+          "project": "RH Select",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100103_t1/RH_Select_9.jpg",
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100103_t1/RH_Select_5.jpg"
+          ]
+      },
+      {
+          "project": "Purezza dei Volumi",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/rem/1920/1080/100__/custom/files/114434/ct10032_id100156_t1/Purezza_dei_Volumi_3.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100079_t1/DSC_0907.jpg",
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100079_t1/DSC_0923.jpg",
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100079_t1/DSC_1074.jpg"
+          ]
+      },
+      {
+          "project": "Cantieri San Lorenzo",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100028_t1/cantierisan_lorenzo125167.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://remida.genetrix.it/catalogo/custom/files/114434/ct10032_id100066_t1/_DSC3548.jpg",
+              "https://www.edra.com/ridimensiona.html/rem/1920/1080/100__/custom/files/114434/ct10032_id100066_t1/_DSC3588.jpg"
+          ]
+      },
+      {
+          "project": "Essential",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/rem/1920/980/100_50_100/custom/files/114434/ct10000_id101161_t1/Principale_-_Essential.jpg"
+          ]
+      },
+      {
+          "project": "On the Rocks",
+          "images": [
+              "https://www.edra.com/ridimensiona.html/rem/1920/980/100_50_90/custom/files/114434/ct10000_id101168_t1/Principale_On_the_Rocks_1.jpg",
+              "https://www.edra.com/ridimensiona.html/rem/1170/750/030__/custom/files/114434/ct10000_id101168_t1/01-ONTHEROCKS-072.jpg"
+          ]
+      }
+  ],
+  "flos": [
+      {
+          "project": "Superwire",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwf50a50e0/stories/Superwire/IMMAGINE_COVER_LANDING.jpg?sw=1536&bgcolor=FFFFFF",
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw060e300b/stories/Superwire/TRIS_6.jpg?sw=750&bgcolor=FFFFFF",
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwafe1fe04/stories/Superwire/TRIS_2.jpg?sw=750&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Seki Han",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwa0294e85/stories/Seki%20Han/hero_story_v2.jpg?sw=1597&bgcolor=FFFFFF",
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw1f2ed2ab/stories/Seki%20Han/Flos-Seki_Han_Floor-PH_Robert_Rieger-2025-012.3b8a7762.jpg?sw=750&bgcolor=FFFFFF",
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dweb75694f/stories/Seki%20Han/Flos-Seki_Han_Suspension-PH_Robert_Rieger-2025-001.33988e39.jpg?sw=750&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Maap",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwfba58fb2/stories/Maap/landing-Maap-header.jpg?sw=1600&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Luce Orizzontale",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwf9309273/stories/Luce%20Orizzontale/luce-orizzontale_lifestyle_4-3_3.jpg?sw=800&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Arco",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dweef38b39/stories/arco/stories-arco-a-pg-castiglioni-flos-08.jpg?sw=600&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Parentesi",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw32ee18ee/stories/parentesi/parentesi_red.jpg?sw=800&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "IC 10th Anniversary",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw950b68fc/stories/IC%2010%20Anniversary/IMMAGINE_COVER_LANDING_2%20(1).jpg?sw=1024&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Solange",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwa0115b36/stories/solange/hero-story-desk-solange.jpg?sw=1600&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Arrangements",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw5055d466/stories/arrangements/Como_03_a.jpg?sw=600&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Gustave",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwfd21727e/stories/Gustave/Gustave_2.jpg?sw=800&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Almendra",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwae19b8c0/stories/Almendra_/Almendra_Patricia%20Urquiola_Flos%20Official%20Shop_NeuendorfHousejpg_white.jpg?sw=1600&bgcolor=FFFFFF"
+          ]
+      },
+      {
+          "project": "Photographer's Home",
+          "images": [
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dwe40f8c61/stories/photographer%20home/FLOS_Photographers-Home_Aim_Suspension-lamp.jpg?sw=800&bgcolor=FFFFFF",
+              "https://flos.com/dw/image/v2/BFXX_PRD/on/demandware.static/-/Library-Sites-FLOS-contentlib-US/default/dw78c84965/stories/photographer%20home/FLOS_Photographers-Home_Skygarden_Suspension-lamp_2.jpg?sw=800&bgcolor=FFFFFF"
+          ]
+      }
+  ],
+  "gubi": [
+      {
+          "project": "GUBI House, Paris",
+          "images": [
+              "https://media.umbraco.io/gubi-com/jvikddmi/gubi-house-paris_09_the-boutique-hotel.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/zj1jqgqr/gubi-house-paris_24_the-bedroom.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/1qdmkakk/gubi-house-paris_28_the-hallway.jpg?width=1920&format=webp&upscale=false"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://media.umbraco.io/gubi-com/0stfwqf1/02-wide.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/adxjbrnq/gubi-paris-showroom3481.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/tsapngli/01a.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/ax3dusss/bohemian_72_ottoman.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/c2nfxojh/02.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/xjtoufbw/03.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/o4vcq4mt/04.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/e10bmacx/01.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/txpjnuyi/02.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/0pbmcxcr/04.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/tgkpty04/02.png?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/q5blnovq/07.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/gbri5hwc/09.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/n5tj4j5e/01header_desktop_mobile.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/ih0l2a4b/02_wide.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/2lyjh1ky/04.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/pwbbgtk4/08.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/hg5lygxd/01header_desktop_mobile.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/tf4bws5c/05left.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/do3hdvez/03.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/1kjnh3lo/07.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/ibtnaikw/03wide.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/gmgjggjj/07_wide.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/ynmjy0je/08_right.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/rgalfgtg/05.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/cu2gyiuz/01_header.png?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/rm5k2ab2/06.png?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/dsfdjldu/02_wide.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/o3xhjl2h/08.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/jmxdejjt/04.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/3uhc3xxq/05.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/gqxdw3ul/06.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/4uyla3yi/07.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/alebgc0v/05.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/lzyhlmi5/06.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/wirlaqyb/01.png?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/yvlfry2x/02.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/lngkzg40/09.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/swblflce/02.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/fqtbm2tb/02.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/5ixjumy2/07.jpg?width=1920&format=webp&upscale=false",
+              "https://media.umbraco.io/gubi-com/mkhamxyr/06.jpg?width=1920&format=webp&upscale=false"
+          ]
+      }
+  ],
+  "glasitalia": [
+    {"project": "", "images": [
+          "https://i.pinimg.com/736x/cd/b8/15/cdb81511a7aca82ef5b440cf6146d8ac.jpg",
+          "https://i.pinimg.com/1200x/23/1c/be/231cbeea49a496e9bed8adfef867c6b8.jpg",
+          "https://i.pinimg.com/1200x/03/55/f2/0355f2a2e2640f2519d9da33a64b91de.jpg",
+          "https://i.pinimg.com/736x/7a/6b/93/7a6b93cdcc6fdc0db0a239556cf38664.jpg"
+    ]}
+  ],
+  "fritzhansen": [
+      {
+          "project": "Gary Leivers",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/gary-leivers/fritzhansen-leivers-0045.jpg?h=1600&iar=0&w=2400",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/gary-leivers/fritzhansen-leivers-8212.jpg?iar=0&w=2560"
+          ]
+      },
+      {
+          "project": "Soren Rose",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/soren-rose/soren-rose_hallway.jpg?iar=0&w=1280"
+          ]
+      },
+      {
+          "project": "SoHo Penthouse",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/soho-penthouse/img_5087.jpg?iar=0&w=1024",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/soho-penthouse/img_5437.jpg?h=2562&iar=0&w=3837",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/soho-penthouse/img_4962.jpg?h=3931&iar=0&w=2624",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/soho-penthouse/top-images.jpg?iar=0&w=2560"
+          ]
+      },
+      {
+          "project": "Daniel Lindstrom",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/daniel-lindstrom/221004_ark_dl_151.jpg?iar=0&w=1024"
+          ]
+      },
+      {
+          "project": "Amelie du Chalard",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/amelie-du-chalard/fh_amelie_du_chalard_3155_026top.png?iar=0&w=2560",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/residential/amelie-du-chalard/fh_amelie_du_chalard_top-images.jpg?iar=0&w=2560"
+          ]
+      },
+      {
+          "project": "Fritz Hansen x AN",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/collaborations/fritz-hansen-an/fritz-hansen-an_connect_lullaby_pk22.png?iar=0&w=1024",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/inspiration/collaborations/fritz-hansen-an/fritz-hansen-an_connect_egg_pouf_orient.png?iar=0&w=2560"
+          ]
+      },
+      {
+          "project": "Egg Table, Walnut",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny3/fh_egg_table_walnut_kaiser_idell_pendant_drop_chair_slide_rgb.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny3/fh_egg_table_walnut_series_7_chair_kaiser_idell_table_lamp_planner_shelving_rgb.jpg?iar=0&w=2560",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny3/fh_egg_table_walnut_kaiser_idell_pendant_drop_chair_slide_tray_table_black_rgb.jpg?iar=0&w=1280"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_series-7_3107_dusk-blue_lavender-blue_midnight-blue_essay_cm32_oak_ikebana.jpg?h=2268&iar=0&w=3500",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_series_7_3107_leather_walnut_chrome_essay_cm32_oak_orient_p3_aluminium_oak.jpg?iar=0&w=2560"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_egg_3316_vidar_943_planner_mc330_charcoal.jpg?h=2036&iar=0&w=3500",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_egg_lounge_chair_3316_swan_lounge_chair_3320_pk61_coffee_table_pk61a_grey_brown.jpg?h=4667&iar=0&w=3500"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny4/fh_pk54_fauske_pk54a_pk9_concertp3.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny5/2h23/fritz_hansen_2h_2023_u10_1295.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny4/fh_fh3605_3605dd_lacquered-walnut_kaiser-idell_6631-t_matt-black_series-7_3217_2.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny4/fh_series-7_junior_evergreen_burnt-yellow_avion_circular_a623_1.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny4/fh_fh3605_3605dd_black-coloured-ash_oxford_3193w_kaiser-idell_6556-t_2.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/lighting/clam/fh_clam_floor_brass_alphabet_karakorum_ivory.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/china-chair/fh_china_chair_80th_anniversary_edition_3.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_alphabet-sofa-series_pl240-4_hue-52_planner-coffee-table_mc300_marble_cream.jpg?h=1999&iar=0&w=3500",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/products/popular-series/n02/2_fh_n02-recycle_n02-31_light-blue_dark-blue_pluralis_ks438_walnut_kaiser-idell_6556-t_black-copy.jpg?iar=0&w=2560",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny2/fh_lissoni_sofa_pl112s_christianshavn_1131_pk33_rustik_pk65_glass_low.jpg?iar=0&w=1280",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny/fh_fred_jh97_clear_lacquered_oak_planner_coffee_table_high.jpg?iar=0&w=2560",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/tiny2/19268_drop-chair.jpg?iar=0&w=1024",
+              "https://cloudinary.fritzhansen.com/-/media/images/images/styled-images/residential/living-room/ikebana_small_planner-coffee-table_mc300_marble_cream.jpg?iar=0&w=1280"
+          ]
+      }
+  ],
   "galerie-mcde": [
       {
           "project": "Gallery",
@@ -6360,6 +7773,15 @@ const AMBIANCE_DATA = {
   ],
   "saba": [
       {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/1200x/c8/a3/39/c8a339d52be259c6fcf636bd082e800f.jpg",
+              "https://i.pinimg.com/1200x/4e/8b/d2/4e8bd24b35b3dd92fbbb3859d4657ee4.jpg",
+              "https://i.pinimg.com/736x/ba/e7/a6/bae7a627ab7995a4bc66008d538f95df.jpg",
+              "https://i.pinimg.com/736x/b3/51/2d/b3512dcc6a07b9203ad82bae61d96734.jpg"
+          ]
+      },
+      {
           "project": "Casa 211 MIDE",
           "images": [
               "https://sabaitalia.com/cache-buster-1693903999/Saba/Progetti/Residential/Casa%20211%20MIDE/image-thumb__6815__projectDetailSlider/1@2x.webp"
@@ -6970,6 +8392,2417 @@ const AMBIANCE_DATA = {
 };
 BRANDS.forEach(b=>{ if(AMBIANCE_DATA[b.id]) b.ambiance = AMBIANCE_DATA[b.id]; });
 const PRODUCT_COLLECTIONS = {
+  "saba": [
+    {
+      "name": "Bed",
+      "cat": [
+        "Bed"
+      ],
+      "link": "https://www.sabaitalia.it",
+      "models": [
+        {
+          "name": "New York Air Bed",
+          "colors": [
+            {
+              "img": "images/saba/bed/new-york-air-bed/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Box Bed",
+          "colors": [
+            {
+              "img": "images/saba/bed/new-york-box-bed/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.sabaitalia.it",
+      "models": [
+        {
+          "name": "Bustier",
+          "colors": [
+            {
+              "img": "images/saba/chair/bustier/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Chillout",
+          "colors": [
+            {
+              "img": "images/saba/chair/chillout/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Essentiel",
+          "colors": [
+            {
+              "img": "images/saba/chair/essentiel/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Geo",
+          "colors": [
+            {
+              "img": "images/saba/chair/geo/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Kepi",
+          "colors": [
+            {
+              "img": "images/saba/chair/kepi/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Armchair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Bergere",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-bergere/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Chair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Chair By Marras",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-chair-by-marras/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Curve Armchair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-curve-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Dining",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-dining/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Line Armchair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-line-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Line Bergere",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-line-bergere/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Soleil Armchair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-soleil-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Soleil Chairs Stool",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-soleil-chairs-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Soleil Modular System Lounge Armchair",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-soleil-modular-system-lounge-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Stool",
+          "colors": [
+            {
+              "img": "images/saba/chair/new-york-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Ola Chair",
+          "colors": [
+            {
+              "img": "images/saba/chair/ola-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Opera Chair",
+          "colors": [
+            {
+              "img": "images/saba/chair/opera-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Petite Fleur Chair",
+          "colors": [
+            {
+              "img": "images/saba/chair/petite-fleur-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Voila",
+          "colors": [
+            {
+              "img": "images/saba/chair/voila/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.sabaitalia.it",
+      "models": [
+        {
+          "name": "Ananta",
+          "colors": [
+            {
+              "img": "images/saba/sofa/ananta/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Karma",
+          "colors": [
+            {
+              "img": "images/saba/sofa/karma/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Limes",
+          "colors": [
+            {
+              "img": "images/saba/sofa/limes/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Suite",
+          "colors": [
+            {
+              "img": "images/saba/sofa/new-york-suite/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "New York Suite Bench",
+          "colors": [
+            {
+              "img": "images/saba/sofa/new-york-suite-bench/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Oltremare",
+          "colors": [
+            {
+              "img": "images/saba/sofa/oltremare/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Paso Doble",
+          "colors": [
+            {
+              "img": "images/saba/sofa/paso-doble/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.sabaitalia.it",
+      "models": [
+        {
+          "name": "Philia Low Table",
+          "colors": [
+            {
+              "img": "images/saba/table/philia-low-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Teatro Magico Table",
+          "colors": [
+            {
+              "img": "images/saba/table/teatro-magico-table/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "ramu-home-studio": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://ramuhomestudio.com/",
+      "models": [
+        {
+          "name": "Hedel",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/chair/hedel/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Vikan",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/chair/vikan/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Yviers",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/chair/yviers/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://ramuhomestudio.com/",
+      "models": [
+        {
+          "name": "Albate",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/albate/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Argila",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/argila/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Arosa",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/arosa/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Globa",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/globa/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Glogow",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/glogow/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Glogow   Vogue",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/glogow-vogue/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Haimie",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/haimie/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Judith",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/judith/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Keale",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/keale/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Khed Ceiling",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/khed-ceiling/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Onda",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/onda/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Oplev Ceiling",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/oplev-ceiling/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Orel",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/orel/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Orvik",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/orvik/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Pamela",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/pamela/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Pedra",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/pedra/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Queila",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/queila/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Rokko",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/rokko/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Swahili",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/swahili/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "TABLE LAMP",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/table-lamp/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tresa",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/tresa/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Yaxunah",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/yaxunah/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Zalk",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/zalk/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Zaria Ceiling",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/lighting/zaria-ceiling/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://ramuhomestudio.com/",
+      "models": [
+        {
+          "name": "Arko Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/arko-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bansat Coffee",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/bansat-coffee/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Erice Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/erice-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Grambois Coffee",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/grambois-coffee/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Hallstat Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/hallstat-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lambesc Coffee",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/lambesc-coffee/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lambesc Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/lambesc-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lira Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/lira-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Rognes Coffee",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/rognes-coffee/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tau Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/tau-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Varenna Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/varenna-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Verona Coffee",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/verona-coffee/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Verona Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/verona-side/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Znin Side",
+          "colors": [
+            {
+              "img": "images/ramu-home-studio/table/znin-side/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rispal": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.edition-rispal.com",
+      "models": [
+        {
+          "name": "Giraffe Tablet",
+          "colors": [
+            {
+              "img": "images/rispal/lighting/giraffe-tablet/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Opulus Mini",
+          "colors": [
+            {
+              "img": "images/rispal/lighting/opulus-mini/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Phasme M",
+          "colors": [
+            {
+              "img": "images/rispal/lighting/phasme-m/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/rispal/lighting/phasme-m/1.jpg",
+              "pal": "Natural oak"
+            },
+            {
+              "img": "images/rispal/lighting/phasme-m/2.jpg",
+              "pal": "Vintage oak"
+            }
+          ]
+        },
+        {
+          "name": "The Opulus",
+          "colors": [
+            {
+              "img": "images/rispal/lighting/the-opulus/0.jpg",
+              "pal": "Dark French walnut"
+            },
+            {
+              "img": "images/rispal/lighting/the-opulus/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "The Praying Mantis",
+          "colors": [
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/0.jpg",
+              "pal": "Black tinted wood"
+            },
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/1.jpg",
+              "pal": "Dark French walnut"
+            },
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/2.jpg",
+              "pal": "Mahogany Sipo"
+            },
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/3.jpg",
+              "pal": "Natural American walnut"
+            },
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/4.jpg",
+              "pal": "Natural oak"
+            },
+            {
+              "img": "images/rispal/lighting/the-praying-mantis/5.jpg",
+              "pal": "Vintage oak"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "santacole": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.santacole.com",
+      "models": [
+        {
+          "name": "Americana",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/americana/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Arne S Domus",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/arne-s-domus/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/santacole/lighting/arne-s-domus/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Babel",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/babel/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bijou",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/bijou/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Básica",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/b-sica/0.jpg",
+              "pal": "Bronze"
+            },
+            {
+              "img": "images/santacole/lighting/b-sica/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cesta",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cesta/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Cascada",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-cascada/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Chandelier",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-chandelier/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Circular",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-circular/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Cuadrada",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-cuadrada/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Lineal",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-lineal/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Múltiple",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-m-ltiple/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Oval",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-oval/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Pana Mayor",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-pana-mayor/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/santacole/lighting/cirio-pana-mayor/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cirio Simple",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/cirio-simple/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/santacole/lighting/cirio-simple/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Gira",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/gira/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/santacole/lighting/gira/1.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Gt7",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/gt7/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "La Bella Durmiente",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/la-bella-durmiente/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lamparaprima",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/lamparaprima/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lámina Dorada 45",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/l-mina-dorada-45/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lámina Mayor",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/l-mina-mayor/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Maija",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/maija/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/santacole/lighting/maija/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Sexta",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/sexta/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sistema Fonda",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/sistema-fonda/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sylvestrina",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/sylvestrina/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sísísí Cónicas Planas",
+          "colors": [
+            {
+              "img": "images/santacole/lighting/s-s-s-c-nicas-planas/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "singchan": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.singchandesign.com",
+      "models": [
+        {
+          "name": "Fragment#01 02",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-01-02/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Fragment#03",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-03/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Fragment#04",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-04/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Fragment#05",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-05/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Fragment#08 11",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-08-11/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Fragment#09",
+          "colors": [
+            {
+              "img": "images/singchan/lighting/fragment-09/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.singchandesign.com",
+      "models": [
+        {
+          "name": "Monument#01",
+          "colors": [
+            {
+              "img": "images/singchan/sofa/monument-01/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Monument#02",
+          "colors": [
+            {
+              "img": "images/singchan/sofa/monument-02/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Monument#03",
+          "colors": [
+            {
+              "img": "images/singchan/sofa/monument-03/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Monument#04",
+          "colors": [
+            {
+              "img": "images/singchan/sofa/monument-04/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "UT#01 02",
+          "colors": [
+            {
+              "img": "images/singchan/sofa/ut-01-02/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.singchandesign.com",
+      "models": [
+        {
+          "name": "Pagoda#02",
+          "colors": [
+            {
+              "img": "images/singchan/storage/pagoda-02/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "THEWALL#15",
+          "colors": [
+            {
+              "img": "images/singchan/storage/thewall-15/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thegate#06",
+          "colors": [
+            {
+              "img": "images/singchan/storage/thegate-06/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thegate#07",
+          "colors": [
+            {
+              "img": "images/singchan/storage/thegate-07/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.singchandesign.com",
+      "models": [
+        {
+          "name": "Epang#02",
+          "colors": [
+            {
+              "img": "images/singchan/table/epang-02/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Epang#03 04 05",
+          "colors": [
+            {
+              "img": "images/singchan/table/epang-03-04-05/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Epang#06 07 08",
+          "colors": [
+            {
+              "img": "images/singchan/table/epang-06-07-08/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Epang#09 10",
+          "colors": [
+            {
+              "img": "images/singchan/table/epang-09-10/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Pillar#01",
+          "colors": [
+            {
+              "img": "images/singchan/table/pillar-01/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thegate#01 03",
+          "colors": [
+            {
+              "img": "images/singchan/table/thegate-01-03/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thegate#02 04",
+          "colors": [
+            {
+              "img": "images/singchan/table/thegate-02-04/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thewall#01&02",
+          "colors": [
+            {
+              "img": "images/singchan/table/thewall-01-02/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Thewall#10 11 12 13",
+          "colors": [
+            {
+              "img": "images/singchan/table/thewall-10-11-12-13/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "spectrum": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.spectrumdesign.nl",
+      "models": [
+        {
+          "name": "Armchair for Metz&Co",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/armchair-for-metz-co/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/chair/armchair-for-metz-co/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/chair/armchair-for-metz-co/2.jpg",
+              "pal": "Green"
+            }
+          ]
+        },
+        {
+          "name": "Press Room Chair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/press-room-chair/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/chair/press-room-chair/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/chair/press-room-chair/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/chair/press-room-chair/3.jpg",
+              "pal": "Green"
+            },
+            {
+              "img": "images/spectrum/chair/press-room-chair/4.jpg",
+              "pal": "Pink"
+            }
+          ]
+        },
+        {
+          "name": "Puk SZ 19 armchair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/puk-sz-19-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "SE 07 dining chair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/se-07-dining-chair/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/chair/se-07-dining-chair/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/chair/se-07-dining-chair/2.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "SE 69 dining chair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/se-69-dining-chair/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/chair/se-69-dining-chair/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/chair/se-69-dining-chair/2.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "SZ 01 armchair (rattan)",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/sz-01-armchair-rattan/0.jpg",
+              "pal": "Brown"
+            }
+          ]
+        },
+        {
+          "name": "SZ 02 armchair (saddle leather)",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/sz-02-armchair-saddle-leather/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/chair/sz-02-armchair-saddle-leather/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/chair/sz-02-armchair-saddle-leather/2.jpg",
+              "pal": "Chrome"
+            },
+            {
+              "img": "images/spectrum/chair/sz-02-armchair-saddle-leather/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/chair/sz-02-armchair-saddle-leather/4.jpg",
+              "pal": "Natural"
+            }
+          ]
+        },
+        {
+          "name": "SZ 14 armchair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/sz-14-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "SZ 63 armchair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/sz-63-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Steltman chair",
+          "colors": [
+            {
+              "img": "images/spectrum/chair/steltman-chair/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/chair/steltman-chair/1.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/chair/steltman-chair/2.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/chair/steltman-chair/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/chair/steltman-chair/4.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/spectrum/chair/steltman-chair/5.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mirror",
+      "cat": [
+        "Mirror"
+      ],
+      "link": "https://www.spectrumdesign.nl",
+      "models": [
+        {
+          "name": "Benno mirror",
+          "colors": [
+            {
+              "img": "images/spectrum/mirror/benno-mirror/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/mirror/benno-mirror/1.jpg",
+              "pal": "Grey"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.spectrumdesign.nl",
+      "models": [
+        {
+          "name": "BR 02 sofa bed",
+          "colors": [
+            {
+              "img": "images/spectrum/sofa/br-02-sofa-bed/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/sofa/br-02-sofa-bed/1.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/spectrum/sofa/br-02-sofa-bed/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/sofa/br-02-sofa-bed/3.jpg",
+              "pal": "Red"
+            },
+            {
+              "img": "images/spectrum/sofa/br-02-sofa-bed/4.jpg",
+              "pal": "Yellow"
+            }
+          ]
+        },
+        {
+          "name": "BZ 63 sofa",
+          "colors": [
+            {
+              "img": "images/spectrum/sofa/bz-63-sofa/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.spectrumdesign.nl",
+      "models": [
+        {
+          "name": "Paperback wallsystem",
+          "colors": [
+            {
+              "img": "images/spectrum/storage/paperback-wallsystem/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/storage/paperback-wallsystem/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/storage/paperback-wallsystem/2.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Tangled show case",
+          "colors": [
+            {
+              "img": "images/spectrum/storage/tangled-show-case/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/storage/tangled-show-case/1.jpg",
+              "pal": "Green"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.spectrumdesign.nl",
+      "models": [
+        {
+          "name": "IJhorst side tables",
+          "colors": [
+            {
+              "img": "images/spectrum/table/ijhorst-side-tables/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/table/ijhorst-side-tables/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Phill table",
+          "colors": [
+            {
+              "img": "images/spectrum/table/phill-table/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/table/phill-table/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/spectrum/table/phill-table/2.jpg",
+              "pal": "Natural"
+            },
+            {
+              "img": "images/spectrum/table/phill-table/3.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "TZ 75 coffee table",
+          "colors": [
+            {
+              "img": "images/spectrum/table/tz-75-coffee-table/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/spectrum/table/tz-75-coffee-table/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/spectrum/table/tz-75-coffee-table/2.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serax": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.serax.com",
+      "models": [
+        {
+          "name": "06 Sophia Pawn",
+          "colors": [
+            {
+              "img": "images/serax/chair/06-sophia-pawn/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Chair And White Cushion Included Patio",
+          "colors": [
+            {
+              "img": "images/serax/chair/chair-and-white-cushion-included-patio/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Chair Beech Cream Elé",
+          "colors": [
+            {
+              "img": "images/serax/chair/chair-beech-cream-el/0.jpg",
+              "pal": "2"
+            }
+          ]
+        },
+        {
+          "name": "Stool Beech Black   Eloïs",
+          "colors": [
+            {
+              "img": "images/serax/chair/stool-beech-black-elo-s/0.jpg",
+              "pal": "Off   White"
+            }
+          ]
+        },
+        {
+          "name": "Stool Beech  oak Natural Eloïs",
+          "colors": [
+            {
+              "img": "images/serax/chair/stool-beech-oak-natural-elo-s/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.serax.com",
+      "models": [
+        {
+          "name": "01 Emerald Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/01-emerald-oak/0.jpg",
+              "pal": "5"
+            }
+          ]
+        },
+        {
+          "name": "01 Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/01-oak/0.jpg",
+              "pal": "Pink"
+            },
+            {
+              "img": "images/serax/lighting/01-oak/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "02 Amber Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/02-amber-oak/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "02 Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/02-oak/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "02 Romé",
+          "colors": [
+            {
+              "img": "images/serax/lighting/02-rom/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "02 Violet Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/02-violet-oak/0.jpg",
+              "pal": "12"
+            }
+          ]
+        },
+        {
+          "name": "03 Earth",
+          "colors": [
+            {
+              "img": "images/serax/lighting/03-earth/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "03 Oak",
+          "colors": [
+            {
+              "img": "images/serax/lighting/03-oak/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/serax/lighting/03-oak/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Fck",
+          "colors": [
+            {
+              "img": "images/serax/lighting/fck/0.jpg",
+              "pal": "Steel Grey"
+            }
+          ]
+        },
+        {
+          "name": "Fou",
+          "colors": [
+            {
+              "img": "images/serax/lighting/fou/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Harna",
+          "colors": [
+            {
+              "img": "images/serax/lighting/harna/0.jpg",
+              "pal": "Beige"
+            }
+          ]
+        },
+        {
+          "name": "L Uala",
+          "colors": [
+            {
+              "img": "images/serax/lighting/l-uala/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Laslo S",
+          "colors": [
+            {
+              "img": "images/serax/lighting/laslo-s/0.jpg",
+              "pal": "1"
+            }
+          ]
+        },
+        {
+          "name": "Lex",
+          "colors": [
+            {
+              "img": "images/serax/lighting/lex/0.jpg",
+              "pal": "Black White"
+            }
+          ]
+        },
+        {
+          "name": "Louis Terres De Rêves",
+          "colors": [
+            {
+              "img": "images/serax/lighting/louis-terres-de-r-ves/0.jpg",
+              "pal": "Beige"
+            }
+          ]
+        },
+        {
+          "name": "M Tronco",
+          "colors": [
+            {
+              "img": "images/serax/lighting/m-tronco/0.jpg",
+              "pal": "Green"
+            }
+          ]
+        },
+        {
+          "name": "Maia",
+          "colors": [
+            {
+              "img": "images/serax/lighting/maia/0.jpg",
+              "pal": "Beige"
+            }
+          ]
+        },
+        {
+          "name": "Nash",
+          "colors": [
+            {
+              "img": "images/serax/lighting/nash/0.jpg",
+              "pal": "Beige"
+            }
+          ]
+        },
+        {
+          "name": "Nova",
+          "colors": [
+            {
+              "img": "images/serax/lighting/nova/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Oya 01",
+          "colors": [
+            {
+              "img": "images/serax/lighting/oya-01/0.jpg",
+              "pal": "Brown"
+            }
+          ]
+        },
+        {
+          "name": "Rana",
+          "colors": [
+            {
+              "img": "images/serax/lighting/rana/0.jpg",
+              "pal": "Red"
+            }
+          ]
+        },
+        {
+          "name": "Romé",
+          "colors": [
+            {
+              "img": "images/serax/lighting/rom/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "S Tronco",
+          "colors": [
+            {
+              "img": "images/serax/lighting/s-tronco/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "S Uala",
+          "colors": [
+            {
+              "img": "images/serax/lighting/s-uala/0.jpg",
+              "pal": "Black   White"
+            }
+          ]
+        },
+        {
+          "name": "Standing Lamp Harna",
+          "colors": [
+            {
+              "img": "images/serax/lighting/standing-lamp-harna/0.jpg",
+              "pal": "Beige"
+            }
+          ]
+        },
+        {
+          "name": "°3 Yucca",
+          "colors": [
+            {
+              "img": "images/serax/lighting/3-yucca/0.jpg",
+              "pal": "Yellow   White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.serax.com",
+      "models": [
+        {
+          "name": "Bench One Seater     Black Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-one-seater-black-rudolph/0.jpg",
+              "pal": "Off   White"
+            }
+          ]
+        },
+        {
+          "name": "Bench One Seater Camel Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-one-seater-camel-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench One Seater Chalk Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-one-seater-chalk-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench One Seater Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-one-seater-rudolph/0.jpg",
+              "pal": "Beige   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-one-seater-rudolph/1.jpg",
+              "pal": "Bone   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-one-seater-rudolph/2.jpg",
+              "pal": "Sand   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-one-seater-rudolph/3.jpg",
+              "pal": "Smoke   Black"
+            }
+          ]
+        },
+        {
+          "name": "Bench Three Seater Camel Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-three-seater-camel-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench Three Seater Chalk Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-three-seater-chalk-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench Three Seater Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-three-seater-rudolph/0.jpg",
+              "pal": "Beige   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-three-seater-rudolph/1.jpg",
+              "pal": "Sand   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-three-seater-rudolph/2.jpg",
+              "pal": "Smoke   Black"
+            }
+          ]
+        },
+        {
+          "name": "Bench Two Seater     Black Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-two-seater-black-rudolph/0.jpg",
+              "pal": "Off   White"
+            }
+          ]
+        },
+        {
+          "name": "Bench Two Seater Camel Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-two-seater-camel-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench Two Seater Chalk Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-two-seater-chalk-rudolph/0.jpg",
+              "pal": "8"
+            }
+          ]
+        },
+        {
+          "name": "Bench Two Seater Rudolph",
+          "colors": [
+            {
+              "img": "images/serax/sofa/bench-two-seater-rudolph/0.jpg",
+              "pal": "Beige   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-two-seater-rudolph/1.jpg",
+              "pal": "Sand   Black"
+            },
+            {
+              "img": "images/serax/sofa/bench-two-seater-rudolph/2.jpg",
+              "pal": "Smoke   Black"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.serax.com",
+      "models": [
+        {
+          "name": "07 Dark Mena",
+          "colors": [
+            {
+              "img": "images/serax/table/07-dark-mena/0.jpg",
+              "pal": "Green"
+            }
+          ]
+        },
+        {
+          "name": "07 Mena",
+          "colors": [
+            {
+              "img": "images/serax/table/07-mena/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/serax/table/07-mena/1.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/serax/table/07-mena/2.jpg",
+              "pal": "Rust"
+            },
+            {
+              "img": "images/serax/table/07-mena/3.jpg",
+              "pal": "Yellow"
+            }
+          ]
+        },
+        {
+          "name": "S Tubes",
+          "colors": [
+            {
+              "img": "images/serax/table/s-tubes/0.jpg",
+              "pal": "Red"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "stoffnagel": [
+    {
+      "name": "Accessories",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.stoffnagel.com",
+      "models": [
+        {
+          "name": "Bmf Vase",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/bmf-vase/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Bowl",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/bowl/0.jpg",
+              "pal": "Bronzed Brass"
+            },
+            {
+              "img": "images/stoffnagel/accessories/bowl/1.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/bowl/2.jpg",
+              "pal": "Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/bowl/3.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        },
+        {
+          "name": "Cuffs 3 pack",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/cuffs-3-pack/0.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        },
+        {
+          "name": "Floor Stand",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/floor-stand/0.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Stand",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/stand/0.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/stand/1.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Vase",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/vase/0.jpg",
+              "pal": "Black Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/vase/1.jpg",
+              "pal": "Bronzed Brass"
+            },
+            {
+              "img": "images/stoffnagel/accessories/vase/2.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/vase/3.jpg",
+              "pal": "Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/vase/4.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        },
+        {
+          "name": "Wall Hanger",
+          "colors": [
+            {
+              "img": "images/stoffnagel/accessories/wall-hanger/0.jpg",
+              "pal": "Black Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/wall-hanger/1.jpg",
+              "pal": "Bronzed Brass"
+            },
+            {
+              "img": "images/stoffnagel/accessories/wall-hanger/2.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/wall-hanger/3.jpg",
+              "pal": "Chrome"
+            },
+            {
+              "img": "images/stoffnagel/accessories/wall-hanger/4.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.stoffnagel.com",
+      "models": [
+        {
+          "name": "Bmf Candle Holder",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/bmf-candle-holder/0.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/bmf-candle-holder/1.jpg",
+              "pal": "Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Bmf Candle Holder 3 pack",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/bmf-candle-holder-3-pack/0.jpg",
+              "pal": "Brushed Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Nagel Candle Holder",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder/0.jpg",
+              "pal": "Black Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder/1.jpg",
+              "pal": "Bronzed Brass"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder/2.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder/3.jpg",
+              "pal": "Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder/4.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        },
+        {
+          "name": "Nagel Candle Holder 3 pack",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder-3-pack/0.jpg",
+              "pal": "Black Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder-3-pack/1.jpg",
+              "pal": "Bronzed Brass"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder-3-pack/2.jpg",
+              "pal": "Brushed Chrome"
+            },
+            {
+              "img": "images/stoffnagel/lighting/nagel-candle-holder-3-pack/3.jpg",
+              "pal": "Solid Brass"
+            }
+          ]
+        },
+        {
+          "name": "Quist Candle Holder",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/quist-candle-holder/0.jpg",
+              "pal": "Brushed Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Quist Candle Holder 3 pack",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/quist-candle-holder-3-pack/0.jpg",
+              "pal": "Brushed Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Reflect Candle Holder Large",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/reflect-candle-holder-large/0.jpg",
+              "pal": "Brushed Chrome"
+            }
+          ]
+        },
+        {
+          "name": "Reflect Candle Holder Small",
+          "colors": [
+            {
+              "img": "images/stoffnagel/lighting/reflect-candle-holder-small/0.jpg",
+              "pal": "Brushed Chrome"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "verpan": [
     {
       "name": "Chair",
@@ -9463,7 +13296,7 @@ const LOGOS = {
   gufram:"Gufram-Logo-2-750x479.png",
   agape:"agape.webp",
   alias:"alias.webp",
-  bbitalia:"b-b-italia.jpg",
+  bbitalia:"b-b-italia.png",
   "bd-barcelona-design":"bdbarcelona.webp",
   "brand-van-egmond":"brandvanegmond.webp",
   bulo:"bulo.png",
