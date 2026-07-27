@@ -1810,7 +1810,8 @@ const BRANDS = [
    ["Fragment Pendant","Lighting",["Silver"]],["Fragment Floor Lamp","Lighting",["Silver"]]]},
  {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.it",verify:1,items:[
    ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]},
- {id:"ramu-home-studio",name:"Ramu Home Studio",origin:"Europe",site:"https://ramuhomestudio.com/",items:[]}
+ {id:"ramu-home-studio",name:"Ramu Home Studio",origin:"Europe",site:"https://ramuhomestudio.com/",items:[]},
+ {id:"riva-1920",name:"Riva 1920",origin:"Italy",site:"https://www.riva1920.it/en/",items:[]}
 ];
 
 // DIRECTORY: every other brand from the two logo-wall screenshots. Logo/name + best-effort
@@ -1850,7 +1851,7 @@ const DIRECTORY = [
  ["Maison Margiela","France","https://www.maisonmargiela.com"],
  ["Jake Phipps","UK","https://www.jakephipps.com"],
  ["Italamp","Italy","https://www.italamp.com"],
- ["Mohebban","Unconfirmed","https://www.google.com/search?q=Mohebban+rug+brand",1],
+ ["Mohebban","Italy","https://www.mohebbanmilano.com/en/home-en/"],
  ["Avarte","Finland","https://www.avarte.fi"],
  ["Fasem","Italy","https://www.fasem.it"],
  ["Quasar","Unconfirmed","https://www.google.com/search?q=Quasar+lighting+brand",1],
@@ -1870,7 +1871,7 @@ const DIRECTORY = [
  ["Giorgetti","Italy","https://www.giorgettimeda.com"],
  ["Kooij","Netherlands","https://kooij.com/"],
  ["Aarnio Originals","Finland","https://www.aarniooriginals.com/"],
- ["Hessentia","Italy","https://www.google.com/search?q=Hessentia+Cornelio+Cappellini",1],
+ ["Hessentia","Italy","https://hessentia.com/en"],
  ["Baccarat","France","https://www.baccarat.com"],
  ["Moroso","Italy","https://www.moroso.it"],
  ["Brionvega","Italy","https://www.brionvega.it"],
@@ -1884,12 +1885,12 @@ const DIRECTORY = [
  ["Gervasoni","Italy","https://www.gervasoni1882.com"],
  ["Molteni&C","Italy","https://www.molteni.it"],
  ["Minotti","Italy","https://www.minotti.com"],
- ["Henge","Italy","https://www.hengespace.com"],
- ["Vibieffe","Italy","https://www.vibieffe.it"],
- ["La Chance","France","https://www.lachance.fr"],
+ ["Henge","Italy","https://www.henge07.com/"],
+ ["Vibieffe","Italy","https://www.vibieffe.com/en/"],
+ ["La Chance","France","https://www.lachance.paris/en"],
  ["Porro","Italy","https://www.porro.com"],
  ["Casamania","Italy","https://www.casamania.it"],
- ["MVSEVM","Unconfirmed","https://www.google.com/search?q=MVSEVM+furniture+brand",1],
+ ["MVSEVM","Italy","https://www.mvsevm.it/en/"],
  ["Impatia","Portugal","https://www.impatia.com"],
  ["LAGO","Italy","https://www.lago.it"],
  ["Flexform","Italy","https://www.flexform.it"],
@@ -1954,6 +1955,7 @@ const BIOS = {
   singchan:"Chinese design studio founded in 2020 by Guangzhou-based designer Sing Chan, known for furniture and lighting that reinterprets traditional Chinese craft and architecture in contemporary forms.",
   ramun:"Italian lighting brand created under the artistic direction of designer Alessandro Mendini, best known for the Amuleto lamp inspired by sun, moon, and earth imagery.",
   "ramu-home-studio":"European sourcing and design studio producing furniture, lighting, and textiles through workshops in Indonesia and Thailand, working primarily with hotels, hospitality groups, and interior architects on curated projects.",
+  "riva-1920":"Italian furniture company founded in 1920 in Cantù by Nino Romano, now led by fourth-generation CEO Maurizio Riva, known for solid-wood furniture crafted from woods such as Kauri, Briccola, and Barrique, and for collaborations with designers including Renzo Piano and Mario Botta.",
   "mario-tsai-studio":"Chinese design studio founded in Hangzhou in 2014 by Mario Tsai, focused on research-driven, sustainable furniture and product design.",
   usm:"Swiss company founded in 1885 as a hardware manufacturer, known since the 1960s for the modular USM Haller furniture system developed with architect Fritz Haller.",
   "brand-van-egmond":"Dutch lighting studio founded in 1989 by William Brand and Annet van Egmond, known for handcrafted sculptural chandeliers exported to over 60 countries.",
@@ -2101,6 +2103,960 @@ const BIOS = {
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
 const STOCKIST_DATA = {
+  "poltrona-frau": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/59e35fbf6b64551e2286de00?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABGg2ecTWTCYaNE1pR3A9WAPHAxSkjkMB8wa0BlcE1dpI=&xsec_source=pc_search",
+    "wechat": "https://mp.weixin.qq.com/s/3aRv80FOsf-NhMlgydn5iA",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Poltrona Frau 亚太体验中心",
+        "address": "静安区恒通东路65弄"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Poltrona Frau",
+        "address": "徐汇区龙爱路7号芒果广场B+栋"
+      },
+      {
+        "city": "Beijing",
+        "name": "Poltrona Frau",
+        "address": "朝阳区北四环芍药居101号世奥国际中心B座"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Poltrona Frau",
+        "address": "南山区中心路3088号深圳湾壹号南一期101室"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Poltrona Frau",
+        "address": "上城区飞云江路9号赞成中心1楼"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Poltrona Frau",
+        "address": "湖里区高崎南五路210号中骏大厦2座B101室"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "鹿城区三友路121号万萃广场1幢1层"
+      },
+      {
+        "city": "Ningbo",
+        "name": "第六空间",
+        "address": "江东区宁穿路315号第六空间1楼B-103室"
+      },
+      {
+        "city": "Xi'an",
+        "name": "様家 HBRIGHT",
+        "address": "未央区大明宫钻石店北广场钻石八角楼"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Poltrona Frau",
+        "address": "高新区盛和二路18号富森美3号馆1楼1093室"
+      },
+      {
+        "city": "Chongqing",
+        "name": "红星美凯龙",
+        "address": "渝北区新南路888号红星美凯龙1楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "红星美凯龙",
+        "address": "建邺区庐山路110号红星美凯龙1楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "锐吉国际家居",
+        "address": "建邺区江东中路88号金陵国际家居一层"
+      },
+      {
+        "city": "Qingdao",
+        "name": "Poltrona Frau",
+        "address": "市南区香港中路136号"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Poltrona Frau",
+        "address": "铜锣湾告士打道280号世贸中心31楼"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Poltrona Frau (opening soon)",
+        "address": "中环遮打道10号太子大厦2楼230-231号店铺&220号店铺"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Poltrona Frau",
+        "address": "湾仔区皇后大道东163号2号铺"
+      },
+      {
+        "city": "Taizhou",
+        "name": "梵逊邦德家居",
+        "address": "椒江区朝晖路208号"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "SENCO+",
+        "address": "裕华区仓裕路87号国际家居生活广场"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧亚达家居",
+        "address": "天桥区北园大街371号国际馆一楼A1-2"
+      },
+      {
+        "city": "Harbin",
+        "name": "Poltrona Frau",
+        "address": "道里区安隆街98号"
+      },
+      {
+        "city": "Changchun",
+        "name": "居然之家太阳城店",
+        "address": "宽城区辽宁路B号门"
+      },
+      {
+        "city": "Tianjin",
+        "name": "珠江旗舰店",
+        "address": "河西区解放南路475号D03-1-1"
+      },
+      {
+        "city": "Taiyuan",
+        "name": "居然之家春天店",
+        "address": "小店区长治路185号国际馆一层独立门店"
+      },
+      {
+        "city": "Suzhou",
+        "name": "新光天地",
+        "address": "工业园区苏州大道456号购物中心一层东门"
+      },
+      {
+        "city": "Wuxi",
+        "name": "第六空间",
+        "address": "梁溪区锡沪路201号1楼"
+      },
+      {
+        "city": "Wuhan",
+        "name": "居然之家",
+        "address": "武昌区徐东大街50号B门"
+      }
+    ]
+  },
+  "zanotta": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6371dd73000000001f018be0?m_source=pwa&xsec_token=ABBdTSnY3QRZamVIxokfgJiUrzdWf9didabN9Hz_6Gk88=&xsec_source=pc_search",
+    "wechat": "https://www.zanotta.it/zh-cn/wechat",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa 上海店",
+        "address": "徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "静安区陕西北路600号源创创意园5号楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "doz.IOIII PROJECT(S)",
+        "address": "上海市静安区光复路195号F114&F204"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa 北京店",
+        "address": "朝阳区金和东路20号院正大中心1层L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP Select Home",
+        "address": "朝阳区建国路87号 SKP 5F"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "奕居生活（集合店）",
+        "address": "新港东路1000号琶洲吉盛伟邦五楼5021"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Zanotta 杭州第六空间滨江店",
+        "address": "滨江区江南大道1088号第六空间国际馆二楼A218"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "龙泉驿区东洪路666号梵木创艺区F区"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SKP Select Home",
+        "address": "高新区天府大道北段 SKP 1F"
+      },
+      {
+        "city": "Ningbo",
+        "name": "RenUno 一再一物",
+        "address": "鄞州区宁穿路315号第六空间A-47"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Apo Home Gallery",
+        "address": "渝北区金州大道118号红星美凯龙重庆至尊Mall一楼"
+      },
+      {
+        "city": "Xi'an",
+        "name": "意美家居",
+        "address": "未央区北二环太华路十字东南角大明宫建材家居钻石店西门1F"
+      },
+      {
+        "city": "Xi'an",
+        "name": "SKP Select Home",
+        "address": "碑林区长安北路261号 SKP 5F"
+      },
+      {
+        "city": "Xiamen",
+        "name": "厦门哲叠贸易有限公司 Pholdin",
+        "address": "湖里区高崎北二路61-63号第六空间商场B3-B6店"
+      },
+      {
+        "city": "Changsha",
+        "name": "长沙澜缔家居",
+        "address": "湖南省长沙市雨花区万家丽中路喜盈门范城家居建材馆7楼7015A"
+      },
+      {
+        "city": "Wuhan",
+        "name": "SKP Select Home",
+        "address": "武昌区沙湖大道18号 SKP 4F"
+      }
+    ]
+  },
+  "flexform": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/60365c8d000000000100180a?m_source=pwa&xsec_token=AB1x_ODI4Sr2Sss9uXigoGWcEAs0GIc5nUwM_GVjxvCEU=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "钡意伲家居",
+        "address": "上海市徐汇区龙爱路7号 芒果广场B+栋"
+      },
+      {
+        "city": "Chengdu",
+        "name": "意点家居",
+        "address": "成都市高新区盛和二路18号 富森美家居 国际家具一层 1076-1077号"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "丽兹家居",
+        "address": "深圳市南山区深南大道9968号 京汉中心SOMA二楼203"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "德先居",
+        "address": "杭州市滨江区江南大道1088号 第六空间品牌大道F03 1F-B1层"
+      },
+      {
+        "city": "Ningbo",
+        "name": "御景汇",
+        "address": "宁波市鄞州区中山东路1751号"
+      },
+      {
+        "city": "Beijing",
+        "name": "晨曦家品",
+        "address": "北京市朝阳区北四环东路65号 居然之家家之尊馆一层 5-1-008"
+      },
+      {
+        "city": "Xi'an",
+        "name": "様家家居",
+        "address": "西安市未央区太华北路88号 大明宫建材家居钻石店北门 钻石独立楼 HBRIGHT 様家进囗家居美学馆"
+      },
+      {
+        "city": "Nanjing",
+        "name": "北纳家",
+        "address": "南京市秦淮区龙蟠中路216号 金城大厦B座 BNJ HOME 1层"
+      },
+      {
+        "city": "Suzhou",
+        "name": "新梦想",
+        "address": "苏州市工业园区 苏州中心商场南区二楼 B01"
+      }
+    ]
+  },
+  "mvsevm": {
+    "stockistCN": [
+      {
+        "city": "Shenzhen",
+        "name": "Element Plus (Shenzhen) Ltd.",
+        "address": "L5, Loft B, Upperhills, No.5001 Huanggang Road, Futian District, Shenzhen"
+      }
+    ]
+  },
+  "impatia": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/64c8b72c000000000b00b54d?m_source=pwa&xsec_token=ABupjN0fG3o3LXaieOktjsrxsOfO7T9yA-EFQfq8BCGqs=&xsec_source=pc_search"
+  },
+  "henge": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/670551fe000000000d0266ef?m_source=pwa&xsec_token=ABD10K-6VojcjhEPygiLDZHKlf8E4QBdE__PetKDnWldQ=&xsec_source=pc_search"
+  },
+  "porro": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63b3e4ff0000000027037890?m_source=pwa&xsec_token=ABxI6XpawOJP37Gt-lgIBPssTi4dzhpnkb0xLLsH6wFU8=&xsec_source=pc_search",
+    "wechat": "https://mp.weixin.qq.com/s/nSyuTClMFWRH4YmUzpHnKQ",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "简之家 Jian Casa",
+        "address": "北京市朝阳区新源路63号星源汇1座101号"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Vera 意述家",
+        "address": "北京市朝阳区三间房南里7号院万东国际文创园15号楼109室"
+      },
+      {
+        "city": "Chongqing",
+        "name": "熙予 XIYU",
+        "address": "重庆市渝北区新南路888号红星美凯龙一楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "上海福奕建材有限公司 Porro Shanghai",
+        "address": "上海市徐汇区宜山路407号3037室喜盈门国际建材家具品牌中心"
+      },
+      {
+        "city": "Shanghai",
+        "name": "艾瑞亚家居 Area Living",
+        "address": "上海市陕西北路600号5号楼"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "意品艺居 GeeCasa",
+        "address": "深圳市南山区粤海街道深圳湾1号南区105"
+      },
+      {
+        "city": "Xi'an",
+        "name": "佳驰美邑进口家居",
+        "address": "陕西省西安市未央区太华北路198号大明宫中央广场北广场佳驰美邑名品馆2层"
+      },
+      {
+        "city": "Changzhou",
+        "name": "常州众凡进出口有限公司",
+        "address": "常州市新北区龙锦路1590号现代传媒中心1号楼50层"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "PIN.空间 意大利家居生活馆",
+        "address": "杭州市上塘路15号武林时代写字楼1楼沿街商铺"
+      },
+      {
+        "city": "Ningbo",
+        "name": "优摩家居",
+        "address": "宁波市德克德家国际家居1楼中庭122"
+      }
+    ]
+  },
+  "minotti": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/60993be7000000000101e4a7?m_source=pwa&xsec_token=AB6EYGlcAwJMrx91XCvO5NlKefE374yTO7jHgAjRxcJFk=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Minotti Beijing by Domus Tiandi",
+        "address": "B1-L17, The Peninsula Beijing, Building 1, No.8 Goldfish Lane, Wangfujing, Dongcheng District, 100006 Beijing"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Minotti Chengdu by Weimei",
+        "address": "No. 11, Yizhan Road, Yixin Street, Shuangliu District, 610000 Chengdu"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Minotti Chongqing by Ansel Home",
+        "address": "No. BL121, BL122, BL123 and BL228 on 1F, 2F of Starlight 68 Plaza B, No.66 Yanghe 1st Road, Guangyinqiao Street, Jiangbei District, 400020 Chongqing"
+      },
+      {
+        "city": "Dalian",
+        "name": "Minotti Dalian by Fujia Home",
+        "address": "The Rear of the Modern Museum, 570-6 Zhongshan Road, Shahekou District, 116021 Dalian City, Liaoning Province"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Minotti Guangzhou by Yi's House",
+        "address": "L215A, K11, Guangzhou Chow Tai Fook Finance Centre (CTF Finance Centre), No.6 Zhujiang East Road, Tianhe District, 510623 Guangzhou"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Minotti Hong Kong by Andante",
+        "address": "Shop A & D, G/F, Ruttonjee Centre, 11 Duddell Street, Central, Hong Kong"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Minotti Shanghai by Domus Tiandi",
+        "address": "No.151 Jianguo West Road, Huangpu District, Shanghai"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Minotti Shenzhen by Domus Tiandi",
+        "address": "Room S223, Upper Hills, No. 5001 Huanggang Road, Futian District, Shenzhen"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Minotti Taizhou by Fashion Bond",
+        "address": "220 Zhaohui Road, Jiaojiang District, 318000 Taizhou City, Zhejiang Province"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Minotti Xiamen by Casa Bella",
+        "address": "SCE Building B, No.210, Gaoqi Nanwu Road, 361006 Xiamen"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Minotti Xi'an by J&C",
+        "address": "Independent Store, North of Daminggong Center SQ, No.198, North of Taihua Road, Xi'an City, Shaanxi Province"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "Minotti Zhengzhou by Xuanrong",
+        "address": "Yellow River Pearl Plaza, Ruyi West Road, Jinshui District, Zhengzhou City, Henan Province"
+      }
+    ]
+  },
+  "molteni-c": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5dc97a190000000001000761?xsec_token=ABPN2ZbenMIT5T52jNV5IkgY4O1b2fjb6L7dQ_j4adLoU%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "家天地 Domustiandi",
+        "address": "上海市黄浦望达路19号 B3-B"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "长木家居",
+        "address": "杭州市上城区运河东路16号"
+      },
+      {
+        "city": "Ningbo",
+        "name": "一再一物 RenUno",
+        "address": "宁波市鄞州区宁穿路315号第六空间"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家 WOMEHOME",
+        "address": "温州市鹿城区三友路121号万萃广场2幢1层"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "YI'S HOUSE",
+        "address": "广州市海珠区新港东路1000号五楼5036"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "ZX卓欣家居生活",
+        "address": "郑州市郑东新区商都路1号红星美凯龙家具馆一楼"
+      },
+      {
+        "city": "Chengdu",
+        "name": "意美奢享家",
+        "address": "四川省成都市双流区牧华路三段2321号"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Kitchen Infinity",
+        "address": "香港铜锣湾开平道1号Cubus"
+      },
+      {
+        "city": "Xi'an",
+        "name": "佳驰美邑进口家居",
+        "address": "西安市未央区太华北路大明宫钻石店1层中厅"
+      },
+      {
+        "city": "Wuhan",
+        "name": "HCH Culture 惠存国际",
+        "address": "武汉市江岸区咸安坊1号楼DF1107"
+      },
+      {
+        "city": "Nanjing",
+        "name": "锐吉国际家居",
+        "address": "南京市建邺区庐山路110号红星美凯龙七号馆一楼"
+      },
+      {
+        "city": "Hefei",
+        "name": "Simple Casa 森璞荟",
+        "address": "合肥市庐阳区四里河红星美凯龙一楼"
+      },
+      {
+        "city": "Kunming",
+        "name": "至里",
+        "address": "昆明市广福路318号红星美凯龙1号店一楼"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "家天地 Domustiandi (opening soon)",
+        "address": "深圳湾文化广场"
+      }
+    ]
+  },
+  "nilufar": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/64918021000000001c02b26b?m_source=pwa&xsec_token=YB4bfMT9qIHUAituuSYY2u1wx2qy0vNAqq_Z1qE4wI8vc=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODo7MTs1Njo2NzUyOTgwNjdGOTlGNzxL&apptime=1768303931&share_id=3893305c31e548049f551b54cc73e3bd",
+    "wechat": "https://nilufar.com/wp-content/uploads/2026/06/NILUFAR-WECHAT.jpeg",
+    "stockistCN": [
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford Pacific Place",
+        "address": "Pacific Place, Hong Kong"
+      }
+    ]
+  },
+  "gallotti-radice": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63c1425d0000000027029511?xsec_token=AB04sEBERl8ztipzoh-8-dftHzvUURTxWemaK6qB-Weig%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Qingdao",
+        "name": "Doograce",
+        "address": "Hongkong Middle Road 136, Shinan District, 266071 Qingdao City (Shandong)"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Royal Living",
+        "address": "East Zhongshan Road No. 1751, Yinzhou District, 315000 Ningbo City (Zhejiang)"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Tiamantti",
+        "address": "1265 Wuzhong Rd, Bld.B-8F, 201103 Shanghai"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Taizhou Fashionbond Home",
+        "address": "No. 260-292 Hailong Road, Jiaojiang District, Taizhou City, Zhejiang Province"
+      }
+    ]
+  },
+  "brionvega": {
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "Modpoly Co Ltd",
+        "address": "1F., No. 16, Ln. 295, Sec. 1, Fuxing S. Rd., Da'an Dist., Taipei City 106, Taiwan"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Sovmorgon",
+        "address": "H061-A-FB-12, Lower Ground 1, No. 2099 Donghuan Avenue, Dearlook, Jiaojiang, 318015 Taizhou"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "Hall F, Fanmate Creative Art Area, No.666 Donghong Road, Longquan District, Chengdu, Sichuan"
+      },
+      {
+        "city": "Shanghai",
+        "name": "PRO101 Shanghai",
+        "address": "L2-02&03, 2nd Floor, Building 6, Lane 123, Xingye Road, Huangpu District, Shanghai"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "PRO101 Shenzhen",
+        "address": "No. 245, L2 Floor, Phase 1, Shum Yip Upper Town, No. 5001, Huanggang Road, Futian District, Shenzhen"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Drivepro",
+        "address": "Shop 212, 2/F, Pacific Place, 88 Queensway, Admiralty, Hong Kong"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Drivepro",
+        "address": "457, Mixc City, 701 Fuchun Rd, Jianggan, Hangzhou"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Drivepro",
+        "address": "1245A Taikoo Lee, 8 Zhongshamao St, Jinjiang, Chengdu"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Drivepro",
+        "address": "No. 101-102, Building 13, 398 Tianmushan Road, Hangzhou"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa",
+        "address": "L112, CP Center, Guanghua Rd, 100020 Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Iyouth Studio",
+        "address": "Xikang Road, Jing'an District, 200000 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa",
+        "address": "150 Yueyang Road, Xuhui District, Shanghai, 200031"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Drivepro",
+        "address": "L227, TaiKoo Hui, No.383 Tianhe Road, Tianhe District, Guangzhou"
+      },
+      {
+        "city": "Beijing",
+        "name": "Drivepro",
+        "address": "NLG-03, B1/F, TaiKoo Li, No.19 Sanlitun Road, Chaoyang District, Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Drivepro",
+        "address": "Unit 1, No.25, Alleyway 181, Taicang Road, Huangpu District, Shanghai"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Drivepro · The Mixc",
+        "address": "236, Phase 2 The Mixc, South Bao'an Road, Luohu District, Shenzhen"
+      }
+    ]
+  },
+  "living-divani": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63bd3e6900000000260049ed?m_source=pwa&xsec_token=AB9OXFfP1xI7Qu7XW9BmeWdlN1QzUGVCGGj9BotYt__rY=&xsec_source=pc_search",
+    "wechat": "https://www.livingdivani.it/en/communication/agenda/2017/living-divani-on-wechat/",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "家天地王府半岛店 (Peninsula Beijing)",
+        "address": "北京市东城区金鱼胡同8号，王府半岛酒店B2"
+      },
+      {
+        "city": "Ningbo",
+        "name": "御景汇国际家居",
+        "address": "浙江省宁波市鄞州区中山东路1751号德克德家国际家居1-115"
+      },
+      {
+        "city": "Wuxi",
+        "name": "Living Divani无锡旗舰店",
+        "address": "江苏省无锡市梁溪区锡沪路280号华厦家居港2期A106"
+      },
+      {
+        "city": "Hefei",
+        "name": "Simple Casa森璞荟",
+        "address": "安徽省合肥市庐阳区四里河路与潜山北路交叉口红星美凯龙一楼A8121室"
+      },
+      {
+        "city": "Shanghai",
+        "name": "艾瑞亚家居 Area Living",
+        "address": "上海市静安区陕西北路600号5号楼1-3层（新闸路1250号）"
+      },
+      {
+        "city": "Shanghai",
+        "name": "上海做自己家居有限公司",
+        "address": "上海市闵行区吴中路1388号红星欧丽一楼A8001"
+      },
+      {
+        "city": "Chengdu",
+        "name": "凡德罗家居麓湖店",
+        "address": "四川省成都市麓湖青岛路西段2706号"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "浙江温州市鹿城区府东路物华大厦1-2楼"
+      }
+    ]
+  },
+  "bocci": {
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Design Republic",
+        "address": "Shanghai, China"
+      }
+    ]
+  },
+  "hessentia": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/656dd2e6000000002002d80f?m_source=pwa&xsec_token=ABYbxyNGyL6oz9QvkBeG8vOz_BG7xxcrYZXer9TexXdrw=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Hessentia",
+        "address": "中国上海市普陀区澳门路168号4楼D002-003室"
+      },
+      {
+        "city": "Xiamen",
+        "name": "卡莎贝拉 Casa Bella",
+        "address": "中国厦门市高崎南五路208号卡莎贝拉SCE大厦, 361006"
+      },
+      {
+        "city": "Dalian",
+        "name": "大连福瑞家居有限公司",
+        "address": "中国辽宁省大连市沙河口区万绥街34号901室"
+      },
+      {
+        "city": "Foshan",
+        "name": "罗浮宫国际家具博览中心 Louvre Casa",
+        "address": "中国广东省佛山市顺德区罗浮宫国际家具博览中心5-6F"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "卢浮宫（广州）Louvre Guangzhou",
+        "address": "广东省广州市天河区黄埔大道中段666号卢浮宫家居艺术中心C座4楼"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Royal Living",
+        "address": "宁波市鄞州区中山东路1751号, 315100"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Tiamantti",
+        "address": "中国上海市吴中路1265号B座7楼, 201103"
+      },
+      {
+        "city": "Zhuhai",
+        "name": "Vosivo Casa",
+        "address": "中国广东省珠海市青鹿南路1号仁恒滨海中心4号楼2楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Fancy Living",
+        "address": "南京市建邺区河西大街239号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "成都意美世家贸易有限公司 Chengdu Yimeishijia Trade Co.",
+        "address": "成都市高新区富森贵族府3号商铺1楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "浙江boella家居",
+        "address": "浙江省杭州市西湖路18号5楼E21室"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Upper Living",
+        "address": "Upper Living Tower, No.165 Hoi Bun Road, Kwun Tong, Kowloon, Hong Kong"
+      }
+    ]
+  },
+  "cattelan-italia": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/610e23c700000000010004f0?m_source=pwa&xsec_token=AB2954UaH7I1jym1xB-SUyAdBiaObcF1cUd451p5o19ig=&xsec_source=pc_search"
+  },
+  "poliform": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5d556585000000001602ff2d?xsec_token=ABnFOjCmFUu27sfWZV9s3TCU7itkAkP2Hvne4WphH6crU%3D&xsec_source=pc_search"
+  },
+  "riva-1920": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/625352fc000000001000a7ee?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABcyl4pcRfT7_CWKE0wj0VCLUf7sd9-bZSSu3lLqO5pvQ=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "欧罗汇 Euhome",
+        "address": "上海市闵行区吴中路1388号红星欧丽全球家居至尊Mall一层Riva1920"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "上海市静安区陕西北路600号5号楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "欧罗汇 Euhome",
+        "address": "北京市北四环居然之家5号馆家之尊二层 Riva1920"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧罗汇 Euhome",
+        "address": "山东省济南市天桥区北园大街225号红星美凯龙一楼中厅"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧罗汇 Euhome",
+        "address": "山东省济南市北园大街419号银座家居中心店一楼"
+      },
+      {
+        "city": "Changzhou",
+        "name": "欧罗汇 Euhome",
+        "address": "江苏省常州市天宁区飞龙东路72号红星美凯龙家世界一层"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "欧罗汇 Euhome",
+        "address": "河北省石家庄市裕华区裕华路红星美凯龙方北商场1号馆东门1楼欧罗汇"
+      },
+      {
+        "city": "Xi'an",
+        "name": "欧罗汇 Euhome",
+        "address": "西安市碑林区太白立交红星美凯龙1-1-007"
+      },
+      {
+        "city": "Yantai",
+        "name": "欧罗汇 Euhome",
+        "address": "山东省烟台市芝罘区机场路252号红星美凯龙全球家具馆一楼南厅欧罗汇店"
+      },
+      {
+        "city": "Qingdao",
+        "name": "欧罗汇 Euhome",
+        "address": "青岛市市北区黑龙江路居然之家A馆1楼欧罗汇家具"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Misu House 美墅馆家具",
+        "address": "广东省广州市天河区黄埔大道664-666号罗浮宫家居广州艺术中心C座C1-823"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "欧罗汇 Euhome",
+        "address": "广东省深圳市罗湖区宝安北路3008号宝能第一空间3号门1楼1C02/03/05-欧罗汇"
+      },
+      {
+        "city": "Ningbo",
+        "name": "欧罗汇 Euhome",
+        "address": "宁波市鄞州区潘火街道环城南路1728号红星美凯龙一楼"
+      },
+      {
+        "city": "Ningbo",
+        "name": "瑞努家居 RenUno House",
+        "address": "浙江省宁波市鄞州区宁穿路315号"
+      },
+      {
+        "city": "Taizhou",
+        "name": "梵逊邦德家居 Fashion Bund",
+        "address": "浙江省台州市椒江区朝晖路220号"
+      },
+      {
+        "city": "Shaoxing",
+        "name": "集致 Jizhi Home",
+        "address": "浙江省绍兴市越城区北海街道官渡路木业大厦三楼"
+      },
+      {
+        "city": "Wuxi",
+        "name": "欧罗汇 Euhome",
+        "address": "江苏省无锡市锡山区红星美凯龙2号馆1楼欧罗汇"
+      }
+    ]
+  },
+  "kelly-wearstler": {
+    "stockistCN": [
+      {
+        "city": "Dongguan",
+        "name": "Visual Comfort & Co.",
+        "address": "东莞市科创路96号联科产业园20栋"
+      }
+    ]
+  },
+  "vi-spring": {
+    "stockistCN": [
+      {
+        "city": "Hangzhou",
+        "name": "Vispring",
+        "address": "民心路280号平安悦坊PAFC LIVING A区二楼208B/209"
+      }
+    ]
+  },
+  "giorgetti": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5f0601760000000001001e84?m_source=pwa&xsec_token=ABPduVpwyiKil5Afr_dAZuRLpTao-X3A7FRv_u0DbpjKE=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "Bldg. 5, No.600, ShanXi N. Road, Jing'an District, 200041 Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Giorgetti Store Shanghai",
+        "address": "8F, Bldg. B, No.1265, Wuzhong Road, Minhang District, 201103 Shanghai"
+      },
+      {
+        "city": "Ningbo",
+        "name": "Royal Living Ningbo",
+        "address": "No. 1751, East Zhongshan Road, Yinzhou District, Ningbo City, 315100 Zhejiang Province"
+      },
+      {
+        "city": "Beijing",
+        "name": "Beijing Classic Living Co., Ltd.",
+        "address": "No.10, Nongzhanguan South Road, Chaoyang District, 100125 Beijing"
+      },
+      {
+        "city": "Beijing",
+        "name": "Giorgetti Store",
+        "address": "B1-L17&B2, Peninsula Hotel, No.8, Jinyu Hu Tong, Dongcheng District, 100010 Beijing"
+      },
+      {
+        "city": "Taipei",
+        "name": "Yi&C Furniture & Project Consulting Co., Ltd.",
+        "address": "23, Lane 252, Section 1, Dunhua S Rd, Da'an District, 106 Taipei"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "Hebei Zhongzheng",
+        "address": "2nd Floor, Building C, Lianchuang No.1, Intersection of Tiyu Street and Cangyu Road, Yuhua District, Shijiazhuang City"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "Senco+",
+        "address": "International Home Life Plaza, No. 87, Cangyu Road, Yuhua District, Shijiazhuang City"
+      },
+      {
+        "city": "Taichung",
+        "name": "Chen Bros Merchandise Co",
+        "address": "Mitsui Shopping Park LaLaport Taichung 1F North hall No. 600, Road Jin-De, 40154 Taichung"
+      },
+      {
+        "city": "Xiamen",
+        "name": "Xiamen Casa Bella Trade Co., Ltd.",
+        "address": "SCE Building, No.208, Gaoqi Nanwu Road, 361006 Xiamen"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Giorgetti Store",
+        "address": "West Side of the Lobby of Xi'an W Hotel, Qujiangchi East Road, Yanta District, Xi'an, Shaanxi"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Ritz Home Design Co., Ltd.",
+        "address": "Unit 024-028, F1, OCT Coastal O'PLAZA, Nanshan District, 518000 Shenzhen"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Giorgetti Store",
+        "address": "L201, Hanking Center, No. 9968 Shennan Avenue, Nanshan District, Shenzhen"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Colourliving",
+        "address": "China Online Centre, 333 Lockhart Road, Wan Chai, Hong Kong"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Giorgetti Store",
+        "address": "4F, Building C, Louvre Furnishing Art Center, No.666, the middle section of Huangpu Dadao, Tianhe District, 528315 Guangzhou"
+      },
+      {
+        "city": "Foshan",
+        "name": "Giorgetti Store",
+        "address": "5-6F, Louvre International Furniture Exhibition Center, Shunde District, 528315 Foshan City"
+      }
+    ]
+  },
+  "italamp": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/640c201b0000000029016d53?m_source=pwa&xsec_token=AB0tm3HbFABkl6fLwunYchObnXEgYF-z4F0NwZQdtIxsw=&xsec_source=pc_search",
+    "wechat": "https://www.italamp.com/en/contacts",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Zspaceplus",
+        "address": "上海市鹤旋东路98弄慧创新视界商务中心E栋5号楼1-2层"
+      },
+      {
+        "city": "Shanghai",
+        "name": "新雅典灯饰（好饰家展厅）",
+        "address": "上海市徐汇区田林东路285号好饰家灯饰广场二楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Bluce Lighting 进口灯饰",
+        "address": "上海市汶水路1555号红星美凯龙五楼E811"
+      }
+    ]
+  },
+  "ligne-roset": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/55838318e4b1cf6adfa3e717?m_source=pwa&xsec_token=ABSiJL7SO4NxiDy6UjqZXDfL7oE32F0o7qSUyp7Gac90U=&xsec_source=pc_search"
+  },
+  "moroso": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/65c4aac2000000000903d28d?m_source=pwa&xsec_token=ABVjA4grGjYFUINwZRyznb68B-S_4ky8XU51YVAE_7ORQ=&xsec_source=pc_search"
+  },
   "baccarat": {
     "rednote": "https://www.xiaohongshu.com/user/profile/5bc9ad37c0fd2b0001509806?m_source=pwa&xsec_token=ABvUwg4fWOg2opkFLyhAqWmNoUH6Jo40g3I6jcZpDen1I=&xsec_source=pc_search",
     "taobao": "https://baccaratjjry.world.tmall.com/category-1537183070.htm?spm=a312a.7700824.w5003-25776808534.1.2152bb78gw37qn&search=y&catName=%CB%F9%D3%D0%B1%A6%B1%B4&scene=taobao_shop#bd",
@@ -5948,6 +6904,390 @@ BRANDS.forEach(b=>{
 // own site (never downloaded or rehosted here) — only populated for brands the studio
 // has actually curated a gallery for.
 const AMBIANCE_DATA = {
+  "zanotta": [
+      {
+          "project": "",
+          "images": [
+              "https://www.zanotta.com/ContentsFiles/Zanotta_poltronaGomma840_IG08%20R32946_magazine.jpg",
+              "https://i.pinimg.com/736x/4e/8b/7e/4e8b7ee3f9655945fc0e6bd1db1b21bc.jpg",
+              "https://i.pinimg.com/1200x/a5/13/c1/a513c1b85d9e570bf3d6973d118ae95d.jpg",
+              "https://i.pinimg.com/1200x/df/e7/7b/dfe77be8038154f3e016442533347ae1.jpg",
+              "https://i.pinimg.com/1200x/1f/15/24/1f1524649f49bcb9d708b9a3aac69258.jpg",
+              "https://i.pinimg.com/736x/6b/f4/27/6bf4270eef52dbc8e6b7387702abaebc.jpg",
+              "https://i.pinimg.com/1200x/5f/f1/92/5ff1921de531575555df1ff767919055.jpg"
+          ]
+      }
+  ],
+  "mvsevm": [
+      {
+          "project": "",
+          "images": [
+              "https://www.mvsevm.it/wp-content/uploads/2021/09/Hotel-San-Roque_Spagna_3.jpg",
+              "https://www.mvsevm.it/wp-content/uploads/2021/09/Gran-Hotel-Valencia-Palace-Spagna.jpg",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/645178775_1560313362762759_8646280230552139550_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg0NDAyNTkzMjU5OTk1NjY3MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=0iVd6HYo2WEQ7kNvwGTwpdY&_nc_oc=AdoAMkWCPrH7eBf8EQCuqZ1pn_prqmBAeywNyl9CULjqZJmNJzZrxN45F97n7zTba6E&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=puZ9o_HF-v9VKDwvYov8CA&_nc_ss=79289&oh=00_AQA7_GNlWOvBNrgLjpk_2DWGTF72Z2t72KPKU47UJyHK4w&oe=6A6D391B"
+          ]
+      }
+  ],
+  "la-chance": [
+      {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/736x/4f/56/73/4f567377f0a28a85e7f1e72fa82ac2d6.jpg",
+              "https://i.pinimg.com/1200x/f9/7d/73/f97d73aaba723bada6e0bb679b73f2a4.jpg",
+              "https://www.lachance.paris/wp-content/uploads/2021/09/01.jpg",
+              "https://www.lachance.paris/wp-content/uploads/2022/07/LaChance_137-web.jpg",
+              "https://www.lachance.paris/wp-content/uploads/2025/09/La-Chance-Richelieu_0625_FA-scaled.jpg",
+              "https://www.lachance.paris/wp-content/uploads/2025/09/La-Chance_02-1.jpg"
+          ]
+      }
+  ],
+  "molteni-c": [
+      {
+          "project": "",
+          "images": [
+              "images/molteni-c/ambiance/1.png"
+          ]
+      },
+      {
+          "project": "Majestic Maison, China",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1765526796/2025_PH_Cnt_Majestic-Maison_China_04.jpg"
+          ]
+      },
+      {
+          "project": "Villa O2, Saint-Barth",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1784302775/2025_PH_Cnt_Villa-O2_San-Barth_05.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1784302740/2025_PH_Cnt_Villa-O2_San-Barth_03.jpg"
+          ]
+      },
+      {
+          "project": "Brucoli Lighthouse, Sicily",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1280/v1751354754/2020_PH_Cnt_Brucoli-Lighthouse_Sicily_01.jpg"
+          ]
+      },
+      {
+          "project": "Huzhou Villa, Wenzhou",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1280/v1764748176/2025_PH_Cnt_Huzhou-Villa_Wenzhou_10.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1280/v1764748166/2025_PH_Cnt_Huzhou-Villa_Wenzhou_11.jpg"
+          ]
+      },
+      {
+          "project": "Casa Novina, Val d'Orcia",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1280/v1752480945/2022_PH_Cnt_Casa-Novina_Val-Dorcia_19.jpg"
+          ]
+      },
+      {
+          "project": "Westfield Avenue, London",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_2560/v1781162727/2025_PH_Cnt_Westfield-Avenue_London_02.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1280/v1781162724/2025_PH_Cnt_Westfield-Avenue_London_04.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1781603901/2025_PH_Cnt_Westfield-Avenue_London_Web_05.jpg"
+          ]
+      },
+      {
+          "project": "262 Fifth Avenue, New York",
+          "images": [
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1780041607/2026_PH_Cnt_262-Fifth-Avenue_New-York_12.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_3840/v1780041586/2026_PH_Cnt_262-Fifth-Avenue_New-York_18.jpg",
+              "https://res.cloudinary.com/molteni/image/upload/f_webp,q_auto:best,w_1536/v1780041599/2026_PH_Cnt_262-Fifth-Avenue_New-York_15.jpg"
+          ]
+      }
+  ],
+  "nilufar": [
+      {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/736x/10/a7/91/10a79172a6643a072d81f7545dc063ba.jpg",
+              "https://i.pinimg.com/736x/82/a5/d3/82a5d32c0d37e6ca9db38677fe617e6b.jpg",
+              "https://i.pinimg.com/736x/0f/2a/db/0f2adb16a03903888ac9d8cfd7ab78ea.jpg",
+              "https://i.pinimg.com/736x/8a/65/23/8a6523de92f31e707f2401865bd398e3.jpg",
+              "https://i.pinimg.com/736x/e9/82/f1/e982f1abd179cf12ce13c22cf0de6250.jpg",
+              "https://i.pinimg.com/736x/3b/74/ef/3b74effe41386c928c57215407feb833.jpg",
+              "https://media.yatzer.com/08_gc_nilufar_pedro_ramirez_vazquez_house_alejandro_ramirez_orozco_yatzer-1400x2100.jpg",
+              "https://i.pinimg.com/1200x/2c/c5/76/2cc576b626a86b2fbdafa470e10b7a6a.jpg",
+              "https://i.pinimg.com/736x/64/5e/8d/645e8d6ad1127d10c9a173889b35ed9f.jpg",
+              "https://i.pinimg.com/736x/8b/fe/88/8bfe88b352fa5e36ff198a2391e44eba.jpg",
+              "https://i.pinimg.com/736x/50/09/04/500904049f37329fcdf3f9564a8edcea.jpg",
+              "https://i.pinimg.com/736x/eb/ab/2f/ebab2fe8bfa4a8dbbed56214b84446c4.jpg",
+              "https://i.pinimg.com/736x/ef/06/0d/ef060d56f45977860f5d718073ac0dfd.jpg",
+              "https://i.pinimg.com/736x/49/22/03/4922038d29f115355191b081d52b1587.jpg",
+              "https://i.pinimg.com/736x/45/5a/18/455a18ec4fa48f933425a54e4a029622.jpg",
+              "https://i.pinimg.com/736x/e1/76/4b/e1764b7c73b4e10fa8dda98d75b9bedf.jpg",
+              "https://i.pinimg.com/736x/3a/6e/8b/3a6e8b101eaffd7dd5f848399c7f7b33.jpg",
+              "https://i.pinimg.com/736x/6e/b2/c3/6eb2c38b57e14dc13a8205a8badf3563.jpg",
+              "https://i.pinimg.com/736x/11/4f/19/114f199922a9d576e6691fcfc83f4aca.jpg",
+              "https://i.pinimg.com/736x/aa/52/69/aa52699af2891e2a4534b3b310187323.jpg",
+              "https://i.pinimg.com/736x/d8/24/26/d824267fa01dfd392f3fdffaa8b4c306.jpg",
+              "https://i.pinimg.com/736x/1b/93/a7/1b93a7bc454295f1b13f1c5589a5dfc4.jpg",
+              "https://i.pinimg.com/736x/3b/b0/2b/3bb02b9a292029f595a2be21f035fed1.jpg",
+              "https://i.pinimg.com/736x/4a/c8/03/4ac8031b74bb2ab3ffc4288a7222a23c.jpg",
+              "https://i.pinimg.com/736x/13/b9/b4/13b9b48ad2c319f3e4eea15b8416d31e.jpg",
+              "https://i.pinimg.com/736x/10/3c/e4/103ce47aa2780c006f92f7dcdbc5b026.jpg",
+              "https://i.pinimg.com/736x/bd/23/53/bd2353681ca54909891f4b0218e1570f.jpg",
+              "https://i.pinimg.com/736x/72/52/f6/7252f6f6c68cd5720a762323168dc3d8.jpg",
+              "https://i.pinimg.com/736x/3e/ee/8b/3eee8b2b4a69183b91e3fd6031741ae5.jpg",
+              "https://i.pinimg.com/736x/5c/cc/cb/5ccccb2b24d41683c048195ffa3a19aa.jpg",
+              "https://i.pinimg.com/736x/9c/e6/12/9ce61259440966095eca8228a38c9f96.jpg",
+              "https://i.pinimg.com/736x/4e/36/59/4e365904b8ae3d0802822fe46f03f5ff.jpg",
+              "https://i.pinimg.com/736x/59/9a/01/599a010098dce982671dff6177eb4bed.jpg",
+              "https://i.pinimg.com/736x/a5/7f/ff/a57ffff9d487964a0e371fd122ac4d8d.jpg"
+          ]
+      }
+  ],
+  "chapo-cr-ations": [
+      {
+          "project": "",
+          "images": [
+              "https://chapo-creation.com/wp-content/uploads/2025/12/2-scaled.jpg",
+              "https://i.pinimg.com/736x/b7/4b/26/b74b266cde9c0db56a903c4835a5fa72.jpg",
+              "https://www.milkdecoration.com/wp-content/uploads/2022/12/220714-frederic-hooft-milk-de-co-hr-3-r-1005x1305.jpg",
+              "https://i.pinimg.com/1200x/e4/3c/ec/e43cec23ee607b930613231adda51903.jpg",
+              "https://i.pinimg.com/1200x/83/1b/a1/831ba194efe3245e94ed33ccd9997c79.jpg"
+          ]
+      }
+  ],
+  "gallotti-radice": [
+      {
+          "project": "Casa Do Relógio, Brasile",
+          "images": [
+              "https://www.gallottiradice.it/ContentsFiles/Gallottiradice_project_Casa-Do-Relogio_Brasile_zoom_2.jpg"
+          ]
+      },
+      {
+          "project": "Heritage Suite",
+          "images": [
+              "https://www.gallottiradice.it/ContentsFiles/Heritage%20Suite%2017(0).jpg"
+          ]
+      },
+      {
+          "project": "Hotel Trame",
+          "images": [
+              "https://www.gallottiradice.it/ContentsFiles/Hotel%20Trame_0071-HDR(2).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/Hotel%20Trame_0152-HDR(0).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/Hotel%20Trame_0006-HDR(0).jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.gallottiradice.it/ContentsFiles/ADL_7366%20copia%201(0).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/ADL_7427%20copia%201(0).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_P26_Sunset%20Comodino_Capsa_150RGB(6).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Selce-T_Saki_Tratto_150RGB2(0).jpeg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Orma_Garcon_150RGB(4).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Arch_Haumea_Stresa(5).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Manto_Akiko_0419_Bolle%20Cielo_150RGB(6).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_MDW24_2(0).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Cloud%20Infinity_Cloud%20Poltrona_Cloud%20Pouf_Lilas_Sensei_Re-verre_Prism%20Low_Bolle%20Stelo_Diedro_Ato_150RGB(32).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_Simpodio%20W_H2O_Bolle%20Cielo_150RGB(4).jpg",
+              "https://www.gallottiradice.it/ContentsFiles/GallottiRadice_MDW24_7(1).jpg"
+          ]
+      }
+  ],
+  "brionvega": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/708068661_18532184128076613_8705128726986662580_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzkwNTQ5NTAwOTQxNDczODA3NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMzI3Ny5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Htt-Lgz_t7QQ7kNvwHFjs_U&_nc_oc=AdpwrgevG7U-e-vAZkw50emqnroAu0trmBA2sbbtnkhVkktSnJwQXB_emSVPGy7XLiQ&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=CtNeEi4LixqVGxYfy_c4Lg&_nc_ss=79689&oh=00_AQCnJX8zvMettFi8R_JgR3bybd7qRVX_eLWRq57h1_BoLA&oe=6A6CDDDF",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/623821702_1298030539028393_566688122313855998_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzgyNDMzNjA4Mzk0OTI1OTA0MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=hulj8EugUbwQ7kNvwFsatwz&_nc_oc=Adpic9F8n8t5kvI_a9vcLiVMfbglzBaLct_D-OM5YPQ_aCp97PsXFwXSsgDfS1rIne0&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=s0pgryBUj02a_XI1xeERtA&_nc_ss=79689&oh=00_AQBMTDZVeIbFz8aXqp3NfwWihQYLuPvYSqrB48nH_YN51w&oe=6A6CD7B4",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/493078605_1072569798241136_2445536232117274419_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzYyMDY0MzkwMjkzNzA5OTY4OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=PhnV6G6szfAQ7kNvwFWFKIW&_nc_oc=AdqQVBMop2RFOlGozvP66N6hPbdTmU0gKlHqH3BaDIoN2Wqqhr-NYwEAAqApfPWboeY&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=eeabHHu7gZQ7kJ4LBPHFpA&_nc_ss=79689&oh=00_AQBKt4QuQll9d1N-tLqi7Ib5V5RnEBPoRgQujoxhlOckWg&oe=6A6CA69E",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/489376363_18454992325076613_2889858635321443609_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzYwODM1MjYyNTI1NDc4Mjk4NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=NFHQdF2kPZEQ7kNvwES_TFH&_nc_oc=AdqxUSEDkVqaTY1Q7_LULSVmcgykI6jl8WpetiyDKcURdpUXFkMZi3DP2-Ha560Qmws&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=y5nzzeaFhYLfC2Kuch6Z7w&_nc_ss=79689&oh=00_AQCcpZ3WbsJgTkOF_ZG4t8sRjWGyK0odU2-p36heO-Ci_w&oe=6A6CBA77"
+          ]
+      }
+  ],
+  "living-divani": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/749301313_1493252672815955_4943591013117999776_n.jpg?stp=c0.64.1536.1920a_dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzk0NjEyODkxNzgyODI5MDkxMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTUzNi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=EjROY6CGxK0Q7kNvwG18Cxc&_nc_oc=AdpBGR3C5HDTn1gOHoMBHqLf-MOS0VcduvHJqa6TioM2qqyQoHVausMZOjh1tUxr_es&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=SRwf2o4EXp8s9bLlEjAn7w&_nc_ss=79689&oh=00_AQC4_5VcJcySHzNwKrM-kVeyFLKqtw8-GvzZptqxY6rLSQ&oe=6A6CB431",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/648950275_1381948717279685_5101723388298773663_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzg1MDQ1ODE3MTY3MjczNDg3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=EOxcvIhIwOMQ7kNvwHmA04K&_nc_oc=AdpmqHUSqgLN2wtO7yGvcId15jXl74CEAzp_ybo0WsExiYgYbzxapR4kIN_A9RTV4nc&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=kcROAPiXH8b9SxbRbjslOQ&_nc_ss=79689&oh=00_AQCBiVWVwsTr6sixPRQFwlUcxeHrSZTa5nXK3S3azXBmoA&oe=6A6CB98D"
+          ]
+      }
+  ],
+  "bocci": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/669660126_18395063179153695_8975847211609888471_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MjQ4OTM5MjY1NjQ3MjY3MDYzNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTE5MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=3BWQt4byf2EQ7kNvwF8-g6L&_nc_oc=AdosegvFQokkdEs5AqqkPSUK9Tbc55z36ND9deQoZ4O_UMl6KgiyPbI-vDdSft6SmmM&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=mfXdSg9_sP1fMgXPsP6MmA&_nc_ss=79689&oh=00_AQCC-Eai6Ybp9at8uhkmuuOvpUgVAhsyKUdpT0067BBSkA&oe=6A6CCC4B",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/624113661_18150564841447430_6147501774113746437_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MjE1MjI4NDQ2OTY1NzMxOTkwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQwMy5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=BOyWwl2ueeEQ7kNvwHAoJHm&_nc_oc=Adq30XJSCeGcCJk6ISqKd9VEaBOveVR1tmEhFL7W-R8uhdK-861FpN8QTwhN-FlDpiE&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=x5JsjH4Ygq-3r0GCVCOoAA&_nc_ss=79689&oh=00_AQDgBijq51OEG0_IA4hqgv9jJrjwy1G1-ZlE0aByeaF4EQ&oe=6A6CDE58",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/621358361_18114274126538329_2423506788442014891_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MjE0MTMwMTE4Nzg1MTM2NDI5Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM4Mi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=T2vBhy5tgE4Q7kNvwH3mS3T&_nc_oc=AdpihkGH-9ox-2y3dLOTBSaHg83jfqti05U7K3K-mO6PZM4gJENnTSqmW7fH95dI4GQ&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=FYw-8bX2TGixBHVK-1VL2g&_nc_ss=79689&oh=00_AQChJACWKfHuAwmMeX-YYLmHs2KTA1Ewi74OCvuNEr2Crw&oe=6A6CAFB0",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/374685135_18384951172035263_8527659808002038987_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzE4NTc5Mjc3MjI2MjA5MjY2Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=19s5-c6zM9MQ7kNvwEgigJA&_nc_oc=Adrxk4XL3_8gbBgxU7PoeoqJklLZeUuIElX0--8i4CjZvO7RS6nYXPE5kl4Abk8OR7Q&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=J8jpF_P8n-3R_cbbNDNDOA&_nc_ss=79689&oh=00_AQB6d4PENscTjH_P7CvnuRnTmFqrvNeTsu8IfHj2A6gwIA&oe=6A6CBD69",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/623946995_18053680694695117_140326922431596163_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzAzNjQ0MzA2MzYxODk1NTEyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTI3OC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KkA898bX_I0Q7kNvwHbIhzw&_nc_oc=AdrMwWd9VxtQU4xMxRvwzJSmzrYiQBg572r5ZLqTFu1ESEkEyT7TcBZRUlkjK6Zu1tA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=EzhRRHZedcTMr2veus6fDg&_nc_ss=79689&oh=00_AQC6Smio-BeA0bg6fn_NiNejncAEBDYRfOtzgWN-qXfj8w&oe=6A6CBCD0",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/624084917_18067229375219460_5456516444913984254_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mjk5NzU5MTA2NTk5ODE1ODQ2OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=u5vsIupal9oQ7kNvwE956Qa&_nc_oc=AdqEdvvVHY9K7GlkJtE5DQBnWTVN8RK9N7xVwksrU9w9GCWR7miqfWnK3DXYsLCQOl0&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=-p1ekDe7bsLnOoOa0fFrWg&_nc_ss=79689&oh=00_AQBVTjRLjZrm9SE7VCCVOWIqEXd6xSUQEORS1tvF6Xk7Gg&oe=6A6CAB2B",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/624551745_18114070975615646_3340170589942410089_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=Mjk5MTYzOTY1NDAyNjI0ODQxNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ax5rUeGISgcQ7kNvwHmwuUK&_nc_oc=AdpYw7SAVty2aqLcQqyb6FOhZJxQt3X7oL3OMzgh9WDGWzRuGAtW87PLA1hJPLR0JPY&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=xjw_UrYMDgrcz0FLAtVWLw&_nc_ss=79689&oh=00_AQCXcyfRP0DnPjySxVEhJoFb2u1WVaWIOIKPu5fMTy00mQ&oe=6A6CB9C7",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/625172080_18177531847335461_2141384032393331180_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mjk3NDE3MjAyOTUyNDM4MzY4Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=A2d3LrRyrVYQ7kNvwHPlBVL&_nc_oc=AdoUdWJ0yGm261s1ANtaaXcVNCQqNahwE2YVoXY1bHkzwnL-R3PdyHpDM7ZazzSEip0&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=q6IE6529CxNpRbwPg5sgdg&_nc_ss=79689&oh=00_AQAqPegeowopl1P8OVj_U1VXnsOkPjViXP6iPQ4G7TYgJQ&oe=6A6CAE1F",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/730373550_18601209406035263_5952863559693101474_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzkyNzIxNzAwOTQxNzcxNTE0NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMzA3Mi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=cMUr-fienhIQ7kNvwHFpq8o&_nc_oc=AdpcrtxY_0AzyOS01SaC_4hSXuxqwW9asY94Yn6_awLNVHQtfup79R_xS_2D30QhfRY&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=jZ0UvZNFLWqpepzMYE6uxQ&_nc_ss=79689&oh=00_AQDX0aEmjNREVuGvy31KGggef92Ly8LTEG3MQSWAQs0XPQ&oe=6A6CD007",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/688965146_18586547278035263_9182957962423830809_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg5MTcwMTg1NDM1NDg3MzAwMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMjA0OC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=yXyp-TUnypwQ7kNvwFvDOZ6&_nc_oc=AdrHmNV99mRrq51GZG6Q7q1BuTf8IFMGfcw4_d5YDWdZcw4jbzVcwj0LIX80xSBTVnc&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=8u-hdoNRJTKHG_a-b9U1Kw&_nc_ss=79689&oh=00_AQBFr3mZhe9Lvd8YAXWZe639udHrPAjYv2_yrE4d-5J9aw&oe=6A6CCC75",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/652006309_18572657758035263_8210013510682351986_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzg1NDE4MDQ2NzkzNDk0OTM2NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTEzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KORmur0955IQ7kNvwHVmenv&_nc_oc=Adr6mePda7nOZwKlr_dzaYULcCzHm4tPLrDnamLDwExP0L4trOm_6_2ciAxgDZHz9y8&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=ItLjq70pyWWa0OhZhlefgg&_nc_ss=79689&oh=00_AQBRbAPUv-b0v_L7TwdMTH1badTrV1_T5IoMYs4aA1cUwQ&oe=6A6CBF9D",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/622411416_18556571065035263_7446578579461564143_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzgxOTMxMTk0Mjk1OTUwODQwMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTE4OS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ZaQeVJo0OTEQ7kNvwFv9zQa&_nc_oc=AdoIdjjMo0-pNZmDqfLgpMGY3NJM93jRW6KGsjCeyd7Kf0-p5O9mKEbY5EExFoxJwl8&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=KMMEYdXMHLG-3EixX3h_7Q&_nc_ss=79689&oh=00_AQC0qFdJH9hnil8cj8g7Sruemx_yQ-a1gsm5lVfcS-stCA&oe=6A6CAA58",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/583779754_18544629511035263_6316308950037860731_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc3MDgxNTA1NzkyMDI2MjQyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=hJ4xP2-5m_YQ7kNvwG5tJhB&_nc_oc=AdrR_sB65zBJIYFlauj6PdHNpysKiCOeSe_2ytRblw_ZgkgPnYCr2EMg24SsUHojv4o&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=CB6C0z9k8uRKz6L_p-gmsg&_nc_ss=79689&oh=00_AQC-lfpK8z0EuSzovxJEop9GBXwFqhStEldKtvyEJNKJaw&oe=6A6CD2CB",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/586658027_18544629451035263_6814333599066198904_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzc3MDgxNDkyMzU2ODM4MTAwMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=pM8kXsMXGswQ7kNvwGEfpAs&_nc_oc=AdqKOVkxv8UX7NsWQHpoiG4b_-1opNFsfznvsyGPiczxPt-R0QAaWJ_xaBCrYGM20zU&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=7XPKO3IfolNxVYjn9rljbA&_nc_ss=79689&oh=00_AQCmiJjKRwPwrByVgvp0S0bBRaJBXBUPenw1V00qJY2usA&oe=6A6CDBF3",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/508675440_18512243032035263_3423872547955234990_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzY1NjI3MjIxODgyNTA2MDUxMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=KSTvAfAITJ8Q7kNvwECQEtW&_nc_oc=AdqdGVu5cuPytfrfmKkBa6zTN4S7vla1tBXDMQedKksp-cZfp1TCCF9rwxP1qptFO-I&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=cY5b4BHpsSCAVYKf3InOAw&_nc_ss=79689&oh=00_AQBaWOr5DX1e2P_iXPIm_8bLsbjMSCT-4n-BbUhXKPFwfg&oe=6A6CA870",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-15/504096422_18509796583035263_8485730917731431599_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzY0NzU0NzcyNjQxNDE4NzExNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTI5MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=qjm9g7dXH2UQ7kNvwEyUDob&_nc_oc=Adq8Q7DqI3SJjHSkmIT-Zf4hD-RdkCtt0vxLbVHk-fX_wowJFJuKvMM-BTyC8RG-IeI&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=nu1fG-iuLpypxGNLaJwpyw&_nc_ss=79689&oh=00_AQCTfH5c8CcAAsY2-60etrE_8TCmhbWzsByg2sRALHOhsw&oe=6A6CA8D6",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/504079926_18509796556035263_4524213010022486282_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzY0NzU0NzY2NzA2NDU4MjM2MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=FzzjiXWj40gQ7kNvwEhpDvf&_nc_oc=Ado3Taan18X6t5_aJH-b4yLVH5OOu-2KAOhJ9DXXtRknwnSfB7awJ26DgqP1IFL2rTI&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=xn4sgnd--p0SZxxA28X5ow&_nc_ss=79689&oh=00_AQD37HtpKYjMF8MXUG3Gq6dPAHE1JpPhoi-y2udGbEZZJw&oe=6A6CC4D2",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/503999314_18509796523035263_1882573983709574965_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzY0NzU0NzU4MTczNTg0MjY0Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=GjOiwTXVzoUQ7kNvwHRp6rc&_nc_oc=Adr10AgSi_rVvbV_7vfmHcQGaFmEg5k3VI_SECUC649KvGsOdgtanh3pj_rRFCxo1E4&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=kG9GFyRPffs8XV5rsGvi3Q&_nc_ss=79689&oh=00_AQDsr6bEKBNlPWEkV4-mauY_i-y_OuqDfNHk3QFjF1YUCw&oe=6A6CCF82",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/471282027_18478389526035263_2161237997855201799_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzMyODY5MzI1OTg1MTcxMjA3NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=430tPqFpG58Q7kNvwG4Dpni&_nc_oc=Adr5jHRRFp3D6p6NtWpQADUOopJjBIyfgMiB3KbOyQcMicp3hI-d5Aj2kJzazqQxj-A&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=7bl94xm1_hTE9hDo-fnGkQ&_nc_ss=79689&oh=00_AQCV-M7kjPQA1q8MvfyL4AiA1vWjwaoWwGeeKVujL83pnA&oe=6A6CB0A2"
+          ]
+      }
+,
+      {
+              "project": "Milan 2026",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Bocci-Milan-2026/_2160x2879_crop_center-center_82_line/MilanApartment-141-GiulioG-0001-5.jpg.webp",
+                  "https://assets.bocci.com/site/projects/Bocci-Milan-2026/_2880x2160_crop_center-center_82_line/MilanApartment-100-GiulioG-0055-landing.jpg.webp"
+              ]
+          },
+          {
+              "project": "91",
+              "images": [
+                  "https://assets.bocci.com/site/projects/91/_2160x1441_crop_center-center_82_line/91-EmaP-132-Edit-v2.jpg.webp",
+                  "https://assets.bocci.com/site/projects/91/_2160x3238_crop_center-center_82_line/91-EmaP-712-Edit.jpg.webp",
+                  "https://assets.bocci.com/site/projects/91/_2160x3238_crop_center-center_82_line/91-EmaP-1013.jpg.webp",
+                  "https://assets.bocci.com/site/projects/91/_2160x1441_crop_center-center_82_line/91-EmaP-731.jpg.webp"
+              ]
+          },
+          {
+              "project": "Milan 2025",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Bocci-Milan-2025/_2880x1920_crop_center-center_82_line/MilanApartment-141-PaolaP-1650.jpg.webp"
+              ]
+          },
+          {
+              "project": "Milan 2024",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Bocci-Milan-2024/_2160x1440_crop_center-center_82_line/MilanApartment-28-PaolaP_16534.jpg.webp",
+                  "https://assets.bocci.com/site/projects/Bocci-Milan-2024/_2160x3240_crop_center-center_82_line/MilanApartment-87-PaolaP_16751.jpg.webp"
+              ]
+          },
+          {
+              "project": "Bocci x Pilgrimme",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Bocci-x-Pilgrimme/_2160x3240_crop_center-center_82_line/Bocci-Pilgrimme-73v-WhenTheyFindUs_0043484.jpg.webp"
+              ]
+          },
+          {
+              "project": "Bocci x Highland House",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Bocci-x-Highland-House/_2160x1440_crop_center-center_82_line/Highland-14p-WhenTheyFindUs_0169.jpg.webp",
+                  "https://assets.bocci.com/site/projects/Bocci-x-Highland-House/_2160x1440_crop_center-center_82_line/Highland_28_FahimK_9423.jpg.webp"
+              ]
+          },
+          {
+              "project": "Canada House",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Canada-House/_1440x960_crop_center-center_82_line/57-051.jpg.webp",
+                  "https://assets.bocci.com/site/projects/Canada-House/_1440x960_crop_center-center_82_line/CanadaHouse_57_GwenaelL_19.jpg.webp"
+              ]
+          },
+          {
+              "project": "Mallett x Bocci",
+              "images": [
+                  "https://assets.bocci.com/site/projects/Mallet-x-Bocci/_2160x1440_crop_center-center_82_line/MallettAntiques_57_GwenaelL_1.jpg.webp"
+              ]
+          }
+    ],
+  "hessentia": [
+      {
+          "project": "",
+          "images": [
+              "https://i.pinimg.com/736x/02/d9/fb/02d9fb5ba2e9683af5390e0898cc87c0.jpg",
+              "https://i.pinimg.com/1200x/36/78/a0/3678a0c217e789eb58e5a478fe5fad81.jpg",
+              "https://i.pinimg.com/1200x/0f/4f/e8/0f4fe899d54780d46fd744ba99096579.jpg",
+              "https://i.pinimg.com/1200x/c4/26/a5/c426a5c567c028288bd54a93e58b59b7.jpg"
+          ]
+      }
+  ],
+  "poliform": [
+      {
+          "project": "",
+          "images": [
+              "https://s3.poliform.it/2026/03/Poliform_Stylebook_2025_.jpg",
+              "https://s3.poliform.it/2026/04/poliform-harp2.jpg",
+              "https://i.pinimg.com/1200x/58/0f/a8/580fa80a26ac0811bee544b0e2294c11.jpg",
+              "https://i.pinimg.com/1200x/15/22/1c/15221c5a99f5957577de6360b2a06649.jpg",
+              "https://i.pinimg.com/1200x/c4/1e/50/c41e502413b13d0dac970d104d82d99b.jpg"
+          ]
+      }
+  ],
+  "giorgetti": [
+      {
+          "project": "Beirut",
+          "images": [
+              "https://www.giorgettimeda.com/media/immagini/3226_z_Beirut_003.jpg",
+              "https://www.giorgettimeda.com/media/immagini/3225_z_Beirut_002.jpg"
+          ]
+      }
+  ],
+  "ligne-roset": [
+      {
+          "project": "",
+          "images": [
+              "https://www.ligne-roset.com/media/ligne_roset_ww/100fi2.jpg",
+              "https://www.ligne-roset.com/media/ligne_roset_ww/1008zz.jpg"
+          ]
+      }
+  ],
+  "mohebban": [
+      {
+          "project": "",
+          "images": [
+              "https://www.mohebbanmilano.com/media/423/foto_Touch-Mohebban-3--Andrea-Ferrari.jpg",
+              "https://www.mohebbanmilano.com/media/423/foto_Touch-Mohebban--Andrea-Ferrari.jpg"
+          ]
+      }
+  ],
+  "moroso": [
+      {
+          "project": "Private Apartment, Beirut",
+          "images": [
+              "https://moroso.it/app/uploads/2025/10/gallery-private-apartment-beirut.jpg"
+          ]
+      },
+      {
+          "project": "Windsor Apartment, Melbourne",
+          "images": [
+              "https://moroso.it/app/uploads/2026/07/Project-Windsor-Apartment-Melbourne-Thumbnail.jpg",
+              "https://moroso.it/app/uploads/2026/07/Project-Windsor-Apartment-Melbourne-3.jpg"
+          ]
+      },
+      {
+          "project": "Cozy Nest, Limassol",
+          "images": [
+              "https://moroso.it/app/uploads/2026/07/Project-Cozy-Nest-Limassol.jpg"
+          ]
+      },
+      {
+          "project": "Il Cielo in una Stanza, Villa Medici",
+          "images": [
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/734685916_1467358448765686_4962078682444263428_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzkzNjA3MjM2MDI3NzI0MjQxMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=oLUSzPHTLS4Q7kNvwFWc_U8&_nc_oc=AdrRRUpH1ctfKVPTQIrOgHUXYTJa04xIcO0jLMkkhIHNcSCMnGEuWYc97gqTdTcr50g&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=rDamjbeAJiBDol6zlWmVKA&_nc_ss=79689&oh=00_AQD5wHJJVwn9pE3iCGdmlK7Kl6jkQ7K5JyjG_KIQu-79uQ&oe=6A6BCF94"
+          ]
+      },
+      {
+          "project": "Cuadra Soft",
+          "images": [
+              "https://moroso.it/app/uploads/2025/04/product-gallery-cuadra-soft-4.jpg",
+              "https://moroso.it/app/uploads/2025/04/product-gallery-cuadra-soft-1.jpg"
+          ]
+      },
+      {
+          "project": "Me Time",
+          "images": [
+              "https://moroso.it/app/uploads/2025/03/product-gallery-me-time.jpg",
+              "https://moroso.it/app/uploads/2025/03/product-gallery-me-time-4.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://moroso.it/app/uploads/2023/05/3-3.jpg",
+              "https://moroso.it/app/uploads/2024/02/instagram-extra-pebble-images-kester-den-hartogh-fotografie-moroso-3.jpg"
+          ]
+      }
+  ],
   "house-of-finn-juhl": [
       {
           "project": "Finn Juhl's House",
@@ -8392,6 +9732,1933 @@ const AMBIANCE_DATA = {
 };
 BRANDS.forEach(b=>{ if(AMBIANCE_DATA[b.id]) b.ambiance = AMBIANCE_DATA[b.id]; });
 const PRODUCT_COLLECTIONS = {
+  "mdf-italia": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.mdfitalia.com",
+      "models": [
+        {
+          "name": "Aiku Stool",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/aiku-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Archie",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/archie/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Archie Armchair",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/archie-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cantle",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/cantle/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Flow",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/flow/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Flow Filo",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/flow-filo/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Flow Pouf",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/flow-pouf/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Flow Stool",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/flow-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Neil",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/neil/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Neil Denim",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/neil-denim/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Neil Leather Armchair",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/neil-leather-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Neil Stool",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/neil-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Neil Twist Armchair",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/neil-twist-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Pat",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/pat/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Press",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/press/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Universal",
+          "colors": [
+            {
+              "img": "images/mdf-italia/chair/universal/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.mdfitalia.com",
+      "models": [
+        {
+          "name": "Cosy",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/cosy/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cosy Curve",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/cosy-curve/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cosy Island",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/cosy-island/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cosy Oblique",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/cosy-oblique/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Fuji",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/fuji/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Goom",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/goom/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Mia",
+          "colors": [
+            {
+              "img": "images/mdf-italia/sofa/mia/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.mdfitalia.com",
+      "models": [
+        {
+          "name": "Minima Ground Resting",
+          "colors": [
+            {
+              "img": "images/mdf-italia/storage/minima-ground-resting/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Random Box Cabinet",
+          "colors": [
+            {
+              "img": "images/mdf-italia/storage/random-box-cabinet/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Random Random Wood",
+          "colors": [
+            {
+              "img": "images/mdf-italia/storage/random-random-wood/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.mdfitalia.com",
+      "models": [
+        {
+          "name": "Axy",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/axy/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bonnet",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/bonnet/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Clayer",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/clayer/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Fossil",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/fossil/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "La Table Basse",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/la-table-basse/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Metodo",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/metodo/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Rock Table Maxi",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/rock-table-maxi/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sk Table",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/sk-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tense Curve",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/tense-curve/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tense Low Table",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/tense-low-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tense Material Heritage",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/tense-material-heritage/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tense Material Wood",
+          "colors": [
+            {
+              "img": "images/mdf-italia/table/tense-material-wood/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nemo-lighting": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.nemolighting.com",
+      "models": [
+        {
+          "name": "AM1N",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/am1n/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "AS1C",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/as1c/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "AS41C",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/as41c/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "AS41Z",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/as41z/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Applique A Volet Pivotant Plie",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/applique-a-volet-pivotant-plie/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bird",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/bird/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Chloris",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/chloris/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Crown Major",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/crown-major/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Crown Wall",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/crown-wall/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Cupido",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/cupido/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Dori",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/dori/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Fox",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/fox/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Fox Wall",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/fox-wall/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "In The Wind Pendant Vertical",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/in-the-wind-pendant-vertical/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lampe Cabanon",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/lampe-cabanon/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lampe De Bureau",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/lampe-de-bureau/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Newton",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/newton/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "On Lines",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/on-lines/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Panama",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/panama/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Portofino",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/portofino/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Saori",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/saori/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sirius Pendant",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/sirius-pendant/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Wall Shadows Moyen",
+          "colors": [
+            {
+              "img": "images/nemo-lighting/lighting/wall-shadows-moyen/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "petite-friture": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.petitefriture.com",
+      "models": [
+        {
+          "name": "Chaise En Bois Alpi",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/chaise-en-bois-alpi/0.jpg",
+              "pal": "Alpi"
+            },
+            {
+              "img": "images/petite-friture/chair/chaise-en-bois-alpi/1.jpg",
+              "pal": "Brown Red"
+            }
+          ]
+        },
+        {
+          "name": "Eclipse Daybed With Cushion Red",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/eclipse-daybed-with-cushion-red/0.jpg",
+              "pal": "Strange Love Red"
+            }
+          ]
+        },
+        {
+          "name": "Eclipse Daybed With Cushion Stone Grey Haku",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/eclipse-daybed-with-cushion-stone-grey-haku/0.jpg",
+              "pal": "Haku Stone Grey"
+            }
+          ]
+        },
+        {
+          "name": "Fauteuil",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fauteuil/0.jpg",
+              "pal": "Olive Green"
+            },
+            {
+              "img": "images/petite-friture/chair/fauteuil/1.jpg",
+              "pal": "Yellow Plum"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Bar Stool 65Cm Terracota",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-bar-stool-65cm-terracota/0.jpg",
+              "pal": "Terracotta"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Bar Stool 75Cm",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-bar-stool-75cm/0.jpg",
+              "pal": "Saffron"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Bench Mint",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-bench-mint/0.jpg",
+              "pal": "Mint Green"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Chaise De Jardin Avec Accoudoirs Sky",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-chaise-de-jardin-avec-accoudoirs-sky/0.jpg",
+              "pal": "Sky Blue"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Lounge Armchair Pastel",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-lounge-armchair-pastel/0.jpg",
+              "pal": "Pastel Green"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Stool Pigeon",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-stool-pigeon/0.jpg",
+              "pal": "Pigeon Blue"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Stool Sky",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/fromme-stool-sky/0.jpg",
+              "pal": "Sky Blue"
+            }
+          ]
+        },
+        {
+          "name": "Hoff Large Armchair Gris",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/hoff-large-armchair-gris/0.jpg",
+              "pal": "Grey Blue"
+            }
+          ]
+        },
+        {
+          "name": "Sandows Armchair With Wooden Armrests",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/sandows-armchair-with-wooden-armrests/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sandows Chair N212",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/sandows-chair-n212/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sandows Chaise Longue N114",
+          "colors": [
+            {
+              "img": "images/petite-friture/chair/sandows-chaise-longue-n114/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.petitefriture.com",
+      "models": [
+        {
+          "name": "Brass Pendant Light Mediterranea",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/brass-pendant-light-mediterranea/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Cherry Small Pendant Light Mint",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/cherry-small-pendant-light-mint/0.jpg",
+              "pal": "Mint Green"
+            }
+          ]
+        },
+        {
+          "name": "Copy Of Pyl Small Pendant Light",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/copy-of-pyl-small-pendant-light/0.jpg",
+              "pal": "Multicolour"
+            }
+          ]
+        },
+        {
+          "name": "Design Table Lamp Mediterranea",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/design-table-lamp-mediterranea/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Large Pendant Light",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/large-pendant-light/0.jpg",
+              "pal": "Light Grey"
+            }
+          ]
+        },
+        {
+          "name": "Led Pendant Light",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/led-pendant-light/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/petite-friture/lighting/led-pendant-light/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Modern Table Lamp",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/modern-table-lamp/0.jpg",
+              "pal": "Transparent Glass"
+            }
+          ]
+        },
+        {
+          "name": "Neotenic Large Table Lamp",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/neotenic-large-table-lamp/0.jpg",
+              "pal": "Blue"
+            },
+            {
+              "img": "images/petite-friture/lighting/neotenic-large-table-lamp/1.jpg",
+              "pal": "Cherry"
+            },
+            {
+              "img": "images/petite-friture/lighting/neotenic-large-table-lamp/2.jpg",
+              "pal": "Green"
+            },
+            {
+              "img": "images/petite-friture/lighting/neotenic-large-table-lamp/3.jpg",
+              "pal": "Platinum"
+            }
+          ]
+        },
+        {
+          "name": "Neotenic Small Table Lamp",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/neotenic-small-table-lamp/0.jpg",
+              "pal": "Vanilla"
+            }
+          ]
+        },
+        {
+          "name": "Vertigo Large Pendant Light",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/vertigo-large-pendant-light/0.jpg",
+              "pal": "Bronze"
+            }
+          ]
+        },
+        {
+          "name": "Vertigo Medium Pendant Light",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/vertigo-medium-pendant-light/0.jpg",
+              "pal": "Cobalt"
+            }
+          ]
+        },
+        {
+          "name": "Vertigo Nova Floor Lamp",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/vertigo-nova-floor-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/petite-friture/lighting/vertigo-nova-floor-lamp/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Vertigo Nova Wall Lamp",
+          "colors": [
+            {
+              "img": "images/petite-friture/lighting/vertigo-nova-wall-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/petite-friture/lighting/vertigo-nova-wall-lamp/1.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Outdoor",
+      "cat": [
+        "Outdoor"
+      ],
+      "link": "https://www.petitefriture.com",
+      "models": [
+        {
+          "name": "Week Endcoffeetablecoral",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endcoffeetablecoral/0.jpg",
+              "pal": "Coral"
+            }
+          ]
+        },
+        {
+          "name": "Week Enddoublesofasaffron",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-enddoublesofasaffron/0.jpg",
+              "pal": "Saffron"
+            }
+          ]
+        },
+        {
+          "name": "Week Endgardenchairblush",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endgardenchairblush/0.jpg",
+              "pal": "Blush"
+            }
+          ]
+        },
+        {
+          "name": "Week Endhighroundbistrotablepastel",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endhighroundbistrotablepastel/0.jpg",
+              "pal": "Pastel Green"
+            }
+          ]
+        },
+        {
+          "name": "Week Endplainlargerectangulardiningtableyellow",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endplainlargerectangulardiningtableyellow/0.jpg",
+              "pal": "Yellow"
+            }
+          ]
+        },
+        {
+          "name": "Week Endplainsquarediningtableblush",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endplainsquarediningtableblush/0.jpg",
+              "pal": "Blush"
+            }
+          ]
+        },
+        {
+          "name": "Week Endsquarebistrotableblue",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endsquarebistrotableblue/0.jpg",
+              "pal": "Blue"
+            }
+          ]
+        },
+        {
+          "name": "Week Endtrolleypastel",
+          "colors": [
+            {
+              "img": "images/petite-friture/outdoor/week-endtrolleypastel/0.jpg",
+              "pal": "Pastel Green"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.petitefriture.com",
+      "models": [
+        {
+          "name": "Fromme Coffee Table Mint",
+          "colors": [
+            {
+              "img": "images/petite-friture/table/fromme-coffee-table-mint/0.jpg",
+              "pal": "Mint Green"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Coffee Table Pastel",
+          "colors": [
+            {
+              "img": "images/petite-friture/table/fromme-coffee-table-pastel/0.jpg",
+              "pal": "Pastel Green"
+            }
+          ]
+        },
+        {
+          "name": "Fromme Rectangular Table Pastel",
+          "colors": [
+            {
+              "img": "images/petite-friture/table/fromme-rectangular-table-pastel/0.jpg",
+              "pal": "Pastel Green"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "poltronova": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.poltronova.it",
+      "models": [
+        {
+          "name": "Califfo",
+          "colors": [
+            {
+              "img": "images/poltronova/chair/califfo/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Joe",
+          "colors": [
+            {
+              "img": "images/poltronova/chair/joe/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Plasma",
+          "colors": [
+            {
+              "img": "images/poltronova/chair/plasma/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decor",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.poltronova.it",
+      "models": [
+        {
+          "name": "Ultrafragola",
+          "colors": [
+            {
+              "img": "images/poltronova/decor/ultrafragola/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rrres": [
+    {
+      "name": "Accessories",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.rrres.com",
+      "models": [
+        {
+          "name": "Grid 02 1",
+          "colors": [
+            {
+              "img": "images/rrres/accessories/grid-02-1/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Son",
+          "colors": [
+            {
+              "img": "images/rrres/accessories/son/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.rrres.com",
+      "models": [
+        {
+          "name": "Lamp 02 1",
+          "colors": [
+            {
+              "img": "images/rrres/lighting/lamp-02-1/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "phantom-hands": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.phantomhands.in",
+      "models": [
+        {
+          "name": "Armless Dining Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/armless-dining-chair/0.jpg",
+              "pal": "Black Shield"
+            },
+            {
+              "img": "images/phantom-hands/chair/armless-dining-chair/1.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/armless-dining-chair/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/armless-dining-chair/3.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "Bentota Dining Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/bentota-dining-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bentota Lounge Chair Cane Version",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/bentota-lounge-chair-cane-version/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Crocodile Stool",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/crocodile-stool/0.jpg",
+              "pal": "Black Shield"
+            },
+            {
+              "img": "images/phantom-hands/chair/crocodile-stool/1.jpg",
+              "pal": "Brown"
+            },
+            {
+              "img": "images/phantom-hands/chair/crocodile-stool/2.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "Crocodile Stool Black",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/crocodile-stool-black/0.jpg",
+              "pal": "Black Shield"
+            },
+            {
+              "img": "images/phantom-hands/chair/crocodile-stool-black/1.jpg",
+              "pal": "Brown"
+            }
+          ]
+        },
+        {
+          "name": "Easy Armchair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/easy-armchair/0.jpg",
+              "pal": "Black Shield"
+            },
+            {
+              "img": "images/phantom-hands/chair/easy-armchair/1.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/easy-armchair/2.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "High Stool With Cane Seat",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/high-stool-with-cane-seat/0.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/high-stool-with-cane-seat/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/high-stool-with-cane-seat/2.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "Kangaroo Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/kangaroo-chair/0.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/kangaroo-chair/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/kangaroo-chair/2.jpg",
+              "pal": "Natural"
+            },
+            {
+              "img": "images/phantom-hands/chair/kangaroo-chair/3.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "Lounge Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/lounge-chair/0.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/lounge-chair/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/lounge-chair/2.jpg",
+              "pal": "Natural"
+            }
+          ]
+        },
+        {
+          "name": "Low Cane Stool",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/low-cane-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Mungaru Easy Armchair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/mungaru-easy-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Office Chair V Leg",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/office-chair-v-leg/0.jpg",
+              "pal": "Black Shield"
+            },
+            {
+              "img": "images/phantom-hands/chair/office-chair-v-leg/1.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/office-chair-v-leg/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/office-chair-v-leg/3.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        },
+        {
+          "name": "Palakkad Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/palakkad-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Saddle Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/saddle-chair/0.jpg",
+              "pal": "Burgundy"
+            },
+            {
+              "img": "images/phantom-hands/chair/saddle-chair/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Bench Regular",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-bench-regular/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Comfort Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-comfort-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Day Bed",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-day-bed/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Dining Armchair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-dining-armchair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Dining Armchair Upholstered",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-dining-armchair-upholstered/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Dining Chair Armless",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-dining-chair-armless/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Modular Chair",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-modular-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Ottoman",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/tangali-ottoman/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Teak And Cane Bench",
+          "colors": [
+            {
+              "img": "images/phantom-hands/chair/teak-and-cane-bench/0.jpg",
+              "pal": "Dark Stain"
+            },
+            {
+              "img": "images/phantom-hands/chair/teak-and-cane-bench/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/phantom-hands/chair/teak-and-cane-bench/2.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decor",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.phantomhands.in",
+      "models": [
+        {
+          "name": "X L 02 Room Divider",
+          "colors": [
+            {
+              "img": "images/phantom-hands/decor/x-l-02-room-divider/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.phantomhands.in",
+      "models": [
+        {
+          "name": "Unfolding Lamp",
+          "colors": [
+            {
+              "img": "images/phantom-hands/lighting/unfolding-lamp/0.jpg",
+              "pal": "Natural"
+            }
+          ]
+        },
+        {
+          "name": "Unfolding Lamp Wood",
+          "colors": [
+            {
+              "img": "images/phantom-hands/lighting/unfolding-lamp-wood/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 03 Table Lamp",
+          "colors": [
+            {
+              "img": "images/phantom-hands/lighting/x-l-03-table-lamp/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 04 Floor Lamp",
+          "colors": [
+            {
+              "img": "images/phantom-hands/lighting/x-l-04-floor-lamp/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.phantomhands.in",
+      "models": [
+        {
+          "name": "X L 07 Bookshelf",
+          "colors": [
+            {
+              "img": "images/phantom-hands/storage/x-l-07-bookshelf/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L Wall Cabinet Split Level Rooms",
+          "colors": [
+            {
+              "img": "images/phantom-hands/storage/x-l-wall-cabinet-split-level-rooms/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L Wall Cabinet Tower Of Shadows",
+          "colors": [
+            {
+              "img": "images/phantom-hands/storage/x-l-wall-cabinet-tower-of-shadows/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.phantomhands.in",
+      "models": [
+        {
+          "name": "Coffee Table Glass Top",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/coffee-table-glass-top/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Tangali Coffee Table",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/tangali-coffee-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 01 Coffee Table",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/x-l-01-coffee-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 06 Trestle Table",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/x-l-06-trestle-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 13 Full Circle Dining Table",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/x-l-13-full-circle-dining-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "X L 14 Full Circle Coffee Table",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/x-l-14-full-circle-coffee-table/0.jpg",
+              "pal": "Blue"
+            }
+          ]
+        },
+        {
+          "name": "X L 14 Full Circle Coffee Table Teak",
+          "colors": [
+            {
+              "img": "images/phantom-hands/table/x-l-14-full-circle-coffee-table-teak/0.jpg",
+              "pal": "Natural Teak"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "parachilna": [
+  {
+    "name": "Lighting",
+    "cat": [
+      "Lighting"
+    ],
+    "link": "https://www.parachilna.com",
+    "models": [
+      {
+        "name": "Aballs A",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/aballs-a/0.jpg",
+            "pal": "BLACK"
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-a/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-a/2.jpg",
+            "pal": "GOLDEN"
+          }
+        ]
+      },
+      {
+        "name": "Aballs Chandelier 12",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/aballs-chandelier-12/0.jpg",
+            "pal": "BLACK"
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-chandelier-12/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-chandelier-12/2.jpg",
+            "pal": "GOLDEN"
+          }
+        ]
+      },
+      {
+        "name": "Aballs M PE",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/aballs-m-pe/0.jpg",
+            "pal": "BLACK"
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-m-pe/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/aballs-m-pe/2.jpg",
+            "pal": "GOLDEN"
+          }
+        ]
+      },
+      {
+        "name": "Alistair P",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/alistair-p/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Anwar T 30",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/anwar-t-30/0.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/anwar-t-30/1.jpg",
+            "pal": "GRAPHITE MATTE"
+          }
+        ]
+      },
+      {
+        "name": "Anwar T Combi Top 45   Bottom 90",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/anwar-t-combi-top-45-bottom-90/0.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/anwar-t-combi-top-45-bottom-90/1.jpg",
+            "pal": "TOP 45 GOLDEN MATTE   BOTTOM 90 COPPER"
+          }
+        ]
+      },
+      {
+        "name": "B15 T H GR",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/b15-t-h-gr/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "B15 T V PE",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/b15-t-v-pe/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Babel T GR",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/babel-t-gr/0.jpg",
+            "pal": "BLACK"
+          },
+          {
+            "img": "images/parachilna/lighting/babel-t-gr/1.jpg",
+            "pal": "CUSTOM COMBINATION"
+          },
+          {
+            "img": "images/parachilna/lighting/babel-t-gr/2.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/babel-t-gr/3.jpg",
+            "pal": "GOLDEN"
+          }
+        ]
+      },
+      {
+        "name": "Babel T PE",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/babel-t-pe/0.jpg",
+            "pal": "BLACK"
+          },
+          {
+            "img": "images/parachilna/lighting/babel-t-pe/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/babel-t-pe/2.jpg",
+            "pal": "GOLDEN"
+          }
+        ]
+      },
+      {
+        "name": "Bai A Ba Ba",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/bai-a-ba-ba/0.jpg",
+            "pal": "BRONZE   AMBER GLASS DIFFUSER"
+          },
+          {
+            "img": "images/parachilna/lighting/bai-a-ba-ba/1.jpg",
+            "pal": "BRONZE   TRANSPARENT GLASS DIFFUSER"
+          }
+        ]
+      },
+      {
+        "name": "Bai Chandelier III",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/bai-chandelier-iii/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Bai T Ba Ba",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/bai-t-ba-ba/0.jpg",
+            "pal": "BRONZE   AMBER GLASS DIFFUSER"
+          },
+          {
+            "img": "images/parachilna/lighting/bai-t-ba-ba/1.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Bai T Ma Ma",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/bai-t-ma-ma/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Chinoz",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/chinoz/0.jpg",
+            "pal": "BLACK   BURGUNDY BASE   WHITE MATTE DIFFUSER"
+          },
+          {
+            "img": "images/parachilna/lighting/chinoz/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/chinoz/2.jpg",
+            "pal": "GREEN   OCRE BASE   WHITE MATTE DIFFUSER"
+          },
+          {
+            "img": "images/parachilna/lighting/chinoz/3.jpg",
+            "pal": "MING   BURGUNDY BASE   WHITE MATTE DIFFUSER"
+          }
+        ]
+      },
+      {
+        "name": "Denglong P GR",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/denglong-p-gr/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Denglong T GR",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/denglong-t-gr/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Gweilo Qin PE",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/gweilo-qin-pe/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Lighto A II",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/lighto-a-ii/0.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/lighto-a-ii/1.jpg",
+            "pal": "RED   GOLDEN GLOSSY CUP"
+          }
+        ]
+      },
+      {
+        "name": "Ma Rock M",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/ma-rock-m/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Ma Rock T ME",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/ma-rock-t-me/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Ma Rock T PE",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/ma-rock-t-pe/0.jpg",
+            "pal": null
+          }
+        ]
+      },
+      {
+        "name": "Manila T GR",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/manila-t-gr/0.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/manila-t-gr/1.jpg",
+            "pal": "GOLDEN MATTE   BEIGE TEXTILE   TRANSPARENT GLASS DIFFUSER"
+          },
+          {
+            "img": "images/parachilna/lighting/manila-t-gr/2.jpg",
+            "pal": "GRAPHITE MATTE   GREY TEXTILE   BLACK GLASS DIFFUSER"
+          }
+        ]
+      },
+      {
+        "name": "Oïphorique P Still",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/o-phorique-p-still/0.jpg",
+            "pal": "Chocolate Brown"
+          },
+          {
+            "img": "images/parachilna/lighting/o-phorique-p-still/1.jpg",
+            "pal": null
+          },
+          {
+            "img": "images/parachilna/lighting/o-phorique-p-still/2.jpg",
+            "pal": "Light Grey"
+          },
+          {
+            "img": "images/parachilna/lighting/o-phorique-p-still/3.jpg",
+            "pal": "Pearl White"
+          }
+        ]
+      },
+      {
+        "name": "Serie C",
+        "colors": [
+          {
+            "img": "images/parachilna/lighting/serie-c/0.jpg",
+            "pal": null
+          }
+        ]
+      }
+    ]
+  }
+],
   "saba": [
     {
       "name": "Bed",
