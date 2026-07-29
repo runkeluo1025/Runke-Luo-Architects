@@ -866,10 +866,7 @@ const BRANDS = [
    ["Arco Floor Lamp","Lighting",["Marble","Silver"]],["Taccia Table Lamp","Lighting",["Black","White"]],
    ["Parentesi Pendant","Lighting",["Bordeaux","Black"]],["IC Table Lamp","Lighting",["Yellow","Silver"]],
    ["2097 Pendant","Lighting",["Silver"]]]},
- {id:"giobagnara",name:"Giobagnara",origin:"Italy",site:"https://www.giobagnara.com",items:[
-   ["Scala Coffee Table","Tables",["Walnut"]],["Scala Side Table","Tables",["Walnut"]],
-   ["Nodo Keychain","Decor",["Pink","Navy"]]]},
- {id:"glasitalia",name:"Glas Italia",origin:"Italy",site:"https://www.glasitalia.com",items:[
+  {id:"glasitalia",name:"Glas Italia",origin:"Italy",site:"https://www.glasitalia.com",items:[
    ["Fountain Table","Tables",["White"]],["PRISM Mirror Table","Tables",["Silver"]],
    ["Sturm und Drang Mirror","Mirror",["Silver"]],["Liquefy Side Table","Tables",["Silver"]]]},
  {id:"gubi",name:"GUBI",origin:"Denmark",site:"https://www.gubi.com",items:[
@@ -1845,27 +1842,20 @@ const DIRECTORY = [
  ["Alias","Italy","https://www.aliasdesign.it"],
  ["Agrippa","Unconfirmed","https://www.google.com/search?q=Agrippa+furniture+brand",1],
  ["La Boîte Concept","France","https://www.laboiteconcept.com"],
- ["AP Collection","Unconfirmed","https://www.google.com/search?q=AP+Collection+furniture+brand",1],
  ["LK Hjelle","Norway","https://www.lkhjelle.no"],
  ["1920R","Italy","https://www.google.com/search?q=1920R+furniture+brand+Italy",1],
- ["Maison Margiela","France","https://www.maisonmargiela.com"],
- ["Jake Phipps","UK","https://www.jakephipps.com"],
  ["Italamp","Italy","https://www.italamp.com"],
  ["Mohebban","Italy","https://www.mohebbanmilano.com/en/home-en/"],
- ["Avarte","Finland","https://www.avarte.fi"],
  ["Fasem","Italy","https://www.fasem.it"],
- ["Quasar","Unconfirmed","https://www.google.com/search?q=Quasar+lighting+brand",1],
  ["Baleri Italia","Italy","https://www.baleri-italia.com"],
  ["Artifort","Netherlands","https://www.artifort.com"],
  ["Poliform","Italy","https://www.poliform.it"],
  ["Fendi Casa","Italy","https://www.fendi.com"],
- ["Hästens","Sweden","https://www.hastens.com"],
  ["Kelly Wearstler","USA","https://www.kellywearstler.com"],
  ["Vi-Spring","UK","https://www.vispring.com"],
  ["Bang & Olufsen","Denmark","https://www.bang-olufsen.com"],
  ["Tacchini","Italy","https://www.tacchini.it"],
  ["Ligne Roset","France","https://www.ligne-roset.com"],
- ["Ciclotte","Italy","https://www.ciclotte.com"],
  ["House of Finn Juhl","Denmark","https://www.finnjuhl.com"],
  ["Cattelan Italia","Italy","https://www.cattelanitalia.com"],
  ["Giorgetti","Italy","https://www.giorgettimeda.com"],
@@ -1900,35 +1890,26 @@ const DIRECTORY = [
  ["Baxter","Italy","https://www.baxter.it"],
  ["Maxalto","Italy","https://www.maxalto.it"],
  ["Ceccotti Collezioni","Italy","https://www.ceccotticollezioni.it"],
- ["Bentley Home","UK","https://bentleyhome.bentleymotors.com"],
  ["André Fu Living","Hong Kong","https://www.andrefuliving.com"],
  ["Sicis","Italy","https://www.sicis.com"],
- ["Saint-Louis","France","https://www.saint-louis.com"],
  ["Duxiana","Sweden","https://www.duxiana.com"],
  ["Memphis Milano","Italy","https://www.memphis-milano.com"],
  ["moooi","Netherlands","https://www.moooi.com"],
- ["Lorenzi Milano","Italy","https://www.lorenzimilano.com"],
- ["Agresti","Italy","https://www.agrestifirenze.com"],
- ["Rosenthal","Germany","https://www.rosenthal.de"],
  ["Tom Dixon","UK","https://www.tomdixon.net"],
  ["Foscarini","Italy","https://www.foscarini.com"],
  ["FontanaArte","Italy","https://www.fontanaarte.com"],
  ["Barovier&Toso","Italy","https://www.barovier.com"],
- ["Penta","Italy","https://www.penta-light.it"],
+ ["Penta","Italy","https://pentalight.com/en/"],
  ["Bomma","Czech Republic","https://www.bomma.cz"],
  ["Stilnovo","Italy","https://www.stilnovo.com"],
  ["Qeeboo","Italy","https://www.qeeboo.com"],
- ["BAAS","Unconfirmed","https://www.google.com/search?q=BAAS+furniture+brand",1],
  ["Established & Sons","UK","https://www.establishedandsons.com"],
- ["Zaha Hadid Design","UK","https://www.zaha-hadid.com/design"],
  ["Driade","Italy","https://www.driade.com"],
  ["Slamp","Italy","https://www.slamp.com"],
  ["Studio Helle Mardahl","Denmark","https://www.hellemardahl.com"],
- ["L'Objet","USA","https://www.l-objet.com"],
- ["ConcreteCat","Unconfirmed","https://www.google.com/search?q=ConcreteCat+mirror+brand",1],
- ["DaDa","Unconfirmed","https://www.google.com/search?q=DaDa+furniture+brand",1],
- ["KAR","China","https://www.google.com/search?q=KAR+furniture+brand",1],
- ["Ninefact","Unconfirmed","https://www.google.com/search?q=Ninefact+furniture+brand",1]
+ ["ConcreteCat","Canada","https://concretecat.com/"],
+ ["KAR","China","https://kar-studio.com"],
+ ["Ninefact","China","https://www.google.com/search?q=Ninefact+furniture+brand",1]
 ].map(d=>({id:d[0].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''),name:d[0],origin:d[1],site:d[2],verify:d[3]||0,items:[],directory:true}));
 
 BRANDS.push(...DIRECTORY);
@@ -1990,7 +1971,6 @@ const BIOS = {
   edra:"Italian furniture company founded in Tuscany in 1987 by Valerio and Monica Mazzei, known for experimental pieces designed with Francesco Binfaré and the Campana brothers.",
   fiam:"Italian furniture company founded in 1973 by Vittorio Livi, the first to industrialize curved-glass furniture such as Cini Boeri's Ghost chair.",
   flos:"Italian lighting company founded in 1962 in Merano, developing landmark fixtures with designers including the Castiglioni brothers and Tobia Scarpa.",
-  giobagnara:"Italian leather goods company founded in Genoa in 1999 by Giorgio Bagnara, producing handcrafted leather homeware and accessories.",
   glasitalia:"Italian furniture company founded in Brianza in the early 1970s, specializing in curved and shaped glass furniture with designers such as Piero Lissoni.",
   gubi:"Danish design house founded in Copenhagen in 1967 by Gubi and Lisbeth Olsen, known for reissuing overlooked 20th-century pieces alongside new commissions.",
   hermanmiller:"American furniture company founded in Michigan in 1905, renamed Herman Miller in 1923 and known for modernist designs such as the Eames Lounge Chair and Aeron chair.",
@@ -2038,16 +2018,11 @@ const BIOS = {
   baxter:"Italian furniture company founded in 1990 in Lurago d'Erba by Luigi and Paolo Bestetti, known for leather-focused sofas and furniture rooted in Brianza's craft tradition.",
   maxalto:"Italian furniture house founded in 1975 by B&B Italia founder Piero Ambrogio Busnelli, producing artisanal wood furniture whose design direction has been led by Antonio Citterio since 1993.",
   "ceccotti-collezioni":"Tuscan furniture maker founded in 1988 by Franco Ceccotti out of a 1956 workshop, known for author-driven wood craftsmanship and now part of the Poltrona Frau Group.",
-  "bentley-home":"British luxury furniture line launched in 2013 by Bentley Motors and Italy's Luxury Living Group, translating the car maker's leather and burr-walnut craftsmanship into home furnishings.",
   "andr-fu-living":"Hong Kong lifestyle brand launched in 2015 by interior designer André Fu, extending his \"relaxed luxury\" aesthetic into tableware, linens, furniture, and lighting.",
   sicis:"Italian mosaic house founded in 1987 in Ravenna by Maurizio Leo Placuzzi, reviving the city's ancient mosaic-making tradition through decorative glass, furniture, and interior surfaces.",
-  "saint-louis":"French crystal glassworks founded in 1586 in Lorraine, the oldest glass manufacturer in France and continental Europe's first crystal producer, still hand-blown, cut, and engraved today.",
   duxiana:"Swedish bed maker founded in 1926 in Malmö by Efraim Ljung, still family-owned and known for its pocket-spring mattress technology marketed globally as DUXIANA.",
   "memphis-milano":"Italian design collective founded in Milan in 1981 by Ettore Sottsass, known for postmodern furniture and objects in bold color, plastic laminate, and asymmetric form.",
   moooi:"Dutch design brand founded in 2001 by Marcel Wanders and Casper Vissers, now based in Breda, producing bold, unconventional furniture and lighting from international designers.",
-  "lorenzi-milano":"Milanese cutlery house founded in 1929 by Giovanni Lorenzi, renowned for handcrafted knives, razors, and grooming accessories sold from its historic Montenapoleone shop.",
-  agresti:"Florentine firm founded in 1949, handcrafting leather and wood jewelry boxes, chests, and safes that expanded in the 1970s into luxury security furniture.",
-  rosenthal:"German porcelain house founded in 1879 in Selb, Bavaria, by Philipp Rosenthal, known for tableware collaborations with artists from Andy Warhol to Salvador Dalí.",
   "tom-dixon":"British design brand established in 2002 by designer Tom Dixon, producing furniture, lighting, and accessories known for its pioneering use of metal and industrial materials.",
   foscarini:"Italian lighting company founded in 1981 in Murano, Venice, producing decorative glass and contemporary lamps made by specialized outside artisans rather than in-house.",
   fontanaarte:"Milanese lighting and furniture house founded in 1932 by Gio Ponti, Luigi Fontana, and Pietro Chiesa, pioneering glass-and-metal design for modern Italian interiors.",
@@ -2056,15 +2031,11 @@ const BIOS = {
   bomma:"Czech glass lighting brand founded in 2012 by Jiří Trtík, reviving Bohemia's glassmaking tradition with hand-blown and robotically ground crystal designs.",
   stilnovo:"Italian lighting company founded in Milan in 1946 by Bruno Gatta, an early pioneer of postwar Italian lighting design that was relaunched in 2019 by the Linea Light Group.",
   qeeboo:"Italian design brand founded in Milan in 2016 by Stefano Giovannoni, producing narrative, playful furniture and objects such as the Rabbit Chair.",
-  baas:"TBD",
   "established-sons":"British design brand founded in 2005 in London by Sebastian Wrong, Mark Holmes, and Alasdhair Willis, producing furniture and lighting with designers including Zaha Hadid and Jasper Morrison.",
-  "zaha-hadid-design":"London-based design label founded in 2006 as a spin-off of Zaha Hadid Architects, translating the late architect's sculptural language into furniture, lighting, and homeware.",
   driade:"Italian furniture house founded in 1968 by Enrico Astori, Adelaide Acerbi, and Antonia Astori, known for treating furniture design as an art form, including the 1980s Driade Aleph collection.",
   slamp:"Italian lighting brand founded in 1994 by Roberto Ziliani, known for its patented Opalflex material and collaborations with designers including Alessandro Mendini and Zaha Hadid.",
   "studio-helle-mardahl":"Danish glass studio launched in 2017 by artist Helle Mardahl, known for hand-blown, candy-colored tableware, lighting, and sculptural objects.",
-  "l-objet":"New York-based luxury tableware brand founded in 2004 by Elad Yifrach, producing globally inspired home accessories crafted with artisans met during his travels.",
   concretecat:"Canadian concrete-design studio founded in 2007 in Montreal by Shawna and Matt Heide, handcrafting decorative mirrors, objects, and furniture from a proprietary concrete mix.",
-  dada:"Italian kitchen brand founded in 1972 and part of the Molteni Group since 1979, producing high-end kitchens under creative direction shared with sister brand Molteni&C.",
   kar:"Chinese design studio founded in 2020 in Guangzhou by Steven Yeung, known for sculptural furniture in fiberglass with flowing, organic forms.",
   ninefact:"Chinese design studio based in Hangzhou that launched its numbered furniture series in 2021, producing sculptural fiberglass pieces with restrained, textured surfaces.",
   parachilna:"Spanish lighting house founded in 2013 in Barcelona, growing out of the Riera family's 1930s Metalarte heritage to produce artisan-made fixtures through collaborations with international designers.",
@@ -2078,31 +2049,901 @@ const BIOS = {
   alias:"Italian furniture company founded in 1979 near Bergamo by Enrico Baleri, Marilisa Decimo, and Carlo and Francesco Forcolini, known for lightweight seating developed with emerging designers.",
   agrippa:"Spanish furniture brand founded in Valencia in 2008, handcrafting sculptural seating and casegoods in walnut, brass, and leather inspired by Gaudí's organic forms and local craft traditions.",
   "la-bo-te-concept":"French audio-furniture company founded in 2008 by Timothée Cagniard, descendant of the Siare loudspeaker family, producing handcrafted modular cabinets that integrate high-fidelity sound systems.",
-  "ap-collection":"Belgian furniture brand founded in 2015 by Alexis and Pauline, known for handmade upholstered seating adorned with attached plush toys that blend vintage form with playful extravagance.",
   "lk-hjelle":"Norwegian furniture manufacturer founded in Sykkylven in 1940 by Lars Karl Hjelle with his brothers-in-law, still family-run and producing Scandinavian-designed seating in its original factory town.",
   "1920r":"TBD",
-  "maison-margiela":"French fashion house founded in Paris in 1988 by Belgian designer Martin Margiela with Jenny Meirens, known for deconstructed, anti-establishment design and anonymity-driven presentation.",
-  "jake-phipps":"British furniture designer trained at Parnham College who set up his own London studio in 2005, producing sculptural, narrative-driven bespoke pieces for international clients and manufacturers.",
   italamp:"Italian lighting company founded in 1975 near Venice by Matteo Vitadello, known for glass and crystal fixtures that pair classic and contemporary lines using traditional glassmaking techniques.",
   mohebban:"Milan rug house founded in the 1970s by the Mohebban family, hand-knotting carpets sourced from India, Nepal, and Turkey that draw on Persian, Turkish, and Moroccan weaving traditions.",
-  avarte:"Finnish furniture manufacturer established in 1980 when employees of the Haimi company took it over, continuing production of Yrjö Kukkapuro's modernist designs until closing in 2013.",
   fasem:"Italian furniture company founded in 1976 in Tuscany, specializing in steel-framed seating upholstered in full-grain leather, developed through decades of designer collaborations.",
-  quasar:"Dutch lighting company founded in 1992 by Teun van Gammeren, launched at Euroluce in Milan and known for cast-metal indoor fixtures manufactured in Giessen, Netherlands.",
   "baleri-italia":"Italian furniture company founded in 1984 near Bergamo by Enrico Baleri and Marilisa Decimo, known for pioneering collaborations with Philippe Starck and other emerging designers.",
   artifort:"Dutch furniture manufacturer founded in Maastricht in 1890, renamed Artifort in 1928 and known for the sculptural mid-century seating of Pierre Paulin and Geoffrey Harcourt.",
   poliform:"Italian furniture company founded in Brianza in 1970 by the Spinelli brothers and Giovanni Anzani, turning a family artisan workshop into an industrial producer of modular living and closet systems.",
   "fendi-casa":"Italian home-furnishing line founded in 1988 by Anna Fendi and Alberto Vignatelli, the first fashion house to launch a full furniture and interior décor collection.",
-  "h-stens":"Swedish bedmaker founded in 1852 by Pehr Adolf Janson as a saddlery, shifting to handcrafted beds in the early 1900s and still family-run after six generations.",
   "kelly-wearstler":"American interior design studio founded in Los Angeles in 1995 by Kelly Wearstler, grown from a boutique practice into a multidisciplinary residential, hospitality, and product design brand.",
   "vi-spring":"British bed manufacturer founded in London in 1901, later renamed Vispring, known for handmade pocket-sprung mattresses built with natural materials and its signature six-turn coil.",
   "bang-olufsen":"Danish electronics company founded in Struer in 1925 by Peter Bang and Svend Olufsen, known for high-end audio and television design that pairs engineering with minimalist form.",
   tacchini:"Italian furniture company founded in Seveso in 1967 by Antonio Tacchini, growing from a carpentry workshop into a Brianza-based producer of design-driven seating and re-editions of 20th-century pieces.",
   "ligne-roset":"French furniture company founded in Montagnieu in 1860 by Antoine Roset, evolving from a bentwood walking-stick workshop into a major upholstered-furniture house under the Ligne Roset name since 1973.",
-  ciclotte:"Italian design brand behind the Ciclotte exercise bike, conceived by industrial designer Luca Schieppati and manufactured near Bergamo by the Lamiflex Group, winner of the Compasso d'Oro."
 };
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
 const STOCKIST_DATA = {
+  "kar": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/61c9d24a000000001000d743?m_source=pwa&xsec_token=ABmMRzv7GbGLQd6NrqdH62hgLUR8_Wti_ZGxUEUOkjwIE=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Guangzhou",
+        "name": "KAR Studio Showroom",
+        "address": "No. 6, Shamian South Street, Liwan District, Guangzhou, Guangdong, China"
+      }
+    ]
+  },
+  "ninefact": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5b12bd394eacab57656fc3a9?m_source=pwa&xsec_token=ABi94a6YGvygFz1Z5-zR508uBVuL01C_2QArc4oW7A98I=&xsec_source=pc_search"
+  },
+  "slamp": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/66740c4d0000000003031612?m_source=pwa&xsec_token=ABSM2rpYQcwjw4Jl2WtZgQ06-qkZTCY0sb4mNzHuEmaIo=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Bluce Lighting Technology Co., Ltd.",
+        "address": "5th Floor, Red Star Macalline, No. 1555 Wenshui Road, Baoshan District, Shanghai 200443, China"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Colour Living",
+        "address": "333 Lockhart Road, Wan Chai, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "PLC Galleria",
+        "address": "50 Morrison Hill Road, Morrison Hill, Hong Kong"
+      }
+    ]
+  },
+  "studio-helle-mardahl": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/61eacdad00000000100050fb?m_source=pwa&xsec_token=ABr5j_3XwRQYT-V2tpR4nG16ipLGE-r0nSyizUkakSYIg=&xsec_source=pc_search"
+  },
+  "penta": {
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "Easyhome (居然之家) North 4th Ring Road",
+        "address": "Beijing"
+      },
+      {
+        "city": "Beijing",
+        "name": "Red Star Macalline (红星美凯龙) Laiguangying",
+        "address": "Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Area Living flagship",
+        "address": "Shanghai"
+      },
+      {
+        "city": "Shanghai",
+        "name": "For D flagship",
+        "address": "Shanghai"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Red Star Macalline Nanshan",
+        "address": "Shenzhen"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Area Living",
+        "address": "Guangzhou"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Area Living",
+        "address": "Hangzhou"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Fusen Noble House (富森美家居)",
+        "address": "Chengdu"
+      },
+      {
+        "city": "Chongqing",
+        "name": "Red Star Macalline Global Furnishing Mall",
+        "address": "Chongqing"
+      },
+      {
+        "city": "Suzhou",
+        "name": "Red Star Macalline",
+        "address": "Suzhou"
+      },
+      {
+        "city": "Nanjing",
+        "name": "Red Star Macalline Kazimen",
+        "address": "Nanjing"
+      },
+      {
+        "city": "Wuxi",
+        "name": "Huaxia Materials Port",
+        "address": "Wuxi"
+      },
+      {
+        "city": "Kunshan",
+        "name": "Red Star Macalline Xingyi Jia",
+        "address": "Kunshan"
+      },
+      {
+        "city": "Xi'an",
+        "name": "Easyhome Gaoxin",
+        "address": "Xi'an"
+      },
+      {
+        "city": "Wuhan",
+        "name": "Easyhome Xudong",
+        "address": "Wuhan"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "Ocalone Home Mall",
+        "address": "Zhengzhou"
+      },
+      {
+        "city": "Qingdao",
+        "name": "Area Living",
+        "address": "Qingdao"
+      },
+      {
+        "city": "Foshan",
+        "name": "Louvre International Furniture Exhibition Center (罗浮宫国际家具博览中心)",
+        "address": "Foshan"
+      },
+      {
+        "city": "Dongguan",
+        "name": "Famous Furnishings Expo Park (名家具世博园)",
+        "address": "Dongguan"
+      }
+    ]
+  },
+  "established-sons": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/63ec852c0000000026005806?m_source=pwa&xsec_token=ABXooPPKY4a-tkHBqKKtX4jUNMJKNsGHQeYwaQdMPCUGk=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Dalian",
+        "name": "Sunday Space",
+        "address": "沙河口区黄河街12号A"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "Sunday Space",
+        "address": "郑东新区商都路1号红星美凯龙家具馆F1"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "Sunday Space",
+        "address": "裕华区红星美凯龙灯饰广场F1 C8028"
+      },
+      {
+        "city": "Langfang",
+        "name": "TDBY",
+        "address": "广阳区艺术大道剧创中心5A—5"
+      },
+      {
+        "city": "Taipei",
+        "name": "JusHouse",
+        "address": "大安区信义路四段183号1楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "Enest",
+        "address": "朝阳区东四环红星美凯龙F6 G8119"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casa Casa",
+        "address": "朝阳区金和东路20号院正大中心F1 L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP Select Home",
+        "address": "Beijing"
+      },
+      {
+        "city": "Shanghai",
+        "name": "PAD11",
+        "address": "普陀区大洋千树"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casa Casa",
+        "address": "徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "申甬灯饰",
+        "address": "徐汇区好饰家灯具广场2083室"
+      },
+      {
+        "city": "Shanghai",
+        "name": "申甬灯饰",
+        "address": "闵行区剪刀石头布A座A5-01/02"
+      },
+      {
+        "city": "Shanghai",
+        "name": "斯帕兰德",
+        "address": "虹口区柳营路135号柳营灯饰城F3"
+      },
+      {
+        "city": "Shanghai",
+        "name": "京东101HOME",
+        "address": "静安区南京西路1600号万航国际中心"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Homtique",
+        "address": "徐汇区五原路250号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "ZSPACEPLUS",
+        "address": "嘉定区慧创新视界E栋5号楼F1-2"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "BOWLIVING",
+        "address": "南山区粤海街道华润万象天地F5 523"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "The BiGBanG",
+        "address": "南山区西丽万科云设计公社D区B1层"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "EatenByTigers",
+        "address": "西湖区520新天地1号110"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BOELLA",
+        "address": "滨江区第六空间国际家具馆北馆F3 A301"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Huah 嘉晟照明",
+        "address": "上城区赞成中心东楼飞云江路3号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "天目里美术馆",
+        "address": "西湖区天目山路398号天目里1号楼"
+      },
+      {
+        "city": "Nanjing",
+        "name": "VINCE LIN",
+        "address": "建邺区红星美凯龙进口家具7号馆F1"
+      },
+      {
+        "city": "Nanjing",
+        "name": "溯邸",
+        "address": "建邺区江东中路88号金陵国际家居F1"
+      },
+      {
+        "city": "Nanjing",
+        "name": "德基艺术商店",
+        "address": "玄武区中山路18号德基广场二期F8"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SWE 北欧范",
+        "address": "双流区麓坊中心B馆1-110号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SKP Select Home",
+        "address": "Chengdu"
+      },
+      {
+        "city": "Wuhan",
+        "name": "SKP Select Home",
+        "address": "Wuhan"
+      },
+      {
+        "city": "Xi'an",
+        "name": "SKP Select Home",
+        "address": "Xi'an"
+      },
+      {
+        "city": "Xiamen",
+        "name": "齐物 CHIAGU",
+        "address": "思明区磐基中心F3 311-312"
+      },
+      {
+        "city": "Changsha",
+        "name": "Mole House",
+        "address": "雨花区欧亚达国际家居MALL F1 B16-18"
+      },
+      {
+        "city": "Changsha",
+        "name": "V BEINGS",
+        "address": "芙蓉区IFS国金购物中心B1层LG112-113"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Countdown",
+        "address": "鹿城区鹿岛万象天地35幢103"
+      }
+    ]
+  },
+  "driade": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/61a5a67c0000000010008ac0?m_source=pwa&xsec_token=ABzjOIWJwi4vfp9ioy7x6kYi0nKa4P130blTA0_6e2iYw=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Shanghai Xi You Xian Industries Co., Ltd.",
+        "address": "Building 8, No. 1098 Chuansha Road, Pudong District, Shanghai"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Colourliving",
+        "address": "333 Lockhart Road, Wan Chai, Hong Kong"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Lane Crawford IFC Mall",
+        "address": "Podium Level 3, 8 Finance Street, Central, Hong Kong"
+      }
+    ]
+  },
+  "barovier-toso": {
+    "wechat": "https://mp.weixin.qq.com/s?__biz=MzU0MDkxODI5OQ==&mid=2247490520&idx=2&sn=0ca2615824bc9071f1f4a58a6549d5c7&chksm=fb308caccc4705ba967d6e68b0f3708b6f370aaa8d26426133b79b83589a814896c9867098d8&token=796068532&lang=zh_CN#rd"
+  },
+  "foscarini": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/651bc25d0000000023026c54?m_source=pwa&xsec_token=ABUil2qmtPuEOA9cFyn2ml4TKa7iKyQe6hAusNxWxMcRU=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shijiazhuang",
+        "name": "HC28 石家庄红星店",
+        "address": "石家庄市裕华区裕华东路133号红星美凯龙方北商场一层C8086/C8085/C8087/C8088"
+      },
+      {
+        "city": "Taiyuan",
+        "name": "HC28 太原红星店",
+        "address": "太原市小店区龙城北街红星美凯龙111号2层B8017/8018"
+      },
+      {
+        "city": "Wuhan",
+        "name": "HC28 武汉居然店",
+        "address": "武汉市武昌区徐东大街50号居然之家一楼B区DS20-1-1-1010"
+      },
+      {
+        "city": "Fuzhou",
+        "name": "LEMA 福州",
+        "address": "福州市晋安区连江北路喜盈门前广场"
+      },
+      {
+        "city": "Nanchang",
+        "name": "LEMA 南昌",
+        "address": "南昌市西湖区子羽路888号红星美凯龙1号店"
+      },
+      {
+        "city": "Shanghai",
+        "name": "CASA CASA 上海",
+        "address": "上海市徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "丽兹家居 尚悦湾",
+        "address": "上海市浦东新区银城路66号尚悦湾L115"
+      },
+      {
+        "city": "Shanghai",
+        "name": "H.N LIN 空间美学馆",
+        "address": "上海市建国西路284号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "家天地 上海",
+        "address": "上海市建国西路151号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "LEMA 上海旗舰店",
+        "address": "上海市徐汇区龙腾大道2266号西岸梦中心3栋1层"
+      },
+      {
+        "city": "Shanghai",
+        "name": "AREALIVING 艾瑞亚家居",
+        "address": "上海市陕西北路600号五号楼1楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "申甬进口灯饰",
+        "address": "上海市闵行区吴中路1265号剪刀石头布家居广场5楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "申甬进口灯饰",
+        "address": "上海市徐汇区田林东路285号好饰家2083单元"
+      },
+      {
+        "city": "Shanghai",
+        "name": "BLUCE 欧洲进口灯饰",
+        "address": "上海市汶水路1555号红星美凯龙5楼E811"
+      },
+      {
+        "city": "Shanghai",
+        "name": "斯帕兰德",
+        "address": "上海市虹口区柳营路135号3楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "CASA CASA 北京",
+        "address": "北京市朝阳区光华路正大中心1层L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "家天地 北京",
+        "address": "北京市东城区金鱼胡同8号1号楼王府半岛地下一层L17及地下二层商区"
+      },
+      {
+        "city": "Beijing",
+        "name": "ENEST 进口灯饰",
+        "address": "北京市朝阳区东四环中路191号红星至尊店6楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "HC28 北京居然店",
+        "address": "北京市朝阳区北四环东路居然之家1号馆1层006"
+      },
+      {
+        "city": "Beijing",
+        "name": "都汇里 北京红星至尊店",
+        "address": "北京市朝阳区东四环中路193号红星美凯龙至尊店"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "哲欣",
+        "address": "杭州市滨江区江南大道1088号第六空间大都会现代馆1楼B102"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "福邸",
+        "address": "浙江省杭州市飞云江路9号赞成中心一楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "LEMA 杭州",
+        "address": "浙江省杭州市西湖区古墩路888号红星美凯龙南门一楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "都汇里 杭州六空店",
+        "address": "杭州市滨江区长河街道江南大道第六空间现代馆B220"
+      },
+      {
+        "city": "Chengdu",
+        "name": "YEPOM",
+        "address": "成都市龙泉驿区东洪路666号梵木创艺区F区"
+      },
+      {
+        "city": "Chengdu",
+        "name": "VALCUCINE 展厅",
+        "address": "成都市高新区富森美家居2号馆3楼A330号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "染点 成都展厅",
+        "address": "成都市双流区红星美凯龙四川一号店2楼"
+      },
+      {
+        "city": "Chengdu",
+        "name": "都汇里 成都红星至尊店",
+        "address": "成都市二环路西一段6号红星美凯龙至尊店一楼B8088"
+      },
+      {
+        "city": "Xi'an",
+        "name": "佳驰美邑",
+        "address": "西安市未央区太华北路198号大明宫中央广场Minotti展厅"
+      },
+      {
+        "city": "Xi'an",
+        "name": "LEMA 西安",
+        "address": "西安市雁塔区长安南路101号"
+      },
+      {
+        "city": "Xi'an",
+        "name": "都汇里 西安居然店",
+        "address": "西安市雁塔区高新四路居然之家至尊二层2-33"
+      },
+      {
+        "city": "Chongqing",
+        "name": "重庆安赛尔国际家居",
+        "address": "重庆市江北区星光68广场B区一楼BL121"
+      },
+      {
+        "city": "Chongqing",
+        "name": "重庆和致照明设计",
+        "address": "重庆市渝北区金山意库文化创意园7栋1楼"
+      }
+    ]
+  },
+  "tom-dixon": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5bdd98181270140001db09af?m_source=pwa&xsec_token=ABV-K6HHj3CZ-HI8MxrP5OEW5Sr_zwoKpqEOC4atc7LmY=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "金诚泽远",
+        "address": "朝阳区劲松街道红星美凯龙至尊F1"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP Select Home",
+        "address": "北京SKP"
+      },
+      {
+        "city": "Shanghai",
+        "name": "SLY Lighting",
+        "address": "徐汇区田林东路好饰家灯具广场2083"
+      },
+      {
+        "city": "Shanghai",
+        "name": "SLY Lighting",
+        "address": "闵行区吴中路剪刀石头布A501/02"
+      },
+      {
+        "city": "Shanghai",
+        "name": "斯帕兰德灯光设计中心",
+        "address": "虹口区柳营路灯饰城135号F3"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "莱可国际",
+        "address": "罗湖区宝能第一空间F7 C22-28卡"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "泡泡艺廊",
+        "address": "南山区华侨城创意文化园北区A4-110"
+      },
+      {
+        "city": "Chongqing",
+        "name": "和致",
+        "address": "两江新区金山意库7栋F1"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "哲欣CASA",
+        "address": "滨江区第六空间大都会现代馆F1 B102"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "华豪HUAH",
+        "address": "上城区赞成中心飞云江路3号"
+      },
+      {
+        "city": "Xi'an",
+        "name": "迪莱特照明",
+        "address": "未央区大明宫钻石广场A座F10北户"
+      },
+      {
+        "city": "Xi'an",
+        "name": "SKP Select Home",
+        "address": "西安SKP"
+      },
+      {
+        "city": "Qingdao",
+        "name": "朵致国际家居",
+        "address": "市南区香港中路136号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "SKP Select Home",
+        "address": "成都SKP"
+      }
+    ]
+  },
+  "duxiana": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/61ee40a10000000021023076?m_source=pwa&xsec_token=ABg2RYFX8_YbWBW5j6gVQE9ZW3HMnM2NruVMIaTszkz_I=&xsec_source=pc_search",
+    "wechat": "https://www.duxiana.com.cn/globalassets/images/wechat/dux_qrcode.jpg",
+    "stockistCN": [
+      {
+        "city": "Nanjing",
+        "name": "DUXIANA 南京店",
+        "address": "Yonglong St. Marks International Furniture Plaza, No.168, Jiangdong Middle Road, Nanjing"
+      },
+      {
+        "city": "Xi'an",
+        "name": "DUXIANA 西安店",
+        "address": "Shop 1-08, Gao Xin Si Road, Xi'an City, Shaanxi Province"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "DUXIANA 杭州店",
+        "address": "Fu Di Bo Exhibition Hall, No.9 Feiyunjiang Road, Shangcheng District, Hangzhou"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "DUXIANA 温州店",
+        "address": "Wenzhou Family International Home, Floor 1-2, Wuhua Building, Fudong Road, Lucheng District"
+      },
+      {
+        "city": "Shanghai",
+        "name": "DUXIANA 上海 Tiamanti店",
+        "address": "Floor 5, Bldg A, Home Furnishing & Living Plaza, No. 1265 Wuzhong Road, Minhang District, Shanghai"
+      },
+      {
+        "city": "Chengdu",
+        "name": "DUXIANA 成都北店",
+        "address": "Chengdu Fusen Meicheng South Branch, No.2F2058, No.18, Shenghe 2nd Road, High-tech Zone"
+      },
+      {
+        "city": "Taipei",
+        "name": "DUXIANA 台北店",
+        "address": "1F., No. 183, Sec. 4, Xinyi Rd., 106064 Da'an District, Taipei"
+      },
+      {
+        "city": "Yantai",
+        "name": "DUXIANA 烟台店",
+        "address": "Yantai Jiahe Lotte, Tongyang Road No.39, Zhifu District, Yantai, Shandong, 1st Floor"
+      }
+    ]
+  },
+  "sicis": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/624edb86000000001000d2e3?m_source=pwa&xsec_token=ABLT0n3wjLF9LjIoY81f2doOcDaEFBuED63QpYgLdm31s=&xsec_source=pc_search",
+    "wechat": "https://www.sicis.com/_next/image?url=%2Fimages%2Fqr-wechat.jpg&w=384&q=75"
+  },
+  "andr-fu-living": {
+    "stockistCN": [
+      {
+        "city": "Hong Kong",
+        "name": "André Fu Living",
+        "address": "Shop 2046, 2/F, Elements, 1 Austin Rd W, Tsim Sha Tsui, Hong Kong"
+      }
+    ]
+  },
+  "ceccotti-collezioni": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/633151e2000000001501b4f7?m_source=pwa&xsec_token=ABASZRFftVbUgCkhmdkJexqu31RXQWHGRYfp0JTbEbbnk=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "上海直营店",
+        "address": "上海市静安区福新大厦恒通东路65弄"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Ceccotti Collezioni",
+        "address": "上海市徐汇区龙爱路7号芒果广场B+栋"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Ceccotti Collezioni",
+        "address": "深圳市南山区科苑路深圳湾1号南区108"
+      },
+      {
+        "city": "Beijing",
+        "name": "Ceccotti Collezioni",
+        "address": "朝阳区北四环芍药居101号世奥国际中心B座"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Ceccotti Collezioni",
+        "address": "浙江省杭州市上城区飞云江路9号赞成中心一楼"
+      },
+      {
+        "city": "Qingdao",
+        "name": "Ceccotti Collezioni",
+        "address": "青岛市市南区香港中路136号"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Ceccotti Collezioni",
+        "address": "高新区盛和二路18号富森美3号馆1楼1093室"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "Ceccotti Collezioni",
+        "address": "温州市鹿城区三友路121号万萃广场1幢1层"
+      },
+      {
+        "city": "Taizhou",
+        "name": "Ceccotti Collezioni",
+        "address": "浙江省台州市椒江区海龙路260-292号"
+      },
+      {
+        "city": "Ningbo",
+        "name": "第六空间",
+        "address": "浙江省宁波市江东区宁穿路315号第六空间二楼"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "SENCO+国际家居生活广场",
+        "address": "河北省石家庄市裕华区仓裕路87号"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Ceccotti Collezioni",
+        "address": "香港铜锣湾格洛斯特路280号世贸中心31楼"
+      }
+    ]
+  },
+  "maxalto": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/65a0c6b60000000022000ed9?m_source=pwa&xsec_token=ABQtSyMlqDYodzLdpDpN53_G5wgU9zAVkbWBcdk4xL1DQ=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "Area Living",
+        "address": "静安区陕西北路600号5号楼"
+      },
+      {
+        "city": "Shanghai",
+        "name": "无限极荟",
+        "address": "黄浦区湖滨路168号一楼"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "福邸国际家居",
+        "address": "飞云江路9号赞成中心福邸博展馆2楼"
+      },
+      {
+        "city": "Beijing",
+        "name": "居然之家国际馆",
+        "address": "朝阳区北四环东路居然之家国际馆1F"
+      },
+      {
+        "city": "Ningbo",
+        "name": "一再一物 RenUno",
+        "address": "鄞州区宁穿路315号第六空间一楼A-28"
+      },
+      {
+        "city": "Chengdu",
+        "name": "意点家居",
+        "address": "高新区盛和二路18号富森美三号家具馆一楼1075"
+      },
+      {
+        "city": "Wuxi",
+        "name": "瑞邸 Living",
+        "address": "无锡市梁溪区锡沪路201号第六空间1楼"
+      },
+      {
+        "city": "Dalian",
+        "name": "丽居家居",
+        "address": "中山区人民东路72号一层"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "国际馆 (opening soon)",
+        "address": "海珠区新港东路1000号琶洲吉盛伟邦5楼5027"
+      },
+      {
+        "city": "Taizhou",
+        "name": "梵逊邦德家居",
+        "address": "椒江区海龙路290号"
+      },
+      {
+        "city": "Wenzhou",
+        "name": "今世家国际家居",
+        "address": "鹿城区三友路121号万萃广场1幢"
+      },
+      {
+        "city": "Jinan",
+        "name": "欧亚达家居",
+        "address": "天桥区北园大街371号国际馆一楼A1-1"
+      },
+      {
+        "city": "Qingdao",
+        "name": "朵致国际家居",
+        "address": "市南区香港中路136号"
+      },
+      {
+        "city": "Nanjing",
+        "name": "永隆·圣马可国际家居广场",
+        "address": "建邺区江东中路168号"
+      },
+      {
+        "city": "Shijiazhuang",
+        "name": "SENCO+国际家居生活广场",
+        "address": "裕华区联创壹号C座二楼"
+      }
+    ]
+  },
+  "baxter": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5e4d1edd0000000001008151?m_source=pwa&xsec_token=ABFuSoRrLXqar83UiJnsvBDcsz0og5R_ExoVtrMhti1Qs=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Nanjing",
+        "name": "永隆·圣马可国际家居广场",
+        "address": "南京市建邺区江东中路168号永隆·圣马可国际家居广场4楼BAXTER展厅"
+      },
+      {
+        "city": "Jinan",
+        "name": "山东积嘉室（济南）家居有限公司",
+        "address": "济南市天桥区北园大街371号1层A1-13"
+      },
+      {
+        "city": "Dalian",
+        "name": "辽宁大连丽居家居有限公司",
+        "address": "大连市中山区人民东路72号镒海3号楼丽居家居"
+      },
+      {
+        "city": "Changchun",
+        "name": "吉林省致家商贸有限公司",
+        "address": "吉林省长春市宽城区辽宁路772号居然之家太阳城店1层"
+      },
+      {
+        "city": "Tianjin",
+        "name": "天津艾伦国际家具",
+        "address": "天津市河西区解放南路475号A01国际家居美学中心1-22"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Baxter Gallery Shanghai",
+        "address": "上海市静安区永源路50号"
+      },
+      {
+        "city": "Beijing",
+        "name": "北京家天地",
+        "address": "北京市东城区金鱼胡同8号1号楼，王府半岛地下一层商铺L17及地下二层商区B2"
+      },
+      {
+        "city": "Shanghai",
+        "name": "上海H.N.LIN空间美学馆",
+        "address": "上海市徐汇区建国西路284号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "浙江杭州福邸国际",
+        "address": "杭州市飞云江路9号赞成中心一层"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "广东深圳家天地",
+        "address": "深圳市福田区皇岗路5001号深业上城店位S315"
+      },
+      {
+        "city": "Foshan",
+        "name": "广东顺德罗浮宫进口馆（佛山总部）",
+        "address": "广东顺德罗浮宫国际家具博览中心5-6F"
+      },
+      {
+        "city": "Ningbo",
+        "name": "浙江宁波一再一物",
+        "address": "宁波市鄞州区宁穿路315号第六空间"
+      },
+      {
+        "city": "Zhengzhou",
+        "name": "河南郑州卓欣家居",
+        "address": "郑州金水区商都路1号，红星美凯龙（中原全球家居1号店）北区1楼BAXTER展厅"
+      },
+      {
+        "city": "Xi'an",
+        "name": "陕西西安万众松美学科贸有限公司",
+        "address": "西安雁塔区曲江池东路333号西安W酒店1F"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "广东顺德罗浮宫进口馆（广州）",
+        "address": "广州市黄埔大道中666号罗浮宫家居艺术中心C栋4F"
+      },
+      {
+        "city": "Chengdu",
+        "name": "四川成都奢幔之家",
+        "address": "成都市武侯区盛和二路18号富森美家居3号店一楼1030/1031/1056/1057"
+      },
+      {
+        "city": "Chongqing",
+        "name": "重庆意美奢享家",
+        "address": "重庆市渝北区新南路888号1层，红星美凯龙（江北商场店）1楼"
+      },
+      {
+        "city": "Qingdao",
+        "name": "山东青岛朵致国际家居",
+        "address": "青岛市香港中路136号"
+      },
+      {
+        "city": "Wuhan",
+        "name": "湖北武汉意美奢享家",
+        "address": "武汉市武昌区徐东大街38号欧亚达家居进口馆1楼"
+      }
+    ]
+  },
   "poltrona-frau": {
     "rednote": "https://www.xiaohongshu.com/user/profile/59e35fbf6b64551e2286de00?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABGg2ecTWTCYaNE1pR3A9WAPHAxSkjkMB8wa0BlcE1dpI=&xsec_source=pc_search",
     "wechat": "https://mp.weixin.qq.com/s/3aRv80FOsf-NhMlgydn5iA",
@@ -6904,6 +7745,908 @@ BRANDS.forEach(b=>{
 // own site (never downloaded or rehosted here) — only populated for brands the studio
 // has actually curated a gallery for.
 const AMBIANCE_DATA = {
+  "kar": [
+      {
+          "project": "",
+          "images": [
+              "https://kar-studio.com/cdn/shop/files/DAB9BA3F-B3D5-4CBF-905A-0FF93BC464BA.jpg?v=1744354681&width=2890",
+              "https://cdn.shopify.com/s/files/1/0928/5491/1294/files/4-3_28dd13f9-33a3-4072-88b8-37e3c44163a1.jpg?v=1770281592",
+              "https://cdn.shopify.com/s/files/1/0928/5491/1294/files/licht.jpg?v=1743056274",
+              "https://cdn.shopify.com/s/files/1/0928/5491/1294/files/kar_room_2.0_232786ee-8f0f-433b-8356-fb017bf797ff.jpg?v=1742304010",
+              "https://cdn.shopify.com/s/files/1/0928/5491/1294/files/first_times.jpg?v=1742292588"
+          ]
+      }
+  ],
+  "ninefact": [
+      {
+          "project": "让空间开口的秘诀",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291844/01ad3492773e6b546689f38a5dec5e29/1040g008322osk2pj70704a5secujjgt9g0287t0!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "pick你的心选色",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291846/a1e35b7830d640769d50ea2af0a3d742/notes_pre_post/1040g3k03212r7gcl6s2g4a5secujjgt98tv53l8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291846/095f83d6a3e4131e62d2a766ce501b1d/notes_pre_post/1040g3k03212r7gcl6s4g4a5secujjgt9135v2ig!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291846/de66da983cd81ec0dcaab5d3e790a323/notes_pre_post/1040g3k03212r7gcl6s304a5secujjgt98msgdtg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291846/3219373725bd358b7df230d14ead08a1/notes_pre_post/1040g3k03212r7gcl6s3g4a5secujjgt9u22opao!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291846/e24f73e0f28312a33024b44c59e85e8c/notes_pre_post/1040g3k03212r7gcl6s404a5secujjgt9h3f0k0g!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "一面镜子带来的幸福感",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291847/1af4a1449679a16d2fa8f16e54ccff86/1040g2sg32108e35f72eg4a5secujjgt9np2h4v0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291847/81db063513a7e22ad7aaa7f11645406b/1040g2sg32108e35f72e04a5secujjgt9upmjul0!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "客厅里的质石之几",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291847/a05b44eb4db90b06673daab36ce61e08/notes_pre_post/1040g3k0320lq4og5mo604a5secujjgt9q53b4io!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291847/962065620c091ef483588ca10740d623/notes_pre_post/1040g3k0320lqobvj5c0g4a5secujjgt9h9ati90!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291847/cb1b33e3616c2910b4fc3cc5e8c7af7b/notes_pre_post/1040g3k0320lq4og5mo6g4a5secujjgt9t190qh0!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "雾色与今秋",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291848/0a6980fffc179a4839bef2b0074fa8cb/notes_pre_post/1040g3k831o5rhkdml2804a5secujjgt90gt8aeo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291848/6d527e95121377aff222f6dd4ef0002e/notes_pre_post/1040g3k831o5rhkdml2704a5secujjgt93p4nlho!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291848/3881a682695fa856f609e5dbf12b7a17/notes_pre_post/1040g3k831o5rhkdml27g4a5secujjgt98bjsit0!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "ninefact 在《家居廊》报道的家",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291848/05deb60610322bc1dc6430e587e1e02f/1040g2sg31ljhp7vsl2l04a5secujjgt9amihp2g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291848/cda269b55c2ae2c8302402d97d575cb1/1040g2sg31ljhp7vsl2lg4a5secujjgt9vsm303g!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "浓情映像，醇境成框",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291849/68ece196af8f4e184448e0a6222fd53d/1040g00831l8e79uo4q104a5secujjgt96g58ph8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291849/8e67bd44d48f74f13ca0ebff364209c4/1040g00831l8e79uo4q004a5secujjgt9buje0jg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291849/24ecb58b90d6759bd79c1ee20d57f041/1040g00831l8e79uo4q0g4a5secujjgt95be8t4g!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "依然美好",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607291849/882c1ff9ca9375f1e1932239b120ed5b/1040g00831cbi7hvsh6004a5secujjgt902hrcug!nd_dft_wlteh_webp_3"
+          ]
+      }
+  ],
+  "slamp": [
+      {
+          "project": "",
+          "images": [
+              "https://slamp-production.imgix.net/58dfd3f4-dcdc-4a6a-b291-8845091aea6d/Poppy-Slamp-at-GNAMC-Rome_08-ph-F.jpg?auto=compress%2Cformat&fit=min&fm=&q=80&rect=0%2C0%2C567%2C850&s=2b88fc170a5605b06deb4d4541747673",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/729657821_1436135935228176_2624273703424125193_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzkyNzg1ODI5MjI2NTQ0ODM4Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=t8ar_5kWtbYQ7kNvwGKqkPR&_nc_oc=Adoc3xnDen1bHXtm06xl8NUCW7astwsU7tz8dOncFk26GBNf08yRrrWxCjGJs3BbnzY&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=oSg8L-ETFFmTk3-MBHrUyA&_nc_ss=79689&oh=00_AQCgfLpH7KZqX13wChJS78GhgEqOpOVedynX_TAtUXw_yA&oe=6A6FAA8D"
+          ]
+      }
+  ],
+  "studio-helle-mardahl": [
+      {
+          "project": "",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/files/FullSizeRender.jpg?v=1776668744&width=1290&crop=center",
+              "https://i.pinimg.com/1200x/b2/40/95/b24095c9f5326595988a61d11b55251e.jpg",
+              "https://i.pinimg.com/736x/36/e1/ba/36e1ba3f303232798de641793f02bf97.jpg",
+              "https://i.pinimg.com/1200x/8c/0b/ea/8c0bea1b0e9c0f81e3dba0db3941dfd9.jpg",
+              "https://i.pinimg.com/736x/b7/a7/d0/b7a7d0debcb86cb0530e820e4554e4a4.jpg",
+              "https://i.pinimg.com/1200x/03/31/81/0331819f084d550d50d954793c87ff75.jpg",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/721466371_18598066558020509_6700805810719373842_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzkxNjI5MzMwMTY2NzUyNDY3Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTUwMC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=YMM597P5RDAQ7kNvwEWzELN&_nc_oc=AdpxEOpzJuVX-hfMzrPXHiavj9838hkYdnmau5JDDpel3DtOLVpvOlIW1eiC3GFg4o0&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=N_Gk88ysJ9S7UJtP2Ng2tw&_nc_ss=79689&oh=00_AQDWK0Sj5bZ44-KjkAwEdfwHGDhnlDOpDaOpzXZaWxqTHg&oe=6A6FB8F9",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/733233013_18606238030020509_8753687824635253225_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzkzNTIxNTQ1Nzk0ODE5OTA3Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYyNC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=otb_Q13QLGAQ7kNvwF3C6GF&_nc_oc=AdoJENRhsP6LKDUgyn5iSwfR85XNGEfG7PCDztHdrkFbEwRf31UVTeScxFYBAcLCXqo&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=LIwJway_CDpk_3yrGLu0yw&_nc_ss=79689&oh=00_AQBjMUN-_GxZfSxF0Mzomd_WEaWkxImMRbtfSYpBNdEQvA&oe=6A6F8AAD",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/672924166_18584046331020509_8515882619281912239_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=Mzg4MDk3MTMyMjc5Mjg3NjI0MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=OZgMlCDuNYYQ7kNvwFi9X-E&_nc_oc=AdoyYAnQYPPI8Qx3wWOZeoUAN5EEBFqCJt44roWCehmgJvCTD8fwYc6PvGesQyiR8wA&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=eaa686xF-hvvWue5HV8HlQ&_nc_ss=79689&oh=00_AQBG77Sqfn0GLiFXP-FHuelBvN3aIBz3d663SWo2PuDKTg&oe=6A6FAA9E",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/670415441_18582339565020509_1840730400333339320_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=Mzg3NTg0MTEzMzMyMjc1NjI4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTMyMC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=9f5ic42xSsYQ7kNvwGVzhu7&_nc_oc=AdpvBcN30jnpOO179vouJyMIKUpIWPVlOwus0cRg7Hbhy1XvEK1BIyyH3hrq5PQ3qbs&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=_CdK-gm8Lofw4_jtk4O0mQ&_nc_ss=79689&oh=00_AQBzWNPs6L17ZQBTcDbqaAzFnyC8pEog3BS1zAe6sV7ZBw&oe=6A6FAD96",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/582102701_18544736584020509_8626959484961484738_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=Mzc2NzczNjkyMTU0MDM0MjY0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=U-JhQhvpWvUQ7kNvwGjW3kk&_nc_oc=Adq0M4jX7tJTZIHqCoH63wl1FsxQyeJcZqzwEXyvorIvctu4bZEV4R6_Grn6e0juTnI&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=gy37X7lU50Ivo22sEGs7iw&_nc_ss=79689&oh=00_AQAD_WGRm-KOeJEdO0R4kCdm_zloCoH_fRoAuV8sUegCxg&oe=6A6F8836",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.75761-15/475006873_18485783557020509_2231868768017332233_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzU1NDAyMTkyNzExNTg4OTgzNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA1MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=jW4ajKmClNcQ7kNvwH7fZHo&_nc_oc=Ado-oXJhY-ojFZZTvcFK4NMzMAnrzEMNDkEK5wBuRklFCZExY8wtFXDtvVI34SSS_K8&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=EOg7E2nU3_IQFOvRpdM4jg&_nc_ss=79689&oh=00_AQC5MkI6ChN6xTIk-AT4-7-wZdBvPUz6kon-Wz85qRlK2Q&oe=6A6F96FE",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/629145559_18192158971346180_8144573120470124396_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzU1MTEyNTg1NzcwNDc4MDI4MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTI4NC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=wsgHyg_sEjIQ7kNvwHrinDE&_nc_oc=AdqMk2OhNMZaptoinoln9k2Mxeb3cNiIUygcsqF81xtaPALWDLL_AKefWiDrHn3cIrA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=P0prKflekH1IvJg3SHj30w&_nc_ss=79689&oh=00_AQDk-uhP3OXVkvxaq_8-jrQ8CzWLat7ooFLq59zOC-OAcg&oe=6A6FB80F",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/621691613_18003966509839066_8210841374016020335_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzUwNjIxNDYzMDUzMzEyODYzMw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=-4tWe1Sw8s4Q7kNvwHt4CtT&_nc_oc=AdpqB5zxknQygJsSj1dys54pVg4oWKID5eax7EZc-R83orpFkMN1hi4f2CpIJdpitk4&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=ywUhSCXcd-MgBnX_rW8Hvg&_nc_ss=79689&oh=00_AQAQEMvRUwSe1ZQDZz9Gx8HSQq8MvAGEg8tzru7sMtxrIA&oe=6A6F9268",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/654022848_18010359665840083_8149407874825512557_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzQzMjg2NjY2NzY1MzU0OTAyNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=EYHoZXoO2K0Q7kNvwFQWnc5&_nc_oc=AdrGJWKqGtmAz_5PJMdxcT1esS5FsFL1guej_KS_YSIDI3PXbiV1QwiqTVYQRF5wk9E&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=8PI98Pnbr8cVWTXOnMckaQ&_nc_ss=79689&oh=00_AQDCGFKSICDg8yYTJSzzZw8iIeDxIM_d_BsDMN9wKXVUew&oe=6A6FBD9C",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/622314618_17979068558967328_5986913777286818523_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzQwMzk2ODYyNDIyODA3MDk1MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTMzMS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=SEJ1xVgg6nQQ7kNvwHEYlJA&_nc_oc=AdravlRc1yZpDqlFc5AfSmOZKdJlx5sFJEH0fpqpGddPfFhpqGiQ_vs7F5AI8KJxces&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=MoDGCXEIfy88HuiwCDwyGw&_nc_ss=79689&oh=00_AQDh7MpF9_0v6uM6C2dgUS2-WBndSUYJx9M7HsIko5j_JA&oe=6A6F9110",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/624119339_17977881890985624_2135581306981771382_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzI3Nzg1NTMwMDA1OTg0MTY2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=DZLRQNvG-KAQ7kNvwFibixb&_nc_oc=AdpdQP33cjkHxE2IY9Q8Upg5iBO2kKT5VFxRx6xz_leDWCLQpYWIA1JFJBCYPCxPhn0&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=yQOJq8wljgQxWjPUfzQEKA&_nc_ss=79689&oh=00_AQDMo6krIRraJNzTKan9FHjp3ZgukrT3HZ3mUyXqgDzgew&oe=6A6F9BD8",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/624084903_18127086208540835_991856755875122853_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzIyNzEyMzM1ODY3NTIxODg0Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=gNTKA1Qx4l8Q7kNvwF4BlvH&_nc_oc=AdoN5wKkkhBk43IDzDV-2E9qRK5xcRpXvWZOtPT1LlV-QaE2Lbi2t10CJwcNdPFybHM&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=Ku_KP9kGMtdp8Acp1uD9fA&_nc_ss=79689&oh=00_AQDI2BmhGVIUuZsOxPLbugitXylT58412r8Gt5b9ZZwNdw&oe=6A6F9F90",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/624084903_18127086208540835_991856755875122853_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzE3ODUyNTYyODY1OTExMjk4MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTI5OS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=_1_NKhiy9csQ7kNvwFPw6Pn&_nc_oc=AdpMi4lpNnOnmRlZqqNARVrrDvbOEi28NjkvVqOn-Ndu0GermZ3-Jr6z7jkgFTMsxCw&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=I934uVTuoxOrLAgdYPVIvw&_nc_ss=79689&oh=00_AQAbz5y7X71gsa3rqLTrZHN02mhVL8L395lrEhlg4jfowQ&oe=6A6FBE08",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/626785286_18182454679370444_2764674976331748139_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzE3NTU3NDU4NTM2OTU0Njk3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTI4NC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Ux62ursMZCcQ7kNvwF7rUbv&_nc_oc=Adrf84jDRrLvzrmvW79lM44o0RxdRdk3UabDk7nCSvF0x6wE_p7DWJDFFYAaGaFLB5g&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=lcdeQ0kcv8zTi-w7T_JEUQ&_nc_ss=79689&oh=00_AQAEeooRoOW4vdJWPZQXg6vKU90050VBGffjQ9pMwI-mIQ&oe=6A6FA8EE",
+              "https://sns-webpic-qc.xhscdn.com/202607291815/0e12c3eb5ddbc87407f3d22eaa589eee/01023701kt5cvzh1rzv010cejp40nwo7u4!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291816/8784ba877a671578b8c86fbf4636c6ff/01026901kt5cvzh1rzv0111ijfs2zog1fr!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291816/5ee7dffcdb05f932c47a3e5f60ed4dac/01026901kt5cvzh1rzv0111ijfs0wwz3qt!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607291816/c30513625dbb339ca97870b469735af1/01026901kt5cvzh1rzv0111ijfs10joavl!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "Showroom",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/files/2022.06.14-HELLEMARDAHL_SHOWROOM7516_8ed33ed5-6462-4345-a962-60f266d102a1.jpg?v=1771938660&width=1290&crop=center"
+          ]
+      },
+      {
+          "project": "Apartment",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/files/HM-APT-Sep-22-_c_-Alastair-Philip-Wiper-31.jpg?v=1771503684&width=1290&crop=center"
+          ]
+      },
+      {
+          "project": "Shop",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/files/HM-Shop-25-_c_-Alastair-Philip-Wiper-73.jpg?v=1759233223&width=1290&crop=center"
+          ]
+      },
+      {
+          "project": "Studio",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/files/2026.05.28-HELLE_MARDAHL7186.jpg?v=1780578127&width=1290&crop=center",
+              "https://hellemardahl.com/cdn/shop/files/2026.05.28-HELLE_MARDAHL7272.jpg?v=1783325354&width=1290&crop=center"
+          ]
+      },
+      {
+          "project": "Bon Bon Table Lamp",
+          "images": [
+              "https://hellemardahl.com/cdn/shop/products/HelleMardahl_Table_Lamp_apricot_3ed75d0b-b66c-4c4c-9fc0-210a8d3d83eb.jpg?v=1649855653&width=1290&crop=center"
+          ]
+      }
+  ],
+  "penta": [
+      {
+          "project": "",
+          "images": [
+              "https://pentalight.com/wp-content/uploads/2025/08/Dining-Room-Wide-View-.jpeg",
+              "https://pentalight.com/wp-content/uploads/2022/11/Rooms-30-by-Gregoire-Gardette-1400x933.jpg",
+              "https://pentalight.com/wp-content/uploads/2019/10/hotel-los-agustinos.jpg",
+              "https://pentalight.com/wp-content/uploads/2019/10/ALTURA_CONTRACT_RESTAURANT-1120x1400.jpg",
+              "https://pentalight.com/wp-content/uploads/2016/02/Clubhouse_Applique_Coco_2-1400x965.png",
+              "https://pentalight.com/wp-content/uploads/2016/02/Clubhouse_Applique_Cord-1400x926.png",
+              "https://pentalight.com/wp-content/uploads/2016/02/23051_Penta-Lampada-Je-Suis-v2-var-1082x1400.jpeg",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/480810262_959496616378553_1892216697174910186_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzU0MDk3OTEzNDU1Mzc2MDA2MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTM2NS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=h3_S3dorO3cQ7kNvwH_8xqQ&_nc_oc=AdqGniuYcDGJmgQVO3AiWHgQrvS9mURJfawotKXMKXIz3I2XbBaYtiZ11yTVLnkJCoc&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=DPMHPt-lMXj5rYulBB15PQ&_nc_ss=79689&oh=00_AQAV4TlWP_vRdsZQrUgESmvalnK1vIFKcemX2wftdZhpqg&oe=6A6FA874"
+          ]
+      }
+  ],
+  "established-sons": [
+      {
+          "project": "Medusa",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/medusa-draft/MEDUSA-LIGHT-T2T3_Carlo-Nason-c2026-EstablishedandSons_Lifestyle-48-300dpi_Fu-Ben.jpg?auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1774590807&w=900&s=e3bb49de1e6b9bf808171ff73a34636b",
+              "https://establishedandsons.imgix.net/images/products/medusa-draft/MEDUSA-Wall-Lamp-c2026-EstablishedandSons_Lifestyle-300dpi_Fu-Ben_2026-03-27-064438_yqfn.jpg?auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1774593878&w=900&s=7758404243ab3e6588eb8e367d4489b5"
+          ]
+      },
+      {
+          "project": "Lucio",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/lucio/main-image/CHO-Light-F1-and-F2-LUCIO-with-Solid-Oak-side-table-Light-Yellow-c2026-EstablishedandSons_Lifestyle-38-300dpi.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1769488929&w=1800&s=3620d0b6c96a60b550d3fcbee69d7a21"
+          ]
+      },
+      {
+          "project": "Filigrana",
+          "images": [
+              "https://establishedandsons.imgix.net/images/journal/meet-the-filigrana-family/sushi-samba-west-hollywood-tanveer-badal-9.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1782371050&w=1800&s=c854e7872c05a0eecb882079653e04fa"
+          ]
+      },
+      {
+          "project": "From Then On",
+          "images": [
+              "https://establishedandsons.imgix.net/images/From-Then-On-Formafantasma-2014-EstablishedandSonsLimited-PeerLindgreen-Exhibition-01-300dpi.jpg?auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1580916444&w=1800&s=73cc9b653aa24580575ddd65676fd474"
+          ]
+      },
+      {
+          "project": "Aura",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/aura-light/main-image/AURA-LIGHT-S1-Apricot-Rose_70907091_Sabine_Marcelis-c2024-EstablishedandSons_Lifestyle-Lit-01-72dpi.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1752543193&w=1800&s=618d146125c9205ddfaa3cdc68aca7ec"
+          ]
+      },
+      {
+          "project": "Cho",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/cho-light/main-image/CHO-LIGHT-F1-F2-Dimitri-Bahler-c2018-EstablishedandSons-cJamesChampion-Lifestyle-Group-Movement-Lit-01-Kao-Bei-2-Kao-Bei.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1727274916&w=1800&s=e742f20e1ca4728004cb604c353fa868"
+          ]
+      },
+      {
+          "project": "Lighthouse",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/lighthouse/main-image/LIGHTHOUSE-Grey-Blown-Glass-Matt-Carrara-White-Marble-Mauro-Chair-Black-c2026-EstablishedandSons_Lifestyle-68-300dpi_2026-01-27-040842_lrlr.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1769486923&w=1800&s=df6b4e719cded358ec085862ad5a010d"
+          ]
+      },
+      {
+          "project": "Heidi",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/heidi/HEDI-Stool-SH800_cSebastian-Wrong-c2024-EstablishedandSons_Lifestyle-01-72dpi.jpg?auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1772556693&w=1800&s=c9d928607f6822bb1dec1fc4558e1864"
+          ]
+      },
+      {
+          "project": "Mauro Chair",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/mauro-chair/main-image/MAURO-CHAIR-Mauro-Pasquinelli-c2018-EstablishedandSons-cRoryGardiner-@TheStratfordLondon-Insitu-Dinning-01-300dpi_EDIT.jpeg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1728351022&w=1800&s=3ed36fc4c126bbfd579ea9204ecda46c"
+          ]
+      },
+      {
+          "project": "Crate",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/crate-series-upholstery/main-image/CRATE-DAYBED-7657-7669-Maharam_Luce-Jasper-Morrison-c2022-EstablishedandSons-cMelYates-Lifestyle-01-72dpi.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1699462131&w=1800&s=30a76be69aa476d430366613ac9d22e6"
+          ]
+      },
+      {
+          "project": "Mollo",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/mollo/main-image/CHO-Light-F1-and-F2-MOLLO-Grey-c2026-EstablishedandSons_Lifestyle-73-300dpi.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1769487455&w=1800&s=9e7d670ff2e14765c0ba482463c3e77c"
+          ]
+      },
+      {
+          "project": "Fez",
+          "images": [
+              "https://establishedandsons.imgix.net/images/products/fez/main-image/FEZ-Table-cNao-Tamura-c2026-EstablishedandSons_Lifestyle-5-72dpi.jpg?ar=3%3A2&auto=compress&fit=crop&ixlib=php-3.1.0&q=80&v=1775210397&w=1800&s=d84692c6e54071aef1f3db96297bfffc"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/642435710_18563001409013138_5064608430165593237_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=Mzg0Mzk4OTEzMDAwNzYzNzUzNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=5zTOKuXxGlEQ7kNvwEzdosE&_nc_oc=Ado6xOiX7VMp8bjmjAxhpdnhcsFP7GUgc7kDOofllFahf3GGgaxSpbEgW4QLS6FzTmg&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=x-u3ET0HX5HBbvpVs1ryYQ&_nc_ss=79689&oh=00_AQA81NAlkqxACJaAqrmxxWur-abISSEtMjy7UIpjRmN-CQ&oe=6A6FAEC4",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/626524915_18067995827208981_2964601000172665271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzI1MTkwOTE1OTU3MTk2NTc3MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=jZJX2VTvjUIQ7kNvwEURAcI&_nc_oc=AdrQqu2-mER46724QmtVnl8WkvaHUjhLeXLJldcPw-GaKMGuAH67ejGP_16HaXqEc7A&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=zi07Nkoe90-Kk_9tgcNh5g&_nc_ss=79689&oh=00_AQCicFM-dDbrDVSV6ou5qOVwjdtzGLiMe58AAfXLSdvESQ&oe=6A6FB5A5",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/624080044_18088091732024784_6280861818587192347_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzIzMTY0MjM2NzA0MTc4MDgyOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuODQyLnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=hjT3Sm8FFH8Q7kNvwHqIsam&_nc_oc=Adq0BMwSrK60LCzsbf3RqWJZzQ-2xR5xKvVmb3bdQhs9I_ZHctJOp9jGmnrcuIk66gY&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=mUA67vwV3HojGX3zSOIkdQ&_nc_ss=79689&oh=00_AQBjhcHARWsxd1mEIlCfGCs3mBbj0G0hS3WhQW5UeN6Frg&oe=6A6F881F",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/658444243_18172578271397187_117646777790187120_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzE4NTkzODQ0NzYyMDkxMTA5Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTI3Ni5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=-6jPlaNxoRcQ7kNvwG3yqZV&_nc_oc=AdoPmgK-15I_X1MZU1jTK5VuRKTrHH1MJHnCyLDN9IABVogjZmH8tPs1Jw5Av4Po_nY&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=QQFHxa0qBRgXvsIijRPpvA&_nc_ss=79689&oh=00_AQAeMORmsgCoQ3rYdw21nWIvO8FaWw_pg3GJidnLlIN8_g&oe=6A6FB018",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/651962816_17982465662804453_7524213630155899386_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzE0MDIxMTQzNzQ4ODc1Mzc5Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=QmpxFQRBIHsQ7kNvwFHUBST&_nc_oc=AdpOiHYuHT48Ew0J8gQhCH7ok2dcUy4V0ffrcbbs3zhdDkhCnMrAvRfHKm6kQ3a7EPg&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=CjIU6loyswT_MtzFZh4aPg&_nc_ss=79689&oh=00_AQAloC61uoeKK0h9Dlb-yKqQBtl2TpXgrnWkJbbeC0BRHQ&oe=6A6F8DC1"
+          ]
+      }
+  ],
+  "driade": [
+      {
+          "project": "",
+          "images": [
+              "https://www.driade.com/wp-content/uploads/2025/08/gallery1-179.jpg",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/515078771_18521563345058249_6650801134204132527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ig_cache_key=MzY2OTgzODAyOTUwMjM4MzUwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuOTA2LnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=_fRJDzR5TT8Q7kNvwGfkmCt&_nc_oc=Adr4KgfTqTiCU4GJ01heA1_7yuuf36tA6aMYpUJzYhv3UjBnBlbZbNKoIvIUOYoOgLQ&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=LWtt9olYk9msENNHOGFbyA&_nc_ss=79689&oh=00_AQB0jf_B4mbRpaV5tHq3MRVAzVBh9TktYjvXKd4U39lWfA&oe=6A6FAF12",
+              "https://www.driade.com/wp-content/uploads/2025/08/gallery1-132.jpg",
+              "https://www.driade.com/wp-content/uploads/2025/08/gallery1-131.jpg",
+              "https://www.driade.com/wp-content/uploads/2025/08/gallery1-126.jpg",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/437982986_18437073253058249_6866488860130906506_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzM0OTc5MzAwMjU4NTQwMDA4NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYwMC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Qwg8mJ-CWGkQ7kNvwHDrPUk&_nc_oc=AdpbGgatxkTcviBYEqeRWOzHnO-riNVOREY6ZluZGcTPXjEWMUQpLLwsEzw5ViAfh78&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=Vu-woEEygw67xEILG4bGcg&_nc_ss=79689&oh=00_AQBIgv15iVdok1gW5ukiKl8IU4TpUiUqpqt0fHg6NTAK0A&oe=6A6F9747",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/670773626_18584797180049816_3876190099174884038_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzMxOTgwMTU0NjM2MTgxNjA2Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Du4i_uWnQOwQ7kNvwEc6hdf&_nc_oc=Ado2YpnvZaflxc2cNJU1TGaNfiy7U-IIwQZwENZpIv6AMc1NnOc7hdNCQVwduFlA3PU&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=_FoXkuyRMNEqSY5sYNuwcg&_nc_ss=79689&oh=00_AQAgYOUTuntgUlreI7Llon5w_ycrINIXQBaLSmGNATkuPg&oe=6A6FA1F8"
+          ]
+      }
+  ],
+  "barovier-toso": [
+      {
+          "project": "Private Home, Biarritz",
+          "images": [
+              "https://www.barovier.com/sites/default/files/styles/700x600_crop/public/2025-09/bt_private-home_biarritz_france_metropolis_03.jpg?h=06579062&itok=hMef23Hg"
+          ]
+      },
+      {
+          "project": "Seasons of Living, Bangkok",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/465x600_crop/public/2025-09/bt_seasons-of-living_bangkok_thailand_pigalle_02.jpg?itok=ZXrwhytM"
+          ]
+      },
+      {
+          "project": "Euroluce 2023",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/1200x600_crop/public/2023-05/07_bt_euroluce2023_amsterdam_5562_14_ek_cl_bb_camparino_7358_cc_mb_sideris_7405_oo_og_trinitas_7404_xf_og.jpg?itok=8mEzzRSp",
+              "https://www.barovier.com/sites/default/files/styles/700x600_crop/public/2024-07/09_bt_euroluce2023_opera_7386_7387_7389_cc_oj.jpg?h=5e50e34e&itok=fO1J6Y0U",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2023-05/11_bt_euroluce2023_vallonne_7394_cc_cn_7398_ck_cn_vallonne_opale_7395_7399_bb_cn.jpg?itok=xHOSlvjN"
+          ]
+      },
+      {
+          "project": "Clepsydra",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/700x600_crop/public/2023-05/clepsydra_bespoke_installation.png?itok=Zq5r32K1",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2024-04/clepsydra_7475_7477_cc_cl.jpg?itok=zztZHjaW"
+          ]
+      },
+      {
+          "project": "Orbis Building, Bratislava",
+          "images": [
+              "https://www.barovier.com/sites/default/files/styles/700x600_crop/public/2022-07/bt_orbis-building_bratislava_slovakia_triform-factory_01_saint-germain.jpg?h=4546bd00&itok=FpUmCsDq"
+          ]
+      },
+      {
+          "project": "Private Apartment, Moscow",
+          "images": [
+              "https://www.barovier.com/sites/default/files/styles/465x600_crop/public/2021-10/bt_private-apartment-russian-character_moscow_russia_olga-sedovaprokhor-mashukov_02_palmette.jpg?h=dfb62a65&itok=YGyHy4dY"
+          ]
+      },
+      {
+          "project": "Private Residence, Zurich",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/700x600_crop/public/2021-10/bt_private-residence_zurich_switzerland_roomdresser_01_piume_0.jpg?itok=4BJe1enB"
+          ]
+      },
+      {
+          "project": "Burning Light, Venice Boutique",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/900x650_scale/public/2023-12/04_b_burning_light_display_window_venice_boutique.jpg?itok=w7oMw8Il"
+          ]
+      },
+      {
+          "project": "Milan Showroom, Fuorisalone 2026",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/900x650_scale/public/2026-04/bt_milan-showroom_fuorisalone-2026_12.jpg?itok=SD-gPzfH",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_milan-showroom_fuorisalone-2026_13.jpg?itok=7Jmmk-F0",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_milan-showroom_fuorisalone-2026_04_1.jpg?itok=xvwVbaOG",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_milan-showroom_fuorisalone-2026_03.jpg?itok=DQsGxRtl"
+          ]
+      },
+      {
+          "project": "Vallonne Opale",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2022-04/vallonneopale_7395_bb_cn_02_amb.jpg?itok=t-EntvWQ"
+          ]
+      },
+      {
+          "project": "Profilo",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_profilo_suspension-lamp_nichettor_amb_01.jpg?itok=OBWU0ynU"
+          ]
+      },
+      {
+          "project": "Lithos",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_lithos_podio_profilo_amb.jpg?itok=O-495Aga",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_etime_lithos_amb.jpg?itok=Ag2OfF1g"
+          ]
+      },
+      {
+          "project": "Alumina",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2023-10/alumina_7284_ic_zo_amb03.jpg?itok=Cou5Et0j"
+          ]
+      },
+      {
+          "project": "Agave",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2025-03/agave_7578_00_gq_cl_amb01.jpg?itok=NCmcOXSq",
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_agave_etime_amb.jpg?itok=GiHHfDqW"
+          ]
+      },
+      {
+          "project": "Aurora",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_aurora_portable-lamp_nichettor_amb_03.jpg?itok=reps_o1a"
+          ]
+      },
+      {
+          "project": "Platinum Room, Milan Showroom",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2022-12/bt_platinum-room_showroom_milan_08.jpg?itok=hqolSoJC"
+          ]
+      },
+      {
+          "project": "Private Residence, Georgetown",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2023-07/bt_private_residence_georgetown_eva.jpg?itok=lPFiaSLP"
+          ]
+      },
+      {
+          "project": "Sideris",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2023-04/sideris_7405_oo_og_amb01.jpg?itok=FIi4tTic"
+          ]
+      },
+      {
+          "project": "Veronese",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2021-10/veronese_6536_aa_cn_amb_02.jpg?itok=XUouRsVt"
+          ]
+      },
+      {
+          "project": "Murano Showroom, Fuorisalone 2026",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_murano-showroom_fuorisalone-2026_02_1.jpg?itok=mO9qq8y1"
+          ]
+      },
+      {
+          "project": "Kado Vases",
+          "images": [
+              "https://static.barovier.com/sites/default/files/styles/h750_scale/public/2026-04/bt_kado_vases_keiji-ashizawa_amb_04.jpg?itok=1fbYoKYJ"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/714716810_18558353026069638_7106950814344189744_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzkxMjg5MTYxNDUzODk1MjAwNQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMzI3Ny5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kUb_1xcyipEQ7kNvwHm8SOF&_nc_oc=Adr9U_pOm9qkhgrx_1vnhn-1nCn8cXI4d_I00oABjExL4ZQg5IECHeFnVTKuxYIdeOA&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=JBAKO4k25PlBfczTJB51mA&_nc_ss=79689&oh=00_AQCE4k3nKLbpLcnl3jYqdvwy6C-PCCh93KkkIb3cgE6biQ&oe=6A6E9DAA",
+              "https://static.barovier.com/sites/default/files/styles/700x600_crop/public/2023-05/21.png?itok=f_rdeFW7",
+              "https://static.barovier.com/sites/default/files/styles/465x600_crop/public/2023-05/22.png?itok=rE1Fxpap"
+          ]
+      }
+  ],
+  "fontanaarte": [
+      {
+          "project": "Bis Tris",
+          "images": [
+              "images/fontanaarte/ambiance/bistris.jpg"
+          ]
+      },
+      {
+          "project": "AShanghai",
+          "images": [
+              "images/fontanaarte/ambiance/ashanghai.jpg"
+          ]
+      },
+      {
+          "project": "Regina",
+          "images": [
+              "images/fontanaarte/ambiance/regina.jpg"
+          ]
+      },
+      {
+          "project": "Pinecone",
+          "images": [
+              "images/fontanaarte/ambiance/pinecone.jpg"
+          ]
+      },
+      {
+          "project": "Fontanella Grande",
+          "images": [
+              "images/fontanaarte/ambiance/fontanella-grande.jpg"
+          ]
+      },
+      {
+          "project": "Thalea",
+          "images": [
+              "images/fontanaarte/ambiance/thalea.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://scontent-itm1-1.cdninstagram.com/v/t39.30808-6/744781339_1519783460187775_3929407116203456591_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzk0ODQyMzczNjMyODAyODI4Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=_SKdFdFw9cIQ7kNvwFDpy7D&_nc_oc=AdpIbv_QNFX8aaqjG8nqg73zc_06Yrk_4tuHFMK1n4xQ4FiuY1OWHTFGE_LR4CS0wb8&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&_nc_gid=9O1FwI--wLobPjy7IkOoKA&_nc_ss=79689&oh=00_AQBxN3qDShH90uG2Pb1ocCRMUVUUVh2DoBf83PQd5h9W4Q&oe=6A6EBC24",
+              "https://scontent-itm1-1.cdninstagram.com/v/t39.30808-6/747122491_1519728206859967_2777155767035816283_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mzk0MTg3MDYzMDM4MzQ4NzQwOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=HEeIOgIrXyYQ7kNvwH_z2bl&_nc_oc=AdpfgSHPhQ8xsBL_k2lXEau5I5gAwFBx7j7zhebW-nX7VG41M1CQEyjh9xSDlvBqY7U&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&_nc_gid=tLm9zV-DLijFHm76qWNvUA&_nc_ss=7b689&oh=00_AQDjki3YkbuluoVctsY9K7Aew7cfW0Z7_8qLCqruiVzEGA&oe=6A6EACAC",
+              "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/656264967_18185611570373306_1987416495737843119_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzU1OTgyMzI3MjYzMDQ1MDEwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA3OS5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=P2PBh_1HtSgQ7kNvwEdSKme&_nc_oc=AdqY_B2OcucZyjZgTgwXzX1cp1-iqINXpVkFa7hND_xTD6FlPAQ43dEWQcxudw_Id7Q&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&_nc_gid=Y8tnW8wATyQNzPnENRjtEw&_nc_ss=79689&oh=00_AQC-sgF5L-bPmq9PRd5fg0R5HRJl8pGYbjMlrIsQPxRwNA&oe=6A6EC420",
+              "https://scontent-itm1-1.cdninstagram.com/v/t51.82787-15/620520871_18063633254282098_4575910279449291627_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MjY3MzU0NzA2NDMzODg3NzY3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=tDRJVQoH_K8Q7kNvwFwscJO&_nc_oc=Adq8sdqE4jyidy6XcOhzidEAz-X_8TdZ_AGPbTxJhhfahHLyPwPDqMBe69h7rVjtY6o&_nc_zt=23&_nc_ht=scontent-itm1-1.cdninstagram.com&_nc_gid=4FpfcVIn3y_jBMNL9nj72g&_nc_ss=79289&oh=00_AQDm_BGqnh21vPrgSb0i5Jwto4SS1CY2Iz5XLozNyGpvjQ&oe=6A6EACC0",
+              "images/fontanaarte/ambiance/code0024.jpg",
+              "images/fontanaarte/ambiance/cersaie2024.jpg",
+              "images/fontanaarte/ambiance/frnesi.jpg"
+          ]
+      }
+  ],
+  "foscarini": [
+      {
+          "project": "Mayes",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/mayes_koln-07_1-img-mid-dx-2048x1258.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/mayes_koln-14_2-img-mid-dx-1.jpg"
+          ]
+      },
+      {
+          "project": "Sabrina",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/sabrina_medole-08_2-img-mid-sx-1.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/sabrina_medole-08_2-img-mid-sx-2.jpg"
+          ]
+      },
+      {
+          "project": "Marina",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/marina_meerbusch-02_2-img-mid-sx-2.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/marina_meerbusch-09_2-img-mid-sx-1.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/marina_meerbusch-06_2-img-mid-dx-2.jpg"
+          ]
+      },
+      {
+          "project": "Anthia",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/anthia_shanghai-09_1-img-xsmall-dx.jpg"
+          ]
+      },
+      {
+          "project": "Antonello",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/antonello_naples-03_1-img-mid-sx-2048x1258.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/antonello_naples-04_2-img-mid-dx-2.jpg"
+          ]
+      },
+      {
+          "project": "Tina",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/tina_kobenhaven-08_1-img-mid-sx-2048x1223.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/tina_kobenhaven-11_1-img-small-sx.jpg"
+          ]
+      },
+      {
+          "project": "Bryan",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/bryan_newyork-09_2-img-mid-dx-1.jpg"
+          ]
+      },
+      {
+          "project": "Frederick",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/frederick_kobenhaven-02_2-img-mid-dx-1.jpg"
+          ]
+      },
+      {
+          "project": "David",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/david_kobenhaven-06_2-img-small-sx-1.jpg"
+          ]
+      },
+      {
+          "project": "Carlo",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/carlo_newyork-06_2-img-vertical-2.jpg"
+          ]
+      },
+      {
+          "project": "Paolo",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/02/paolo_venice-07_1-img-xsmall-dx.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/paolo_venice-10_2-img-small-dx-1.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/02/paolo_venice-05_2-img-small-sx-1.jpg"
+          ]
+      },
+      {
+          "project": "Twiggy",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2023/12/6.2_Twiggy.jpg"
+          ]
+      },
+      {
+          "project": "Nuée",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/1_Nuee.jpg"
+          ]
+      },
+      {
+          "project": "Mite",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/4.1_Mite.jpg"
+          ]
+      },
+      {
+          "project": "Madre",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/4.1_Madre.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/01/5.2_Madre.jpg"
+          ]
+      },
+      {
+          "project": "Hoba",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/5.1_Hoba.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/01/4.1_Hoba.jpg"
+          ]
+      },
+      {
+          "project": "Havana",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/3.3_Havana.jpg"
+          ]
+      },
+      {
+          "project": "Chouchin",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/01/5.1_Chouhcin.jpg",
+              "https://www.foscarini.us/wp-content/uploads/2024/03/3.1_Chouchin2-1-2048x1365.jpg"
+          ]
+      },
+      {
+          "project": "Caboche Plus",
+          "images": [
+              "https://www.foscarini.us/wp-content/uploads/2024/03/4.2-ON_Caboche-Plus-2048x1273.jpg"
+          ]
+      }
+  ],
+  "tom-dixon": [
+      {
+          "project": "Melt Mini Pendant, Bronze Polished Polycarbonate",
+          "images": [
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Mini-Pendant-Bronze-Polished-Polycarbonate-2_2100x2800_crop_center.jpg?v=1785197965",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Mini-Pendant-Bronze-Polished-Polycarbonate-3_2100x2800_crop_center.jpg?v=1785197969",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Mini-Pendant-Bronze-Polished-Polycarbonate-4_2100x2800_crop_center.jpg?v=1785197972"
+          ]
+      },
+      {
+          "project": "Melt Fat Cone Floor Light, Silver Polished Polycarbonate",
+          "images": [
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Fat-Cone-Floor-Light-Silver-Polished-Polycarbonate-4_2100x2800_crop_center.jpg?v=1777020721",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Fat-Cone-Floor-Light-Silver-Polished-Polycarbonate-3_2100x2800_crop_center.jpg?v=1777020718"
+          ]
+      },
+      {
+          "project": "Pose Task Light, Polished Silver",
+          "images": [
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Task-Light-Polished-Silver-2_2100x2800_crop_center.jpg?v=1776511674",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Task-Light-Polished-Silver-5_2100x2800_crop_center.jpg?v=1776511683"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJoTWpodmRGRnBUbFJUTHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJoTWpodmRGRnBUbFJUTHc9PS8yIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/748354504_18610598164024839_6489468027414305223_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=Mzk0MTI3MDYxMTAyOTE1NTgyMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTk5Ni5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=LFuSKKHGPO0Q7kNvwEo_REV&_nc_oc=AdqtlmIPk4Sx_fotfYmqpwsf_mWdIFz7urD5H-AhyiyMLvAB4LsZIonbHBstE-llZIM&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=A3FW3pz_DzYJqFWlKDz3Ig&_nc_ss=79289&oh=00_AQBxpkaNN1fa84BBSlW2q0LmcUo-S0lStLSNWjfLsmFvcQ&oe=6A6E6A14",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJoZGs4d1ltaERTMUZ6THc9PS82IiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJoYW5kMk0zSnNTMU5UTHc9PS80IiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJoYW5kMk0zSnNTMU5UTHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJaUmxkMVIzSnBiM3BWTHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJaYUZFM1EwNUpZVVJrTHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://t.assets.tomdixon.build/715e1c66-4408-4dd9-99fa-35137244b79c/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Portable-Light-High-Gloss-Putty-2_2100x2800_crop_center.jpg?v=1777022130",
+              "https://t.assets.tomdixon.build/5cee3543-9b25-417c-9abf-a072b3da499f/meta:focalpoint=500x559/crop:3447x3562,x203y3683/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://t.assets.tomdixon.build/530687f0-8dc1-4821-a910-7bc07ba57c66/meta:focalpoint=262x690/crop:1248x2224,x304y312/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Small-Portable-Light-Black-2_2100x2800_crop_center.jpg?v=1777022062",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJJYWxFelNIWndRMUJETHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Task-Light-High-Gloss-Putty-2_2100x2800_crop_center.jpg?v=1776511689",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Slim-Cone-Floor-Light-Gold-Polished-Polycarbonate-2_2100x2800_crop_center.jpg?v=1777020697",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Press-Mini-Surface-Light-White-Frosted-Glass-2_2100x2800_crop_center.png?v=1777023561",
+              "https://t.assets.tomdixon.build/637d0179-490e-4cd4-b6cf-98bd0b2eb832/meta:focalpoint=763x413/crop:2000x2667,x0y0/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Unbeaten-Wide-Pendant-Brushed-Aluminium-2_2100x2800_crop_center.png?v=1777024334",
+              "https://t.assets.tomdixon.build/38ac580a-4fed-46d0-a89b-a4398a503b9f/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://t.assets.tomdixon.build/cd04d415-48e7-4c89-bdf5-e793e998623d/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Large-Portable-Light-Copper-Polished-Polycarbonate-2_2100x2800_crop_center.jpg?v=1777022234",
+              "https://t.assets.tomdixon.build/6485a361-de5b-4f29-9995-761cf2d2c884/meta:focalpoint=506x426/crop:1486x1981,x0y0/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Press-Mini-Sphere-Pendant-White-Frosted-Glass-2_2100x2800_crop_center.png?v=1777023605",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Press-Medium-Sphere-Pendant-White-Frosted-Glass-2_4096x5460_crop_center.png?v=1777023658",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Small-Pendant-High-Gloss-Putty-2_4096x5460_crop_center.jpg?v=1776519741",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Press-Large-Surface-Light-White-Frosted-Glass-2_4096x5460_crop_center.png?v=1777023639",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Whirl-Medium-Pendant-Gold-Polished-Polycarbonate-2_4096x5460_crop_center.png?v=1777023594",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Melt-Opal-Medium-Pendant-Opalescent-Polished-Polycarbonate-with-Silver-Hardware-2_4096x5460_crop_center.jpg?v=1777021646",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Unbeaten-Stout-Pendant-Brushed-Aluminium-2_4096x5460_crop_center.png?v=1777024283",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Pose-Large-Pendant-High-Gloss-Kelp-2_4096x5460_crop_center.jpg?v=1776519457",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Whirl-Medium-Pendant-Silver-Polished-Polycarbonate-2_4096x5460_crop_center.png?v=1777023628",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Unbeaten-Fat-Pendant-Brushed-Aluminium-2_4096x5460_crop_center.jpg?v=1777024276",
+              "https://t.assets.tomdixon.build/ea3324c4-40fa-43f9-ad12-dfb5c766f8ef/meta:focalpoint=501x500/crop:0x0,x0y0/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Slab-Dining-Chair-Black-Brushed-Oak-2_30343fde_2100x2800_crop_center.jpg?v=1783382554",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Slab-Dining-Chair-Natural-Brushed-Oak-Black-Leather-2_6a4df94e_2100x2800_crop_center.jpg?v=1783555469",
+              "https://cdn.flbx.io/image/eyJrZXkiOiJhSFIwY0hNNkx5OTNkM2N1YVc1emRHRm5jbUZ0TG1OdmJTOXdMMFJZYldsZlIwZHBSVTVLTHc9PS8wIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJ3ZWJwIiwicmVzaXplIjp7IndpZHRoIjoxMDgwfX19",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Fat-2_5-Seater-Modular-Sofa-Gold-Royal-Velvet-2_3200x3200_crop_center.png?v=1780964304",
+              "https://t.assets.tomdixon.build/ef083bb7-7c3e-49c2-8222-b61f33028969/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Slab-Natural-Wood-Lounge-Chair-Natural-Kvadrat-Elle-Boucle-2_1392x1856_crop_center.jpg?v=1777025975",
+              "https://t.assets.tomdixon.build/50f3f984-06ac-47b4-ab92-6e9536149476/meta:focalpoint=443x692/crop:3382x5072,x0y0/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Slab-Natural-Wood-Lounge-Chair-Brown-Choko-Leather-2_2100x2800_crop_center.jpg?v=1777026044",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Fat-Lounge-Chair-Polished-Black-Steel-Forest-Royal-Velvet-2_2100x2800_crop_center.jpg?v=1776995283",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Fat-Work-Chair-Kvadrat-Hallingdal-65-Grey-0116-2_1392x1856_crop_center.jpg?v=1777024145",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Slab-Small-Round-Table-Natural-Brushed-Oak-2_1392x1856_crop_center.jpg?v=1776993068",
+              "https://t.assets.tomdixon.build/7b15bd18-e250-407e-aa39-8cb011569da4/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://t.assets.tomdixon.build/a94cbfd1-6708-4d2b-8332-fc893bfcf919/crop:1536x2080,focalpoint/convert:auto/quality:80",
+              "https://cdn.shopify.com/s/files/1/0887/6618/5813/files/Smash-Side-Table-2_0e167f68_2100x2800_crop_center.jpg?v=1783556807",
+              "https://t.assets.tomdixon.build/01fb9db0-d5a5-48bf-bbd6-04829dea1f5f/crop:1536x2080,focalpoint/convert:auto/quality:80"
+          ]
+      }
+  ],
+  "sicis": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/568125507_18529065214045355_3342604276063931302_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=Mzc0NzU4NTAyNDY1MzYxMzI4OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=jqSYCi6fAkoQ7kNvwEx95xy&_nc_oc=AdrVpFDfUtOh8njMOS26ZZ1juFNcTqBQBZKY9nILls0c6LB5xoIZNnAdszcBJgezQZU&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=y6oG5b16oqfZW7KKtVjgZg&_nc_ss=79689&oh=00_AQAwk4PkvZD6znmIcoVAKdWFWceHqhtJhoU9NEK4zSTtHw&oe=6A6E55C2",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/569987242_1365238875612530_4485857866831341445_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc0ODg2NTgyNTgyNzM3MjE3Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=zSV0RkqO9lgQ7kNvwEEGCvC&_nc_oc=AdpmAkiOHXYJouNR-DPTYGFLEZKmOwjfFEJcGL7eZ5YvlsaqOPczFTt_Ymza7vgZf3o&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=i1jRZtI3ZLC1Bz72hH156g&_nc_ss=79689&oh=00_AQDGWAg000s9gIafVst8GsJU525Az3dlB-Au4Mc26tjyvg&oe=6A6E45C1",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/490276947_1189414809861605_1155438190697591134_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzIxOTk2NDI2MDE5MTk2MTMzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=0cgJdN_Z32oQ7kNvwHume2x&_nc_oc=Adont17Y9GDpgLRWPLKM4EhGWLBBPFzj4gMGEI_VPBZ7-k94BkznUlFGeoQCZEV1lCk&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=kuHSKWajP010Fkaozx9EhA&_nc_ss=79289&oh=00_AQDHfCn9mUq54sOjo61btwLfBnlyF_kOsb050orx63OU2g&oe=6A6E692D",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/387767686_781647457305011_1658662160070068072_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzIxMDU2NzAzMDQyNjA3MDcxOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=uZi3pShe3ZoQ7kNvwEn696L&_nc_oc=AdoHvMbCxFAolZjePTl8TL7j7CJiXU0UchAAkyKsWlUWYCs2XmHgmeoFv5rduLzkG64&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=KUq1XIU8YM4wRafN73mSfQ&_nc_ss=79689&oh=00_AQCDFrw6eKFTy5Iznbw9JhXsbxtVzU3h3Vo05o-6o9xBcQ&oe=6A6E3A7C",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/321188332_1536508926762099_5400392685476221485_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=Mjk5OTY0NjIxNjA3OTIzMDAxNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=N3eXY-9SIEIQ7kNvwEfN6BV&_nc_oc=AdoEuyN9o4kTCyVFTVcQL37UiyIaS3Zo-IdYZ2NxgDSYOgb6Egppp5J997G4wAqaGlE&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=ZmSJNvloUgmKrCuPMkwTUw&_nc_ss=79689&oh=00_AQCei3ZgOmdHh2a3SBzPW-su2UJjzbiMDyzUE8X9St_6IA&oe=6A6E483A",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/619551229_18089760239513949_575167874317786116_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MjU3MTMxOTc5MzkyMTYyMDEwMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UP2c8sHZLqAQ7kNvwHhN-Iv&_nc_oc=AdpZF7U-8if3yLnBIaSaV40tSYh7502k_K2Dul-NzvYU5pcSI1SXFAHqRVRNEkJQzSU&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=l67bqj5toXuqUvcTp8Ey1w&_nc_ss=79689&oh=00_AQCSGZ1vPgNBs-i2d1RH9oUIEFVS_tKHR2mjXRHw7qqFkQ&oe=6A6E66DA",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/650186576_18096630914476170_2331895623665598535_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MjY1MjUxMTY3MTAzNTI4OTYzMg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UA9RW02belUQ7kNvwGtFH-A&_nc_oc=Adqekdob5BwoHCQtRIcrmEmVpcTeEB7q5T3uB8g-2o26U5kO0mSj5tjnsqfa3bUyRX0&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=nOVDv8HddotBKrrxpy75dg&_nc_ss=79689&oh=00_AQBWMjPZ3dl53eiHizn50WFRXZvw2KqHLlEhildI9Rsnew&oe=6A6E32C5"
+          ]
+      }
+  ],
+  "andr-fu-living": [
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/670873118_977970338082903_5840151473967425791_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=Mzg3NjM3NjU4MDE2MDI1ODg3Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kDVAe3nIG3kQ7kNvwEZkJJi&_nc_oc=AdoXGNEcQ6JY61rpyiYZxM8EqtebaXCrJ-voziNKAyOzmn10nXAIs7vzlmP67QZn5JY&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=22P7YwAseYcEvuwan61IEA&_nc_ss=79689&oh=00_AQBXvslUvwt1s3XdNaa_wbZjSFsHI_ytmT8gau166Qo-ew&oe=6A6E4935",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t39.30808-6/525323577_771809795365626_2708499501857953054_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=MzY4ODY0NzQxODQ2NTI4MjMyNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=bHDbbB9CVCQQ7kNvwFqYz5t&_nc_oc=AdqsZjbFxqzzDiTPo5CeDcSrlO1QWl91ANVtvpARr4cbEsIzWC-olsChwFP8_DA0K5A&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=L5iIDDyzzKiUqJq2gaNaFA&_nc_ss=79689&oh=00_AQB7Iv96JX73vOhWsQTYPKYMMIOH9rkF5szP9gM4zJNgqA&oe=6A6E4B7B",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/481246848_658676953345578_7950709794313419626_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzQxOTY1NDU1NTEyMjg3MDY3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=lJ1lskeN8fMQ7kNvwGZrV6I&_nc_oc=Adp5-lceIGP7a94XS6Z2Z0iVSjCaNLizYL8grwHTfqcAXfRyKyyOxI4i1GuDB8QZrNQ&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=WZ0LCrcnq7JgI1Mnbu4lsg&_nc_ss=79689&oh=00_AQAdc2gVwWlEw-k7CW7KVffeGgkeahYjeuQiQbP2O6d4Tw&oe=6A6E4630"
+          ]
+      }
+  ],
+  "ceccotti-collezioni": [
+      {
+          "project": "Janine",
+          "images": [
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2024/04/janine-living-roots1_web.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/Janine_lounge_fabric_Lazzeroni.jpg"
+          ]
+      },
+      {
+          "project": "DC-230-300",
+          "images": [
+              "images/ceccotti-collezioni/ambiance-fix/23_DC-230-300-1-scaled.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/20_DC-230-300-2-scaled.jpg"
+          ]
+      },
+      {
+          "project": "Seven Miles",
+          "images": [
+              "images/ceccotti-collezioni/ambiance-fix/55_sevenmiles-1.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/60_sevenmiles-1.jpg"
+          ]
+      },
+      {
+          "project": "Duo",
+          "images": [
+              "images/ceccotti-collezioni/ambiance-fix/Duo-bench-4_web.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/Duo_Cabinet-13.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2023/04/Duo-screen-2.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2024/04/Eileen-imbottitura-bordeaux_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2021/07/35_T-Bone-1.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/twentytwo_imm_SX.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2024/04/CECCOTTI_243258_web.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/ceccotti-large-flower_web.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/Stellage-52-sedia_imm_DX.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/Sopwith-table_imm_V_DX_web.jpg",
+              "images/ceccotti-collezioni/ambiance-fix/55_Teresa_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2021/07/35_arbol.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/07/25_Dorotea.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2025/04/TeaHouse_Cabinet_griglia_video.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/CECCOTTI.02.18_web-1.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/After-Glow_015_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2022/06/Obon_25_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2022/09/Lampo_40_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2024/04/CECCOTTI_243422_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2024/04/sun-ra-lampada_imm_SX.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2026/04/captain-hook_ceccotti_web.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/Face_imm_SX.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/6496libreria__07.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/67359ARMADIO__01.jpg",
+              "https://www.ceccotticollezioni.it/wp-content/uploads/2020/06/7872mobile_tv__00.jpg"
+          ]
+      },
+      {
+          "project": "",
+          "images": [
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/514588263_1390576939307476_1071457644002154108_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzY2NzAxNzAyMjE0NTIxMjY2OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=IpL6k6kXghcQ7kNvwHP-_mH&_nc_oc=AdrN2dhNyRunBBJlGIFAkuT0RI_KifBN7TbTZJZc7CENUo7o58aJnRwlRFmVFSQn27o&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=FRT3UjV3hUmX_hIUQfv1VQ&_nc_ss=79689&oh=00_AQBm3lZP53qdOxg5_idP_qM-_bdLAKLI3C0QdOb69LEbfA&oe=6A6E4E09",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/509955955_1384511809913989_5834159473907345797_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzY2MTk4NjE4OTE2MDExNzI2NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=VBAwrdBVnoAQ7kNvwFhtjpb&_nc_oc=AdpAa84gsgmE7BvwqRT6AcxNrjoH3BEbsSyA_dY6zkoiJZx6nH_Pt3ioPZZaHeYuVWU&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=MH2I4WtPnUlbnxPFVUJ9Aw&_nc_ss=79689&oh=00_AQB7o0QthEgmgkA1bJHxTgOAwfbTocQi6Szdek4W5SUjAA&oe=6A6E4C99",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/504728743_1379650427066794_8508160598960953145_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MzY1NzgwMzQ4NDk2MDg1ODc0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=7rZm3ygrnHMQ7kNvwGjO8yg&_nc_oc=Adq0xyv7sAkm5_-luxCXopsvdqPj9bk4rdR-bfv-Qzpd0DheEEXVkmCjA2BPbrWHMh4&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=3OKw2j66r8jjIrnsA-MUKg&_nc_ss=79689&oh=00_AQChLEl6u3rVD894lLqvb1OudTt5q3O3YB19abjsXAMQDg&oe=6A6E52A5",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/494383072_1379325097099327_8193825485783574336_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzY1NzU1MTMxMTk3MDU3NDE5OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=S9JDP3bf4dMQ7kNvwFuaOV9&_nc_oc=Adoxd880VsCqh2810ytK6TfBGffiqHiusdEHBOdIC6QEm_gZP1xg00wgnduiA4zb1bs&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=PSs7T8s8wNxbAiYHrSeSkQ&_nc_ss=79689&oh=00_AQDKgsOqTACSkK8CE0qvMF-iX8GjzHrlEG81JAlGtZ1oLg&oe=6A6E44C1",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/476368216_1265387068493131_8394250932912906879_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzU2NTUzMDc3ODE2OTU4NzQ1Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=qxJqzPJm6IYQ7kNvwEPkGUY&_nc_oc=Adoy5WPhK18ohdqse7dbdPwC54k07MISRYqtaDc497_2b68CgqjClSbHhggj450jqR0&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=MaRbTujKg2I5pqUptN0xqQ&_nc_ss=79689&oh=00_AQANdvTcYVnUmIlO-lkX0QYcBt-D1zH126GQfYeuCj27pw&oe=6A6E3670",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/475498686_1254482869583551_425008693079007306_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzU1NTM4MzkzNDIxNTAzODQwNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTY0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Oq6PaPhyyi4Q7kNvwFJfg7W&_nc_oc=AdrmJ55ecdGSpYXzOdXyXphAqRpLTjepVhJ5t1P6j271h0CWHpk0J74Qd5nxmIfwkmc&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=c0qL_Ra-pqDcDKJNLpcqPg&_nc_ss=79689&oh=00_AQDWBsJdw_WfiicIS_yX8NSIeJnqW4stFKzYWo_YD6-67A&oe=6A6E2DC2",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t39.30808-6/475929873_1260705875627917_9096150588449872492_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzU2MDUwODMxODIwOTk3MjIzNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTYzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=9a4N2VxnR9cQ7kNvwHsvCkc&_nc_oc=Adp8tAFqh2DHrpIUVh0v3TbsF25kO9SqsQB7TObsvLbQMp5LQbR_GBZAPTjrbSubyBg&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=CfxaGPSj6ZHhD91DF9MOmw&_nc_ss=79689&oh=00_AQAs49tGM0-MFpT7_pQQX3kTtuzcnsufw8VDyp8KQqiU2Q&oe=6A6E3A4B",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t39.30808-6/440855314_1053955169636323_3197381212841925543_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ig_cache_key=MzM2NDIwNzIzNDA3MjEzNzE4Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=zMSxh7ftYW8Q7kNvwGBvqa-&_nc_oc=AdplM5mjNgoB-FE3-6kEintKVvkzEePCsE5kJKktcB5Zt6CaPTWSCoxwCYyGUKVbh68&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=b51dZegd0fGkVWuBmWqepQ&_nc_ss=79689&oh=00_AQDlsajvo9-tFhcgkmuRFeni0F45HzMe3vMm4HX2XcSCFA&oe=6A6E5808",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/622373625_18119745439578352_4134348243310710479_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzE0ODgyNzQ0MDM1MjEwOTA0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kH6GagaQgagQ7kNvwHOt4Cd&_nc_oc=AdoGGw1Q4XlyQomV6iJSYyd30uh3mSQ1hDL5ejTI1u22HBJUKDpp6PB4t3HYIdLQeaA&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=KqDrhBthws9mH4SASyldWQ&_nc_ss=79689&oh=00_AQBQtLuCE5NMi_T6Yw3ATc0ltckD_-LAmkugvpaRkKnGYw&oe=6A6E4CAF",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/655239624_18115302988671281_8211186239030679814_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=MzEyNDgzNjU0NjE4ODEwNjc2NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=fPBZOwEyGGEQ7kNvwEi0nZn&_nc_oc=AdpmZJ-4hWQWNMscMs9AqLpXuoP_6YXZBAO9fJ3IHJzLk_eiM3EMKox_mOZYJ8s4qIY&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=Kmmu9CFuMcOVBgM9u1yJMA&_nc_ss=79689&oh=00_AQAhx_be2Cxs2FyrBTskTUwKM7dosC69GdWSHJK5HsIrog&oe=6A6E5203",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/621204968_18091573483993469_6085595958004518480_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MjM2MjM2MDA3MDE4NjcwMTE0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTA4MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=RfPhJnf6fDoQ7kNvwGYP7rw&_nc_oc=AdoA9gB5Mcsy5bFEoiu7sKtLKxkfaSxf8FL6ijCB5y0BjtNMOwKPapkU0-7W05ESC_Q&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=LanEolmStJ_Nkpy-P40BvQ&_nc_ss=79689&oh=00_AQCE30r6ZAUPniwTUzMSPxaHwhhCuZbQ2KQfAAnYHsBQ4g&oe=6A6E5D2C",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/622578434_18308667988253683_1440598756064449527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ig_cache_key=MjA3NjMzOTIwMjgzMjE3NTgxNA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuOTU0LnNkci5yZWd1bGFyX3Bob3RvLkMzIn0%3D&_nc_ohc=4p36L822eI8Q7kNvwHhoAa4&_nc_oc=AdoJYiBU4LCLWaxQOsSw2fEQ8CQ7U5Fn36ZC9aBtwQ3i5jd5bNuwiX0tKKoGPrh3PeM&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=Wg3HcRP6wPpgKHWKIj_tBA&_nc_ss=79689&oh=00_AQDK9q8vbB4XcwqWHakfssmLf3MDJvykmrVdRRgGYQNL1Q&oe=6A6E307B"
+          ]
+      }
+  ],
+  "maxalto": [
+      {
+          "project": "The Whiteley, London",
+          "images": [
+              "https://www.maxalto.com/media/contentmanager/content/contract_the-whiteley-london_2025-09_16C.jpg",
+              "https://www.maxalto.com/media/contentmanager/content/contract_the-whiteley-lights-on-london_2025-09_04C.jpg"
+          ]
+      },
+      {
+          "project": "Mandarin Oriental, Beverly Hills",
+          "images": [
+              "https://www.maxalto.com/media/contentmanager/content/contract_beverly-hills_mandarin-oriental_2023-06_01.jpg"
+          ]
+      }
+  ],
+  "baxter": [
+      {
+          "project": "La Casa Sul Lago, 2023",
+          "images": [
+              "https://dam.baxter.it/m/6e66953fc92e3700/sb_full_jpg-Baxter_2023_LaCasaSulLago_DSC_5044_R.jpg",
+              "https://dam.baxter.it/m/1ff527ba613b441a/sb_full_jpg-Baxter_2023_LaCasaSulLago_DSC_5803_R.jpg",
+              "https://dam.baxter.it/m/429734863701ff17/sb_full_jpg-Baxter_2023_LaCasaSulLago_DSC_5577_R.jpg",
+              "https://dam.baxter.it/m/1e98fbe3f0a440df/sb_full_jpg-Baxter_2023_LaCasaSulLago_DSC_6487_R.jpg"
+          ]
+      },
+      {
+          "project": "La Casa Sul Lago, 2024",
+          "images": [
+              "https://dam.baxter.it/m/43bf96b903ac20e5/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_5303_R.jpg",
+              "https://dam.baxter.it/m/6473b829d4ee472e/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_2820_R.jpg",
+              "https://dam.baxter.it/m/2eab76d8223b919d/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_2915_R.jpg",
+              "https://dam.baxter.it/m/2e6f07823d7a0515/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_2978_R.jpg",
+              "https://dam.baxter.it/m/523b33b9968d2b87/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_3111_R.jpg",
+              "https://dam.baxter.it/m/456b275d016e147b/sb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_3300_R.jpg",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F89aac4975d30e3b%2Fsb_full_jpg-Baxter_2024_LaCasaSulLago_DSC_5480_R.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "La Casa Sul Lago, 2025",
+          "images": [
+              "https://dam.baxter.it/asset/ad65bcc5-3723-41ef-acef-7b606b02b0ea/sb_full_jpg/Baxter_2025_LaCasaSulLago_MG_8017_R.jpg",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F3bdf6481-20d3-4086-bfa2-2998d67f6d67%2Fsb_full_jpg%2FBaxter_2025_LaCasaSulLago_MG_7995_R.jpg&f=avif&q=90",
+              "https://dam.baxter.it/asset/5976ef25-c702-43c5-88cc-90b3476bb0ca/sb_full_jpg/Baxter_2025_LaCasaSulLago_MG_9214_R.jpg",
+              "https://dam.baxter.it/asset/c7270ce6-32f6-4737-835a-2eb2ce004f15/sb_full_jpg/Baxter_2025_LaCasaSulLago_MG_8091_R.jpg",
+              "https://dam.baxter.it/asset/ebc4e68b-2dc1-4a74-a46c-9cd369dc4a9c/sb_full_jpg/Baxter_2025_LaCasaSulLago_MG_8013_R.jpg",
+              "https://dam.baxter.it/asset/fb27c86a-399d-4b0c-8b9f-788ab9ce3782/sb_full_jpg/Baxter_2025_LaCasaSulLago_MG_9251_R.jpg",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Fab706408-0e1c-4543-a153-3f148cb86111%2Fsb_full_jpg%2FBaxter_2025_LaCasaSulLago_MG_7530_R.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "La Casa Sul Lago, 2026",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F88046aa8-3430-45b8-a0f8-86a02acfbeb4%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC4338_R.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Fdf8dd4fb-9861-4b0d-a8ee-ad7c2a99fba6%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC3514_R.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Ff23dc1b5-49b3-46b3-87de-e05bf04b7750%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC3372_R.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F3700f738-f734-4153-9ee7-90118c43cbe8%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC2225_R.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F013c0a4d-b1c0-4323-a432-bdb9c5ae80c4%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC2045_R.jpg&f=avif&q=90",
+              "https://dam.baxter.it/asset/07ee4f64-fc16-4ff3-9b8e-8ab73d78ae18/sb_full_jpg/Baxter_2026_LaCasaSulLago_DSC4803_R.jpg",
+              "https://dam.baxter.it/asset/8e5b3e20-2960-47fa-b3f6-38c3a219129d/sb_full_jpg/Baxter_2026_LaCasaSulLago_DSC4928_R.jpg",
+              "https://dam.baxter.it/asset/f7e6ac75-baa8-4215-a7d1-55b3c7ce1b69/sb_full_jpg/Baxter_2026_LaCasaSulLago_DSC2199_R.jpg",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Fcaf09256-c9e9-4885-b25e-33416d26655e%2Fsb_full_jpg%2FBaxter_2026_LaCasaSulLago_DSC4713_R.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "Mood Book, 2015",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F5ae7bc33d8e79f3c%2Fsb_full_jpg-Baxter_MoodBook_2015_2198.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "Mood Book, 2023",
+          "images": [
+              "https://dam.baxter.it/m/135acb8dc47e026/sb_full_jpg-Baxter_MoodBook2023_DSC_8544_R.jpg",
+              "https://dam.baxter.it/m/3f082edf43f73884/sb_full_jpg-Baxter_MoodBook2023_DSC_9584_R.jpg",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F52023276624db6c3%2Fsb_full_jpg-Baxter_MoodBook2023_DSC_9019_R.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "Mood Book, 2025",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F10f9a4d2332cd436%2Fwebimage-Baxter_MoodBook2025_DSC_2098_R.png&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F14a241c2082a2022%2Fwebimage-Baxter_MoodBook2025_DSC_2647_R.png&w=700&h=1534&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F7adace56a8e51a67%2Fwebimage-Baxter_MoodBook2025_DSC_1774_R.png&w=700&h=1534&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F702eb7624ae06d55%2Fwebimage-Baxter_MoodBook2025_DSC_2387_R.png&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F2dec785d1a449b7%2Fwebimage-Baxter_MoodBook2025_DSC_1612_R.png&w=700&h=1534&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F4b2e6c49216dc4c5%2Fwebimage-Baxter_MoodBook2025_DSC_3187_R.png&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F4c7a8c55-5b52-4949-86f7-1417fdb55b40%2Fsb_full_jpg%2FBaxter_MoodBook2025_DSC_1260_R.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "My Baxter Project, Copenhagen",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F33570dcbc2cb81cc%2Fsb_full_jpg-Baxter_Projects_MyBaxterProject_DANIMARCA_Copenhagen_2024_HISTORIC_BUILDING_07.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "My Baxter Project, Lyon",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F5df2aabbd02257de%2Fsb_full_jpg-Baxter_Projects_MyBaxterProject_FRANCIA_Lione_2022_INSIDE_APARTMENT_02.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F3e8e77f35ddfc1a1%2Fsb_full_jpg-Baxter_Projects_MyBaxterProject_FRANCIA_Lione_2022_INSIDE_APARTMENT_06.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F10916b43232461af%2Fsb_full_jpg-Baxter_Projects_MyBaxterProject_FRANCIA_Lione_2022_INSIDE_APARTMENT_03.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "My Baxter Project, Shanghai",
+          "images": [
+              "https://dam.baxter.it/asset/476e32e9-e2e2-46e5-b9af-286928a76cee/sb_full_jpg/Baxter_Projects_MyBaxterProject_CINA_Shanghai_LakevillePrivateResidence_03.jpg"
+          ]
+      },
+      {
+          "project": "Quaderno di Viaggio, Salento",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F7c5af4e9-f5e8-43f3-941a-37dffddafc39%2Fsb_full_jpg%2FBaxter_2025_QuadernoDiViaggio_Salento_MG_0163_R.jpg&f=avif&q=90",
+              "https://dam.baxter.it/asset/7daa7a93-8aa0-4516-9aba-9d47bdcf8567/sb_full_jpg/Baxter_2025_QuadernoDiViaggio_Salento_DSC_1531_R.jpg",
+              "https://dam.baxter.it/asset/874f3a4c-5328-4b07-87f9-0442b7b430e9/sb_full_jpg/Baxter_2025_QuadernoDiViaggio_Salento_DSC_1205_R.jpg",
+              "https://dam.baxter.it/asset/9de02124-60f0-4053-b314-a2f081b7fb02/sb_full_jpg/Baxter_2025_QuadernoDiViaggio_Salento_MG_0467_R.jpg",
+              "https://dam.baxter.it/asset/a40f3d2d-fadd-41b8-b263-b937c43b4a76/sb_full_jpg/Baxter_2025_QuadernoDiViaggio_Salento_DSC_9866_R.jpg"
+          ]
+      },
+      {
+          "project": "Quaderno di Viaggio, Marbella",
+          "images": [
+              "https://dam.baxter.it/m/55bf3f695adcbbf7/sb_full_jpg-Baxter_2024_Quaderno_di_viaggio_Marbella_DSC_0160_R.jpg"
+          ]
+      },
+      {
+          "project": "Signature Projects, Villa 375 South, Miami",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2F6c69a795-6c3b-49ea-ab4e-a337f077dc38%2Fsb_full_jpg%2FSignatureProjects_Villa375South_HibiscusIsland_Miami_23.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "At Work, Milano",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fm%2F19b4cc53e8c49fdf%2Fsb_full_jpg-Baxter_Projects_AtWork_Milano_MudecBartolini_1285.jpg&f=avif&q=90"
+          ]
+      },
+      {
+          "project": "Baxter Cinema Store, Milano",
+          "images": [
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Fbbef416d-1cfc-4817-8eb1-da5b5555053a%2Fsb_full_jpg%2FBaxter_Store_Monobrand_Milano_Italia_BaxterCinema_2025_MG_9849.jpg&f=avif&q=90",
+              "https://www.baxter.it/api/image?src=https%3A%2F%2Fdam.baxter.it%2Fasset%2Fe08f994f-741c-45ef-a485-3e6510d9a55c%2Fsb_full_jpg%2FBaxter_Store_Monobrand_Milano_Italia_BaxterCinema_2026_MG_7436_R.jpg&f=avif&q=90"
+          ]
+      }
+  ],
   "zanotta": [
       {
           "project": "",
@@ -7658,45 +9401,45 @@ const AMBIANCE_DATA = {
           "project": "Notes on a Home, Caroline & Thomas Vogel",
           "images": [
               "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fimage105-copy.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fweb_1080x13504.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Finspiration%2Fnotes-on%2Fnotes-on-a-home---caroline--thomas-vogel%2Fweb_1080x1350.jpg"
+              "images/carl-hansen-s-n/ambiance-fix/web_1080x13504.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/web_1080x1350.jpg"
           ]
       },
       {
           "project": "",
           "images": [
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fcontentassets%2Ff1a6be7723d54d8b9e27d37a70863c2b%2Fch53_oak_oil_natural_papercord_v1-copy.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black_ch25_oak_oil_-ch008_oak_oil.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch53_oak_oil_natural_papercord_v1-copy.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/hjw03_black_ch25_oak_oil_-ch008_oak_oil.jpg",
               "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black-_-ch25_oak_oil_ch22_oak_oil_-ch292_oak_vidar-0693_-ch008_oak_oil.jpg",
               "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch25%2Fhjw03_black_-ch25_oak_oil_-ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fvla76%2Fvla75_vla76_vla77_oak_sif90.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fvla26p%2Fvla26p.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fow58%2Flifestyle%2Fow58_walnut_oil_sif90_bm1160_walnut_oak_oil_steel_ek61_340_glass_oak_oil_v1.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Flm92c%2Ffb001s_fb001_oak_teak_oil_lm92c_oak_oil_papercord_natural_v1.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Ffootrest--stools%2Fkk87830%2Fkk53130-oak-oil-sif98-bm0864-oak-oilcanvas2col144-kk87830-stained-ash-oil-canvas.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch291%2Fch22_oak_oil_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_ch008_oak_oil_-ch291_oak_oil_serpentine-0118.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch290%2Fch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_v2.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch290%2Fhjw03_black_-ch290_oak_oil_bute_storr-1501-eggshell_ch011_oak_oil.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch101%2Fch103_steel_thor301_ch102_steel_thor301_ch101_steel_thor301_ch108_glass_steel-medium.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch45%2Fch44_ch45_oak_oil_papercord_natural_cu_yetif3290001.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch45%2Fch45_ch44_oak_oil_papercord_natural_ch004_oak_oil_ch72_oak_oil_vidar2222_ek61_o340_mo320_steel_white.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch621%2Fch621-_oak_stainless-steel_sif90_ch621-_oak_stainless-steel_vidar-1062.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fch621%2Fch621-_oak_stainless-steel_sif90_ch327_oak_oil_ch621-_oak_stainless-steel_vidar-1062_v1.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Floungechairs%2Fch22%2F020020020102%2Fhjw03_black-_-ch25_oak_oil_ch22_oak_oil_-ch292_oak_vidar-0693_-ch008_oak_oil.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fchairs%2Fpk1%2Fnatural-paper-cord%2Fbm0121_oak_oil_pk1_stainlesssteel_natural_papercord_bm0568-tapas-board_oak_oil_with-light.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fe020-1395%2Fe20-gallery2-3.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fcoffee-tables%2Fbm0489%2Fbm0489l_oak_oil_papercord_natural_kk75751_kk75752_kk75753_kk75754_80450078_80450079_80480020_80480021_80480022.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fcoffee-tables%2Fch108%2Fhjw03_black_-ch25_oak_oil_-ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_-ch290f_oak-_oil_serpentine-0118.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fch327%2Fch327_teak-mix_ch36_ch37_oak-oil_hjw38_black.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdining-tables%2Fch006%2Fch36_ch53_oak_oil_papercord_natural_ch006_oak_oil_ek61_o240.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdesk%2Fch110%2Fch111_steel_sif90_ch110_oak_oil_steel.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fch292%2Fch22_oak_oil_hjw03_black_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_-ch008_oak_oil_ch291_oak_oil_serpentine-0118.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Foutdoor-furniture%2Fah502%2Fah502_teak_untreated_v2.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fch72%2Fch72_oak_oil_vidar222_ch008_oak_oil_ch44_oak_black_cu_sif90_ch36_oak_oil_ch006_oak_oil.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fdaybeds--sofas%2Fnd52-23%2Fnd55_walnut_oil_nd52-2_oak_oil_sisu-0645_v1.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75%2Flifestyle%2Fecom_4.5_vla75_v2_2.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75s%2Fvla75s_oak_oil_bute-tiree_9667_v5_low.jpg",
-              "https://res.cloudinary.com/dfwzl0ito/image/fetch/c_scale,w_1920,f_auto/https%3A%2F%2Fadmincms.carlhansen.com%2Fglobalassets%2Fproducts%2Fbenches%2Fvla75s%2Fvla75s_oak_oil_bute-tiree_9667_v1_low.jpg"
+              "images/carl-hansen-s-n/ambiance-fix/vla75_vla76_vla77_oak_sif90.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/vla26p.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ow58_walnut_oil_sif90_bm1160_walnut_oak_oil_steel_ek61_340_glass_oak_oil_v1.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/fb001s_fb001_oak_teak_oil_lm92c_oak_oil_papercord_natural_v1.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/kk53130-oak-oil-sif98-bm0864-oak-oilcanvas2col144-kk87830-stained-ash-oil-canvas.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch22_oak_oil_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_ch008_oak_oil_-ch291_oak_oil_serpentine-0118.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_v2.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/hjw03_black_-ch290_oak_oil_bute_storr-1501-eggshell_ch011_oak_oil.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch103_steel_thor301_ch102_steel_thor301_ch101_steel_thor301_ch108_glass_steel-medium.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch44_ch45_oak_oil_papercord_natural_cu_yetif3290001.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch45_ch44_oak_oil_papercord_natural_ch004_oak_oil_ch72_oak_oil_vidar2222_ek61_o340_mo320_steel_white.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch621-_oak_stainless-steel_sif90_ch621-_oak_stainless-steel_vidar-1062.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch621-_oak_stainless-steel_sif90_ch327_oak_oil_ch621-_oak_stainless-steel_vidar-1062_v1.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/hjw03_black-_-ch25_oak_oil_ch22_oak_oil_-ch292_oak_vidar-0693_-ch008_oak_oil.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/bm0121_oak_oil_pk1_stainlesssteel_natural_papercord_bm0568-tapas-board_oak_oil_with-light.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/e20-gallery2-3.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/bm0489l_oak_oil_papercord_natural_kk75751_kk75752_kk75753_kk75754_80450078_80450079_80480020_80480021_80480022.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/hjw03_black_-ch25_oak_oil_-ch293_oak_oil_zr-antoni-10968-813_-ch108_glass_steel_-ch290_oak_oil_bute_storr-1501-eggshell_-ch290f_oak-_oil_serpentine-0118.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch327_teak-mix_ch36_ch37_oak-oil_hjw38_black.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch36_ch53_oak_oil_papercord_natural_ch006_oak_oil_ek61_o240.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch111_steel_sif90_ch110_oak_oil_steel.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch22_oak_oil_hjw03_black_-ch292_oak_vidar-0693_-ch290f_oak-_oil_serpentine-0118_-ch008_oak_oil_ch291_oak_oil_serpentine-0118.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ah502_teak_untreated_v2.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ch72_oak_oil_vidar222_ch008_oak_oil_ch44_oak_black_cu_sif90_ch36_oak_oil_ch006_oak_oil.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/nd55_walnut_oil_nd52-2_oak_oil_sisu-0645_v1.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/ecom_4.5_vla75_v2_2.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/vla75s_oak_oil_bute-tiree_9667_v5_low.jpg",
+              "images/carl-hansen-s-n/ambiance-fix/vla75s_oak_oil_bute-tiree_9667_v1_low.jpg"
           ]
       }
   ],
@@ -8717,9 +10460,9 @@ const AMBIANCE_DATA = {
   ],
   "magis": [
     {"project": "", "images": [
-          "https://www.magisdesign.com/wp-content/uploads/2015/01/Magis_dejavu_chair_ambient_SD834_polished-aluminium_baguette_table_TV1700_TV1770_white_natural-oak_01_gallery-903x540.jpg",
-          "https://www.magisdesign.com/wp-content/uploads/2015/01/Magis_air-armchair_ambient_group_SD73_dark-green_cream_red_air-table_white_02_gallery-903x540.jpg",
-          "https://www.magisdesign.com/wp-content/uploads/2015/02/Magis_Traffic_armchair_ambient_SD1132_beige_01.jpg",
+          "images/magis/ambiance-fix/Magis_dejavu_chair_ambient_SD834_polished-aluminium_baguette_table_TV1700_TV1770_white_natural-oak_01_gallery-903x540.jpg",
+          "images/magis/ambiance-fix/Magis_air-armchair_ambient_group_SD73_dark-green_cream_red_air-table_white_02_gallery-903x540.jpg",
+          "images/magis/ambiance-fix/Magis_Traffic_armchair_ambient_SD1132_beige_01.jpg",
           "https://i.pinimg.com/736x/53/12/1e/53121e068015558f6d2633f436f3d28e.jpg",
           "https://i.pinimg.com/736x/ae/0b/01/ae0b019061305a15c06542b394eced39.jpg"
     ]}
@@ -8745,7 +10488,7 @@ const AMBIANCE_DATA = {
           "images": [
               "https://lkhjelle.no/wp-content/uploads/2025/09/37-2048x1148.jpg",
               "https://lkhjelle.no/wp-content/uploads/2019/09/Landscape_Fri_MedTrio-2048x1148.jpg",
-              "https://lkhjelle.no/wp-content/uploads/2023/09/27-2048x1148.png",
+              "images/lk-hjelle/ambiance-fix/27-2048x1148.png",
               "https://lkhjelle.no/wp-content/uploads/2015/10/Landscape_Ugo_Hallingdal420-2048x1148.jpg",
               "https://lkhjelle.no/wp-content/uploads/2022/06/Ada-series-8-2048x1148.jpg"
           ]
@@ -8792,7 +10535,7 @@ const AMBIANCE_DATA = {
       {
           "project": "",
           "images": [
-              "https://www.luceplan.com/wp-content/uploads/Luceplan-Liiui-1.webp",
+              "images/luceplan/ambiance-fix/Luceplan-Liiui-1.webp",
               "https://www.luceplan.com/wp-content/uploads/Liiu_sosp_Hall-1448x2048.jpg",
               "https://www.luceplan.com/wp-content/uploads/Luceplan-Liiui-2.webp"
           ]
@@ -8825,19 +10568,19 @@ const AMBIANCE_DATA = {
           "project": "",
           "images": [
               "https://www.luceplan.com/wp-content/uploads/Luceplan-Lita-D92-7.webp",
-              "https://www.luceplan.com/wp-content/uploads/Luceplan-Lita-D92-4.webp"
+              "images/luceplan/ambiance-fix/Luceplan-Lita-D92-4.webp"
           ]
       },
       {
           "project": "",
           "images": [
-              "https://www.luceplan.com/wp-content/uploads/Luceplan-Lola-D15a-amb.jpg"
+              "images/luceplan/ambiance-fix/Luceplan-Lola-D15a-amb.jpg"
           ]
       },
       {
           "project": "",
           "images": [
-              "https://www.luceplan.com/wp-content/uploads/Luceplan-Malamata-B01s48-black-amb3.jpg"
+              "images/luceplan/ambiance-fix/Luceplan-Malamata-B01s48-black-amb3.jpg"
           ]
       }
   ],
@@ -16580,7 +18323,6 @@ const LOGOS = {
   ege:"ege.webp",
   fiam:"fiamitalia.jpg",
   flos:"flos-logo.png",
-  giobagnara:"giobagnara.png",
   gubi:"gubi_logo_black.jpg",
   fritzhansen:"logo_fritzhansen.webp",
   "a-by-arturo-lvarez":"a-emotionallight.png",
@@ -16590,7 +18332,6 @@ const LOGOS = {
   italamp:"ITALAMP logo.png",
   "lk-hjelle":"LK-Hjelle-logo.png",
   "la-bo-te-concept":"logo-la-boite-concept.jpg",
-  "ap-collection":"Logo+AP+Collection.webp",
   luceplan:"Logo-Luceplan.webp",
   "mario-tsai-studio":"Mario Tsai logo.jpg",
   mohebban:"Mohebban-logo.jpg",
