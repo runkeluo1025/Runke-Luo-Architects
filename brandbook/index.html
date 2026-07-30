@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrandBook — Interior Brand Book</title>
+<title>The Origin Point of a Vector</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -38,6 +38,27 @@
   .section-head h1{font-size:26px; margin:0; font-weight:700; letter-spacing:.01em;}
   .section-head p{margin:3px 0 0; color:var(--grey); font-size:12.5px;}
   .count-pill{font-size:10.5px; border:1px solid var(--ink); padding:3px 9px; text-transform:uppercase; letter-spacing:.05em;}
+
+  .manifesto{margin:6px 0 40px;}
+  .manifesto-topline{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:16px; gap:16px; flex-wrap:wrap;}
+  .manifesto-meta{font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; line-height:1.7; color:var(--ink);}
+  .manifesto-mark{font-size:32px; font-weight:700; letter-spacing:-.01em; text-transform:uppercase; line-height:1;}
+  .manifesto-mark span{display:block; font-size:11px; font-weight:400; letter-spacing:.1em; color:var(--grey); margin-top:4px;}
+  .manifesto-box-wrap{position:relative; width:min(620px,100%); margin:0 auto;}
+  .manifesto-box{border:1px solid var(--ink); background:#fff; padding:44px 40px; aspect-ratio:1/1; overflow-y:auto; scrollbar-width:none;}
+  .manifesto-box::-webkit-scrollbar{display:none;}
+  .manifesto-scroll-dot{position:absolute; top:0; right:-13px; width:6px; height:6px; border-radius:50%; background:var(--ink);}
+  .manifesto-title{font-size:15px; text-transform:uppercase; letter-spacing:.07em; font-weight:700; margin:0 0 26px;}
+  .manifesto-body p{font-size:13.5px; line-height:1.8; margin:0 0 18px; color:var(--ink);}
+  .manifesto-body p:last-child{margin-bottom:0;}
+  .manifesto-sign{margin-top:30px; padding-top:16px; border-top:1px solid var(--ink); font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--grey);}
+  @media(max-width:640px){ .manifesto-box{padding:28px 22px;} .manifesto-mark{font-size:24px;} }
+
+  body.landing-mode nav.tabs, body.landing-mode .search-wrap{visibility:hidden;}
+  body.landing-mode main{padding-top:48px;}
+  .manifesto-enter{display:flex; justify-content:center; margin:36px 0 20px;}
+  .enter-btn{font-family:inherit; border:1px solid var(--ink); background:var(--ink); color:#fff; font-size:12px; text-transform:uppercase; letter-spacing:.08em; padding:15px 36px; cursor:pointer;}
+  .enter-btn:hover{background:#fff; color:var(--ink);}
 
   .chips{display:flex; gap:0; flex-wrap:wrap; margin-bottom:20px; border-top:1px solid var(--ink); border-left:1px solid var(--ink);}
   .chip{border:none; border-right:1px solid var(--ink); border-bottom:1px solid var(--ink); background:#fff; color:var(--ink); font-family:inherit; font-size:11px; padding:7px 12px; cursor:pointer; display:flex; align-items:center; gap:6px; text-transform:uppercase; letter-spacing:.04em;}
@@ -160,7 +181,10 @@
     .bdh-side{flex:none; border-left:none; border-top:1px solid var(--ink);}
   }
   .stockist-label{font-size:10.5px; color:var(--grey); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; display:block;}
-  .stockist-list{max-height:280px; overflow-y:auto; border-top:1px solid #ddd;}
+  .stockist-list-wrap{position:relative;}
+  .stockist-list{max-height:280px; overflow-y:auto; border-top:1px solid #ddd; scrollbar-width:none;}
+  .stockist-list::-webkit-scrollbar{display:none;}
+  .stockist-scroll-dot{position:absolute; top:0; right:-31px; width:6px; height:6px; border-radius:50%; background:var(--ink);}
   .stockist-item{display:flex; align-items:baseline; justify-content:space-between; gap:10px; font-size:12px; padding:6px 0; border-bottom:1px solid #eee;}
   .stockist-item .s-place{color:var(--ink);}
   .stockist-item .s-city{color:var(--grey); font-size:10px; text-transform:uppercase; letter-spacing:.04em; margin-right:5px;}
@@ -179,7 +203,10 @@
   .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
   .modal-bg.open{display:flex;}
   @media(min-width:720px){.modal-bg{align-items:center;}}
-  .modal{background:#fff; width:100%; max-width:620px; max-height:92vh; overflow-y:auto; border:1px solid var(--ink); border-bottom:none;}
+  .modal-wrap{position:relative; width:100%; max-width:620px;}
+  .modal{background:#fff; width:100%; max-height:92vh; overflow-y:auto; border:1px solid var(--ink); border-bottom:none; scrollbar-width:none;}
+  .modal::-webkit-scrollbar{display:none;}
+  .modal-scroll-dot{position:absolute; top:0; right:-14px; width:6px; height:6px; border-radius:50%; background:#fff; border:1px solid var(--ink);}
   @media(min-width:720px){.modal{border-bottom:1px solid var(--ink);}}
   .modal .mimg{width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border-bottom:1px solid var(--ink);}
   .img-blank{width:100%; height:100%; background:#F2F2F0;}
@@ -224,7 +251,10 @@
 <main id="main"></main>
 
 <div class="modal-bg" id="modalBg" onclick="if(event.target===this) closeModal()">
-  <div class="modal" id="modalContent"></div>
+  <div class="modal-wrap">
+    <div class="modal" id="modalContent" onscroll="updateModalScrollDot()"></div>
+    <div class="modal-scroll-dot" id="modalDot"></div>
+  </div>
 </div>
 
 <script>
@@ -276,7 +306,7 @@ const BRANDS = [
       ["Type 80 Table Lamp", "Lighting", ["Grey Mist", "Matte Black", "Pistachio Green", "Rose Pink"]],
       ["Type 80 Wall Light", "Lighting", ["Grey Mist", "Matte Black", "Matte Black Opal Glass", "Pistachio Green"]]
 ]},
- {id:"anonimacastelli",name:"Anonima Castelli",origin:"Italy",site:"https://www.anonimacastelli.com",verify:1,items:[
+ {id:"anonimacastelli",name:"Anonima Castelli",origin:"Italy",site:"https://www.anonimacastelli.com",items:[
     ["Plia Chair","Seating",["Chrome", "Clear", "Straw", "Smoke", "Rose"],"https://www.anonimacastelli.com/products/plia-in-paglia-di-vienna"],
     ["DSC 106 Chair","Seating",["Faggio", "Black", "Red", "Green", "Oak"],"https://www.anonimacastelli.com/products/dsc-106s"],
     ["Alky Armchair","Seating",["Grey", "Red", "Yellow", "Blue", "Green"],"https://www.anonimacastelli.com/products/alky-1"],
@@ -1805,7 +1835,7 @@ const BRANDS = [
  {id:"singchan",name:"Sing Chan Design",origin:"China",site:"https://www.singchandesign.com",verify:1,items:[
    ["Fragment Wall Lamp","Lighting",["Charcoal"]],["The Wall Side Table","Tables",["Charcoal"]],
    ["Fragment Pendant","Lighting",["Silver"]],["Fragment Floor Lamp","Lighting",["Silver"]]]},
- {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.it",verify:1,items:[
+ {id:"ramun",name:"Ramun",origin:"Italy",site:"https://www.ramun.com",items:[
    ["Bella Table Lamp","Lighting",["Silver","Yellow"]],["Amuleto Table Lamp","Lighting",["Yellow","White"]]]},
  {id:"ramu-home-studio",name:"Ramu Home Studio",origin:"Europe",site:"https://ramuhomestudio.com/",items:[]},
  {id:"riva-1920",name:"Riva 1920",origin:"Italy",site:"https://www.riva1920.it/en/",items:[]}
@@ -2067,6 +2097,169 @@ const BIOS = {
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
 const STOCKIST_DATA = {
+  "stilnovo": {
+    "stockistCN": [
+      {
+        "city": "Taipei",
+        "name": "TH Company 進口燈飾 (Official Stilnovo showroom & retailer)",
+        "address": "No. 366, Section 2, Tiding Blvd., Zhongshan District, Taipei City 10462, Taiwan"
+      },
+      {
+        "city": "Shanghai",
+        "name": "People and Objects Co. Ltd. (Official China representative)",
+        "address": "Room 118, Building 20, No. 1–42, Lane 83, Hongxiang North Road, Pudong New District, Shanghai 201313, China"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Novalis Art Design",
+        "address": "197 Hollywood Road, Hong Kong"
+      }
+    ]
+  },
+  "ramun": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/6684f3f0000000000303354b?m_source=pwa&xsec_token=ABjoUYtB_38g5VxQo6lotL8G3H2ZtRoiUfgbNJOjliWv4=&xsec_source=pc_search",
+    "instagram": "https://www.instagram.com/ramun_lighting/",
+    "stockistCN": [
+      {
+        "city": "Beijing",
+        "name": "SKP – RDV 专柜",
+        "address": "北京市朝阳区建国路87号 SKP 4F RDV专柜"
+      },
+      {
+        "city": "Beijing",
+        "name": "SKP-S – RENDEZ-VOUS",
+        "address": "北京市朝阳区建国路86号 SKP-S 2F RDV专柜"
+      },
+      {
+        "city": "Beijing",
+        "name": "DT51 – RDV 专柜",
+        "address": "北京市朝阳区北苑路98号 DT51商场3层 RDV专柜"
+      },
+      {
+        "city": "Beijing",
+        "name": "Casacasa 正大中心旗舰店",
+        "address": "北京市朝阳区金和东路20号院正大中心1层 L112"
+      },
+      {
+        "city": "Beijing",
+        "name": "Enest Space",
+        "address": "北京市朝阳区大郊亭红星美凯龙至尊Mall 6层"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Casacasa 岳阳路店",
+        "address": "上海市徐汇区岳阳路150号"
+      },
+      {
+        "city": "Shanghai",
+        "name": "SYL 申甩灯饰（剪刀石头布店）",
+        "address": "上海市闵行区吴中路1265号 剪刀石头布A馆 A5-01/02"
+      },
+      {
+        "city": "Shanghai",
+        "name": "SYL 申甩灯饰（好饰家店）",
+        "address": "上海市徐汇区田林东路285号2083室"
+      },
+      {
+        "city": "Shanghai",
+        "name": "一个亿复古仓",
+        "address": "上海市闵行区龙吴路4221号 一号门"
+      },
+      {
+        "city": "Shanghai",
+        "name": "朵云书院旗舰店",
+        "address": "上海市浦东新区银城中路501号 上海中心大厦52楼"
+      },
+      {
+        "city": "Guangzhou",
+        "name": "Whyin Gallery",
+        "address": "广州市番禺区大龙街道泰兴路15-2-WHYPARK摄影基地"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "FLOW",
+        "address": "深圳市龙岗区坪田街道万科璎悦山别墅区2401"
+      },
+      {
+        "city": "Foshan",
+        "name": "NUTZ",
+        "address": "佛山市顺德区大良新桂中路明日广场A庢206"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph",
+        "address": "杭州市滨江区滨安路1193号5栋"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Maison Joseph（滨江万象城店）",
+        "address": "杭州市上城区富春路701号 杭州万象城L2119号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Gem Mountain 宝石山下",
+        "address": "杭州市萧山区盈丰街道莲莲路亚奥万象天地街区S125号"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "BANBURY 班伯",
+        "address": "杭州市上城区高德置地广场商场二楼 L218"
+      }
+    ]
+  },
+  "bomma": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/5f69bf270000000001003401?m_source=pwa&xsec_token=AB8JYOKB9yQjA6sCvKugqT6858Zh5ECmWYW7iH0meh6tA=&xsec_source=pc_search",
+    "stockistCN": [
+      {
+        "city": "Shanghai",
+        "name": "QQODD Shanghai",
+        "address": "No. 339 Wuzhong Road, Minhang District, Shanghai, China"
+      },
+      {
+        "city": "Chengdu",
+        "name": "QQODD Chengdu",
+        "address": "Fucheng International Plaza, Chengdu, Sichuan, China"
+      },
+      {
+        "city": "Shanghai",
+        "name": "Area Living Shanghai",
+        "address": "Shanghai, China"
+      },
+      {
+        "city": "Beijing",
+        "name": "Area Living Beijing",
+        "address": "Beijing, China"
+      },
+      {
+        "city": "Shenzhen",
+        "name": "Area Living Shenzhen",
+        "address": "Shenzhen, Guangdong, China"
+      },
+      {
+        "city": "Hangzhou",
+        "name": "Area Living Hangzhou",
+        "address": "Hangzhou, Zhejiang, China"
+      },
+      {
+        "city": "Chengdu",
+        "name": "Area Living Chengdu",
+        "address": "Chengdu, Sichuan, China"
+      },
+      {
+        "city": "Qingdao",
+        "name": "Area Living Qingdao",
+        "address": "Qingdao, Shandong, China"
+      },
+      {
+        "city": "Hong Kong",
+        "name": "Ricardo Lighting",
+        "address": "24/F, ABBA Commercial Building, 223 Aberdeen Main Road, Aberdeen, Hong Kong"
+      }
+    ]
+  },
+  "qeeboo": {
+    "rednote": "https://www.xiaohongshu.com/user/profile/62524944000000002102232f?m_source=pwa&xsec_token=ABlhBY1BfFWKJex50tgQ07w5axWmH_1jeT28UYybUgzOI=&xsec_source=pc_search"
+  },
   "kar": {
     "rednote": "https://www.xiaohongshu.com/user/profile/61c9d24a000000001000d743?m_source=pwa&xsec_token=ABmMRzv7GbGLQd6NrqdH62hgLUR8_Wti_ZGxUEUOkjwIE=&xsec_source=pc_search",
     "stockistCN": [
@@ -4757,7 +4950,10 @@ const STOCKIST_DATA = {
     ]
   },
   "carlhansen": {
-    "rednote": "https://www.xiaohongshu.com/user/profile/63491949000000001802f803?xsec_token=ABr9dafn913eCq9JbWWAYpZzJLnUivxINix9buUaJhm-8%3D&xsec_source=pc_search"
+    "rednote": "https://www.xiaohongshu.com/user/profile/63491949000000001802f803?xsec_token=ABr9dafn913eCq9JbWWAYpZzJLnUivxINix9buUaJhm-8%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {"city": "Shanghai", "name": "Carl Hansen & Søn Shanghai Showroom", "address": "Room 5, Building 1, Lane 622 Middle Huaihai Road, Shanghai 200041, China"}
+    ]
   },
   "cassina": {
     "rednote": "https://www.xiaohongshu.com/user/profile/5c315c3d0000000007014c1b?xsec_token=ABq2riHnpmHJuo-JB0PXAltXU0ooGYOe5PmNoBh65xcik%3D&xsec_source=pc_search",
@@ -6605,7 +6801,12 @@ const STOCKIST_DATA = {
     ]
   },
   "martinelliluce": {
-    "rednote": "https://www.xiaohongshu.com/user/profile/63044d15000000001200ca0a?xsec_token=ABT5EGo7pqwLU5KLu-uK7QArbYjzgF6XCdyVk2MKOoWcA%3D&xsec_source=pc_search"
+    "rednote": "https://www.xiaohongshu.com/user/profile/63044d15000000001200ca0a?xsec_token=ABT5EGo7pqwLU5KLu-uK7QArbYjzgF6XCdyVk2MKOoWcA%3D&xsec_source=pc_search",
+    "stockistCN": [
+      {"city": "Shanghai", "name": "QQODD Shanghai (Martinelli Luce China General Agent)", "address": "Shanghai, China"},
+      {"city": "Chengdu", "name": "QQODD Chengdu (Martinelli Luce China Distributor)", "address": "Chengdu, Sichuan, China"},
+      {"city": "Taipei", "name": "Fuhaus Fuxing Flagship Store (丰巢家居)", "address": "No. 88, Section 2, Fuxing South Road, Da'an District, Taipei City 106, Taiwan"}
+    ]
   },
   "mogg": {
     "rednote": "https://www.xiaohongshu.com/user/profile/5fc4dcea00000000010090f0?xsec_token=ABbdflBtmBT1dJnS00-_7ekJVDE21A_K7S-0BMvhHB6ZQ%3D&xsec_source=pc_search",
@@ -7013,7 +7214,11 @@ const STOCKIST_DATA = {
     ]
   },
   "poltronova": {
-    "rednote": "https://www.xiaohongshu.com/user/profile/69c1117300000000260026c3?m_source=pwa&xsec_token=ABBxTHcTyzJvYtYQW7moUyhIAGhtfQIxSR3w11z9Q-I_8=&xsec_source=pc_search"
+    "rednote": "https://www.xiaohongshu.com/user/profile/69c1117300000000260026c3?m_source=pwa&xsec_token=ABBxTHcTyzJvYtYQW7moUyhIAGhtfQIxSR3w11z9Q-I_8=&xsec_source=pc_search",
+    "stockistCN": [
+      {"city": "Beijing", "name": "101+FLAGSHIP", "address": "Ban Jie Ta Lu, Beijing, China (半截塔路，北京)"},
+      {"city": "Taichung", "name": "DUTCHHAVES", "address": "No. 108, Section 2, Jianhe Rd, Beitun District, Taichung City 406, Taiwan"}
+    ]
   },
   "petite-friture": {
     "stockistCN": [
@@ -7745,6 +7950,81 @@ BRANDS.forEach(b=>{
 // own site (never downloaded or rehosted here) — only populated for brands the studio
 // has actually curated a gallery for.
 const AMBIANCE_DATA = {
+  "ramun": [
+      {
+          "project": "",
+          "images": [
+              "https://www.ramun.com/img/Amuleto_Terra/4.jpg",
+              "https://www.ramun.com/img/Amuleto_Terra/5.jpg",
+              "https://www.ramun.com/img/Amuleto_Terra/7.jpg",
+              "https://www.ramun.com/img/Opale/5.jpg"
+          ]
+      },
+      {
+          "project": "收藏光，设计师黄全的艺术之家",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607302017/857741574c562e13d18a59684e0dfd56/spectrum/1040g0k031jn6mlu32a005pk4ufo0udabkciccp8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302017/4b5a875097cdaa62c37c35f070c7bd13/spectrum/1040g34o31jo9ph2q2g105pk4ufo0udab3lk5bbo!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302017/c055500fca3d0b7cda6b3d549d8a3973/spectrum/1040g40g31jo9pl4f48005pk4ufo0udab6fjfr68!nd_dft_wgth_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302017/4f880cfb98bada9cb8001fd44eb1b249/spectrum/1040g40g31jo9pl4f480g5pk4ufo0udab7loi180!nd_dft_wgth_webp_3"
+          ]
+      },
+      {
+          "project": "博主Pick｜三色艺术",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607302020/06018b6d1b93dba27f88925d0783187f/spectrum/1040g34o31lm2aed5l0e05pk4ufo0udabfq4si0o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/f38a49ac10f592393ec94e17e344e5af/spectrum/1040g34o31lm2aed5l0h05pk4ufo0udab46dea8g!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/af1b7cc7dbf72e78c402a4ea0843424d/spectrum/1040g34o31lm2aed5l0ig5pk4ufo0udabtkug4d8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/f37175362a12f34f621c42978f028791/spectrum/1040g34o31lm2aed5l0fg5pk4ufo0udabi33hv50!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/5f1d873db1c2a9a4da292b4466e061a0/spectrum/1040g34o31lm2aed5l0i05pk4ufo0udabt0qvov8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/f5139ca00fd0632814ac450f43cbcc71/spectrum/1040g34o31lm2aed5l0kg5pk4ufo0udabpce7i98!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/a867ad86bdf35cd48651ba117ff6ca42/spectrum/1040g34o31lm2aed5l0f05pk4ufo0udab0tc108o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/df1715e553b304f1cdcf9fb3042889e5/spectrum/1040g34o31lm2aed5l0gg5pk4ufo0udabuhfp5tg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/18dff5c14545bfa2d8fc8199039d2103/spectrum/1040g34o31lm2aed5l0eg5pk4ufo0udablm4i2cg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/da9a48eb0703e41a35e6ff847a5dbb52/spectrum/1040g34o31lm2aed5l0g05pk4ufo0udab79ngbm8!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302020/7990ec7d05f870096cce0049e818fd79/spectrum/1040g34o31lm2aed5l0hg5pk4ufo0udabu7qsfjg!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "一席光华",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607302022/728ce89c90545943bade378b03c01536/spectrum/1040g0k0322sh4078n4005pk4ufo0udab13tgu88!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302022/3fbb3185074415216e375bb26ca98b4d/spectrum/1040g0k0322sh5me6n2005pk4ufo0udabvbonu8o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302022/77ec4aa43458e51572ef82b3feed099c/spectrum/1040g0k0322sh5me6n20g5pk4ufo0udab4o4ue8o!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302022/99d46804c8aae2fdc35f325a40868e4b/spectrum/1040g0k0322sh5me6n21g5pk4ufo0udab0l0hge8!nd_dft_wlteh_webp_3"
+          ]
+      },
+      {
+          "project": "烛之火",
+          "images": [
+              "https://sns-webpic-qc.xhscdn.com/202607302024/297a6b8ac41ad29ea3d2fd42c68a3b0c/spectrum/1040g0k0322j8okeu6s005pk4ufo0udabkmth4n0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/dad74241b0b3d07adb3c03182ab9131b/spectrum/1040g34o322j8pq0a6s105pk4ufo0udab5go98ag!nd_dft_wgth_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/814c3814018a1cd5930e760de39dd2fe/spectrum/1040g0k0322j8p7gs74005pk4ufo0udabds75ahg!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/4733fd7f9aedaaddf6810f6a919d1899/spectrum/1040g0k0322j8pb2272005pk4ufo0udabq5fph10!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/9876219b3b975b3999bf44eb10010d46/spectrum/1040g34o322j8pdv6n4105pk4ufo0udab4lplrro!nd_dft_wgth_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/e8b31ba9e122a97b0c9935f72b8b216d/spectrum/1040g0k0322j8phsmn2005pk4ufo0udabtpubpj0!nd_dft_wlteh_webp_3",
+              "https://sns-webpic-qc.xhscdn.com/202607302024/0750a1a7553d45f4e30fb6ba2c2f0b97/spectrum/1040g0k0322j8plkvn4005pk4ufo0udab71bln4o!nd_dft_wgth_webp_3"
+          ]
+      }
+  ],
+  "bomma": [
+      {
+          "project": "",
+          "images": [
+              "https://www.bomma.cz/app/uploads/2026/05/bomma_lobby_flare_installation_2-890x890.jpg",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.82787-15/681019050_18610576252004089_7493583816643087441_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ig_cache_key=Mzg4NTM2MDQxMjUxODgwOTc0Ng%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=ZfeccDfs-r0Q7kNvwFIchHJ&_nc_oc=AdpMTdkxQo9b6nWjvtL8JpwhUVjRt8Cqmc_F31k-TsrNnLrW8401xk7I8DB5Z0ss67c&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=63v9DHLmdsEwyjOT7r9f1Q&_nc_ss=79689&oh=00_AQE-ws_uhQAHfYSYrT5sUAlAYVvxCe2WNLFzV6l9V6bWwQ&oe=6A7127DB",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/670312687_18606513568004089_8263318643658275033_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ig_cache_key=Mzg3NDQ0MzA3OTQzMjU5Nzk5MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=96y0pTQKK84Q7kNvwEWJJfz&_nc_oc=AdrqadKeR4lv5ReAUnvRMiivs5SeVROElqIlNp2PcMLiwI1yEpZvFKrlqZ88Oj3ioNs&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=Vlkf5NI4FM-auGPAAUtyog&_nc_ss=79689&oh=00_AQE7xHBzzr8joemnp6Ko0H9u00fqwQIvIt9UuYd4Vav7QA&oe=6A7107C1",
+              "https://scontent-nrt1-1.cdninstagram.com/v/t51.75761-15/489932287_18519293803004089_4005641077719182894_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ig_cache_key=MzYwODM1MjkyMjQ1NDQwMzU0Mw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=UDCyU26QYvsQ7kNvwFdsIDw&_nc_oc=AdrUW0ATsV-M3yxwWyv9mP-7YhQ68y3UrLPrMiHLFwRDusrIHdoEQwupqEDTNfuA27Q&_nc_zt=23&_nc_ht=scontent-nrt1-1.cdninstagram.com&_nc_gid=k9ORuqsEYlOcbkznzQsqzQ&_nc_ss=79689&oh=00_AQFW8rdztZnlSdJRQA3ms_VO-0EDLSlt4gLyN7wyxEmfFw&oe=6A7126FF",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.75761-15/491418273_18519911839004089_2160785814052841968_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ig_cache_key=MzYwOTk2ODUyMDU0MDAxMjM5MQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=RjHlPv85B8wQ7kNvwHQdGXl&_nc_oc=AdooIdPemEBT4LDhTxl03OI_yQB-0zbjhgCvXon6GD4nkzLWxS8iF_ahaWid3xKlDjI&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=cZWaJxdS6nXueczFAu09zw&_nc_ss=79689&oh=00_AQHTysR_947crGtfgkJ0v3-4zPq4hhEx8C9sBqD03YiQhQ&oe=6A71300F",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/625051391_18092748310977890_2585556445371782676_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ig_cache_key=MzUzODk4NTc5NDYzOTI5NDIzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTMzOC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Cbu01_Jkd-YQ7kNvwHZ3ztz&_nc_oc=Adrlrf5cyLA8bbm1H_BJi0sM5gAD6tLR_q_hIwEDZlPCOxJcr01afKDEnkLfIze-4Sw&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=Cp5O9qf1DWONXAUk4VSatg&_nc_ss=79689&oh=00_AQGrKC7RG7iS8ERG8_yeSeppPtvL0kh5izQrFmAY1gtyPw&oe=6A71326D",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/656267098_18097924816974467_892690701075335415_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ig_cache_key=MzUwODUxNTAxMzAyNzU5NjIzNg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=5t31o8tI4IcQ7kNvwFifwCX&_nc_oc=AdqoTol9XssPlIeLB7tjsOM0YZnc5jWtmPE5Gx1bCvpYgNadLWyacs6UkOdQPfHoveE&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=jiU-NLxbMoA6markWqYGyQ&_nc_ss=79689&oh=00_AQFgB2I7ghCgFhloLW0QstTjf7DwKRnweR3uY1XMiJE8Yw&oe=6A710287",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/656226365_18070655807256514_2971597029435158232_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=MzUwNjM0MDc3ODY3MDU5ODU3MA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=G2Wx0Jl7elgQ7kNvwHzPS7Y&_nc_oc=Adq1gzsTvOSm9g0CRno88N0K3-QlAJnhi6OnlJbhx_lqtL_XoZ3KRys_m1JTd4Z5Rzg&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=iobgrOUrAMoClE_8QQiXdg&_nc_ss=79689&oh=00_AQFCiHfcbkD7Je9GLu221CgG7zh17vr1yKRC2dkm13tsBQ&oe=6A7132C4",
+              "https://scontent-nrt1-2.cdninstagram.com/v/t51.82787-15/655716139_18123109807606721_8749308296368917756_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ig_cache_key=MzUwNDE4MTQ2NTkxMDk5MDUyMQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=4w6Gdtt1br0Q7kNvwEkRI2R&_nc_oc=AdonGEjG3QklJM3dz_QSJ8M6Z4y3EYN8E3eahx-0TTFq5eP3He2In5LHpP2UjHA_V5k&_nc_zt=23&_nc_ht=scontent-nrt1-2.cdninstagram.com&_nc_gid=Ccc6pWoGKASW5TpAUed0IQ&_nc_ss=79689&oh=00_AQFbgDs6en0iCZKXduT8JKxUHEi5wKQHioeyZ7vSbzZMZw&oe=6A711094",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/656253498_18121220263611265_3510264370852418195_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=106&ig_cache_key=MzQwMTk1NTYwOTc2NTE0MTU3NQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Ar7rTRn0sssQ7kNvwGoRmis&_nc_oc=AdrOwg9ChToH-0Gi-il80t0AsIRaNbIDSoq-Y5bLU880BL_Id6suYH7r6DMWGBvBu64&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=cvg1C6Jup99E0LqHen9O6A&_nc_ss=79689&oh=00_AQF9LTa4XJentXJmQPGQ5-fayANlADg2EUFKxaVSXahEPQ&oe=6A71202A",
+              "https://scontent-nrt6-1.cdninstagram.com/v/t51.82787-15/588310490_18570034945004089_8745415888422718704_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ig_cache_key=Mzc4MDE1NDM4MjEzMDg5Nzc5Nw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=3wcfMwYegPIQ7kNvwHCP1ma&_nc_oc=AdosWx2nWsdDLN3rxeFS9QwLP-5Dnyuib6PiDClb9o_oupp31PwELKbJ4ebqtdT_mI4&_nc_zt=23&_nc_ht=scontent-nrt6-1.cdninstagram.com&_nc_gid=rRQN9adX_2zZNJlvmOZMoA&_nc_ss=79689&oh=00_AQEXaMMt1cUXTzS6WhebAIabZg3dAe29OegfkLVI5bCW3g&oe=6A7131E3"
+          ]
+      }
+  ],
   "kar": [
       {
           "project": "",
@@ -18283,7 +18563,7 @@ BRANDS.forEach(b=>{
   });
 });
 
-let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null, favView:"products" };
+let state = { tab:"brands", brand:null, catFilter:null, colorFilter:null, collCatFilter:null, collection:null, favView:"products", landing:true };
 function colorHex(name){ return PALETTE[name] || "#999"; }
 function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 
@@ -18291,6 +18571,72 @@ function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 // mark (first letter, same treatment as the header wordmark) until supplied. Filenames
 // vary in case/extension since they're saved as-is from wherever each logo came from.
 const LOGOS = {
+  "audo":"O Audo Copenhagen,IP.webp",
+  "bomma":"Bomma.webp",
+  "brionvega":"Brionvega.webp",
+  "concretecat":"ConcreteCat.webp",
+  "gervasoni":"gervasoni.webp",
+  "nilufar":"Nilufar.svg",
+  "qeeboo":"Qeeboo.webp",
+  "ramu-home-studio":"Ramu Home Studio.png",
+  "ramun":"ramun.webp",
+  "rrres":"rrres.webp",
+  "stilnovo":"stilnovo_logo_2_d2a88bdf-5947-40d2-bed5-aae96c8d9770.avif",
+  "riva-1920":"riva 1920.webp",
+  "poliform":"poliform-logo.svg",
+  "fendi-casa":"fendi casa logo.jpg",
+  "kelly-wearstler":"Kelly Wearstler.jpg",
+  "vi-spring":"vispring.jpeg",
+  "tacchini":"tacchini.png",
+  "ligne-roset":"Ligne Roset.jpeg",
+  "house-of-finn-juhl":"House of Finn Juhl logo.webp",
+  "cattelan-italia":"Cattelan Italia.webp",
+  "giorgetti":"giorgetti.png",
+  "kooij":"Kooij.svg",
+  "aarnio-originals":"Aarnio Originals.avif",
+  "moroso":"moroso-logo.jpg",
+  "living-divani":"Living Divani.webp",
+  "turri":"turri.svg",
+  "bocci":"bocci.jpg",
+  "gallotti-radice":"Gallotti&Radice.svg",
+  "molteni-c":"Molteni&C.webp",
+  "vibieffe":"vibieffe-logo.png",
+  "porro":"logo-porro.svg",
+  "casamania":"casamania-logo.jpg",
+  "impatia":"Impatia.webp",
+  "lago":"lago logo.jpeg",
+  "flexform":"logo-flexform.svg",
+  "zanotta":"Zanotta logo.png",
+  "poltrona-frau":"Poltrona Frau.jpg",
+  "promemoria":"Promemoria.webp",
+  "baxter":"Baxter.webp",
+  "maxalto":"MAXALTO logo.webp",
+  "ceccotti-collezioni":"Ceccotti Collezioni.webp",
+  "sicis":"Sicis logo.webp",
+  "duxiana":"Duxiana.webp",
+  "memphis-milano":"Memphis Milano.webp",
+  "moooi":"moooi.webp",
+  "tom-dixon":"Tom Dixon.webp",
+  "foscarini":"Foscarini.webp",
+  "fontanaarte":"FontanaArte.webp",
+  "barovier-toso":"Barovier&Toso.webp",
+  "established-sons":"Established & Sons\\.webp",
+  "driade":"Driade.webp",
+  "slamp":"Slamp.webp",
+  "studio-helle-mardahl":"Studio Helle Mardahl.webp",
+  "kar":"kar.avif",
+  "chapo-cr-ations":"Chapo Créations logo.png",
+  "andr-fu-living":"André Fu Living.png",
+  "artifort":"Artifort_SVG.svg",
+  "baccarat":"Baccarat log.png",
+  "minotti":"Minotti log.webp",
+  "bang-olufsen":"Emblem-Bang-Olufsen.jpg",
+  "penta":"PENTA_Collections_Logo.webp",
+  "henge":"Henge log.webp",
+  "reflex-angelo":"logo-reflex.webp",
+  "hessentia":"hessentia---cornelio-cappellini_logo_2a030aaa.webp",
+  "mvsevm":"cropped-mvsevm-logo-black1.png",
+  "la-chance":"Logo-La-Chance-noir-v2-2.png",
   andtradition:"andtradition.png",
   cassina:"cassina.webp",
   "4mariani":"4mariani.gif",
@@ -18433,7 +18779,25 @@ function setTab(tab){
   renderCurrent();
 }
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
-function goHome(){ setTab('brands'); }
+function goHome(){ state.landing=false; setTab('brands'); }
+function enterApp(){ state.landing=false; setTab('brands'); window.scrollTo({top:0,behavior:'instant'}); }
+function renderLanding(){
+  document.getElementById('main').innerHTML = `
+    ${MANIFESTO_HTML}
+    <div class="manifesto-enter"><button class="enter-btn" onclick="enterApp()">Enter BrandBook →</button></div>
+  `;
+  updateManifestoScrollDot();
+}
+function updateManifestoScrollDot(){
+  const box = document.getElementById('manifestoScroll');
+  const dot = document.getElementById('manifestoDot');
+  if(!box || !dot) return;
+  const max = box.scrollHeight - box.clientHeight;
+  if(max<=0){ dot.style.display='none'; return; }
+  dot.style.display='block';
+  const trackH = box.clientHeight - dot.offsetHeight;
+  dot.style.top = ((box.scrollTop/max)*trackH) + 'px';
+}
 function openBrand(id){ state.brand=id; state.catFilter=null; state.colorFilter=null; state.collCatFilter=null; state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 function toggleCollCat(cat){ state.collCatFilter = state.collCatFilter===cat?null:cat; renderCurrent(); }
 function openCollection(idx){ state.collection=idx; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
@@ -18441,6 +18805,8 @@ function openBrandCollection(brandId,idx){ state.brand=brandId; state.collection
 function backToCollections(){ state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function renderCurrent(){
+  document.body.classList.toggle('landing-mode', !!state.landing);
+  if(state.landing){ renderLanding(); return; }
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
   if(state.brand){ renderBrandDetail(state.brand,q); return; }
   if(state.tab==='shared') { renderSharedList(q); return; }
@@ -18852,6 +19218,34 @@ function wireHoverFlash(){
   });
 }
 
+const MANIFESTO_HTML = `
+  <div class="manifesto">
+    <div class="manifesto-topline">
+      <div class="manifesto-meta">
+        <div>Runke Luo Architects</div>
+        <div>Manifesto — 2026</div>
+      </div>
+      <div class="manifesto-mark">BrandBook<span>Furniture and Material Library</span></div>
+    </div>
+    <div class="manifesto-box-wrap">
+      <div class="manifesto-box" id="manifestoScroll" onscroll="updateManifestoScrollDot()">
+        <h2 class="manifesto-title">The Origin Point of a Vector</h2>
+        <div class="manifesto-body">
+          <p>I have never believed in the hard divide between "hard construction" and "soft furnishing"—or, by extension, between architecture, interior design, and interior styling.</p>
+          <p>Personally, this is either a curse or a blessing, I have never been someone who skims the surface. Once something catches my attention, I disappear into it. Over the past two weeks I have begun building my own furniture library. What started as a reference folder quickly became an enormous archive. I spent 3 days in Hangzhou visiting 22 furniture showrooms, and the journey is only beginning: lighting and furniture sourcing in Guangdong, textiles in Shaoxing in August, the Shanghai Modern Interior Expo in September. Between these trips, I will begin the first two phases of the architectural design.</p>
+          <p>This is a tight and, hopefully, well-planned design journey. It feels much tougher than giving birth to a baby—at least from the perspective of who I am right now: unmarried and unpregnant. Yet this remains a far more unexplored territory, one filled with hope, curiosity, and fantasy.</p>
+          <p>It is a pretty experimental design process. I browsed hundreds of websites and thousands of products. Slowly, patterns began to emerge. A chair finds its table. A lamp discovers its corner. Walnut belongs beside linen; brushed aluminum asks for terrazzo. Long before a floor plan is finalized, fragments of a future home have already begun arranging themselves in my imagination. I started to develop montages, or collages, of how a specific piece, a specific color, would situate itself within its own niche.</p>
+          <p>Now it is difficult for me to understand how it is possible to separate the so-called solid work from the soft styling, or how anyone could decide on the spatial items—the players of the space—only after the containers have already been completed.</p>
+          <p>Even after nearly a decade in design, I still find it difficult to begin with a blank space. Enough references are needed. Proper imagination is needed. Sensitive spatial instincts are needed. Feasible support is needed. So I think of this library as the origin point of a vector. Every chair, lamp, textile, and material becomes another direction the project could take. Open the archive, and countless possible homes begin to unfold. Before the walls are drawn, life has already started to take shape.</p>
+          <p>The point is the beginning of the vector. The vector expands into an array—a field of imagination where homes come into being. Countless possibilities of living, countless moments of being, gradually come together to build your vision of home.</p>
+        </div>
+        <div class="manifesto-sign">Runke Luo, July 30th, 2026, Yiwu</div>
+      </div>
+      <div class="manifesto-scroll-dot" id="manifestoDot"></div>
+    </div>
+  </div>
+`;
+
 function renderBrandGrid(q){
   const list = BRANDS.filter(b=>b.name.toLowerCase().includes(q));
   document.getElementById('main').innerHTML = `
@@ -18925,11 +19319,14 @@ function renderBrandDetail(brandId,q){
       <div class="bdh-side">
         <span class="stockist-label">Stockist in China${b.stockistCN?` (${b.stockistCN.length})`:''}</span>
         ${b.stockistCN
-          ? `<div class="stockist-list">${b.stockistCN.map(s=>`
-            <div class="stockist-item">
-              <span class="s-place"><span class="s-city">${s.city}</span>${s.name}</span>
-              <a href="${amapSearchUrl(s.name,s.address)}" target="_blank" rel="noopener">to visit 📍</a>
-            </div>`).join('')}</div>`
+          ? `<div class="stockist-list-wrap">
+              <div class="stockist-list" id="stockistScroll" onscroll="updateStockistScrollDot()">${b.stockistCN.map(s=>`
+              <div class="stockist-item">
+                <span class="s-place"><span class="s-city">${s.city}</span>${s.name}</span>
+                <a href="${amapSearchUrl(s.name,s.address)}" target="_blank" rel="noopener">to visit 📍</a>
+              </div>`).join('')}</div>
+              <div class="stockist-scroll-dot" id="stockistDot"></div>
+            </div>`
           : `<div class="stockist-empty">Not yet documented</div>`}
       </div>
     </div>
@@ -18944,6 +19341,27 @@ function renderBrandDetail(brandId,q){
   sizeBrandLogo();
   wireHoverCycle();
   fillGridGap('.item-grid',640,960);
+  updateStockistScrollDot();
+}
+function updateStockistScrollDot(){
+  const box = document.getElementById('stockistScroll');
+  const dot = document.getElementById('stockistDot');
+  if(!box || !dot) return;
+  const max = box.scrollHeight - box.clientHeight;
+  if(max<=0){ dot.style.display='none'; return; }
+  dot.style.display='block';
+  const trackH = box.clientHeight - dot.offsetHeight;
+  dot.style.top = ((box.scrollTop/max)*trackH) + 'px';
+}
+function updateModalScrollDot(){
+  const box = document.getElementById('modalContent');
+  const dot = document.getElementById('modalDot');
+  if(!box || !dot) return;
+  const max = box.scrollHeight - box.clientHeight;
+  if(max<=0){ dot.style.display='none'; return; }
+  dot.style.display='block';
+  const trackH = box.clientHeight - dot.offsetHeight;
+  dot.style.top = ((box.scrollTop/max)*trackH) + 'px';
 }
 
 // Ambiance photos are flattened into one plain list (no per-project sub-carousel) —
@@ -19065,6 +19483,8 @@ function openAmbiancePhoto(id, el){
     </div>
   `;
   document.getElementById('modalBg').classList.add('open');
+  modalContent.scrollTop = 0;
+  updateModalScrollDot();
 }
 function ambianceModalNav(dir){
   if(!AMBIANCE_MODAL_CTX) return;
@@ -19237,6 +19657,8 @@ function openItem(id){
     </div>
   `;
   document.getElementById('modalBg').classList.add('open');
+  document.getElementById('modalContent').scrollTop = 0;
+  updateModalScrollDot();
 }
 function closeModal(){ document.getElementById('modalBg').classList.remove('open'); }
 
