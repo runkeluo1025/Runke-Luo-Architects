@@ -124,6 +124,14 @@
   .ambiance-imgwrap img{height:100%; width:auto; display:block;}
   .amb-side{flex:0 0 auto; border:none; background:none; color:var(--ink); font-size:22px; line-height:1; cursor:pointer; padding:4px 8px;}
   .ambiance-caption{padding:8px 2px 0; font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--grey);}
+  .amb-scroll-track{position:relative; height:6px; margin:8px 30px 0;}
+  .amb-scroll-dot{position:absolute; top:0; left:0; width:6px; height:6px; border-radius:50%; background:var(--ink);}
+
+  .page-scroll-dot{position:fixed; top:0; right:5px; width:6px; height:6px; border-radius:50%; background:var(--ink); z-index:200; pointer-events:none;}
+  html{scrollbar-width:none;}
+  html::-webkit-scrollbar{display:none;}
+  body{scrollbar-width:none;}
+  body::-webkit-scrollbar{display:none;}
   .ambiance-brand-block{margin-bottom:36px;}
   .ambiance-brand-name{font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:.02em; margin:0 0 10px; cursor:pointer; display:inline-block;}
   .ambiance-brand-name:hover{text-decoration:underline;}
@@ -200,9 +208,8 @@
   .map-pin{width:16px; height:16px; border-radius:50%; cursor:pointer;}
   .map-cluster{border-radius:50%; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk',sans-serif; font-weight:600; cursor:pointer;}
 
-  .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:flex-end; justify-content:center; z-index:100;}
+  .modal-bg{position:fixed; inset:0; background:rgba(0,0,0,.7); display:none; align-items:center; justify-content:center; z-index:100;}
   .modal-bg.open{display:flex;}
-  @media(min-width:720px){.modal-bg{align-items:center;}}
   .modal-wrap{position:relative; width:100%; max-width:620px;}
   .modal{background:#fff; width:100%; max-height:92vh; overflow-y:auto; border:1px solid var(--ink); border-bottom:none; scrollbar-width:none;}
   .modal::-webkit-scrollbar{display:none;}
@@ -247,6 +254,8 @@
     <div class="search-wrap"><input id="searchInput" placeholder="Search brand or item…" oninput="renderCurrent()"></div>
   </div>
 </header>
+
+<div class="page-scroll-dot" id="pageDot"></div>
 
 <main id="main"></main>
 
@@ -1873,7 +1882,6 @@ const DIRECTORY = [
  ["Agrippa","Unconfirmed","https://www.google.com/search?q=Agrippa+furniture+brand",1],
  ["La Boîte Concept","France","https://www.laboiteconcept.com"],
  ["LK Hjelle","Norway","https://www.lkhjelle.no"],
- ["1920R","Italy","https://www.google.com/search?q=1920R+furniture+brand+Italy",1],
  ["Italamp","Italy","https://www.italamp.com"],
  ["Mohebban","Italy","https://www.mohebbanmilano.com/en/home-en/"],
  ["Fasem","Italy","https://www.fasem.it"],
@@ -1939,7 +1947,7 @@ const DIRECTORY = [
  ["Studio Helle Mardahl","Denmark","https://www.hellemardahl.com"],
  ["ConcreteCat","Canada","https://concretecat.com/"],
  ["KAR","China","https://kar-studio.com"],
- ["Ninefact","China","https://www.google.com/search?q=Ninefact+furniture+brand",1]
+ ["Ninefact","China","https://ninefact.com/"]
 ].map(d=>({id:d[0].toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''),name:d[0],origin:d[1],site:d[2],verify:d[3]||0,items:[],directory:true}));
 
 BRANDS.push(...DIRECTORY);
@@ -2080,7 +2088,6 @@ const BIOS = {
   agrippa:"Spanish furniture brand founded in Valencia in 2008, handcrafting sculptural seating and casegoods in walnut, brass, and leather inspired by Gaudí's organic forms and local craft traditions.",
   "la-bo-te-concept":"French audio-furniture company founded in 2008 by Timothée Cagniard, descendant of the Siare loudspeaker family, producing handcrafted modular cabinets that integrate high-fidelity sound systems.",
   "lk-hjelle":"Norwegian furniture manufacturer founded in Sykkylven in 1940 by Lars Karl Hjelle with his brothers-in-law, still family-run and producing Scandinavian-designed seating in its original factory town.",
-  "1920r":"TBD",
   italamp:"Italian lighting company founded in 1975 near Venice by Matteo Vitadello, known for glass and crystal fixtures that pair classic and contemporary lines using traditional glassmaking techniques.",
   mohebban:"Milan rug house founded in the 1970s by the Mohebban family, hand-knotting carpets sourced from India, Nepal, and Turkey that draw on Persian, Turkish, and Moroccan weaving traditions.",
   fasem:"Italian furniture company founded in 1976 in Tuscany, specializing in steel-framed seating upholstered in full-grain leather, developed through decades of designer collaborations.",
@@ -2097,7 +2104,92 @@ const BIOS = {
 BRANDS.forEach(b=>{ if(!b.bio && BIOS[b.id]) b.bio=BIOS[b.id]; });
 
 const STOCKIST_DATA = {
+  "fasem": {
+    "instagram": "https://www.instagram.com/fasemofficial/"
+  },
+  "fontanaarte": {
+    "instagram": "https://www.instagram.com/fontanaarte_official/"
+  },
+  "gervasoni": {
+    "instagram": "https://www.instagram.com/gervasoni1882/"
+  },
+  "imperfettolab": {
+    "instagram": "https://www.instagram.com/imperfettolab/"
+  },
+  "la-bo-te-concept": {
+    "instagram": "https://www.instagram.com/laboiteconcept/"
+  },
+  "la-chance": {
+    "instagram": "https://www.instagram.com/lachance_paris/"
+  },
+  "lago": {
+    "instagram": "https://www.instagram.com/lagodesignofficial/"
+  },
+  "memphis-milano": {
+    "instagram": "https://www.instagram.com/memphismilano/"
+  },
+  "mohebban": {
+    "instagram": "https://www.instagram.com/mohebbanmilano/"
+  },
+  "moooi": {
+    "instagram": "https://www.instagram.com/moooi/"
+  },
+  "nemo-lighting": {
+    "instagram": "https://www.instagram.com/nemolighting/"
+  },
+  "promemoria": {
+    "instagram": "https://www.instagram.com/promemoria_official/"
+  },
+  "ramu-home-studio": {
+    "instagram": "https://www.instagram.com/ramuhomestudio/"
+  },
+  "reflex-angelo": {
+    "instagram": "https://www.instagram.com/reflexangelo_official/"
+  },
+  "tecno": {
+    "instagram": "https://www.instagram.com/tecno_spa/"
+  },
+  "turri": {
+    "instagram": "https://www.instagram.com/turri_official/"
+  },
+  "vo": {
+    "instagram": "https://www.instagram.com/v_o_space/"
+  },
+  "vibieffe": {
+    "instagram": "https://www.instagram.com/vibieffe_official/"
+  },
+  "yamagiwa": {
+    "instagram": "https://www.instagram.com/yamagiwa_jp/"
+  },
+  "casamania": {
+    "instagram": "https://www.instagram.com/casamania_horm/"
+  },
+  "chapo-cr-ations": {
+    "instagram": "https://www.instagram.com/chapocreations/"
+  },
+  "concretecat": {
+    "instagram": "https://www.instagram.com/concretecat/"
+  },
+  "andtradition": {
+    "instagram": "https://www.instagram.com/tradition/"
+  },
+  "4mariani": {
+    "instagram": "https://www.instagram.com/4mariani_official/"
+  },
+  "anglepoise": {
+    "instagram": "https://www.instagram.com/anglepoise/"
+  },
+  "audo": {
+    "instagram": "https://www.instagram.com/audocph/"
+  },
+  "baleri-italia": {
+    "instagram": "https://www.instagram.com/baleriitalia/"
+  },
+  "bruunmunch": {
+    "instagram": "https://www.instagram.com/bruunmunch/"
+  },
   "stilnovo": {
+    "instagram": "https://www.instagram.com/stilnovo_official/",
     "stockistCN": [
       {
         "city": "Taipei",
@@ -2118,7 +2210,7 @@ const STOCKIST_DATA = {
   },
   "ramun": {
     "rednote": "https://www.xiaohongshu.com/user/profile/6684f3f0000000000303354b?m_source=pwa&xsec_token=ABjoUYtB_38g5VxQo6lotL8G3H2ZtRoiUfgbNJOjliWv4=&xsec_source=pc_search",
-    "instagram": "https://www.instagram.com/ramun_lighting/",
+    "instagram": "https://www.instagram.com/ramun_official/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -2208,6 +2300,7 @@ const STOCKIST_DATA = {
     ]
   },
   "bomma": {
+    "instagram": "https://www.instagram.com/bomma_cz/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5f69bf270000000001003401?m_source=pwa&xsec_token=AB8JYOKB9yQjA6sCvKugqT6858Zh5ECmWYW7iH0meh6tA=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2258,9 +2351,11 @@ const STOCKIST_DATA = {
     ]
   },
   "qeeboo": {
+    "instagram": "https://www.instagram.com/qeeboo_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/62524944000000002102232f?m_source=pwa&xsec_token=ABlhBY1BfFWKJex50tgQ07w5axWmH_1jeT28UYybUgzOI=&xsec_source=pc_search"
   },
   "kar": {
+    "instagram": "https://www.instagram.com/karstudio.cn/",
     "rednote": "https://www.xiaohongshu.com/user/profile/61c9d24a000000001000d743?m_source=pwa&xsec_token=ABmMRzv7GbGLQd6NrqdH62hgLUR8_Wti_ZGxUEUOkjwIE=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2271,9 +2366,11 @@ const STOCKIST_DATA = {
     ]
   },
   "ninefact": {
+    "instagram": "https://www.instagram.com/ninefact_furniture/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5b12bd394eacab57656fc3a9?m_source=pwa&xsec_token=ABi94a6YGvygFz1Z5-zR508uBVuL01C_2QArc4oW7A98I=&xsec_source=pc_search"
   },
   "slamp": {
+    "instagram": "https://www.instagram.com/slamp_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/66740c4d0000000003031612?m_source=pwa&xsec_token=ABSM2rpYQcwjw4Jl2WtZgQ06-qkZTCY0sb4mNzHuEmaIo=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2294,9 +2391,11 @@ const STOCKIST_DATA = {
     ]
   },
   "studio-helle-mardahl": {
+    "instagram": "https://www.instagram.com/hellemardahl/",
     "rednote": "https://www.xiaohongshu.com/user/profile/61eacdad00000000100050fb?m_source=pwa&xsec_token=ABr5j_3XwRQYT-V2tpR4nG16ipLGE-r0nSyizUkakSYIg=&xsec_source=pc_search"
   },
   "penta": {
+    "instagram": "https://www.instagram.com/penta.light/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -2396,6 +2495,7 @@ const STOCKIST_DATA = {
     ]
   },
   "established-sons": {
+    "instagram": "https://www.instagram.com/establishedandsons/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63ec852c0000000026005806?m_source=pwa&xsec_token=ABXooPPKY4a-tkHBqKKtX4jUNMJKNsGHQeYwaQdMPCUGk=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2566,6 +2666,7 @@ const STOCKIST_DATA = {
     ]
   },
   "driade": {
+    "instagram": "https://www.instagram.com/driade/",
     "rednote": "https://www.xiaohongshu.com/user/profile/61a5a67c0000000010008ac0?m_source=pwa&xsec_token=ABzjOIWJwi4vfp9ioy7x6kYi0nKa4P130blTA0_6e2iYw=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2586,9 +2687,11 @@ const STOCKIST_DATA = {
     ]
   },
   "barovier-toso": {
+    "instagram": "https://www.instagram.com/barovier_toso/",
     "wechat": "https://mp.weixin.qq.com/s?__biz=MzU0MDkxODI5OQ==&mid=2247490520&idx=2&sn=0ca2615824bc9071f1f4a58a6549d5c7&chksm=fb308caccc4705ba967d6e68b0f3708b6f370aaa8d26426133b79b83589a814896c9867098d8&token=796068532&lang=zh_CN#rd"
   },
   "foscarini": {
+    "instagram": "https://www.instagram.com/foscarini_lamps/",
     "rednote": "https://www.xiaohongshu.com/user/profile/651bc25d0000000023026c54?m_source=pwa&xsec_token=ABUil2qmtPuEOA9cFyn2ml4TKa7iKyQe6hAusNxWxMcRU=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2759,6 +2862,7 @@ const STOCKIST_DATA = {
     ]
   },
   "tom-dixon": {
+    "instagram": "https://www.instagram.com/tomdixonstudio/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5bdd98181270140001db09af?m_source=pwa&xsec_token=ABV-K6HHj3CZ-HI8MxrP5OEW5Sr_zwoKpqEOC4atc7LmY=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2834,6 +2938,7 @@ const STOCKIST_DATA = {
     ]
   },
   "duxiana": {
+    "instagram": "https://www.instagram.com/duxiana/",
     "rednote": "https://www.xiaohongshu.com/user/profile/61ee40a10000000021023076?m_source=pwa&xsec_token=ABg2RYFX8_YbWBW5j6gVQE9ZW3HMnM2NruVMIaTszkz_I=&xsec_source=pc_search",
     "wechat": "https://www.duxiana.com.cn/globalassets/images/wechat/dux_qrcode.jpg",
     "stockistCN": [
@@ -2880,10 +2985,12 @@ const STOCKIST_DATA = {
     ]
   },
   "sicis": {
+    "instagram": "https://www.instagram.com/sicisofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/624edb86000000001000d2e3?m_source=pwa&xsec_token=ABLT0n3wjLF9LjIoY81f2doOcDaEFBuED63QpYgLdm31s=&xsec_source=pc_search",
     "wechat": "https://www.sicis.com/_next/image?url=%2Fimages%2Fqr-wechat.jpg&w=384&q=75"
   },
   "andr-fu-living": {
+    "instagram": "https://www.instagram.com/andrefuliving/",
     "stockistCN": [
       {
         "city": "Hong Kong",
@@ -2893,6 +3000,7 @@ const STOCKIST_DATA = {
     ]
   },
   "ceccotti-collezioni": {
+    "instagram": "https://www.instagram.com/ceccotticollezioni/",
     "rednote": "https://www.xiaohongshu.com/user/profile/633151e2000000001501b4f7?m_source=pwa&xsec_token=ABASZRFftVbUgCkhmdkJexqu31RXQWHGRYfp0JTbEbbnk=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -2958,6 +3066,7 @@ const STOCKIST_DATA = {
     ]
   },
   "maxalto": {
+    "instagram": "https://www.instagram.com/maxalto_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/65a0c6b60000000022000ed9?m_source=pwa&xsec_token=ABQtSyMlqDYodzLdpDpN53_G5wgU9zAVkbWBcdk4xL1DQ=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3038,6 +3147,7 @@ const STOCKIST_DATA = {
     ]
   },
   "baxter": {
+    "instagram": "https://www.instagram.com/baxtermadeinitaly/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5e4d1edd0000000001008151?m_source=pwa&xsec_token=ABFuSoRrLXqar83UiJnsvBDcsz0og5R_ExoVtrMhti1Qs=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3138,6 +3248,7 @@ const STOCKIST_DATA = {
     ]
   },
   "poltrona-frau": {
+    "instagram": "https://www.instagram.com/poltronafrauofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/59e35fbf6b64551e2286de00?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABGg2ecTWTCYaNE1pR3A9WAPHAxSkjkMB8wa0BlcE1dpI=&xsec_source=pc_search",
     "wechat": "https://mp.weixin.qq.com/s/3aRv80FOsf-NhMlgydn5iA",
     "stockistCN": [
@@ -3279,6 +3390,7 @@ const STOCKIST_DATA = {
     ]
   },
   "zanotta": {
+    "instagram": "https://www.instagram.com/zanotta_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6371dd73000000001f018be0?m_source=pwa&xsec_token=ABBdTSnY3QRZamVIxokfgJiUrzdWf9didabN9Hz_6Gk88=&xsec_source=pc_search",
     "wechat": "https://www.zanotta.it/zh-cn/wechat",
     "stockistCN": [
@@ -3365,6 +3477,7 @@ const STOCKIST_DATA = {
     ]
   },
   "flexform": {
+    "instagram": "https://www.instagram.com/flexformofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/60365c8d000000000100180a?m_source=pwa&xsec_token=AB1x_ODI4Sr2Sss9uXigoGWcEAs0GIc5nUwM_GVjxvCEU=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3415,6 +3528,7 @@ const STOCKIST_DATA = {
     ]
   },
   "mvsevm": {
+    "instagram": "https://www.instagram.com/mvsevm/",
     "stockistCN": [
       {
         "city": "Shenzhen",
@@ -3424,12 +3538,15 @@ const STOCKIST_DATA = {
     ]
   },
   "impatia": {
+    "instagram": "https://www.instagram.com/impatia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/64c8b72c000000000b00b54d?m_source=pwa&xsec_token=ABupjN0fG3o3LXaieOktjsrxsOfO7T9yA-EFQfq8BCGqs=&xsec_source=pc_search"
   },
   "henge": {
+    "instagram": "https://www.instagram.com/henge07/",
     "rednote": "https://www.xiaohongshu.com/user/profile/670551fe000000000d0266ef?m_source=pwa&xsec_token=ABD10K-6VojcjhEPygiLDZHKlf8E4QBdE__PetKDnWldQ=&xsec_source=pc_search"
   },
   "porro": {
+    "instagram": "https://www.instagram.com/porrospa/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63b3e4ff0000000027037890?m_source=pwa&xsec_token=ABxI6XpawOJP37Gt-lgIBPssTi4dzhpnkb0xLLsH6wFU8=&xsec_source=pc_search",
     "wechat": "https://mp.weixin.qq.com/s/nSyuTClMFWRH4YmUzpHnKQ",
     "stockistCN": [
@@ -3486,6 +3603,7 @@ const STOCKIST_DATA = {
     ]
   },
   "minotti": {
+    "instagram": "https://www.instagram.com/minotti_spa/",
     "rednote": "https://www.xiaohongshu.com/user/profile/60993be7000000000101e4a7?m_source=pwa&xsec_token=AB6EYGlcAwJMrx91XCvO5NlKefE374yTO7jHgAjRxcJFk=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3551,6 +3669,7 @@ const STOCKIST_DATA = {
     ]
   },
   "molteni-c": {
+    "instagram": "https://www.instagram.com/molteniandc/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5dc97a190000000001000761?xsec_token=ABPN2ZbenMIT5T52jNV5IkgY4O1b2fjb6L7dQ_j4adLoU%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3626,6 +3745,7 @@ const STOCKIST_DATA = {
     ]
   },
   "nilufar": {
+    "instagram": "https://www.instagram.com/nilufargallery/",
     "rednote": "https://www.xiaohongshu.com/user/profile/64918021000000001c02b26b?m_source=pwa&xsec_token=YB4bfMT9qIHUAituuSYY2u1wx2qy0vNAqq_Z1qE4wI8vc=&xsec_source=app_share&xhsshare=CopyLink&shareRedId=ODo7MTs1Njo2NzUyOTgwNjdGOTlGNzxL&apptime=1768303931&share_id=3893305c31e548049f551b54cc73e3bd",
     "wechat": "https://nilufar.com/wp-content/uploads/2026/06/NILUFAR-WECHAT.jpeg",
     "stockistCN": [
@@ -3637,6 +3757,7 @@ const STOCKIST_DATA = {
     ]
   },
   "gallotti-radice": {
+    "instagram": "https://www.instagram.com/gallottiradice/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63c1425d0000000027029511?xsec_token=AB04sEBERl8ztipzoh-8-dftHzvUURTxWemaK6qB-Weig%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3662,6 +3783,7 @@ const STOCKIST_DATA = {
     ]
   },
   "brionvega": {
+    "instagram": "https://www.instagram.com/brionvega/",
     "stockistCN": [
       {
         "city": "Taipei",
@@ -3746,6 +3868,7 @@ const STOCKIST_DATA = {
     ]
   },
   "living-divani": {
+    "instagram": "https://www.instagram.com/livingdivani/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63bd3e6900000000260049ed?m_source=pwa&xsec_token=AB9OXFfP1xI7Qu7XW9BmeWdlN1QzUGVCGGj9BotYt__rY=&xsec_source=pc_search",
     "wechat": "https://www.livingdivani.it/en/communication/agenda/2017/living-divani-on-wechat/",
     "stockistCN": [
@@ -3792,6 +3915,7 @@ const STOCKIST_DATA = {
     ]
   },
   "bocci": {
+    "instagram": "https://www.instagram.com/bocci/",
     "stockistCN": [
       {
         "city": "Shanghai",
@@ -3801,6 +3925,7 @@ const STOCKIST_DATA = {
     ]
   },
   "hessentia": {
+    "instagram": "https://www.instagram.com/hessentia_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/656dd2e6000000002002d80f?m_source=pwa&xsec_token=ABYbxyNGyL6oz9QvkBeG8vOz_BG7xxcrYZXer9TexXdrw=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3866,12 +3991,15 @@ const STOCKIST_DATA = {
     ]
   },
   "cattelan-italia": {
+    "instagram": "https://www.instagram.com/cattelanitalia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/610e23c700000000010004f0?m_source=pwa&xsec_token=AB2954UaH7I1jym1xB-SUyAdBiaObcF1cUd451p5o19ig=&xsec_source=pc_search"
   },
   "poliform": {
+    "instagram": "https://www.instagram.com/poliform_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5d556585000000001602ff2d?xsec_token=ABnFOjCmFUu27sfWZV9s3TCU7itkAkP2Hvne4WphH6crU%3D&xsec_source=pc_search"
   },
   "riva-1920": {
+    "instagram": "https://www.instagram.com/riva1920official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/625352fc000000001000a7ee?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABcyl4pcRfT7_CWKE0wj0VCLUf7sd9-bZSSu3lLqO5pvQ=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -3962,6 +4090,7 @@ const STOCKIST_DATA = {
     ]
   },
   "kelly-wearstler": {
+    "instagram": "https://www.instagram.com/kellywearstler/",
     "stockistCN": [
       {
         "city": "Dongguan",
@@ -3971,6 +4100,7 @@ const STOCKIST_DATA = {
     ]
   },
   "vi-spring": {
+    "instagram": "https://www.instagram.com/vispringbeds/",
     "stockistCN": [
       {
         "city": "Hangzhou",
@@ -3980,6 +4110,7 @@ const STOCKIST_DATA = {
     ]
   },
   "giorgetti": {
+    "instagram": "https://www.instagram.com/giorgettiofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5f0601760000000001001e84?m_source=pwa&xsec_token=ABPduVpwyiKil5Afr_dAZuRLpTao-X3A7FRv_u0DbpjKE=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4065,6 +4196,7 @@ const STOCKIST_DATA = {
     ]
   },
   "italamp": {
+    "instagram": "https://www.instagram.com/italamp_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/640c201b0000000029016d53?m_source=pwa&xsec_token=AB0tm3HbFABkl6fLwunYchObnXEgYF-z4F0NwZQdtIxsw=&xsec_source=pc_search",
     "wechat": "https://www.italamp.com/en/contacts",
     "stockistCN": [
@@ -4086,12 +4218,15 @@ const STOCKIST_DATA = {
     ]
   },
   "ligne-roset": {
+    "instagram": "https://www.instagram.com/ligneroset/",
     "rednote": "https://www.xiaohongshu.com/user/profile/55838318e4b1cf6adfa3e717?m_source=pwa&xsec_token=ABSiJL7SO4NxiDy6UjqZXDfL7oE32F0o7qSUyp7Gac90U=&xsec_source=pc_search"
   },
   "moroso": {
+    "instagram": "https://www.instagram.com/morosofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/65c4aac2000000000903d28d?m_source=pwa&xsec_token=ABVjA4grGjYFUINwZRyznb68B-S_4ky8XU51YVAE_7ORQ=&xsec_source=pc_search"
   },
   "baccarat": {
+    "instagram": "https://www.instagram.com/baccarat/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5bc9ad37c0fd2b0001509806?m_source=pwa&xsec_token=ABvUwg4fWOg2opkFLyhAqWmNoUH6Jo40g3I6jcZpDen1I=&xsec_source=pc_search",
     "taobao": "https://baccaratjjry.world.tmall.com/category-1537183070.htm?spm=a312a.7700824.w5003-25776808534.1.2152bb78gw37qn&search=y&catName=%CB%F9%D3%D0%B1%A6%B1%B4&scene=taobao_shop#bd",
     "stockistCN": [
@@ -4133,9 +4268,11 @@ const STOCKIST_DATA = {
     ]
   },
   "fendi-casa": {
+    "instagram": "https://www.instagram.com/fendicasa/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6174b3510000000002022195?m_source=pwa&xsec_token=AB_0jWzFT7JSzWsHU2WbhejH-CFY0-IJ__PzUPiGEV9KU=&xsec_source=pc_search"
   },
   "house-of-finn-juhl": {
+    "instagram": "https://www.instagram.com/houseoffinnjuhl/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -4235,6 +4372,7 @@ const STOCKIST_DATA = {
     ]
   },
   "kooij": {
+    "instagram": "https://www.instagram.com/kooij/",
     "stockistCN": [
       {
         "city": "Shanghai",
@@ -4249,6 +4387,7 @@ const STOCKIST_DATA = {
     ]
   },
   "aarnio-originals": {
+    "instagram": "https://www.instagram.com/aarniooriginals/",
     "stockistCN": [
       {
         "city": "Shanghai",
@@ -4263,10 +4402,12 @@ const STOCKIST_DATA = {
     ]
   },
   "bang-olufsen": {
+    "instagram": "https://www.instagram.com/bangolufsen/",
     "taobao": "https://bangolufsen.world.tmall.com/?spm=a312a.7700824.0.0.7f29634fC6DCgB",
     "rednote": "https://www.xiaohongshu.com/user/profile/5fa373dd0000000001005930?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_profile_board&xsec_token=ABNWUC-31LUeTsEFgZqoG7Vaozagz4qrTkMk8U4_wMR1s=&xsec_source=pc_search"
   },
   "artifort": {
+    "instagram": "https://www.instagram.com/artifort/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -4301,6 +4442,7 @@ const STOCKIST_DATA = {
     ]
   },
   "anonimacastelli": {
+    "instagram": "https://www.instagram.com/anonimacastelli/",
     "rednote": "https://www.xiaohongshu.com/user/profile/65c201f5000000001101b52d?m_source=pwa&xsec_token=ABMdToVXZ78gzrt8LL8nPY4sqaSUB4Q_9_iqEjRmeprMI=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4361,6 +4503,7 @@ const STOCKIST_DATA = {
     ]
   },
   "arflex": {
+    "instagram": "https://www.instagram.com/arflex/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5cb08f7500000000100231bd?m_source=pwa&xsec_token=AB14hbPrPR6pA-lSlYivmXQbEq0u8UqXZeD4HarsZwFUI=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4531,6 +4674,7 @@ const STOCKIST_DATA = {
     ]
   },
   "artemide": {
+    "instagram": "https://www.instagram.com/artemide_lighting/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5ffd153d0000000001001620?channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABjaDJgw0j5eQyMT1We8jiS4KzzfphlQC_ZPB4VelR8Z0=&xsec_source=pc_search",
     "taobao": "https://artemide.world.tmall.com/shop/view_shop.htm?appUid=RAzN8HWJZztTk2vGYzfq4NQJHAcymomfjX79GoAeiimis223eD2&spm=a21n57.1.hoverItem.2",
     "wechat": "https://www.artemide.com/res-2051/images/wechatCode.png",
@@ -4578,6 +4722,7 @@ const STOCKIST_DATA = {
     ]
   },
   "agape": {
+    "instagram": "https://www.instagram.com/agape_design/",
     "stockistCN": [
       {
         "city": "Shanghai",
@@ -4607,6 +4752,7 @@ const STOCKIST_DATA = {
     ]
   },
   "a-by-arturo-lvarez": {
+    "instagram": "https://www.instagram.com/arturoalvarezlighting/",
     "site": "https://www.a-emotionallight.com/",
     "stockistCN": [
       {
@@ -4617,6 +4763,7 @@ const STOCKIST_DATA = {
     ]
   },
   "alias": {
+    "instagram": "https://www.instagram.com/aliasdesign_official/",
     "site": "https://alias.design/en",
     "stockistCN": [
       {
@@ -4642,9 +4789,11 @@ const STOCKIST_DATA = {
     ]
   },
   "agrippa": {
+    "instagram": "https://www.instagram.com/agrippafurniture/",
     "site": "https://agrippacollection.com/"
   },
   "bulo": {
+    "instagram": "https://www.instagram.com/bulo_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/66d5c275000000001d0224cd?m_source=pwa&xsec_token=AB2EIlYMOGkL0s0Rom56DYEHXHXhgkr14AnUB35XNC4Jo=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4655,6 +4804,7 @@ const STOCKIST_DATA = {
     ]
   },
   "bbitalia": {
+    "instagram": "https://www.instagram.com/bebitalia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/620b6f66000000001000cc6b?xsec_token=ABU7O0B2ylGc5Ewf51CsPFZGnRrOnnXIWuR32njTa1OUw%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4770,6 +4920,7 @@ const STOCKIST_DATA = {
     ]
   },
   "brand-van-egmond": {
+    "instagram": "https://www.instagram.com/brandvanegmond/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6503dae80000000012006cfe?m_source=pwa&xsec_token=AB9-nzmF_ZMI1QotQhtBspRxnLx0YkgJ8IxFWnHD5xUO8=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4785,6 +4936,7 @@ const STOCKIST_DATA = {
     ]
   },
   "bd-barcelona-design": {
+    "instagram": "https://www.instagram.com/bdbarcelonadesign/",
     "rednote": "https://www.xiaohongshu.com/user/profile/64891c05000000001c02a91b?m_source=pwa&xsec_token=ABqf573UqPqAySPwNFs3JIGqsrCN9s0M7gD-nCwP4WkNs=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4815,6 +4967,7 @@ const STOCKIST_DATA = {
     ]
   },
   "cappellini": {
+    "instagram": "https://www.instagram.com/cappelliniofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/670cd6db000000000d027749?xsec_token=ABMNZrtIC5es3p0Ky8LUPwIZ-JgVNtle7Sye78tjQjkTw%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -4950,12 +5103,14 @@ const STOCKIST_DATA = {
     ]
   },
   "carlhansen": {
+    "instagram": "https://www.instagram.com/carlhansenandson/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63491949000000001802f803?xsec_token=ABr9dafn913eCq9JbWWAYpZzJLnUivxINix9buUaJhm-8%3D&xsec_source=pc_search",
     "stockistCN": [
       {"city": "Shanghai", "name": "Carl Hansen & Søn Shanghai Showroom", "address": "Room 5, Building 1, Lane 622 Middle Huaihai Road, Shanghai 200041, China"}
     ]
   },
   "cassina": {
+    "instagram": "https://www.instagram.com/cassinaofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5c315c3d0000000007014c1b?xsec_token=ABq2riHnpmHJuo-JB0PXAltXU0ooGYOe5PmNoBh65xcik%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5086,6 +5241,7 @@ const STOCKIST_DATA = {
     ]
   },
   "catellanismith": {
+    "instagram": "https://www.instagram.com/catellanismith/",
     "stockistCN": [
       {
         "city": "Chengdu",
@@ -5165,6 +5321,7 @@ const STOCKIST_DATA = {
     ]
   },
   "cctapis": {
+    "instagram": "https://www.instagram.com/cctapis/",
     "rednote": "https://www.xiaohongshu.com/user/profile/62444b470000000021021df7?xsec_token=AB7P624AS_eCYonhJ9UXfxDH2UAKZtEmLVDWOZZZBXh_s%3D&xsec_source=pc_search",
     "wechat": "https://cc-tapis.com/we-chat",
     "stockistCN": [
@@ -5191,6 +5348,7 @@ const STOCKIST_DATA = {
     ]
   },
   "classicon": {
+    "instagram": "https://www.instagram.com/classicon_design/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6751a827000000001c01a3ce?xsec_token=ABRA-RbFizeAqwQDBSNofCQ1WowtNszWw1UEazYS7PRcg%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5251,6 +5409,7 @@ const STOCKIST_DATA = {
     ]
   },
   "christofle": {
+    "instagram": "https://www.instagram.com/christofle/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5b2905754eacab76d3216c06?m_source=pwa&xsec_token=ABiVj4iDnjGTjRr4a2RzexHztpHspzCwYhgJrBBrA6naY=&xsec_source=pc_search",
     "taobao": "https://christofle.world.tmall.com/?spm=a312a.7700824.0.0.26157a81Tslocz",
     "stockistCN": [
@@ -5362,6 +5521,7 @@ const STOCKIST_DATA = {
     ]
   },
   "dcw": {
+    "instagram": "https://www.instagram.com/dcweditions/",
     "stockistCN": [
       {
         "city": "Taipei",
@@ -5376,6 +5536,7 @@ const STOCKIST_DATA = {
     ]
   },
   "desede": {
+    "instagram": "https://www.instagram.com/desede_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6390168f000000001f01f380?xsec_token=ABG4gPQv3zXhPkFxfWSqfHcBlY1KUkIlbW2UrSXLE3nNY%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5391,6 +5552,7 @@ const STOCKIST_DATA = {
     ]
   },
   "desalto": {
+    "instagram": "https://www.instagram.com/desalto_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6556226500000000020340fe?xsec_token=AB4tJYIaDP1pp-OQ4jED8JVimdq5fpm0C1NcP52YIkH74%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5476,9 +5638,11 @@ const STOCKIST_DATA = {
     ]
   },
   "disderot": {
+    "instagram": "https://www.instagram.com/disderot/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6094bf2c000000000100ba1b?xsec_token=ABmiOCtsy6JIwkyEqKNCh12vSboGOHsF6ZjHE9lfk8HrY%3D&xsec_source=pc_search"
   },
   "edra": {
+    "instagram": "https://www.instagram.com/edra_official/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6230fc50000000001000ffbe?xsec_token=ABsRFPILF_kDdYXsfeY3PkAFEYq5wLClXjJL4QICGwPn4%3D&xsec_source=pc_search",
     "wechat": "https://www.edra.com/grafiche/personalizzate/edra_2/style/images/ico_footer_wechat@2x.png",
     "stockistCN": [
@@ -5595,6 +5759,7 @@ const STOCKIST_DATA = {
     ]
   },
   "ege": {
+    "instagram": "https://www.instagram.com/egecarpets/",
     "rednote": "https://www.xiaohongshu.com/user/profile/64e2c1f0000000000200ebc6?m_source=pwa&xsec_token=ABFYleNCjeN7RPG2Qdzk1rVW27tEEiAEx77c9fvj3McVk=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5610,6 +5775,7 @@ const STOCKIST_DATA = {
     ]
   },
   "fiam": {
+    "instagram": "https://www.instagram.com/fiamitalia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/688b464000000000280254f5?xsec_token=AB2OAYYZ7RE3Ca2u4EbyR9DdnKJLysVz2Bdwi4J9sWreg=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -5620,6 +5786,7 @@ const STOCKIST_DATA = {
     ]
   },
   "flos": {
+    "instagram": "https://www.instagram.com/flos/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5fd98512000000000101deed?xsec_token=AByn1wtBmnEwByMrB31psn28RJZ9fYLPC7r-pEZ_f8mzE%3D&xsec_source=pc_search",
     "taobao": "https://flos.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
     "stockistCN": [
@@ -6016,6 +6183,7 @@ const STOCKIST_DATA = {
     ]
   },
   "fritzhansen": {
+    "instagram": "https://www.instagram.com/fritzhansen/",
     "rednote": "https://www.xiaohongshu.com/user/profile/60b1f91f0000000001009bb4?xsec_token=AB0R45l664J8YcP8dcrEKOfGW4Goh3wLiiXJqYdyZvn1E%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6061,6 +6229,7 @@ const STOCKIST_DATA = {
     ]
   },
   "glasitalia": {
+    "instagram": "https://www.instagram.com/glasitalia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6214d5020000000010004cbc?xsec_token=ABYcJ-xImEtK5pbC7EPWQ1F2MHI6EsX-FJuvgrj5Cd9gA%3D&xsec_source=pc_search",
     "wechat": "https://www.glasitalia.com/images/icona_wechat.png",
     "stockistCN": [
@@ -6077,6 +6246,7 @@ const STOCKIST_DATA = {
     ]
   },
   "gubi": {
+    "instagram": "https://www.instagram.com/gubi/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5a9e03df11be1005d756ebf7?xsec_token=AB6IV-gYJKJS_VJ1d_CSCjkJ8CtvNNVmugjnNmTaVhfGo%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6117,6 +6287,7 @@ const STOCKIST_DATA = {
     ]
   },
   "gufram": {
+    "instagram": "https://www.instagram.com/gufram/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6130938b0000000002021aff?m_source=pwa&xsec_token=ABF5K3-4fRP4uyGnsLmB1-k5r9hB-_yXHzZzA2U5055t0=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6127,6 +6298,7 @@ const STOCKIST_DATA = {
     ]
   },
   "georg-jensen": {
+    "instagram": "https://www.instagram.com/georgjensen/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5b484ec0e8ac2b36019b6c5c?m_source=pwa&xsec_token=ABGvap9aJiVae8_LWEOzl594MWII-Hj3FcP6Ep51UKLb4=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6162,6 +6334,7 @@ const STOCKIST_DATA = {
     ]
   },
   "galerie-mcde": {
+    "instagram": "https://www.instagram.com/galeriemcde/",
     "site": "https://www.pierrechareau-edition.fr/",
     "stockistCN": [
       {
@@ -6172,6 +6345,7 @@ const STOCKIST_DATA = {
     ]
   },
   "hermanmiller": {
+    "instagram": "https://www.instagram.com/hermanmiller/",
     "rednote": "https://www.xiaohongshu.com/user/profile/60adcdc20000000001003d30?xsec_token=ABMZXKLqBYNI6dXiNzrAF58a9v3DheGHqgXlB2LhBiSf0%3D&xsec_source=pc_search",
     "taobao": "https://hermanmiller.world.tmall.com/?spm=a312a.7700824.0.0.4c754816P6nhFx",
     "stockistCN": [
@@ -6293,6 +6467,7 @@ const STOCKIST_DATA = {
     ]
   },
   "knoll": {
+    "instagram": "https://www.instagram.com/knollinc/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63e2220d000000002601238e?xsec_token=AB9CY0mZKOlZTaWpPZgp0tgE1NNPCI7KyLue17Wqueco4%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6353,6 +6528,7 @@ const STOCKIST_DATA = {
     ]
   },
   "kimu": {
+    "instagram": "https://www.instagram.com/kimu_design/",
     "site": "https://www.kimudesign.com/",
     "stockistCN": [
       {
@@ -6363,6 +6539,7 @@ const STOCKIST_DATA = {
     ]
   },
   "louispoulsen": {
+    "instagram": "https://www.instagram.com/louispoulsen/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6087a3d6000000000101f71f?xsec_token=ABRptQMcVDI80s1AY8tRX8D6V1uRsZKbx4KQ2-zy7GaBw%3D&xsec_source=pc_search",
     "taobao": "https://louispoulsen.world.tmall.com/category.htm?spm=pc_detail.30350276.shop_block.dshopinfo.e8917dd6uLohDG",
     "stockistCN": [
@@ -6604,9 +6781,11 @@ const STOCKIST_DATA = {
     ]
   },
   "lumina": {
+    "instagram": "https://www.instagram.com/lumina_italia/",
     "site": "https://www.lumina.it/"
   },
   "luceplan": {
+    "instagram": "https://www.instagram.com/luceplanlighting/",
     "stockistCN": [
       {
         "city": "Hangzhou",
@@ -6661,6 +6840,7 @@ const STOCKIST_DATA = {
     ]
   },
   "lk-hjelle": {
+    "instagram": "https://www.instagram.com/lkhjelle/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -6690,6 +6870,7 @@ const STOCKIST_DATA = {
     ]
   },
   "magis": {
+    "instagram": "https://www.instagram.com/magisdesign/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5ea6e45e000000000100b659?xsec_token=ABJbAqGoDBZUCe8WaTLtnIIy-QyxtItBL7Z8Cw8UMMNKM%3D&xsec_source=pc_search",
     "taobao": "https://magis.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
     "stockistCN": [
@@ -6801,6 +6982,7 @@ const STOCKIST_DATA = {
     ]
   },
   "martinelliluce": {
+    "instagram": "https://www.instagram.com/martinelliluce/",
     "rednote": "https://www.xiaohongshu.com/user/profile/63044d15000000001200ca0a?xsec_token=ABT5EGo7pqwLU5KLu-uK7QArbYjzgF6XCdyVk2MKOoWcA%3D&xsec_source=pc_search",
     "stockistCN": [
       {"city": "Shanghai", "name": "QQODD Shanghai (Martinelli Luce China General Agent)", "address": "Shanghai, China"},
@@ -6809,6 +6991,7 @@ const STOCKIST_DATA = {
     ]
   },
   "mogg": {
+    "instagram": "https://www.instagram.com/moggdesign/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5fc4dcea00000000010090f0?xsec_token=ABbdflBtmBT1dJnS00-_7ekJVDE21A_K7S-0BMvhHB6ZQ%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -6954,6 +7137,7 @@ const STOCKIST_DATA = {
     ]
   },
   "mario-tsai-studio": {
+    "instagram": "https://www.instagram.com/mariotsai.studio/",
     "rednote": "https://www.xiaohongshu.com/user/profile/60d1a9d300000000200290c7?xsec_token=ABpMSFX7fe6F6ZWCKCVyO9_SVCm3DGPlvtgRnRIFYdNU0%3D&xsec_source=pc_search",
     "site": "https://mariotsai.studio/",
     "stockistCN": [
@@ -7100,6 +7284,7 @@ const STOCKIST_DATA = {
     ]
   },
   "mdf-italia": {
+    "instagram": "https://www.instagram.com/mdfitalia_official/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -7214,6 +7399,7 @@ const STOCKIST_DATA = {
     ]
   },
   "poltronova": {
+    "instagram": "https://www.instagram.com/poltronova/",
     "rednote": "https://www.xiaohongshu.com/user/profile/69c1117300000000260026c3?m_source=pwa&xsec_token=ABBxTHcTyzJvYtYQW7moUyhIAGhtfQIxSR3w11z9Q-I_8=&xsec_source=pc_search",
     "stockistCN": [
       {"city": "Beijing", "name": "101+FLAGSHIP", "address": "Ban Jie Ta Lu, Beijing, China (半截塔路，北京)"},
@@ -7221,6 +7407,7 @@ const STOCKIST_DATA = {
     ]
   },
   "petite-friture": {
+    "instagram": "https://www.instagram.com/petitefriture/",
     "stockistCN": [
       {
         "city": "Hong Kong",
@@ -7230,9 +7417,11 @@ const STOCKIST_DATA = {
     ]
   },
   "parachilna": {
+    "instagram": "https://www.instagram.com/parachilna_official/",
     "site": "https://www.parachilna.eu/"
   },
   "phantom-hands": {
+    "instagram": "https://www.instagram.com/phantomhandsdesign/",
     "stockistCN": [
       {
         "city": "Taipei",
@@ -7267,9 +7456,11 @@ const STOCKIST_DATA = {
     ]
   },
   "rrres": {
+    "instagram": "https://www.instagram.com/rrres.mx/",
     "site": "https://rrrrrr.es/Studio"
   },
   "saba": {
+    "instagram": "https://www.instagram.com/sabaitalia/",
     "rednote": "https://www.xiaohongshu.com/user/profile/653b2f7b0000000002010d41?xsec_token=ABXFWIyoTyh9v-_QO_Thsfu1Ovwg_f8Ss6nSE56498Wcg%3D&xsec_source=pc_search",
     "wechat": "https://sabaitalia.com/static/images/wechat-qr-code.jpg",
     "stockistCN": [
@@ -7306,9 +7497,11 @@ const STOCKIST_DATA = {
     ]
   },
   "rispal": {
+    "instagram": "https://www.instagram.com/rispal_official/",
     "site": "https://rispal.shop/en"
   },
   "santacole": {
+    "instagram": "https://www.instagram.com/santacole/",
     "rednote": "https://www.xiaohongshu.com/user/profile/66409b6a0000000003033188?xsec_token=ABs4oVm28NA2pK-dIp70_nQckiRAmLaYVdFThoti_qLl4%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -7369,6 +7562,7 @@ const STOCKIST_DATA = {
     ]
   },
   "stoffnagel": {
+    "instagram": "https://www.instagram.com/stoffnagel/",
     "stockistCN": [
       {
         "city": "Beijing",
@@ -7423,13 +7617,16 @@ const STOCKIST_DATA = {
     ]
   },
   "serax": {
+    "instagram": "https://www.instagram.com/seraxbelgium/",
     "rednote": "https://www.xiaohongshu.com/user/profile/69a8e80a0000000033033488?m_source=pwa&xsec_token=AB0VXKUSYfBaNOViHL5zkW0838xc1v4ZungwJA9dIFSmE=&xsec_source=pc_search",
     "taobao": "https://serax.world.tmall.com/?spm=a312a.7700824.0.0.4bc54bcdYQEkm9"
   },
   "spectrum": {
+    "instagram": "https://www.instagram.com/spectrumdesignnl/",
     "site": "https://www.spectrumdesign.nl/en"
   },
   "singchan": {
+    "instagram": "https://www.instagram.com/singchandesign/",
     "rednote": "https://www.xiaohongshu.com/user/profile/5cc6c4ec0000000012007414?m_source=pwa&channel_type=web_search_result_notes&parent_page_channel_type=web_user_board&xsec_token=ABiJRGrwp_WiEVPoySSTpvJ9qdhkLB4doksI3Gl-ggMrQ=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -7440,6 +7637,7 @@ const STOCKIST_DATA = {
     ]
   },
   "thonet": {
+    "instagram": "https://www.instagram.com/thonetgmbh/",
     "stockistCN": [
       {
         "city": "Chengdu",
@@ -7499,6 +7697,7 @@ const STOCKIST_DATA = {
     ]
   },
   "tecta": {
+    "instagram": "https://www.instagram.com/tecta_manufaktur/",
     "stockistCN": [
       {
         "city": "Shanghai",
@@ -7508,6 +7707,7 @@ const STOCKIST_DATA = {
     ]
   },
   "cire-trudon": {
+    "instagram": "https://www.instagram.com/trudon/",
     "rednote": "https://www.xiaohongshu.com/user/profile/59eea81e11be107cd27ba6de?m_source=pwa&xsec_token=AB-RHRcx9Ufp_85lL6jH-n-4QcD9Ztg9yVwrTyGRWhmuo=&xsec_source=pc_search",
     "taobao": "https://trudon.world.tmall.com/?spm=a312a.7700824.0.0.125455f9kTiJXa",
     "stockistCN": [
@@ -7519,6 +7719,7 @@ const STOCKIST_DATA = {
     ]
   },
   "usm": {
+    "instagram": "https://www.instagram.com/usm_modular_furniture/",
     "rednote": "https://www.xiaohongshu.com/user/profile/54e4b81eb4c4d65b75a87796?xsec_token=ABaP7V_Ihr-g6_-1Vajqixt6-DNnpk5gODGPgW9O9Isgs%3D&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -7654,9 +7855,11 @@ const STOCKIST_DATA = {
     ]
   },
   "verpan": {
+    "instagram": "https://www.instagram.com/verpanofficial/",
     "rednote": "https://www.xiaohongshu.com/user/profile/616917770000000002019b04?m_source=pwa&xsec_token=ABb0DR086b_JOmsZwfHnnMNArBan-TgC6GAYf698Vn1tg=&xsec_source=pc_search"
   },
   "vipp": {
+    "instagram": "https://www.instagram.com/vipp/",
     "rednote": "https://www.xiaohongshu.com/user/profile/559ca6fce4b1cf3b72244fec?m_source=pwa&xsec_token=AB6eWC6TK-xgddMfxYBROjafpEShS7HgOHOjjka__niG4=&xsec_source=pc_search",
     "taobao": "https://vipp.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
     "stockistCN": [
@@ -7668,6 +7871,7 @@ const STOCKIST_DATA = {
     ]
   },
   "vitra": {
+    "instagram": "https://www.instagram.com/vitra/",
     "rednote": "https://www.xiaohongshu.com/user/profile/66b1ba8c000000001d0319e2?xsec_token=ABWjAMSlC6C_vnVgi4lM3f_bMQ5EEPIc0HtPCl8IhhllA%3D&xsec_source=pc_search",
     "taobao": "https://vitra.world.tmall.com/category.htm?spm=a21n57.shop_search.0.0.2b9538bahdJkvg",
     "stockistCN": [
@@ -7849,6 +8053,7 @@ const STOCKIST_DATA = {
     ]
   },
   "zieta": {
+    "instagram": "https://www.instagram.com/zieta_studio/",
     "stockistCN": [
       {
         "city": "Taipei",
@@ -7873,6 +8078,7 @@ const STOCKIST_DATA = {
     ]
   },
   "tacchini": {
+    "instagram": "https://www.instagram.com/tacchiniitaliaforniture/",
     "rednote": "https://www.xiaohongshu.com/user/profile/6707ea9b000000001d032b72?m_source=pwa&xsec_token=ABtXIGnGlVgKNr3wllbwycu-lcqYgZzo0UsPSLngjhozA=&xsec_source=pc_search",
     "stockistCN": [
       {
@@ -7936,11 +8142,12 @@ const STOCKIST_DATA = {
 BRANDS.forEach(b=>{
   const d=STOCKIST_DATA[b.id];
   if(!d) return;
-  if(d.rednote || d.taobao || d.wechat){
+  if(d.rednote || d.taobao || d.wechat || d.instagram){
     b.social = b.social || {};
     if(d.rednote) b.social.rednote = d.rednote;
     if(d.taobao) b.social.taobao = d.taobao;
     if(d.wechat) b.social.wechat = d.wechat;
+    if(d.instagram) b.social.instagram = d.instagram;
   }
   if(d.site) b.site = d.site;
   if(d.stockistCN) b.stockistCN = d.stockistCN;
@@ -11755,6 +11962,3265 @@ const AMBIANCE_DATA = {
 };
 BRANDS.forEach(b=>{ if(AMBIANCE_DATA[b.id]) b.ambiance = AMBIANCE_DATA[b.id]; });
 const PRODUCT_COLLECTIONS = {
+  "imperfettolab": [
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Orghen",
+          "colors": [
+            {
+              "img": "images/imperfettolab/table/orghen/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Plateau",
+          "colors": [
+            {
+              "img": "images/imperfettolab/table/plateau/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decor",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Nok",
+          "colors": [
+            {
+              "img": "images/imperfettolab/decor/nok/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mirror",
+      "cat": [
+        "Mirror"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Introverso",
+          "colors": [
+            {
+              "img": "images/imperfettolab/mirror/introverso/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "B.olla",
+          "colors": [
+            {
+              "img": "images/imperfettolab/mirror/b-olla/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/imperfettolab/mirror/b-olla/1.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Aspis",
+          "colors": [
+            {
+              "img": "images/imperfettolab/storage/aspis/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Epoche",
+          "colors": [
+            {
+              "img": "images/imperfettolab/chair/epoche/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.imperfettolab.com",
+      "models": [
+        {
+          "name": "Etty",
+          "colors": [
+            {
+              "img": "images/imperfettolab/lighting/etty/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Flora",
+          "colors": [
+            {
+              "img": "images/imperfettolab/lighting/flora/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "knoll": [
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.knoll.com",
+      "models": [
+        {
+          "name": "Pollock Executive Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/pollock-executive-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Muecke Wood Collection Lounge Chair And Ottoman",
+          "colors": [
+            {
+              "img": "images/knoll/chair/muecke-wood-collection-lounge-chair-and-ottoman/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Wassily Lounge Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/wassily-lounge-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Platner Stool",
+          "colors": [
+            {
+              "img": "images/knoll/chair/platner-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Mr Bauhaus 100Th Anniversary Edition",
+          "colors": [
+            {
+              "img": "images/knoll/chair/mr-bauhaus-100th-anniversary-edition/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Florence Knoll Bench - Relax",
+          "colors": [
+            {
+              "img": "images/knoll/chair/florence-knoll-bench-relax/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bertoia Bar Stool",
+          "colors": [
+            {
+              "img": "images/knoll/chair/bertoia-bar-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bertoia Large Diamond Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/bertoia-large-diamond-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Saarinen Conference Chair Relax",
+          "colors": [
+            {
+              "img": "images/knoll/chair/saarinen-conference-chair-relax/0.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "Kn Collection By Knoll Kn02 And Kn03",
+          "colors": [
+            {
+              "img": "images/knoll/chair/kn-collection-by-knoll-kn02-and-kn03/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Risom Lounge Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/risom-lounge-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bertoia Diamond Chair - Outdoor",
+          "colors": [
+            {
+              "img": "images/knoll/chair/bertoia-diamond-chair-outdoor/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Muecke Wood Collection Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/muecke-wood-collection-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Mr Side Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/mr-side-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Kn Collection By Knoll Kn01",
+          "colors": [
+            {
+              "img": "images/knoll/chair/kn-collection-by-knoll-kn01/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Barcelona Stool",
+          "colors": [
+            {
+              "img": "images/knoll/chair/barcelona-stool/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Morrison Hannah Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/morrison-hannah-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Florence Knoll Model 31 Lounge Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/florence-knoll-model-31-lounge-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Barcelona Chair",
+          "colors": [
+            {
+              "img": "images/knoll/chair/barcelona-chair/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Florence Knoll Bench",
+          "colors": [
+            {
+              "img": "images/knoll/chair/florence-knoll-bench/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Four Seasons Barstool",
+          "colors": [
+            {
+              "img": "images/knoll/chair/four-seasons-barstool/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.knoll.com",
+      "models": [
+        {
+          "name": "Avio Sofa System",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/avio-sofa-system/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Florence Knoll Collection - Relax",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/florence-knoll-collection-relax/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bastiano Sofa Collection",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/bastiano-sofa-collection/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Matic Sofa Collection",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/matic-sofa-collection/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Gould Sofa",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/gould-sofa/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Barcelona Couch Relax",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/barcelona-couch-relax/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sofa Collection By Edward Barber And Jay Osgerby",
+          "colors": [
+            {
+              "img": "images/knoll/sofa/sofa-collection-by-edward-barber-and-jay-osgerby/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.knoll.com",
+      "models": [
+        {
+          "name": "Barcelona Table",
+          "colors": [
+            {
+              "img": "images/knoll/table/barcelona-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Muecke Wood Collection Dining Table",
+          "colors": [
+            {
+              "img": "images/knoll/table/muecke-wood-collection-dining-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Florence Knoll Table Desk",
+          "colors": [
+            {
+              "img": "images/knoll/table/florence-knoll-table-desk/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Laccio Table",
+          "colors": [
+            {
+              "img": "images/knoll/table/laccio-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Albini Desk",
+          "colors": [
+            {
+              "img": "images/knoll/table/albini-desk/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Platner High Table",
+          "colors": [
+            {
+              "img": "images/knoll/table/platner-high-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Grasshopper High Tables",
+          "colors": [
+            {
+              "img": "images/knoll/table/grasshopper-high-tables/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Coffee Table By Alexander Girard",
+          "colors": [
+            {
+              "img": "images/knoll/table/coffee-table-by-alexander-girard/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Outdoor",
+      "cat": [
+        "Outdoor"
+      ],
+      "link": "https://www.knoll.com",
+      "models": [
+        {
+          "name": "Saarinen High Table For Outdoor",
+          "colors": [
+            {
+              "img": "images/knoll/outdoor/saarinen-high-table-for-outdoor/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "kimu": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.google.com/search?q=Kimu+furniture+brand",
+      "models": [
+        {
+          "name": "The New Old Table Light Tall",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-table-light-tall/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-table-light-tall/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "The New Old Light Copper Edition",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-light-copper-edition/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "The New Old Light Bonsai L",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-light-bonsai-l/0.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-light-bonsai-l/1.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-light-bonsai-l/2.jpg",
+              "pal": "Sand"
+            }
+          ]
+        },
+        {
+          "name": "The New Old Table Light Copper Edition",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-table-light-copper-edition/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Nigiri Floor Lamp Square",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/nigiri-floor-lamp-square/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/kimu/lighting/nigiri-floor-lamp-square/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Nigiri Floor Lamp Triangle",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/nigiri-floor-lamp-triangle/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/kimu/lighting/nigiri-floor-lamp-triangle/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "The New Old Light L",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-light-l/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-light-l/1.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-light-l/2.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Churros Floor Lamp",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/churros-floor-lamp/0.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/kimu/lighting/churros-floor-lamp/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "The New Old Wall Lamp",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-wall-lamp/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Screen Light 2.0 Square/Round",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/screen-light-2-0-square-round/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/kimu/lighting/screen-light-2-0-square-round/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Churros Wall Lamp",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/churros-wall-lamp/0.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/kimu/lighting/churros-wall-lamp/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Rice Ball Table Light",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/rice-ball-table-light/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "The New Old Light Bonsai M2",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-light-bonsai-m2/0.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/kimu/lighting/the-new-old-light-bonsai-m2/1.jpg",
+              "pal": "Sand"
+            }
+          ]
+        },
+        {
+          "name": "Paper Milk Light",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/paper-milk-light/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/kimu/lighting/paper-milk-light/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Churros Pendant Horizontal",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/churros-pendant-horizontal/0.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/kimu/lighting/churros-pendant-horizontal/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "The New Old Floor Lamp",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-floor-lamp/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "The New Old Bedside Pendant",
+          "colors": [
+            {
+              "img": "images/kimu/lighting/the-new-old-bedside-pendant/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "martinelliluce": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.martinelliluce.it",
+      "models": [
+        {
+          "name": "Avro",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/avro/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/martinelliluce/lighting/avro/1.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/martinelliluce/lighting/avro/2.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/martinelliluce/lighting/avro/3.jpg",
+              "pal": "Terracotta"
+            },
+            {
+              "img": "images/martinelliluce/lighting/avro/4.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Grammoluce",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/grammoluce/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Pipistrello Musee dOrsay",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/pipistrello-musee-dorsay/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Noura",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/noura/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Multidot",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/multidot/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Infinita",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/infinita/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Mamba",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/mamba/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lady Galala",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/lady-galala/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/lady-galala/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Bolla",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/bolla/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/bolla/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/bolla/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/bolla/3.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Trilly",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/trilly/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/trilly/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Amanita",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/amanita/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Lent",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/lent/0.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/martinelliluce/lighting/lent/1.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/martinelliluce/lighting/lent/2.jpg",
+              "pal": "Mustard"
+            }
+          ]
+        },
+        {
+          "name": "Shanghai",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/shanghai/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Corona",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/corona/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Pouff",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/pouff/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/martinelliluce/lighting/pouff/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Sistema Brick",
+          "colors": [
+            {
+              "img": "images/martinelliluce/lighting/sistema-brick/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.martinelliluce.it",
+      "models": [
+        {
+          "name": "Metafora Low Coffee Table",
+          "colors": [
+            {
+              "img": "images/martinelliluce/table/metafora-low-coffee-table/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "louispoulsen": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.louispoulsen.com",
+      "models": [
+        {
+          "name": "VL Studio TableFloor Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/vl-studio-tablefloor-lamp/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/vl-studio-tablefloor-lamp/1.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Table Lamp Centenary Edition",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp-centenary-edition/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 21 Portable Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-21-portable-lamp/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-21-portable-lamp/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Enigma Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/enigma-pendant/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/enigma-pendant/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Patera Oval Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/patera-oval-pendant/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH Artichoke Pale Rose",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke-pale-rose/0.jpg",
+              "pal": "Rose"
+            }
+          ]
+        },
+        {
+          "name": "Panthella Portable Lamp The Originals",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/panthella-portable-lamp-the-originals/0.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-portable-lamp-the-originals/1.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-portable-lamp-the-originals/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-portable-lamp-the-originals/3.jpg",
+              "pal": "Terracotta"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-portable-lamp-the-originals/4.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "AJ Floor Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/2.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/louispoulsen/lighting/aj-floor-lamp/5.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Panthella 160 Portable Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/1.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/2.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/3.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/4.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-160-portable-lamp/5.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Moonsetter",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/moonsetter/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH Artichoke",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/2.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/3.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/4.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke/5.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 5-4  PH 6-6",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-5-4-ph-6-6/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH Artichoke Glass",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-artichoke-glass/0.jpg",
+              "pal": "Sand"
+            }
+          ]
+        },
+        {
+          "name": "VL 45 Radiohus Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/vl-45-radiohus-pendant/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/vl-45-radiohus-pendant/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/vl-45-radiohus-pendant/2.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/vl-45-radiohus-pendant/3.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Academy",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-academy/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Wall Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-wall-lamp/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH Snowball",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-snowball/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-snowball/1.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-snowball/2.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-snowball/3.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-snowball/4.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-pendant/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-pendant/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-pendant/2.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Pale Rose Table Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-pale-rose-table-lamp/0.jpg",
+              "pal": "Rose"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Aged Brass Opal Table Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-aged-brass-opal-table-lamp/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "PH 3-2 Floor Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-3-2-floor-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-3-2-floor-lamp/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-3-2-floor-lamp/2.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "PH Septima",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-septima/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Panthella Floor Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/panthella-floor-lamp/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Yuh Wall Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/yuh-wall-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/yuh-wall-lamp/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/yuh-wall-lamp/2.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/yuh-wall-lamp/3.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Panthella 250 Portable Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/0.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/1.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/2.jpg",
+              "pal": "Rose"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/3.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/4.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/panthella-250-portable-lamp/5.jpg",
+              "pal": "Mustard"
+            }
+          ]
+        },
+        {
+          "name": "VL 45 Radiohus Pale Rose Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/vl-45-radiohus-pale-rose-pendant/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "PH 32 Table Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/2.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/3.jpg",
+              "pal": "Burgundy"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/4.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-32-table-lamp/5.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "PH 43 Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-43-pendant/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 21 Pale Rose Brass Table Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-21-pale-rose-brass-table-lamp/0.jpg",
+              "pal": "Rose"
+            }
+          ]
+        },
+        {
+          "name": "PH 33 Pale Rose Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-33-pale-rose-pendant/0.jpg",
+              "pal": "Rose"
+            }
+          ]
+        },
+        {
+          "name": "Nyhavn Outdoor Wall Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/nyhavn-outdoor-wall-lamp/0.jpg",
+              "pal": "Copper"
+            },
+            {
+              "img": "images/louispoulsen/lighting/nyhavn-outdoor-wall-lamp/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "PH 3-3 Pale Rose Brass Pendant",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-3-3-pale-rose-brass-pendant/0.jpg",
+              "pal": "Rose"
+            }
+          ]
+        },
+        {
+          "name": "PH 5 Mini",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/1.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/2.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/3.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/4.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/louispoulsen/lighting/ph-5-mini/5.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "VL 38 Wall Lamp",
+          "colors": [
+            {
+              "img": "images/louispoulsen/lighting/vl-38-wall-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/louispoulsen/lighting/vl-38-wall-lamp/1.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "magis": [
+    {
+      "name": "Storage",
+      "cat": [
+        "Storage"
+      ],
+      "link": "https://www.magisdesign.com",
+      "models": [
+        {
+          "name": "Transit",
+          "colors": [
+            {
+              "img": "images/magis/storage/transit/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Officina Bookcase Desk",
+          "colors": [
+            {
+              "img": "images/magis/storage/officina-bookcase-desk/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Steelwood Shelving System",
+          "colors": [
+            {
+              "img": "images/magis/storage/steelwood-shelving-system/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/storage/steelwood-shelving-system/1.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Decor",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://www.magisdesign.com",
+      "models": [
+        {
+          "name": "Officina Coat Stand",
+          "colors": [
+            {
+              "img": "images/magis/decor/officina-coat-stand/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Spike The Wild Bunch",
+          "colors": [
+            {
+              "img": "images/magis/decor/spike-the-wild-bunch/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/decor/spike-the-wild-bunch/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/decor/spike-the-wild-bunch/2.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/magis/decor/spike-the-wild-bunch/3.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/magis/decor/spike-the-wild-bunch/4.jpg",
+              "pal": "Mustard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mirror",
+      "cat": [
+        "Mirror"
+      ],
+      "link": "https://www.magisdesign.com",
+      "models": [
+        {
+          "name": "Deja-vu Mirrors",
+          "colors": [
+            {
+              "img": "images/magis/mirror/deja-vu-mirrors/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.magisdesign.com",
+      "models": [
+        {
+          "name": "Pied-a-terre Extending",
+          "colors": [
+            {
+              "img": "images/magis/table/pied-a-terre-extending/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        },
+        {
+          "name": "Officina Low Table",
+          "colors": [
+            {
+              "img": "images/magis/table/officina-low-table/0.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/magis/table/officina-low-table/1.jpg",
+              "pal": "Marble"
+            }
+          ]
+        },
+        {
+          "name": "Archeo",
+          "colors": [
+            {
+              "img": "images/magis/table/archeo/0.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/magis/table/archeo/1.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/magis/table/archeo/2.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/table/archeo/3.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/magis/table/archeo/4.jpg",
+              "pal": "Terracotta"
+            }
+          ]
+        },
+        {
+          "name": "Ancora Rectangular",
+          "colors": [
+            {
+              "img": "images/magis/table/ancora-rectangular/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/table/ancora-rectangular/1.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/magis/table/ancora-rectangular/2.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/table/ancora-rectangular/3.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "360 Table",
+          "colors": [
+            {
+              "img": "images/magis/table/360-table/0.jpg",
+              "pal": "Black"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.magisdesign.com",
+      "models": [
+        {
+          "name": "Traffic Chiaselongue",
+          "colors": [
+            {
+              "img": "images/magis/chair/traffic-chiaselongue/0.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/traffic-chiaselongue/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Riace 2",
+          "colors": [
+            {
+              "img": "images/magis/chair/riace-2/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Officina Bench",
+          "colors": [
+            {
+              "img": "images/magis/chair/officina-bench/0.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/officina-bench/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Motta Upholstered Stool",
+          "colors": [
+            {
+              "img": "images/magis/chair/motta-upholstered-stool/0.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/motta-upholstered-stool/1.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/magis/chair/motta-upholstered-stool/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/magis/chair/motta-upholstered-stool/3.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "Troy 4-star Wheel",
+          "colors": [
+            {
+              "img": "images/magis/chair/troy-4-star-wheel/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/troy-4-star-wheel/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Trave",
+          "colors": [
+            {
+              "img": "images/magis/chair/trave/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/trave/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/trave/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/trave/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/trave/4.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Stanley",
+          "colors": [
+            {
+              "img": "images/magis/chair/stanley/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/stanley/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/stanley/2.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Substance",
+          "colors": [
+            {
+              "img": "images/magis/chair/substance/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/2.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/3.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/4.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/substance/6.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/substance/7.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/magis/chair/substance/8.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/substance/9.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/chair/substance/10.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "South Armchair",
+          "colors": [
+            {
+              "img": "images/magis/chair/south-armchair/0.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/south-armchair/1.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/chair/south-armchair/2.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/south-armchair/3.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/south-armchair/4.jpg",
+              "pal": "Terracotta"
+            },
+            {
+              "img": "images/magis/chair/south-armchair/5.jpg",
+              "pal": "Terracotta"
+            }
+          ]
+        },
+        {
+          "name": "Pipe Stacking Chair",
+          "colors": [
+            {
+              "img": "images/magis/chair/pipe-stacking-chair/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/pipe-stacking-chair/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Air Armchair",
+          "colors": [
+            {
+              "img": "images/magis/chair/air-armchair/0.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/1.jpg",
+              "pal": "Cream"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/3.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/4.jpg",
+              "pal": "Terracotta"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/5.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/chair/air-armchair/6.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Deja-vu Chair",
+          "colors": [
+            {
+              "img": "images/magis/chair/deja-vu-chair/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mariolina",
+          "colors": [
+            {
+              "img": "images/magis/chair/mariolina/0.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/mariolina/1.jpg",
+              "pal": "Terracotta"
+            },
+            {
+              "img": "images/magis/chair/mariolina/2.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/magis/chair/mariolina/3.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/mariolina/4.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Mila Chair with Arms",
+          "colors": [
+            {
+              "img": "images/magis/chair/mila-chair-with-arms/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/mila-chair-with-arms/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/mila-chair-with-arms/2.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Motta Polypropylene",
+          "colors": [
+            {
+              "img": "images/magis/chair/motta-polypropylene/0.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/magis/chair/motta-polypropylene/1.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/magis/chair/motta-polypropylene/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/magis/chair/motta-polypropylene/3.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "Officina Chair",
+          "colors": [
+            {
+              "img": "images/magis/chair/officina-chair/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/officina-chair/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/magis/chair/officina-chair/2.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/3.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/4.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/5.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/6.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/7.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/8.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/9.jpg",
+              "pal": "Grey"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/10.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/magis/chair/officina-chair/11.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Officina Sofa 2",
+          "colors": [
+            {
+              "img": "images/magis/chair/officina-sofa-2/0.jpg",
+              "pal": "Charcoal"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lk-hjelle": [
+    {
+      "name": "Sofa",
+      "cat": [
+        "Sofa"
+      ],
+      "link": "https://www.lkhjelle.no",
+      "models": [
+        {
+          "name": "Ami",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/ami/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/6.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/7.jpg",
+              "pal": "Mustard"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/8.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ami/9.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Fri Sofa",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/6.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/7.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/fri-sofa/8.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Gaia",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/gaia/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Hal",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/hal/0.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/hal/1.jpg",
+              "pal": "Cognac"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/hal/2.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Less",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/less/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/less/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/less/2.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/less/3.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/less/4.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/less/5.jpg",
+              "pal": "Forest"
+            }
+          ]
+        },
+        {
+          "name": "Lobby",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/lobby/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/6.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/7.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/8.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/9.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/10.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/11.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/lobby/12.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Ugo",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/ugo/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ugo/1.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Ok",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/sofa/ok/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/1.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/6.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/7.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/8.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/9.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/10.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/sofa/ok/11.jpg",
+              "pal": "Mustard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chair",
+      "cat": [
+        "Seating"
+      ],
+      "link": "https://www.lkhjelle.no",
+      "models": [
+        {
+          "name": "Falcon Phoenix",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/2.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/3.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/4.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-phoenix/5.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "Falcon First",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/falcon-first/5.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Kavai",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/kavai/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/kavai/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/kavai/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/kavai/3.jpg",
+              "pal": "Rose"
+            },
+            {
+              "img": "images/lk-hjelle/chair/kavai/4.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Siesta Classic",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/0.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/2.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/3.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/4.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-classic/6.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Modell 711",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/modell-711/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/3.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/4.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/5.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/6.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/7.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/8.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/9.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/10.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/lk-hjelle/chair/modell-711/11.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Siesta Ovis",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/3.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/4.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/5.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/6.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/7.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lk-hjelle/chair/siesta-ovis/8.jpg",
+              "pal": "Oak"
+            }
+          ]
+        },
+        {
+          "name": "Ada Series",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/chair/ada-series/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/1.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/2.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/3.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/4.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/5.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/6.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/7.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/8.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/9.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/10.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/11.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/12.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/13.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/14.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/15.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/16.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/17.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/18.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lk-hjelle/chair/ada-series/19.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.lkhjelle.no",
+      "models": [
+        {
+          "name": "Sia",
+          "colors": [
+            {
+              "img": "images/lk-hjelle/table/sia/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "la-bo-te-concept": [
+    {
+      "name": "Speaker",
+      "cat": [
+        "Speaker"
+      ],
+      "link": "https://www.laboiteconcept.com",
+      "models": [
+        {
+          "name": "LX Turntable",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/lx-turntable/0.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "LX X Turntable",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/lx-x-turntable/0.jpg",
+              "pal": "Oak"
+            }
+          ]
+        },
+        {
+          "name": "LX Studio Turntable",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/lx-studio-turntable/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "LX Supakitch Turntable",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/lx-supakitch-turntable/0.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "PR Alta",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/pr-alta/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "PR Link Stand Bundle",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/pr-link-stand-bundle/0.jpg",
+              "pal": "Sand"
+            }
+          ]
+        },
+        {
+          "name": "Cube CS",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/cube-cs/0.jpg",
+              "pal": "Oak"
+            },
+            {
+              "img": "images/la-bo-te-concept/speaker/cube-cs/1.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "LX X",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/lx-x/0.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "Cube Marble",
+          "colors": [
+            {
+              "img": "images/la-bo-te-concept/speaker/cube-marble/0.jpg",
+              "pal": "Marble"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "luceplan": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.luceplan.com",
+      "models": [
+        {
+          "name": "Millimetro Table",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/millimetro-table/0.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/luceplan/lighting/millimetro-table/1.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Hono Table",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/hono-table/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/luceplan/lighting/hono-table/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Liiu",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/liiu/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Liiu Floor",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/liiu-floor/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Hono Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/hono-suspension/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/luceplan/lighting/hono-suspension/1.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Levante Floor",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/levante-floor/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Alibel",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/alibel/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Alibel Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/alibel-wall/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Koine",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/koine/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Illan Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/illan-wall/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Titania Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/titania-suspension/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Soleil Noir Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/soleil-noir-suspension/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Malamata Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/malamata-wall/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/luceplan/lighting/malamata-wall/1.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Lita Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/lita-suspension/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Levante",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/levante/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Koine Acoustic",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/koine-acoustic/0.jpg",
+              "pal": "Grey"
+            }
+          ]
+        },
+        {
+          "name": "Counterbalance Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/counterbalance-wall/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/luceplan/lighting/counterbalance-wall/1.jpg",
+              "pal": "Bordeaux"
+            }
+          ]
+        },
+        {
+          "name": "Doi Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/doi-suspension/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Costanza Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/costanza-wall/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Berenice Wall",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/berenice-wall/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Ascent Table",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/ascent-table/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Amisol Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/amisol-suspension/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Dix Bougies Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/dix-bougies-suspension/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "J Us Suspension",
+          "colors": [
+            {
+              "img": "images/luceplan/lighting/j-us-suspension/0.jpg",
+              "pal": "Brass"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "lumina": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.luminaitalia.it",
+      "models": [
+        {
+          "name": "Galileo",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/galileo/0.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/lumina/lighting/galileo/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Limbus Chandelier",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/limbus-chandelier/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Daphine Terra",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphine-terra/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Daphine Cloe",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphine-cloe/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Dot",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/dot/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Limbus",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/limbus/0.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/lumina/lighting/limbus/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/limbus/2.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Anima",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/anima/0.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/lumina/lighting/anima/1.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/lumina/lighting/anima/2.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/lumina/lighting/anima/3.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/anima/4.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Aether",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/aether/0.jpg",
+              "pal": "Forest"
+            },
+            {
+              "img": "images/lumina/lighting/aether/1.jpg",
+              "pal": "Pink"
+            },
+            {
+              "img": "images/lumina/lighting/aether/2.jpg",
+              "pal": "Navy"
+            },
+            {
+              "img": "images/lumina/lighting/aether/3.jpg",
+              "pal": "Pink"
+            },
+            {
+              "img": "images/lumina/lighting/aether/4.jpg",
+              "pal": "Walnut"
+            },
+            {
+              "img": "images/lumina/lighting/aether/5.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Daphinette Portatile",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphinette-portatile/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Matrix Otto",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/matrix-otto/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/matrix-otto/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Daphinette",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphinette/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Daphine Cilindro",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphine-cilindro/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Daphine Parete",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphine-parete/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Dot Lite",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/dot-lite/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Daphine Table Lamp",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/1.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/2.jpg",
+              "pal": "Brass"
+            },
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/3.jpg",
+              "pal": "Bordeaux"
+            },
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/4.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/lumina/lighting/daphine-table-lamp/5.jpg",
+              "pal": "Mustard"
+            }
+          ]
+        },
+        {
+          "name": "Matrix Doppia",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/matrix-doppia/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/matrix-doppia/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Matrix Otto P",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/matrix-otto-p/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/matrix-otto-p/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Matrix Mono",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/matrix-mono/0.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/matrix-mono/1.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Limbus F",
+          "colors": [
+            {
+              "img": "images/lumina/lighting/limbus-f/0.jpg",
+              "pal": "Silver"
+            },
+            {
+              "img": "images/lumina/lighting/limbus-f/1.jpg",
+              "pal": "Black"
+            },
+            {
+              "img": "images/lumina/lighting/limbus-f/2.jpg",
+              "pal": "Brass"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "mdf-italia": [
     {
       "name": "Chair",
@@ -18571,6 +22037,7 @@ function brandOf(id){ return BRANDS.find(b=>b.id===id); }
 // mark (first letter, same treatment as the header wordmark) until supplied. Filenames
 // vary in case/extension since they're saved as-is from wherever each logo came from.
 const LOGOS = {
+  "ninefact":"Ninefact.webp",
   "audo":"O Audo Copenhagen,IP.webp",
   "bomma":"Bomma.webp",
   "brionvega":"Brionvega.webp",
@@ -18805,6 +22272,10 @@ function openBrandCollection(brandId,idx){ state.brand=brandId; state.collection
 function backToCollections(){ state.collection=null; renderCurrent(); window.scrollTo({top:0,behavior:'smooth'}); }
 
 function renderCurrent(){
+  renderCurrentImpl();
+  requestAnimationFrame(()=>{ updatePageScrollDot(); initAmbScrollDots(); });
+}
+function renderCurrentImpl(){
   document.body.classList.toggle('landing-mode', !!state.landing);
   if(state.landing){ renderLanding(); return; }
   const q=(document.getElementById('searchInput')?.value||"").toLowerCase();
@@ -19231,13 +22702,13 @@ const MANIFESTO_HTML = `
       <div class="manifesto-box" id="manifestoScroll" onscroll="updateManifestoScrollDot()">
         <h2 class="manifesto-title">The Origin Point of a Vector</h2>
         <div class="manifesto-body">
-          <p>I have never believed in the hard divide between "hard construction" and "soft furnishing"—or, by extension, between architecture, interior design, and interior styling.</p>
-          <p>Personally, this is either a curse or a blessing, I have never been someone who skims the surface. Once something catches my attention, I disappear into it. Over the past two weeks I have begun building my own furniture library. What started as a reference folder quickly became an enormous archive. I spent 3 days in Hangzhou visiting 22 furniture showrooms, and the journey is only beginning: lighting and furniture sourcing in Guangdong, textiles in Shaoxing in August, the Shanghai Modern Interior Expo in September. Between these trips, I will begin the first two phases of the architectural design.</p>
-          <p>This is a tight and, hopefully, well-planned design journey. It feels much tougher than giving birth to a baby—at least from the perspective of who I am right now: unmarried and unpregnant. Yet this remains a far more unexplored territory, one filled with hope, curiosity, and fantasy.</p>
-          <p>It is a pretty experimental design process. I browsed hundreds of websites and thousands of products. Slowly, patterns began to emerge. A chair finds its table. A lamp discovers its corner. Walnut belongs beside linen; brushed aluminum asks for terrazzo. Long before a floor plan is finalized, fragments of a future home have already begun arranging themselves in my imagination. I started to develop montages, or collages, of how a specific piece, a specific color, would situate itself within its own niche.</p>
-          <p>Now it is difficult for me to understand how it is possible to separate the so-called solid work from the soft styling, or how anyone could decide on the spatial items—the players of the space—only after the containers have already been completed.</p>
-          <p>Even after nearly a decade in design, I still find it difficult to begin with a blank space. Enough references are needed. Proper imagination is needed. Sensitive spatial instincts are needed. Feasible support is needed. So I think of this library as the origin point of a vector. Every chair, lamp, textile, and material becomes another direction the project could take. Open the archive, and countless possible homes begin to unfold. Before the walls are drawn, life has already started to take shape.</p>
-          <p>The point is the beginning of the vector. The vector expands into an array—a field of imagination where homes come into being. Countless possibilities of living, countless moments of being, gradually come together to build your vision of home.</p>
+          <p>I have never believed in the divide between hard construction and soft furnishing—nor between architecture, interior, and styling.</p>
+          <p>Curse or blessing, I do not skim. Once caught, I disappear. In two weeks, a folder became an archive. Three days in Hangzhou, twenty-two showrooms. And this is only the beginning: Guangdong, Shaoxing, Shanghai. Between trips, the architecture begins.</p>
+          <p>A tight journey. Harder than birth—from where I stand, unmarried, unpregnant. Yet more uncharted. Filled with hope, curiosity, fantasy.</p>
+          <p>Hundreds of websites. Thousands of products. Slowly, patterns emerge. A chair finds its table. A lamp discovers its corner. Walnut beside linen, aluminum with terrazzo. Before any floor plan, fragments of home arrange themselves in my mind. Collages of piece, color, niche.</p>
+          <p>I cannot understand how solid work parts from soft styling—how the players are chosen only after the containers are done.</p>
+          <p>Even after a decade in design, I cannot begin with emptiness. I need references. Imagination. Instinct. Feasibility. So I treat this library as the origin point of a vector. Each object a direction. Open the archive, and homes unfold. Before walls are drawn, life takes shape.</p>
+          <p>The point begins the vector. The vector expands into a field—countless possibilities, countless moments, building your vision of home.</p>
         </div>
         <div class="manifesto-sign">Runke Luo, July 30th, 2026, Yiwu</div>
       </div>
@@ -19307,8 +22778,9 @@ function renderBrandDetail(brandId,q){
             ${b.verify?'<span class="verify">official link needs a quick verify</span>':''}
             ${b.social?`<div class="social-links">
               ${b.social.taobao?`<a href="${b.social.taobao}" target="_blank" rel="noopener">🛍 Taobao</a>`:''}
-              ${b.social.rednote?`<a href="${b.social.rednote}" target="_blank" rel="noopener">📕 Xiaohongshu</a>`:''}
+              ${b.social.rednote?`<a href="${b.social.rednote}" target="_blank" rel="noopener">📕 RedNote</a>`:''}
               ${b.social.wechat?`<a href="${b.social.wechat}" target="_blank" rel="noopener">💬 WeChat</a>`:''}
+              ${b.social.instagram?`<a href="${b.social.instagram}" target="_blank" rel="noopener">📷 Instagram</a>`:''}
             </div>`:''}
           </div>
         </div>
@@ -19388,7 +22860,7 @@ function ambianceStripHTML(photos){
   return `
     <div class="ambiance-wrap">
       <button class="amb-side amb-side-prev" onclick="ambianceShift(this,-1)" aria-label="Previous">‹</button>
-      <div class="ambiance-grid">
+      <div class="ambiance-grid" onscroll="updateAmbScrollDot(this)">
         ${photos.map(p=>`
           <div class="ambiance-card">
             <div class="ambiance-imgwrap" data-amb-id="${p.id}" onclick="openAmbiancePhoto('${p.id}', this)">
@@ -19400,12 +22872,38 @@ function ambianceStripHTML(photos){
       </div>
       <button class="amb-side amb-side-next" onclick="ambianceShift(this,1)" aria-label="Next">›</button>
     </div>
+    <div class="amb-scroll-track"><div class="amb-scroll-dot"></div></div>
   `;
 }
 function ambianceShift(btn,dir){
   const track=btn.closest('.ambiance-wrap').querySelector('.ambiance-grid');
   track.scrollBy({left:dir*track.clientWidth*0.9, behavior:'smooth'});
 }
+function updateAmbScrollDot(track){
+  const scrollTrack = track.closest('.ambiance-wrap')?.nextElementSibling;
+  if(!scrollTrack || !scrollTrack.classList.contains('amb-scroll-track')) return;
+  const dot = scrollTrack.querySelector('.amb-scroll-dot');
+  const max = track.scrollWidth - track.clientWidth;
+  if(max<=0){ scrollTrack.style.display='none'; return; }
+  scrollTrack.style.display='block';
+  const trackW = scrollTrack.clientWidth - dot.offsetWidth;
+  dot.style.left = ((track.scrollLeft/max)*trackW) + 'px';
+}
+function initAmbScrollDots(){
+  document.querySelectorAll('.ambiance-grid').forEach(updateAmbScrollDot);
+}
+function updatePageScrollDot(){
+  const dot = document.getElementById('pageDot');
+  if(!dot) return;
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  if(max<=0){ dot.style.display='none'; return; }
+  dot.style.display='block';
+  const trackH = window.innerHeight - dot.offsetHeight;
+  dot.style.top = ((doc.scrollTop/max)*trackH) + 'px';
+}
+window.addEventListener('scroll', updatePageScrollDot);
+window.addEventListener('resize', updatePageScrollDot);
 // The aggregated Ambiance tab shows a single flat wall of every curated photo —
 // smaller thumbnails, no arrows, no per-brand grouping, just scroll the page and
 // click a photo to enlarge. Portrait photos are sized down and landscape photos
@@ -19416,6 +22914,12 @@ function classifyAmbianceOrientation(img){
   if(!item || !img.naturalWidth || !img.naturalHeight) return;
   item.classList.toggle('amb-portrait', img.naturalHeight>img.naturalWidth);
   item.classList.toggle('amb-landscape', img.naturalWidth>img.naturalHeight);
+}
+function classifyAmbianceModalOrientation(img){
+  const wrap=img.closest('.amb-modal-imgwrap');
+  if(!wrap || !img.naturalWidth || !img.naturalHeight) return;
+  wrap.classList.toggle('amb-portrait', img.naturalHeight>img.naturalWidth);
+  wrap.classList.toggle('amb-landscape', img.naturalWidth>img.naturalHeight);
 }
 function ambianceWallHTML(photos){
   return `
@@ -19463,7 +22967,7 @@ function openAmbiancePhoto(id, el){
     <button class="modal-close" onclick="closeModal()">×</button>
     <div class="amb-modal-imgwrap">
       <button class="amb-modal-nav amb-modal-prev" onclick="ambianceModalNav(-1)" aria-label="Previous">‹</button>
-      <img src="${p.img}" alt="${p.project||''}" onerror="retryImgOnce(this)">
+      <img src="${p.img}" alt="${p.project||''}" onload="classifyAmbianceModalOrientation(this)" onerror="retryImgOnce(this)">
       <button class="fav-btn ${faved?'faved':''}" onclick="toggleFavorite('${p.id}',event); openAmbiancePhoto('${p.id}');" title="${faved?'Remove from':'Save to'} favorites">
         <svg viewBox="0 0 24 24"><path d="${HEART_PATH}"/></svg>
       </button>
