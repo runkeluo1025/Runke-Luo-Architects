@@ -1854,7 +1854,7 @@ const BRANDS = [
 // origin + official link only — no item-level data exists for these yet (no inventory source),
 // so rather than invent items, they show as a brand card linking straight to the official site.
 const DIRECTORY = [
- ["Mario Tsai Studio","China","https://www.google.com/search?q=Mario+Tsai+Studio+official+site",1],
+ ["Mario Tsai Studio","China","https://mariotsai.com"],
  ["USM","Switzerland","https://www.usm.com"],
  ["Brand van Egmond","Netherlands","https://www.brandvanegmond.com"],
  ["bd Barcelona Design","Spain","https://www.bdbarcelona.com"],
@@ -11962,6 +11962,425 @@ const AMBIANCE_DATA = {
 };
 BRANDS.forEach(b=>{ if(AMBIANCE_DATA[b.id]) b.ambiance = AMBIANCE_DATA[b.id]; });
 const PRODUCT_COLLECTIONS = {
+  "mario-tsai-studio": [
+    {
+      "name": "Lighting",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://mariotsai.com",
+      "models": [
+        {
+          "name": "Pagoda",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/pagoda/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Omega1 (Ω1 Rechargeable)",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/omega1-1-rechargeable/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Omega2 (Ω2 Rechargeable)",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/omega2-2-rechargeable/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Bloom",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/bloom/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 1.0 W",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-1-0-w/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 1.0 Slash",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-1-0-slash/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 1.0 Long",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-1-0-long/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 1.0 X",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-1-0-x/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 2.0 Basic",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-2-0-basic/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 2.0 Rotating",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-2-0-rotating/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 3.0 Chandeliers",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-3-0-chandeliers/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 4.1 Chandeliers",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-4-1-chandeliers/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.0 Chandeliers",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-0-chandeliers/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.0 Wall Lamp",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-0-wall-lamp/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.0 Floor Lamp",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-0-floor-lamp/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.1 Chandeliers",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-1-chandeliers/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.1 Wall Lamp",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-1-wall-lamp/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.2 Chandeliers",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-2-chandeliers/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.2 Wall Lamp",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-2-wall-lamp/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Mazha Lighting System 5.3 (Table)",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/mazha-lighting-system-5-3-table/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Soft Power Collection - Pyramid System",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/soft-power-collection-pyramid-system/0.jpg",
+              "pal": "White"
+            }
+          ]
+        },
+        {
+          "name": "Soft Power Collection - Polaris",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/lighting/soft-power-collection-polaris/0.jpg",
+              "pal": "White"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Furniture",
+      "cat": [
+        "Decor"
+      ],
+      "link": "https://mariotsai.com",
+      "models": [
+        {
+          "name": "Grid Bench",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/furniture/grid-bench/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Press Table",
+          "colors": [
+            {
+              "img": "images/mario-tsai-studio/furniture/press-table/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mogg": [
+    {
+      "name": "Lamps",
+      "cat": [
+        "Lighting"
+      ],
+      "link": "https://www.mogg.it",
+      "models": [
+        {
+          "name": "Costantina",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/costantina/0.jpg",
+              "pal": "Walnut"
+            }
+          ]
+        },
+        {
+          "name": "Costantina Opal",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/costantina-opal/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Costantina Opal Sospensione",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/costantina-opal-sospensione/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Costantina XXL",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/costantina-xxl/0.jpg",
+              "pal": "Silver"
+            }
+          ]
+        },
+        {
+          "name": "Era",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/era/0.jpg",
+              "pal": "White"
+            },
+            {
+              "img": "images/mogg/lamps/era/1.jpg",
+              "pal": "Brass"
+            }
+          ]
+        },
+        {
+          "name": "Hiver",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/hiver/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Orbit",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/orbit/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Orbit Wall",
+          "colors": [
+            {
+              "img": "images/mogg/lamps/orbit-wall/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tables",
+      "cat": [
+        "Tables"
+      ],
+      "link": "https://www.mogg.it",
+      "models": [
+        {
+          "name": "Bilbao",
+          "colors": [
+            {
+              "img": "images/mogg/tables/bilbao/0.jpg",
+              "pal": null
+            }
+          ]
+        },
+        {
+          "name": "Olo",
+          "colors": [
+            {
+              "img": "images/mogg/tables/olo/0.jpg",
+              "pal": "Charcoal"
+            },
+            {
+              "img": "images/mogg/tables/olo/1.jpg",
+              "pal": "Ivory"
+            }
+          ]
+        },
+        {
+          "name": "Olo Glass",
+          "colors": [
+            {
+              "img": "images/mogg/tables/olo-glass/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/mogg/tables/olo-glass/1.jpg",
+              "pal": "Slate"
+            }
+          ]
+        },
+        {
+          "name": "Matrix",
+          "colors": [
+            {
+              "img": "images/mogg/tables/matrix/0.jpg",
+              "pal": null
+            },
+            {
+              "img": "images/mogg/tables/matrix/1.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/mogg/tables/matrix/2.jpg",
+              "pal": "Slate"
+            },
+            {
+              "img": "images/mogg/tables/matrix/3.jpg",
+              "pal": "Taupe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mirrors",
+      "cat": [
+        "Mirror"
+      ],
+      "link": "https://www.mogg.it",
+      "models": [
+        {
+          "name": "Brame",
+          "colors": [
+            {
+              "img": "images/mogg/mirrors/brame/0.jpg",
+              "pal": "Sand"
+            },
+            {
+              "img": "images/mogg/mirrors/brame/1.jpg",
+              "pal": "Sand"
+            }
+          ]
+        },
+        {
+          "name": "Layers",
+          "colors": [
+            {
+              "img": "images/mogg/mirrors/layers/0.jpg",
+              "pal": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "imperfettolab": [
     {
       "name": "Table",
